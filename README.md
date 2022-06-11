@@ -23,7 +23,11 @@ John Ferrucho:
 ## Referentes del mercado
 
 https://www.dogamanga.com/
+
 https://akihabaracolombia.com/
+
 https://www.latiendadecomics.com/
+
 https://www.comeek.co/
+
 https://co.ebay.com/b/Comic-Books-Manga-Memorabilia/63/bn_1865459
