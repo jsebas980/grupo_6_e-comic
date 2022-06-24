@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Adventure;
+    src: url('static/font/Adventure.otf') format("opentype");
+  }
+  
+body{
+    background-color: #F4F4F4;
+}
+
+h1{
+    font-family: Adventure;
+}

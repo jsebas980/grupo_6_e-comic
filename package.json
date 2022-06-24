@@ -1,0 +1,22 @@
+{
+  "name": "grupo_6_e-comic",
+  "version": "1.0.0",
+  "description": "Proyecto integrador para el curso de fullstack con Digital House",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsebas980/grupo_6_e-comic.git"
+  },
+  "author": "grupo_6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsebas980/grupo_6_e-comic/issues"
+  },
+  "homepage": "https://github.com/jsebas980/grupo_6_e-comic#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
