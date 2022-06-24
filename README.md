@@ -31,3 +31,6 @@ https://www.latiendadecomics.com/
 https://www.comeek.co/
 
 https://co.ebay.com/b/Comic-Books-Manga-Memorabilia/63/bn_1865459
+
+## Plataforma que utiliza para organizar el trabajo
+https://trello.com/invite/b/kCpYJf4k/f68ff236a6e1391995059ba67ff190f7/grupo6e-comic
