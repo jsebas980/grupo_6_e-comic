@@ -1,5 +1,5 @@
 .header-login-signup{
-	background-color:#292c2f;
+	background-color:#484b50;
 	box-shadow:0 1px 1px #ccc;
 	padding: 20px 40px;
 	height: 80px;
@@ -23,7 +23,7 @@
 }
 
 .header-login-signup .header-limiter h1 span {
-	color: #5383d3;
+	color: #58b15d;
 }
 
 /* The navigation links */
@@ -55,7 +55,7 @@
 }
 
 .header-login-signup .header-limiter nav a.selected {
-	color: #608bd2;
+	color: #58b15d;
 }
 
 /* Login/Sign up buttons */
