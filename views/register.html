@@ -1,90 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/74273dfa33.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="static/css/styles.css">
-    <link rel="stylesheet" href="static/css/header-login-signup.css">
-	<link rel="stylesheet" href="static/css/footer-distributed-with-address-and-phones.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>home</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/74273dfa33.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="static/css/styles.css" />
+  <link rel="stylesheet" href="static/css/register.css" />
 </head>
+
+<script>
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /*loop through a collection of all HTML elements:*/
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("include-html");
+      if (file) {
+        /*make an HTTP request using the attribute value as the file name:*/
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            /*remove the attribute, and call this function once more:*/
+            elmnt.removeAttribute("include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /*exit the function:*/
+        return;
+      }
+    }
+  };
+</script>
+
 <body>
-    <header>
-        <img class="header-img" src ="static/images/Logo_eComic_active.png" alt="eComic" href="https://www.eComic.net"/>
-        <h1>eComic</h1>
-        <i class="fa-solid fa-cart-shopping fa-4x"></i>
-        <i class="fa-solid fa-user fa-4x"></i>
-    </header>
-    <header class="header-login-signup">
-        <div class="header-limiter">
-            <h1><a href="#">e<span>C</span>omic</a></h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#" class="selected">Blog</a>
-                <a href="#">Pricing</a>
-            </nav>
-            <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign up</a></li>
-            </ul>
-         </div>   
-    </header>
-    <main><p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
-        <img src="static/images/saitama.jpg" width="300px" height="168px" alt="Saitama">
-    </main>
-    <footer></footer>
-    <footer class="footer-distributed">
-        <div class="footer-left">
-            <!--<h3>Company<span>logo</span></h3>-->
-            <img class="header-img" src ="static/images/Logo_eComic_hover.png" alt="eComic" href="https://www.eComic.net"/>
-            <p class="footer-links">
-                <a href="#">Home</a>
-                ·
-                <a href="#">Product Cart</a>
-                ·
-                <a href="#">Product Details</a>
-            </p>
-            <p class="footer-company-name">Grupo 6 © 2022</p>
-        </div>
-        <div class="footer-center">
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p><span>Digital House</span> Colombia</p>
-            </div>
-    
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+57 604 123 45 67</p>
-            </div>
-    
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:support@gmail.com">support@gmail.com</a></p>
-            </div>
-    
-        </div>
-    
-        <div class="footer-right">
-    
-            <p class="footer-company-about">
-                <span>About the company</span>
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </p>
-    
-            <div class="footer-icons">
-    
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-    
-            </div>
-    
-        </div>
-    
-    </footer>
+  <div include-html="header"></div>
+  <form action="/" method="post">
+    <div class="imgcontainer">
+      <h1>Formulario de registro</h1>
+      <img src="static/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
+      <label for="uname"><b>Nombre completo</b></label>
+      <input type="text" placeholder="Enter full name" name="uname" required>
+      <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter email" name="email" id="email" required>
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Enter password" name="psw" id="psw" required>
+      <label for="psw-repeat"><b>Contraseña</b></label>
+      <input type="password" placeholder="Enter password repeat" name="psw-repeat" id="psw-repeat" required>
+      <label for="dt"><b>Fecha de nacimiento</b></label>
+      <input type="date" placeholder="Enter date" name="dt" required>
+      <button type="submit" class="registerbtn">Registrarse</button>
+    </div>
+
+    <div class="container2">
+      <span class="psw">Ya tienes una cuenta eComic? <a href="login">Login</a></span>
+    </div>
+  </form>
+  </main>
+  <div include-html="footer"></div>
+  <script>
+    includeHTML();
+  </script>
 </body>
+
 </html>
