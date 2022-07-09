@@ -1,15 +1,5 @@
-body {
-    color: #333333;
-    font-weight: 400;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 20px;
-    margin: 0;
-    padding: 4em 0 4em 20%;
-}
-
 form {
-    width: 50%;
+    max-width: 1200px;
     margin: 25px auto;
     border: 1px solid #ccc;
 }
@@ -90,7 +80,6 @@ button {
     border: none;
     cursor: pointer;
     width: 85%;
-    opacity: 0.8;
     text-align: center;
 }
 
@@ -100,17 +89,7 @@ button:hover {
             rgba(100, 200, 200, 1));
     box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
     border: 1px solid #00d7c3;
-}
-
-.cancelbtn {
-    float: left;
-    display: block;
-    width: 45%;
-    padding: 10px 18px;
-    font: 700 1.6rem "Roboto Slab", sans-serif;
-    background: linear-gradient(to right,
-            rgba(0, 100, 200, 1),
-            rgba(100, 200, 200, 1));
+    opacity: 0.8;
 }
 
 .imgcontainer {
@@ -193,7 +172,21 @@ img.avatar:hover {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 376px) {
+@media (min-width: 376px) and (max-width: 769px) {
+    form {
+        width: 95%;
+    }
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .registerbtn {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 375px) {
     form {
         width: 100%;
     }
@@ -202,7 +195,7 @@ img.avatar:hover {
         float: none;
     }
 
-    .cancelbtn {
+    .registerbtn {
         width: 100%;
     }
 }

@@ -203,13 +203,8 @@ img.avatar:hover {
     }
 
     .container2 {
-        height: 155px;
+        height: 205px;
         padding: 35px 15px 32px 15px;
-    }
-
-    span.psw {
-        display: block;
-        float: none;
     }
 
     .cancelbtn {
@@ -223,7 +218,7 @@ img.avatar:hover {
     }
 
     .container2 {
-        height: 105px;
+        height: 155px;
     }
 
     span.psw {
@@ -232,6 +227,7 @@ img.avatar:hover {
     }
 
     .cancelbtn {
-        width: 35%;
+        width: 85%;
+        margin: auto;
     }
 }

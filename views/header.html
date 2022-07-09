@@ -7,26 +7,34 @@
 
 <body>
   <header class="header-login-signup">
-    <div class="header-limiter">
-      <div class="has-outline"><img src="static/images/Logo_eComic_active.png" alt="eComic"
+    <section>
+      <div class="header-limiter">
+        <div class="has-outline"><img src="static/images/Logo_eComic_active.png" alt="eComic"
           href="https://www.eComic.net" class="code-img" /></div>
       <h1><a href="/">e<span>C</span>omic</a></h1>
-      <nav>
-        <a href="/" class="selected"><i class="fa fa-fw fa-home"></i></a>
-        |
-        <a href="productCart">Product Cart</a>
-        |
-        <a href="productDetail">Product Details</a>
-      </nav>
-      <ul>
-        <li>
-          <a href="productCart" alt="Carrito"><i class="fa-solid fa-cart-shopping fa-2xl"></i></a>
-        </li>
-        <li>
-          <a href="login" alt="Login"><i class="fa-solid fa-user fa-xl"></i> Login</a>
-        </li>
-      </ul>
-    </div>
+        <div class="menudiv">
+          <label for="toggle-1" class="toggle-menu"> 
+            <i class="fa-solid fa-bars fa-4x"></i>
+          </label>
+          <input type="checkbox" id="toggle-1">
+          <nav>
+            <ul>
+              <li class="selected"><a href="/"><i class="fa fa-home fa-2xl"></i></a></li>
+              <li><a href="productCart">Product Cart</a></li>
+              <li><a href="productDetail">Product Details</a></li>
+            </ul>
+          </nav>
+          <ul class="leftdiv">
+            <li>
+              <a href="productCart" alt="Carrito"><i class="fa-solid fa-cart-shopping fa-2xl"></i></a>
+            </li>
+            <li>
+              <a href="login" alt="Login" class="login"><i class="fa-solid fa-user fa-xl"></i> Login</a>
+            </li>
+          </ul>
+        </div>       
+      </div>
+    </section>
   </header>
 </body>
 

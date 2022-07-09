@@ -20,6 +20,28 @@
   filter: drop-shadow(0 0 0px red)
 }
 
+.fa-bars {
+  color: #58b15d;
+}
+
+.fa-bars:hover {
+  color: #fde428;
+  ilter: drop-shadow(0 0 0px red)
+}
+
+/* For the headers to look good, be sure to reset the margin and padding of the body */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .header-login-signup {
   background-color: #3f5678;
   box-shadow: 0 1px 1px #ccc;
@@ -46,24 +68,26 @@
   border-radius: 50%;
   padding: 5px;
   position: relative;
-  width:75px;
-  height:75px;
+  width: 75px;
+  height: 75px;
 }
+
 .has-outline:after {
-border-radius: 50%;
-padding: 5px;
-border: 2px dashed #fff;
-position: absolute;
-content: '';
-top: -6px;
-left: -6px;
-bottom: -6px;
-right: -6px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px dashed #fff;
+  position: absolute;
+  content: '';
+  top: -6px;
+  left: -6px;
+  bottom: -6px;
+  right: -6px;
 }
 
 .code-img {
-  width: 100%; /* Will shrink image to 30% of its original width */
-  height: 100%; 
+  width: 100%;
+  /* Will shrink image to 30% of its original width */
+  height: 100%;
   object-fit: contain;
 }
 
@@ -101,45 +125,76 @@ right: -6px;
   text-decoration: none;
 }
 
-.header-login-signup .header-limiter nav {
+.header-login-signup .header-limiter .menudiv nav {
   font: 400 1rem "Roboto Slab", sans-serif;
   line-height: 100%;
   float: left;
-  margin: 15px 0px 0px 0px;
 }
 
-.header-login-signup .header-limiter nav a {
+.header-login-signup .header-limiter .menudivnav li.selected {
+  color: #58b15d;
+  font-size: 700 2.4rem "Roboto Slab", sans-serif;
+}
+
+.menudiv nav ul li a {
   font: 400 1rem "Roboto Slab", sans-serif;
   width: 45%;
-  padding: 0 5px;
   opacity: 0.9;
   text-decoration: none;
   line-height: 65px;
+  transition: all 0.5s ease 0s;
 }
 
-.header-login-signup .header-limiter nav a:hover {
+.menudiv nav ul li a:hover {
+  color: #fde428;
+  transition: all 0.5s ease 0s;
   opacity: 2;
   font: 700 1.6rem "Roboto Slab", sans-serif;
 }
 
-.header-login-signup .header-limiter nav a.selected {
+.menudiv nav ul li a:hover i {
+  color: #fde428;
+  transition: all 0.5s ease 0s;
+}
+
+.menudiv nav ul li a i {
   color: #58b15d;
-  font: 700 1.6rem "Roboto Slab", sans-serif;
+  transition: all 0.5s ease 0s;
+}
+
+.menudiv .toggle-menu ul {
+  display: table;
+  width: 35px;
+}
+
+.menudiv .toggle-menu ul li {
+  width: 100%;
+  height: 10px;
+  background-color: #58b15d;
+  ;
+}
+
+.menudiv input[type=checkbox],
+.menudiv label {
+  display: none;
 }
 
 /* Login/Sign up buttons */
 
 .header-login-signup .header-limiter ul {
   font: 400 1rem "Roboto Slab", sans-serif;
-  list-style: none;
   line-height: 90%;
   float: right;
 }
 
 .header-login-signup .header-limiter ul li {
   display: inline-block;
-  margin: 15px 0px 0px 25px;
   opacity: 1;
+  margin: 0px 0px 0px 25px
+}
+
+.header-login-signup .header-limiter ul.leftdiv li {
+  margin: 15px 0px 0px 25px
 }
 
 .header-login-signup .header-limiter ul li:hover {
@@ -148,7 +203,7 @@ right: -6px;
 
 /* The sign up button */
 
-.header-login-signup .header-limiter ul li:last-child a {
+.header-login-signup .header-limiter ul.leftdiv li:last-child a.login {
   font-weight: bold;
   color: #1f2937;
   background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -157,55 +212,142 @@ right: -6px;
   transition: all 650ms;
 }
 
-.header-login-signup .header-limiter ul li:last-child a:hover {
+.header-login-signup .header-limiter ul.leftdiv li:last-child a.login:hover {
   background: linear-gradient(to right, rgba(0, 100, 200, 1), rgba(100, 200, 200, 1));
   box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
   border: 1px solid #00d7c3;
 }
 
+
 /* Making the header responsive */
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 769px) {
   .header-login-signup {
-    padding: 25px;
+    padding: 15px;
     height: auto;
     width: 100%;
     display: inline-block;
   }
 
   .header-login-signup .header-limiter h1 {
+    display: none;
+  }
+
+  .header-login-signup .header-limiter h1 {
+    float: left;
+    line-height: 65px;
+    width: 105px;
+    margin: 10px 0;
+  }
+
+  .header-login-signup .header-limiter h1 {
     float: none;
-    margin: -8px 0 2px;
+    margin: 8px 0 8px;
     text-align: center;
     font-size: 52px;
     line-height: 1;
   }
 
-  .header-login-signup .header-limiter nav {
-    margin: auto;
-    padding: 5px 5px;
-    float: none;
-    display: block;
-    width: 100%;
-  }
+}
 
-  .header-login-signup .header-limiter nav li a {
-    font-size: 12px;
-    text-align: center;
+@media screen and (max-width: 375px) {
+  .header-login-signup .header-limiter nav {
+    display: none;
   }
 
   .header-login-signup .header-limiter ul {
     float: none;
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: 75%;
     margin: auto;
-    padding-top: 35px;
+    padding-top: 1px;
   }
 }
 
-/* For the headers to look good, be sure to reset the margin and padding of the body */
+@media only screen and (max-width: 767px) {
 
-body {
-  margin: 0;
-  padding: 0;
+  .menudiv section {
+    max-width: 95%;
+  }
+
+
+  .has-outline {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .menudiv input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    right: -9999px;
+    background: none;
+  }
+
+  .menudiv input[type=checkbox]:fous {
+    background: none;
+  }
+
+  .menudiv label {
+    float: left;
+    padding: 8px 0px;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .menudiv input[type=checkbox]:checked~nav {
+    display: block;
+  }
+
+  .menudiv nav {
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 53px;
+    background-color: #484b50;
+    padding: 0px;
+    z-index: 1000;
+  }
+
+  .menudiv nav ul {
+    width: 85%;
+  }
+
+  .menudiv nav ul li {
+    float: none;
+    padding: 0px;
+    width: 100%;
+    display: table;
+  }
+
+  .menudiv nav ul li a {
+    color: 700 1rem "Roboto Slab", sans-serif;
+    padding: 30px 10px;
+    display: block;
+    border-bottom: 3px solid rgba(225, 225, 225, 0.1);
+  }
+
+  .menudiv nav ul li a i {
+    color: #fde428;
+    padding-right: 13px;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+
+  .menudiv section {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+
+  .menudiv label {
+    padding: 5px 0px;
+  }
+
+  .menudiv nav {
+    top: 47px;
+  }
 }

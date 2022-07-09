@@ -40,7 +40,7 @@ h1 {
 }
 
 .box {
-  margin: 5px auto;
+  margin: 25px auto;
   height: 75px;
   width: 75%;
 }
@@ -49,6 +49,7 @@ h1 {
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
+  box-sizing: border-box;
 }
 
 .container-1 input#search {
