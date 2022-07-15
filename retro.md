@@ -19,3 +19,6 @@
 
 ## 5. Dejar de hacer
 
+# La retrospectiva Sprint 2
+
+![Retrospectiva2](/wireframes/2022-07-11_Retrospectiva.png?raw=true "Retrospectiva2")
