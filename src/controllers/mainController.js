@@ -3,25 +3,25 @@ const mainController = {
         res.render("index");
     },
     productDetail: (req, res) => {
-        res.render("productDetail");
+        res.render("./products/productDetail.ejs");
     },
     productCart: (req, res) => {
-        res.render("productCart");
+        res.render("./products/productCart");
     },
     productEdit: (req, res) => {
-        res.render("productEdit");
+        res.render("./products/productEdit");
     },
     productList: (req, res) => {
-        res.render("productList");
+        res.render("./products/productList");
     },
     productload: (req, res) => {
-        res.render("productload");
+        res.render("./products/productload");
     },
     login: (req, res) => {
-        res.render("login");
+        res.render("./users/login");
     },
     register: (req, res) => {
-        res.render("register");
+        res.render("./users/register");
     },
 };
 
