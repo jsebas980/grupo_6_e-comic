@@ -17,10 +17,11 @@
     <article>
       <div id="coverflow">
         <ul class="flip-items">
-
-          <li data-flip-title="<%= producto.volumen %>" data-flip-category="<%= producto.temporada %>">
-            <img src="static//images/img/<%= producto.img %>" aria-label="drawing of a cat" />
+          <% producto.forEach(comic=>{ %>
+          <li data-flip-title="<%= comic.volumen %>" data-flip-category="<%= comic.temporada %>">
+            <img src="static//images/img/<%= comic.img %>" aria-label="drawing of a cat" />
           </li>
+          <%})%>
           
         </ul>
       </div>
@@ -41,62 +42,21 @@
     </article>
 
     <div class="row">
-      <div class="card">
-        <div class="card-header">
-          <h1>React</h1>
-          <h6>$99.99</h6>
+      <% producto.forEach(comic=>{ %>
+        <div class="card">
+          <div class="card-header">
+            <h1><%= comic.titulo %></h1>
+            <h6><%= comic.precioNormal %></h6>
+          </div>
+          <div class="card-body">
+            <img src="static/images/img/<%= comic.img %>" aria-label="drawing of a cat" />
+            <p>
+              <%= comic.descripcionCorta %>
+            </p>
+            <a href="#" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir</a>
+          </div>
         </div>
-        <div class="card-body">
-          <img src="static/images/img/01.jpg" aria-label="drawing of a cat" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi neque molestiae eius explicabo mollitia
-            tempore reiciendis, vel, sequi.
-          </p>
-          <a href="#" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h1>Vue</h1>
-          <h6>$99.99</h6>
-        </div>
-        <div class="card-body">
-          <img src="static/images/img/02.jpg" aria-label="drawing of a cat" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi neque molestiae eius explicabo mollitia
-            tempore reiciendis, vel, sequi.
-          </p>
-          <a href="#" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h1>Angular</h1>
-          <h6>$99.99</h6>
-        </div>
-        <div class="card-body">
-          <img src="static/images/img/03.jpg" aria-label="drawing of a cat" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi neque molestiae eius explicabo mollitia
-            tempore reiciendis, vel, sequi.
-          </p>
-          <a href="#" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h1>JQuery</h1>
-          <h6>$99.99</h6>
-        </div>
-        <div class="card-body">
-          <img src="static/images/img/04.jpg" aria-label="drawing of a cat" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi neque molestiae eius explicabo mollitia
-            tempore reiciendis, vel, sequi.
-          </p>
-          <a href="#" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir</a>
-        </div>
-      </div>
+        <%})%>
     </div>
   </main>
 <!-- Footer -->

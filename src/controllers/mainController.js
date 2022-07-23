@@ -4,7 +4,7 @@ let comicProductos = JSON.parse(fs.readFileSync(archivo, 'utf-8'))
 
 const mainController = {
     index: (req, res) => {
-        res.render("index");
+        res.render("index", {producto: comicProductos });
     },
     productDetail: (req, res) => {
         let producto = comicProductos.find(producto => producto.id == req.params.comicId);
