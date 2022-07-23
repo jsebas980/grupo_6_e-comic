@@ -1,0 +1,43 @@
+[{
+    "id":"01",
+    "titulo": "One-Punch Man, Vol. 1",
+    "temporada": "Temp 1",
+    "volumen": "Vol. 1",
+    "precioNormal":"249.00",
+    "descripcionCorta": "Entrada Carpaccio de salmón con cítricos",
+    "descripcionDetallada": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "autor":"ONE",
+    "illustrador":"Yusuke Murata",
+    "categoria":"Anime",
+    "publicacion":"2015/09/01",
+    "paisOrigen":"Japon",
+    "img": "01.jpg"
+},
+{
+    "id":"02",
+    "titulo": "One-Punch Man, Vol. 2",
+    "temporada": "Temp 1",
+    "precioNormal":"211.00",
+    "descripcionCorta": "Entrada Carpaccio de salmón con cítricos",
+    "descripcionDetallada": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "autor":"ONE",
+    "illustrador":"Yusuke Murata",
+    "categoria":"Anime",
+    "publicacion":"2015/10/15",
+    "paisOrigen":"Japon",
+    "img": "02.jpg"
+},
+{
+    "id":"03",
+    "titulo": "One-Punch Man, Vol. 3",
+    "temporada": "Temp 1",
+    "precioNormal":"249.00",
+    "descripcionCorta": "Entrada Carpaccio de salmón con cítricos",
+    "descripcionDetallada": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "autor":"ONE",
+    "illustrador":"Yusuke Murata",
+    "categoria":"Anime",
+    "publicacion":"2015/11/01",
+    "paisOrigen":"Japon",
+    "img": "03.jpg"
+}]

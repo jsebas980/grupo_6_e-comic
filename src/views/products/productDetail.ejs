@@ -20,31 +20,13 @@
         <div class = "product-imgs">
           <div class = "img-display">
             <div class = "img-showcase">
-              <img src = "static/images/img/01.jpg" alt = "shoe image">
-              <img src = "static/images/img/02.jpg" alt = "shoe image">
-              <img src = "static/images/img/03.jpg" alt = "shoe image">
-              <img src = "static/images/img/04.jpg" alt = "shoe image">
-            </div>
+              <img src = "static/images/img/<%= producto.img %>" alt = "shoe image">
+             </div>
           </div>
           <div class = "img-select">
             <div class = "img-item">
               <a href = "#" data-id = "1">
-                <img src = "static/images/img/01.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "2">
-                <img src = "static/images/img/02.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "3">
-                <img src = "static/images/img/03.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "4">
-                <img src = "static/images/img/04.jpg" alt = "shoe image">
+                <img src = "static/images/img/<%= producto.img %>" alt = "shoe image">
               </a>
             </div>
           </div>
@@ -52,24 +34,23 @@
         <!-- card right -->
         <div class = "product-content">
           <div class="card-header-title">
-            <h2 class = "product-title">One-Punch Man, Vol. 1</h2>
+            <h2 class = "product-title"><%= producto.titulo %></h2>
           </div>
           
           <div class = "product-price">
-            <p class = "last-price">Precio normal: <span>$257.00</span></p>
-            <p class = "new-price">Precio con descuento: <span>$249.00 (5%)</span></p>
+            <p class = "last-price">Precio normal: <span>$<%= producto.precioNormal %></span></p>
+            <p class = "new-price">Precio con descuento: <span>$<%= producto.precioNormal-producto.precioNormal*0.05 %> (5%)</span></p>
           </div>
-
+        
           <div class = "product-detail">
             <h2>Acerca del comic: </h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
+            <p><%= producto.descripcionDetallada %></p>
             <ul>
-              <li>Autor: <span>ONE</span></li>
-              <li>Ilustrador: <span>Yusuke Murata</span></li>
-              <li>Categoría: <span>Anime</span></li>
-              <li>Publicación: <span>(September 1, 2015)</span></li>
-              <li>País origen: <span>Japon</span></li>
+              <li>Autor: <span><%= producto.autor %></span></li>
+              <li>Ilustrador: <span><%= producto.illustrador %></span></li>
+              <li>Categoría: <span><%= producto.categoria %></span></li>
+              <li>Publicación: <span><%= producto.publicacion %></span></li>
+              <li>País origen: <span><%= producto.paisOrigen %></span></li>
             </ul>
           </div>
 

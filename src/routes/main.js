@@ -4,7 +4,7 @@ const mainController = require('../controllers/mainController');
 
 /* GET home page. */
 router.get('/', mainController.index);
-router.get('/productDetail', mainController.productDetail);
+router.get('/productDetail_:comicId', mainController.productDetail);
 router.get('/productCart', mainController.productCart);
 router.get('/productEdit', mainController.productEdit);
 router.get('/productList', mainController.productList);

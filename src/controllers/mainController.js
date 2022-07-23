@@ -1,9 +1,14 @@
+const fs= require('fs');
+let archivo = './database/products.json';
+let comicProductos = JSON.parse(fs.readFileSync(archivo, 'utf-8'))
+
 const mainController = {
     index: (req, res) => {
         res.render("index");
     },
     productDetail: (req, res) => {
-        res.render("./products/productDetail.ejs");
+        let producto = comicProductos.find(producto => producto.id == req.params.comicId);
+        res.render("./products/productDetail.ejs", { producto: producto });
     },
     productCart: (req, res) => {
         res.render("./products/productCart");

@@ -17,36 +17,11 @@
     <article>
       <div id="coverflow">
         <ul class="flip-items">
-          <li data-flip-title="Vol. 1" data-flip-category="One-Punch Man">
-            <img src="static//images/img/01.jpg" aria-label="drawing of a cat" />
+
+          <li data-flip-title="<%= producto.volumen %>" data-flip-category="<%= producto.temporada %>">
+            <img src="static//images/img/<%= producto.img %>" aria-label="drawing of a cat" />
           </li>
-          <li data-flip-title="Vol. 2" data-flip-category="One-Punch Man">
-            <img src="static//images/img/02.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 3" data-flip-category="One-Punch Man">
-            <img src="static/images/img/03.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 2.1" data-flip-category="One-Punch Man Temp 2">
-            <img src="static/images/img/04.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 2.2" data-flip-category="One-Punch Man Temp 2">
-            <img src="static/images/img/05.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 2.3" data-flip-category="One-Punch Man Temp 2">
-            <img src="static/images/img/06.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 3.1" data-flip-category="One-Punch Man Temp 3">
-            <img src="static/images/img/07.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 3.2" data-flip-category="One-Punch Man Temp 3">
-            <img src="static/images/img/08.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="Vol. 3.3" data-flip-category="One-Punch Man Temp 3">
-            <img src="static/images/img/09.jpg" aria-label="drawing of a cat" />
-          </li>
-          <li data-flip-title="OVA" data-flip-category="OVA">
-            <img src="static/images/img/10.jpg" aria-label="drawing of a cat" />
-          </li>
+          
         </ul>
       </div>
       <script>
