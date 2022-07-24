@@ -1,29 +1,16 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path')
+
 const app = express();
-const fs = require("fs");
 
-let carpetas = "views";
-let enlaces = [];
+var indexMain = require('./routes/main');
 
-app.use("/static", express.static(__dirname + "/public"));
+// view engine setup
+app.set('view engine', 'ejs');
 
-fs.readdirSync("./" + carpetas).forEach((file) => {
-  enlaces.push(file);
-});
+app.use('/static', express.static(path.join(__dirname, '../public')))
 
-enlaces.forEach((enlace) => {
-  enlaceCorto = enlace.substring(0, enlace.length - 5);
-  if (enlaceCorto === "index") {
-    app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "/views/index.html"));
-    });
-  } else {
-    app.get("/" + enlaceCorto, (req, res) => {
-      res.sendFile(path.join(__dirname, "/views/" + enlace));
-    });
-  }
-});
+app.use('/', indexMain);
 
 app.listen(3000, () => {
   console.log("Servidor grupo_6_OK");
