@@ -1,6 +1,6 @@
 @font-face {
   font-family: Adventure;
-  src: url("static/font/Adventure.otf") format("opentype");
+  src: url("../font/Adventure.otf") format("opentype");
 }
 
 *,
