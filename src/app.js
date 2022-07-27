@@ -15,6 +15,6 @@ app.use(favicon(__dirname + '/favicon.ico'));
 
 app.use('/', indexMain);
 
-app.listen(3000, () => {
+app.listen(3030, () => {
   console.log("Servidor grupo_6_OK");
 });
