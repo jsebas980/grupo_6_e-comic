@@ -47,8 +47,8 @@ img {
     padding: 2rem 1rem;
 }
 
-.card-header-title{
-margin: 35px 0 55px 0;
+.card-header-title {
+    margin: 35px 0 55px 0;
 
 }
 
@@ -124,6 +124,26 @@ margin: 35px 0 55px 0;
     font-weight: 400;
 }
 
+.action-button {
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    margin-top: 15px;
+}
+
+.action-button.edit {
+    background-color: chocolate;
+}
+
+.action-button.delete {
+    background-color: rgb(248, 69, 37);
+}
+
 .purchase-info {
     margin: 1.5rem 0;
 }
@@ -194,30 +214,31 @@ margin: 35px 0 55px 0;
         width: 75%;
         display: block;
     }
-    
+
     .img-display {
         overflow: hidden;
     }
-    
+
     .img-showcase {
         display: flex;
         width: 100%;
         transition: all 0.5s ease;
     }
-    
+
     .img-showcase img {
         min-width: 100%;
     }
-    
+
     .img-select {
         display: flex;
     }
-    
+
     .img-item {
         margin: 0.2rem;
     }
+
     .product-imgs {
-        width:55%;
+        width: 55%;
         margin: auto;
     }
 
