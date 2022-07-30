@@ -1,13 +1,13 @@
-form {
+.register form {
     max-width: 1200px;
     margin: 25px auto;
     border: 1px solid #ccc;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="date"] {
+.register input[type="text"],
+.register input[type="password"],
+.register input[type="email"],
+.register input[type="date"] {
     width: 100%;
     height: 50px;
     background: #3a3c3e;
@@ -30,46 +30,46 @@ input[type="date"] {
     transition: background 0.55s ease;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="password"]::-webkit-input-placeholder {
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]::-webkit-input-placeholder {
     color: #65737e;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="password"]:-moz-placeholder {
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]:-moz-placeholder {
     /* Firefox 18- */
     color: #65737e;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="password"]::-moz-placeholder {
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]::-moz-placeholder {
     /* Firefox 19+ */
     color: #65737e;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="password"]:-ms-input-placeholder {
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]:-ms-input-placeholder {
     color: #65737e;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="password"]:hover,
-input[type="text"],
-input[type="date"],
-input[type="password"]:focus,
-input[type="text"],
-input[type="date"],
-input[type="password"]:active {
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]:hover,
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]:focus,
+.register input[type="text"],
+.register input[type="date"],
+.register input[type="password"]:active {
     outline: none;
     background: #ffffff;
 }
 
-button {
+.register button {
     font: 700 1.6rem "Roboto Slab", sans-serif;
     color: #1f2937;
     background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -83,7 +83,7 @@ button {
     text-align: center;
 }
 
-button:hover {
+.register button:hover {
     background: linear-gradient(to right,
             rgba(0, 100, 200, 1),
             rgba(100, 200, 200, 1));
@@ -92,21 +92,21 @@ button:hover {
     opacity: 0.8;
 }
 
-.imgcontainer {
+.register .imgcontainer {
     text-align: center;
     padding: 15px 10px;
     background: linear-gradient(to right, #ff416c, #ff4b2b);
     color: #fff;
 }
 
-.imgcontainer h1 {
+.register .imgcontainer h1 {
     text-align: center;
     margin: 24px 0 12px 0;
     font: 400 2.4rem "Adventure", Adventure;
 }
 
 
-.imgcontainer h1 {
+.register .imgcontainer h1 {
     background: linear-gradient(to right,
             rgba(100, 200, 200, 1),
             rgba(100, 200, 200, 1)),
@@ -120,52 +120,52 @@ button:hover {
     transition: background-size 400ms;
 }
 
-img.avatar {
+.register img.avatar {
     width: 155px;
     height: 155px;
     border-radius: 50%;
     background: #58b15d;
 }
 
-img.avatar:hover {
+.register img.avatar:hover {
     border-radius: 50%;
     padding: 5px;
     border: 2px dashed #fff;
     content: "";
 }
 
-.container {
+.register .container {
     padding: 16px;
 }
 
-.container span.psw {
+.register .container .register span.psw {
     font: 400 1rem "Roboto Slab", sans-serif;
     line-height: 100%;
     float: right;
     margin: 15px 0px 15px 0px;
 }
 
-.container span.psw a {
+.register .container .register span.psw a {
     color: #58b15d;
     font: 500 1.2rem "Roboto Slab", sans-serif;
     text-decoration: none;
 }
 
-.container2 {
+.register .container2 {
     height: 105px;
     text-align: center;
     padding: 35px 15px 32px 15px;
     background-color: #b392a33a;
 }
 
-.container2 span.psw {
+.register .container2 .register span.psw {
     font: 400 1rem "Roboto Slab", sans-serif;
     line-height: 100%;
     float: right;
     padding: 15px 0px 15px 0px;
 }
 
-.container2 span.psw a {
+.register .container2 .register span.psw a {
     color: #58b15d;
     font: 500 1.2rem "Roboto Slab", sans-serif;
     text-decoration: none;
@@ -173,31 +173,31 @@ img.avatar:hover {
 
 /* Change styles for span and cancel button on extra small screens */
 @media (min-width: 376px) and (max-width: 769px) {
-    form {
+    .register form {
         width: 95%;
     }
 
-    span.psw {
+    .register span.psw {
         display: block;
         float: none;
     }
 
-    .registerbtn {
+    .register .registerbtn {
         width: 60%;
     }
 }
 
 @media screen and (max-width: 375px) {
-    form {
+    .register form {
         width: 100%;
     }
 
-    span.psw {
+    .register span.psw {
         display: block;
         float: none;
     }
 
-    .registerbtn {
+    .register .registerbtn {
         width: 100%;
     }
 }

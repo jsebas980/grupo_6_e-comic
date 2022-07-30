@@ -1,15 +1,15 @@
-.mainbar {
+.product_cart .mainbar {
   max-width: 1200px;
   margin: 25px auto;
 }
 
-.headerbar .active {
+.product_cart .headerbar .active {
   font-weight: 700;
   color: #58b15d !important;
   position: relative
 }
 
-.headerbar .active .fa-check {
+.product_cart .headerbar .active .fa-check {
   position: absolute;
   left: 50%;
   bottom: -27px;
@@ -21,125 +21,125 @@
   color: #58b15d;
 }
 
-.progress {
+.product_cart .progress {
   height: 5px;
   background-color: #b392a33a;
 }
 
-.progress div {
+.product_cart .progress div {
   display: flex;
   align-items: center;
   justify-content: center
 }
 
-.progress .progress-bar {
+.product_cart .progress .progress-bar {
   width: 40%
 }
 
-#details {
+.product_cart #details {
   padding: 30px 50px;
   min-height: 300px
 }
 
-input {
+.product_cart input {
   border: none;
   outline: none;
 }
 
-.detailscard {
+.product_cart .detailscard {
   background: #fff;
   border: 1px solid #ccc;
   margin: 5px auto;
   transition: all 450ms;
 }
  
-.detailscard2 {
+.product_cart .detailscard2 {
   background: #b392a33a;
   border: 1px solid #ccc;
   margin: 5px auto;
   transition: all 450ms;
 }
 
-.form-group .d-flex {
+.product_cart .form-group .d-flex {
   border: 1px solid #ddd
 }
 
-.form-group .d-flex input {
+.product_cart .form-group .d-flex input {
   width: 95%
 }
 
-.form-group .d-flex:hover {
+.product_cart .form-group .d-flex:hover {
   color: #1f2932;
   cursor: pointer;
   border: 1px solid #58b15d;
 }
 
-select {
+.product_cart select {
   width: 100%;
   padding: 8px 5px;
   border: 1px solid #ddd;
   border-radius: 5px
 }
 
-input[type="checkbox"]+label {
+.product_cart input[type="checkbox"]+label {
   font-size: 0.85rem;
   font-weight: 600
 }
 
-#address,
-#cart,
-#summary {
+.product_cart #address,
+.product_cart #cart,
+.product_cart #summary {
   padding: 20px 20px
 }
 
-#address .d-md-flex p.text-justify,
-#register p.text-muted {
+.product_cart #address .d-md-flex p.text-justify,
+.product_cart #register p.text-muted {
   margin: 0
 }
 
-#register {
+.product_cart #register {
   background-color: #d9ecf2
 }
 
-#register a {
+.product_cart #register a {
   text-decoration: none;
   color: #1f2932;
 }
 
-#cart,
-#summary {
+.product_cart #cart,
+.product_cart #summary {
   max-width: 500px
 }
 
-div.h5.large {
+.product_cart div.h5.large {
   font: 700 2.4rem "Adventure", Adventure;
 }
 
-.progressText {
+.product_cart .progressText {
   font: 400 1.6rem "Adventure", Adventure;
   color: #b392a33a !important;
 }
 
-.h6 {
+.product_cart .h6 {
   font-size: 1.2rem;
   font-weight: 700
 }
 
-.h6 a {
+.product_cart .h6 a {
   text-decoration: none;
   font-size: 1rem
 }
 
-.item img {
+.product_cart .item img {
   object-fit: cover;
   border-radius: 5px;
 }
 
-.item {
+.product_cart .item {
   position: relative;
 }
 
-.number {
+.product_cart .number {
   position: absolute;
   font: 400 2.4rem "Adventure", Adventure;
   color: #fff;
@@ -153,36 +153,36 @@ div.h5.large {
   right: -3px;
 }
 
-.display-5 {
+.product_cart .display-5 {
   font-size: 1.2rem
 }
 
-.display-6 {
+.product_cart .display-6 {
   font-size: 1.6rem
 }
 
-.display-7 {
+.product_cart .display-7 {
   font-size: 1.8rem
 }
 
-#cart~p.text-muted {
+.product_cart #cart~p.text-muted {
   font-size: 0.9rem
 }
 
-tr.text-muted td {
+.product_cart tr.text-muted td {
   border: none
 }
 
-.fa-minus,
-.fa-plus {
+.product_cart .fa-minus,
+.product_cart .fa-plus {
   font-size: 0.7rem
 }
 
-.table td {
+.product_cart .table td {
   padding: 0.3rem
 }
 
-a.modificar-uppercase {
+.product_cart a.modificar-uppercase {
   float: right;
   border-radius: 50px;
   display: block;
@@ -199,7 +199,7 @@ a.modificar-uppercase {
       rgba(100, 200, 200, 1));
 }
 
-a.modificar-uppercase:hover {
+.product_cart a.modificar-uppercase:hover {
   background: linear-gradient(to right,
       rgba(0, 100, 200, 1),
       rgba(100, 200, 200, 1));
@@ -208,7 +208,7 @@ a.modificar-uppercase:hover {
   color: #fff;
 }
 
-a.text-uppercase {
+.product_cart a.text-uppercase {
   border: 1px solid #1f2932;
   color: #1f2932;
   font-weight: 600;
@@ -222,13 +222,13 @@ a.text-uppercase {
   float: right;
 }
 
-a.text-uppercase:hover {
+.product_cart a.text-uppercase:hover {
   background-color: #1f2932;
   text-align: center;
   color: #fff;
 }
 
-.btn.text-uppercase {
+.product_cart .btn.text-uppercase {
   border: 1px solid #1f2932;
   border-radius: 0px;
   text-decoration: none;
@@ -239,13 +239,13 @@ a.text-uppercase:hover {
   transition: all 250ms ease-in-out;
 }
 
-.btn.text-uppercase:hover {
+.product_cart .btn.text-uppercase:hover {
   background-color: #1f2932;
   text-align: center;
   color: #fff;
 }
 
-.btn.text-white {
+.product_cart .btn.text-white {
   color: #fff;
   text-align: center;
   background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -257,59 +257,59 @@ a.text-uppercase:hover {
   transition: all 250ms ease-in-out;
 }
 
-.btn.text-white:hover {
+.product_cart .btn.text-white:hover {
   color: #1f2932;
   box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
   border: 3px solid #00d7c3;
   background: linear-gradient(to right, rgba(0, 100, 200, 1), rgba(100, 200, 200, 1));
 }
 
-.wrapper .row+div.text-muted {
+.product_cart .wrapper .row+div.text-muted {
   font-size: 0.9rem
 }
 
-.mobile,
+.product_cart .mobile,
 #mobile {
   display: none
 }
 
-.buttons {
+.product_cart .buttons {
   vertical-align: text-bottom
 }
 
-#register {
+.product_cart #register {
   width: 50%
 }
 
 @media(min-width:426px) and (max-width: 769px) {
-  .progress .progress-bar {
+  .product_cart .progress .progress-bar {
     width: 33%
   }
 
-  #cart,
-  #summary {
+  .product_cart #cart,
+  .product_cart #summary {
     max-width: 100%
   }
 
-  .wrapper div.h5.large,
-  .wrapper .row+div.text-muted {
+  .product_cart .wrapper div.h5.large,
+  .product_cart .wrapper .row+div.text-muted {
     display: none
   }
 
-  .mobile.h5,
-  #mobile {
+  .product_cart .mobile.h5,
+  .product_cart #mobile {
     display: block;
     font: 700 1.4rem "Adventure", Adventure;
   }
 
-  nav,
+  .product_cart nav,
   .wrapper {
     padding: 5px 5px
   }
 
-  #address,
-  #cart,
-  #summary {
+  .product_cart #address,
+  .product_cart #cart,
+  .product_cart #summary {
     padding: 15px 5px
   }
 
@@ -317,62 +317,62 @@ a.text-uppercase:hover {
 }
 
 @media(min-width: 376px) and (max-width: 425px) {
-  .progress .progress-bar {
+  .product_cart .progress .progress-bar {
     width: 29%
   }
 
-  #cart,
-  #summary {
+  .product_cart #cart,
+  .product_cart #summary {
     max-width: 100%
   }
 
-  .wrapper div.h5.large,
-  .wrapper .row+div.text-muted {
+  .product_cart .wrapper div.h5.large,
+  .product_cart .wrapper .row+div.text-muted {
     display: none
   }
 
-  .mobile.h5,
-  #mobile {
+  .product_cart .mobile.h5,
+  .product_cart #mobile {
     display: block
   }
 
-  .buttons {
+  .product_cart .buttons {
     width: 100%
   }
 }
 
 @media(max-width: 375px) {
-  .progress .progress-bar {
+  .product_cart .progress .progress-bar {
     width: 35%
   }
 
-  body {
+  body.product_cart {
     width: fit-content
   }
 
-  #cart,
-  #summary {
+  .product_cart #cart,
+  .product_cart #summary {
     max-width: 100%
   }
 
-  nav,
+  .product_cart nav,
   .wrapper {
     padding: 5px 0px
   }
 
-  #register {
+  .product_cart #register {
     width: 100%
   }
 
-  #address,
-  #cart,
-  #summary {
+  .product_cart #address,
+  .product_cart #cart,
+  .product_cart #summary {
     padding: 5px 5px
   }
 }
 
 @media(max-width: 425px) {
-  body {
+  body.product_cart {
     width: fit-content
   }
 }
