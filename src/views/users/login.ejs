@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-        <!-- Head -->
-        <%- include('../partials/head.ejs') %>
-        
-        <body>
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+    <body>
         <!-- Header -->
-          <%- include('../partials/header.ejs') %>
-    <form action="/" method="post">
-        <div class="imgcontainer">
-            <h1>Login</h1>
-            <img src="static/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar">
-        </div>
+        <%- include('../partials/header.ejs') %>
+            <form action="/" method="post">
+                <div class="imgcontainer">
+                    <h1>Login</h1>
+                    <img src="static/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar">
+                </div>
 
-        <div class="container">
-            <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
-            <label for="uname"><b>Usuario</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
-            <label for="psw"><b>Contraseña</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
-            <button type="submit" class="button">Login</button>
-        </div>
+                <div class="container">
+                    <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
+                    <label for="uname"><b>Usuario</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
+                    <label for="psw"><b>Contraseña</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+                    <button type="submit" class="button">Login</button>
+                </div>
 
-        <div class="container2">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">¿No eres un miembro? <a href="register">Registrarse!</a></span>
-        </div>
-    </form>
-    </main>
-<!-- Footer -->
-<%- include('../partials/footer.ejs') %>
-</body>
+                <div class="container2">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <span class="psw">¿No eres un miembro? <a href="register">Registrarse!</a></span>
+                </div>
+            </form>
+            </main>
+            <!-- Footer -->
+            <%- include('../partials/footer.ejs') %>
+    </body>
 
 </html>
