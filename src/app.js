@@ -1,6 +1,7 @@
 const express = require('express');
 const favicon = require('serve-favicon');
-const path = require('path')
+const path = require('path');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(favicon(__dirname + '/favicon.ico'));
 
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
+app.use(methodOverride("_method"))
 
 app.use('/', routerMain);
 app.use('/products', routerProducts);
