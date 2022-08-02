@@ -16,6 +16,9 @@ app.use(express.static(path.join(__dirname, '..','public')));
 
 app.use(favicon(__dirname + '/favicon.ico'));
 
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
+
 app.use('/', routerMain);
 app.use('/products', routerProducts);
 app.use('/users', routerUsers);
