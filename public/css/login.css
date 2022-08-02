@@ -1,21 +1,11 @@
-body {
-    color: #333333;
-    font-weight: 400;
-    font-size: 15px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 20px;
-    margin: 0;
-    padding: 4em 0 4em 20%;
-}
-
-form {
+.login form {
     width: 50%;
     margin: 25px auto;
     border: 1px solid #ccc;
 }
 
-input[type="text"],
-input[type="password"] {
+.login input[type="text"],
+.login input[type="password"] {
     width: 100%;
     height: 50px;
     background: #3a3c3e;
@@ -38,39 +28,39 @@ input[type="password"] {
     transition: background 0.55s ease;
 }
 
-input[type="text"],
-input[type="password"]::-webkit-input-placeholder {
+.login input[type="text"],
+.login input[type="password"]::-webkit-input-placeholder {
     color: #65737e;
 }
 
-input[type="text"],
-input[type="password"]:-moz-placeholder {
+.login input[type="text"],
+.login input[type="password"]:-moz-placeholder {
     /* Firefox 18- */
     color: #65737e;
 }
 
-input[type="text"],
-input[type="password"]::-moz-placeholder {
+.login input[type="text"],
+.login input[type="password"]::-moz-placeholder {
     /* Firefox 19+ */
     color: #65737e;
 }
 
-input[type="text"],
-input[type="password"]:-ms-input-placeholder {
+.login input[type="text"],
+.login input[type="password"]:-ms-input-placeholder {
     color: #65737e;
 }
 
-input[type="text"],
-input[type="password"]:hover,
-input[type="text"],
-input[type="password"]:focus,
-input[type="text"],
-input[type="password"]:active {
+.login input[type="text"],
+.login input[type="password"]:hover,
+.login input[type="text"],
+.login input[type="password"]:focus,
+.login input[type="text"],
+.login input[type="password"]:active {
     outline: none;
     background: #ffffff;
 }
 
-.button {
+.login .button {
     font: 700 1.6rem "Roboto Slab", sans-serif;
     color: #1f2937;
     background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -85,7 +75,7 @@ input[type="password"]:active {
     text-align: center;
 }
 
-.button:hover {
+.login .button:hover {
     background: linear-gradient(to right,
             rgba(0, 100, 200, 1),
             rgba(100, 200, 200, 1));
@@ -93,7 +83,7 @@ input[type="password"]:active {
     border: 1px solid #00d7c3;
 }
 
-.cancelbtn {
+.login .cancelbtn {
     float: left;
     display: block;
     width: 45%;
@@ -112,27 +102,27 @@ input[type="password"]:active {
 
 }
 
-.cancelbtn:hover {
+.login .cancelbtn:hover {
     background-color: #1f2932;
     text-align: center;
     color: #fff;
 }
 
-.imgcontainer {
+.login .imgcontainer {
     text-align: center;
     padding: 15px 10px;
     background: linear-gradient(to right, #ff416c, #ff4b2b);
     color: #fff;
 }
 
-.imgcontainer h1 {
+.login .imgcontainer h1 {
     text-align: center;
     margin: 24px 0 12px 0;
     font: 400 2.4rem "Adventure", Adventure;
 }
 
 
-.imgcontainer h1 {
+.login .imgcontainer h1 {
     background: linear-gradient(to right,
             rgba(100, 200, 200, 1),
             rgba(100, 200, 200, 1)),
@@ -146,51 +136,51 @@ input[type="password"]:active {
     transition: background-size 400ms;
 }
 
-img.avatar {
+.login img.avatar {
     width: 155px;
     height: 155px;
     border-radius: 50%;
     background: #58b15d;
 }
 
-img.avatar:hover {
+.login img.avatar:hover {
     border-radius: 50%;
     padding: 5px;
     border: 2px dashed #fff;
     content: "";
 }
 
-.container {
+.login .container {
     padding: 16px;
 }
 
-.container span.psw {
+.login .container span.psw {
     font: 400 1rem "Roboto Slab", sans-serif;
     line-height: 100%;
     float: right;
     margin: 15px 0px 15px 0px;
 }
 
-.container span.psw a {
+.login .container span.psw a {
     color: #58b15d;
     font: 500 1.2rem "Roboto Slab", sans-serif;
     text-decoration: none;
 }
 
-.container2 {
+.login .container2 {
     height: 105px;
     padding: 35px 15px 32px 15px;
     background-color: #b392a33a;
 }
 
-.container2 span.psw {
+.login .container2 span.psw {
     font: 400 1rem "Roboto Slab", sans-serif;
     line-height: 100%;
     float: right;
     padding: 15px 0px 15px 0px;
 }
 
-.container2 span.psw a {
+.login .container2 span.psw a {
     color: #58b15d;
     font: 500 1.2rem "Roboto Slab", sans-serif;
     text-decoration: none;
@@ -198,35 +188,35 @@ img.avatar:hover {
 
 /* Change styles for span and cancel button on extra small screens */
 @media (max-width: 376px) {
-    form {
+    .login form {
         width: 100%;
     }
 
-    .container2 {
+    .login .container2 {
         height: 205px;
         padding: 35px 15px 32px 15px;
     }
 
-    .cancelbtn {
+    .login .cancelbtn {
         width: 100%;
     }
 }
 
 @media (max-width: 768px) {
-    form {
+    .login form {
         width: 85%;
     }
 
-    .container2 {
+    .login .container2 {
         height: 155px;
     }
 
-    span.psw {
+    .login span.psw {
         display: block;
         float: none;
     }
 
-    .cancelbtn {
+    .login .cancelbtn {
         width: 85%;
         margin: auto;
     }
