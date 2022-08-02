@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body>
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+      <form action="/" method="post">
+        <div class="imgcontainer">
+          <h1>Load</h1>
+        </div>
+
+        <div class="container">
+          <label for="id"><b>Identificador</b></label>
+          <input type="text" placeholder="ingrese el código del comic" name="id" required>
+          <label for="titulo"><b>Titulo</b></label>
+          <input type="text" placeholder="ingrese el título del comic" name="titulo" required>
+          <label for="temporada"><b>Temporada</b></label>
+          <input type="text" placeholder="ingrese la temporada del comic" name="temporada" required>
+          <label for="volumen"><b>Volumen</b></label>
+          <input type="text" placeholder="ingrese el volumen del comic" name="volumen" required>
+          <label for="precioNormal"><b>Precio Normal</b></label>
+          <input type="text" placeholder="ingrese el precio del comic" name="precioNormal" required>
+          <label for="descripcionCorta"><b>Descripción corta</b></label>
+          <input type="text" placeholder="ingrese un breve texto del comic" name="descripcionCorta" required>
+          <label for="descripcionDetallada"><b>Descripcion detallada</b></label>
+          <input type="text" placeholder="ingrese el texto del comic" name="descripcionDetallada" required>
+          <label for="autor"><b>Autor</b></label>
+          <input type="text" placeholder="ingrese el autor del comic" name="autor" required>
+          <label for="illustrador"><b>Illustrador</b></label>
+          <input type="text" placeholder="ingrese el illustrador del comic" name="illustrador" required>
+          <label for="categoria"><b>Categoria</b></label>
+          <input type="text" placeholder="ingrese la categoria del comic" name="categoria" required>
+          <label for="publicacion"><b>Fecha de publicación</b></label>
+          <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" required>
+          <label for="paisOrigen"><b>País</b></label>
+          <input type="text" placeholder="ingrese el pais del comic" name="paisOrigen" required>
+          <label for="img"><b>Imagen</b></label>
+          <input type="file" name="img" required>
+        </div>
+
+        <div class="container2">
+          <button type="submit" class="registerbtn">Guardar</button>
+        </div>
+      </form>
+      </main>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

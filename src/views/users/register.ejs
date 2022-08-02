@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="register">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+      <form action="/" method="post">
+        <div class="imgcontainer">
+          <h1>Formulario de registro</h1>
+          <img src="/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
+          <label for="uname"><b>Nombre completo</b></label>
+          <input type="text" placeholder="Enter full name" name="uname" required>
+          <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter email" name="email" id="email" required>
+          <label for="psw"><b>Contraseña</b></label>
+          <input type="password" placeholder="Enter password" name="psw" id="psw" required>
+          <label for="psw-repeat"><b>Contraseña</b></label>
+          <input type="password" placeholder="Enter password repeat" name="psw-repeat" id="psw-repeat" required>
+          <label for="dt"><b>Fecha de nacimiento</b></label>
+          <input type="date" placeholder="Enter date" name="dt" required>
+          <button type="submit" class="registerbtn">Registrarse</button>
+        </div>
+
+        <div class="container2">
+          <span class="psw">Ya tienes una cuenta eComic? <a href="login">Login</a></span>
+        </div>
+      </form>
+      </main>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>
