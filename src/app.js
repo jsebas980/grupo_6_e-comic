@@ -25,6 +25,9 @@ app.use('/', routerMain);
 app.use('/products', routerProducts);
 app.use('/users', routerUsers);
 
+app.use((req, res, next) => {
+  res.status(404).render("Servidor no encuentra");
+});
 
 app.listen(3000, () => {
   console.log("Servidor grupo_6_OK");
