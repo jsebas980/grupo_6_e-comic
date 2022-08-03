@@ -68,7 +68,10 @@
                     </span></li>
                 </ul>
               </div>
-
+              <div class="edit-delete" action="">
+                <a href="/productEdit/<%= producto.id %>">Editar</a>
+                <a href="/products/delete/<%= producto.id %>">Borrar </a>
+            </div>
               <div class="purchase-info">
                 <input type="number" min="0" value="1">
                 <button type="button" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir al carrito</button>
