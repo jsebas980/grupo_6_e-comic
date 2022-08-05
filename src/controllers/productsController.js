@@ -24,7 +24,6 @@ const productController = {
     productUpdate: (req, res) => {
         let id = req.params.id
         let productToEdit = comicProductos.find(product => product.id == id)
-     
         // let image
         // if (req.files[0] != undefined) {
         //     image = req.files[0].filename
