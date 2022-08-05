@@ -7,10 +7,10 @@ const productController = require('../controllers/productsController');
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      cb(null, '../public/images/img');
+      cb(null, '../public/images/img/');
    },
    filename: function (req, file, cb) {
-      cb(null, file.fieldname + path.extname(file.originalname));
+      cb(null, file.originalname);
    }
 });
 var uploadFile = multer({storage: storage})
@@ -28,13 +28,14 @@ router.get('/productEdit/:id', productController.productEdit);
 router.patch('/productEdit/:id', uploadFile.single('img'), productController.productUpdate);
 
 /*** Eliminar un producto OK***/
-router.delete('/productDelete/:id', productController.productDelete);
+router.get('/productDelete/:id', productController.productDelete);
+router.delete('/productDelete/:id', productController.productDestroy);
 
 /*** Imprimir todos los productos OK***/
 router.get('/productList', productController.productList);
 
 /*** Crear un producto OK***/
-router.get('/productload', productController.productCreate);
-router.post('/', uploadFile.single('img'), productController.productload);
+router.get('/productLoad', productController.productCreate);
+router.post('/productLoad', uploadFile.single('img'), productController.productload);
 
 module.exports = router;

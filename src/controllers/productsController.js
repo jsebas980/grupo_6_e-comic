@@ -24,6 +24,7 @@ const productController = {
     productUpdate: (req, res) => {
         let id = req.params.id
         let productToEdit = comicProductos.find(product => product.id == id)
+        
         // let image
         // if (req.files[0] != undefined) {
         //     image = req.files[0].filename
@@ -43,7 +44,7 @@ const productController = {
             illustrador: req.body.illustrador,
             categoria: req.body.categoria,
             publicacion: req.body.publicacion,
-            img: req.files[0].filename
+            img: req.file.originalname
         };
 
         let newProducts = comicProductos.map(product => {
@@ -54,15 +55,23 @@ const productController = {
         })
 
         fs.writeFileSync(archivo, JSON.stringify(newProducts, null, ' '));
-        res.render("products/productCart");
+        res.redirect('/');
     },
     /*** Eliminar un producto OK***/
     productDelete: (req, res) => {
+		let id = req.params.id
+		let productToEdit = comicProductos.find(product => product.id == id)
+		res.render('products/productDelete', {productToEdit})
+	},
+
+    productDestroy: (req, res) => {
         let id = req.params.id;
         let finalProducts = comicProductos.filter(product => product.id != id);
+
         fs.writeFileSync(archivo, JSON.stringify(finalProducts, null, ' '));
-        res.redirect('/');
+        res.send('Se ha elimiando el registro');
     },
+    
     /*** Imprimir todos los productos OK***/
     productList: (req, res) => {
         res.render("products/productList", { comicProductos });
@@ -74,14 +83,16 @@ const productController = {
 	},
 
     productload: (req, res) => {
-        let image
-		if(req.files[0] != undefined){
-			image = req.files[0].filename
+         let image
+         let idComic = comicProductos[comicProductos.length - 1].id + 1;
+         console.log(req.file);
+		if(req.file != undefined){
+		image = req.file.originalname
 		} else {
-			image = 'default.jpg'
+		image = 'default.jpg'
 		}
         let newProduct = {
-            id: comicProductos[comicProductos.length - 1].id + 1,
+            id: idComic,
             titulo: req.body.titulo,
             temporada: req.body.temporada,
             volumen: req.body.volumen,
@@ -96,7 +107,8 @@ const productController = {
         };
         comicProductos.push(newProduct)
         fs.writeFileSync(archivo, JSON.stringify(comicProductos, null, ' '));
-        res.redirect('index');
+        let producto = comicProductos.find(producto => producto.id == idComic);
+        res.render("products/productDetail", { producto: producto })
     },
 };
 

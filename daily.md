@@ -12,7 +12,7 @@
 
 - Se presento falla en las hojas de estilos por la ubicación de los archivos a la nueva estructura
 
-/////////////////////////////////////////
+--------------------------------------------------------------------------------------------------
 
 # Daily (21/07/2022)
 
@@ -28,7 +28,7 @@
 
 - La manipulación de las ramma a la hora de sincronizar el contenido
 
-/////////////////////////////////////////
+--------------------------------------------------------------------------------------------------
 
 # Daily (23/07/2022)
 
@@ -44,7 +44,7 @@
 
 - Falla tecnica en el internet para la sincronizacion de las ramas y trabajo del equipo.
 
-/////////////////////////////////////////
+--------------------------------------------------------------------------------------------------
 
 # Daily (26/07/2022)
 
@@ -59,3 +59,35 @@
 ## 3. Impedimentos
 
 -
+
+--------------------------------------------------------------------------------------------------
+
+# Daily (30/01/2022)
+
+## 1. Que se hizo ayer?
+
+- Se realiza configuracion de los router y controllers con base a los metodos HTTP
+
+## 2. Que se va a hacer hoy?
+
+- Correcciones en la ruta del llamado de las hojas de estilos e imagenes con el apoyo de Nehuen 
+
+## 3. Impedimentos
+
+- 
+
+--------------------------------------------------------------------------------------------------
+
+# Daily (02/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se realiza configuracion y construccion de los archivos JSON de users y products
+
+## 2. Que se va a hacer hoy?
+
+- Configuraciones de los CRUD en las paginas de productos 
+
+## 3. Impedimentos
+
+- Se descuadra la incovacion y trasnferencia del archivo imagen al json y carpeta img con relacion al metodo HTTP

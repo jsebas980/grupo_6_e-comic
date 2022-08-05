@@ -32,12 +32,14 @@
           <input type="text" placeholder="ingrese el illustrador del comic" name="illustrador" value="<%= productToEdit.illustrador %>" required>
           <label for="categoria"><b>Categoria</b></label>
           <input type="text" placeholder="ingrese la categoria del comic" name="categoria" value="<%= productToEdit.categoria %>" required>
-          <label for="publicacion"><b>Fecha de publicación</b></label>
-          <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" value="<%= productToEdit.publicacion %>" required>
           <label for="paisOrigen"><b>País</b></label>
           <input type="text" placeholder="ingrese el pais del comic" name="paisOrigen" value="<%= productToEdit.paisOrigen %>" required>
+          <br/>
+          <label for="publicacion"><b>Fecha de publicación</b></label>
+          <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" value="<%= productToEdit.publicacion %>" required>
+          <br/> <br/>
           <label for="img"><b>Imagen</b></label>
-          <input type="file" name="img" value="<%= productToEdit.img %>" required>
+          <input type="file" name="img" required>
         </div>
 
         <div class="container2">

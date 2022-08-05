@@ -3,10 +3,10 @@
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
 
-  <body>
+  <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/" method="post">
+      <form action="/products/productLoad" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Load</h1>
         </div>
