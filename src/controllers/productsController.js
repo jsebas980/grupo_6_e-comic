@@ -24,8 +24,8 @@ const productController = {
     productUpdate: (req, res) => {
         let id = req.params.id
         let productToEdit = comicProductos.find(product => product.id == id)
-        let image
-
+     
+        // let image
         // if (req.files[0] != undefined) {
         //     image = req.files[0].filename
         // } else {
@@ -44,7 +44,7 @@ const productController = {
             illustrador: req.body.illustrador,
             categoria: req.body.categoria,
             publicacion: req.body.publicacion,
-            img: "01.jpg"
+            img: req.files[0].filename
         };
 
         let newProducts = comicProductos.map(product => {
