@@ -22,11 +22,12 @@ app.use(express.json());
 app.use(methodOverride("_method"))
 
 app.use('/', routerMain);
+app.use('/440', routerMain);
 app.use('/products', routerProducts);
 app.use('/users', routerUsers);
 
 app.use((req, res, next) => {
-  res.status(404).render("Servidor no encuentra");
+  res.status(404).render("404");
 });
 
 app.listen(3000, () => {

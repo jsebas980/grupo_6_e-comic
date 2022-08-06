@@ -62,7 +62,7 @@
 
 --------------------------------------------------------------------------------------------------
 
-# Daily (30/01/2022)
+# Daily (30/07/2022)
 
 ## 1. Que se hizo ayer?
 
@@ -91,3 +91,37 @@
 ## 3. Impedimentos
 
 - Se descuadra la incovacion y trasnferencia del archivo imagen al json y carpeta img con relacion al metodo HTTP
+
+--------------------------------------------------------------------------------------------------
+
+# Daily (04/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se realiza configuracion de CRUD productos
+
+## 2. Que se va a hacer hoy?
+
+- Ajustes y correcciones a la continuidad de las configuracionesde los CRUD productos (controllers y router)
+
+## 3. Impedimentos
+
+- Incoveniente que los registros no se modificaban y la imagen no se guardaba en la carpeta correspondiente a la ruta
+
+--------------------------------------------------------------------------------------------------
+
+# Daily (06/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Corregir el impedimiento de la modificacion de registro e imagenes por configuracion de los controladores productos
+
+## 2. Que se va a hacer hoy?
+
+- Configuraciones de los CRUD en las paginas de usuarios, formularios de listados y diseño de la pagina 404
+
+## 3. Impedimentos
+
+- Se descuadra la hoja de estilo de la pagina 404 y se estaba sobrescribiendo el archivo products.json en vez de users.json
+
+--------------------------------------------------------------------------------------------------

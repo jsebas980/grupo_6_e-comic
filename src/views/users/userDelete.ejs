@@ -6,9 +6,9 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/products/productDelete/<%= productToEdit.id %>?_method=DELETE" method="POST">
+      <form action="/users/userDelete/<%= userToEdit.id %>?_method=DELETE" method="POST">
         <div class="imgcontainer">
-          <h1>Delete <%= productToEdit.id %></h1>
+          <h1>Delete <%= userToEdit.id %></h1>
         </div>
         <div class="container2">
           <button type="submit" class="button">Eliminar</button>

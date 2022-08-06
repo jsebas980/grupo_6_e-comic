@@ -6,6 +6,9 @@ const mainController = {
     index: (req, res) => {
         res.render("index", { producto: comicProductos });
     },
+    notFound: (req, res) => {
+        res.render("404");
+    },
 };
 
 module.exports = mainController;
