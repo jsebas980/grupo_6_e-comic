@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_edit">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+      <form action="/products/productEdit/<%= productToEdit.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
+        <div class="imgcontainer">
+          <h1>Edit</h1>
+        </div>
+
+        <div class="container">
+          <label for="id"><b>Identificador</b></label>
+          <input type="text" placeholder="ingrese el código del comic" name="id" value="<%= productToEdit.id %>" required>
+          <label for="titulo"><b>Titulo</b></label>
+          <input type="text" placeholder="ingrese el título del comic" name="titulo" value="<%= productToEdit.titulo %>" required>
+          <label for="temporada"><b>Temporada</b></label>
+          <input type="text" placeholder="ingrese la temporada del comic" name="temporada" value="<%= productToEdit.temporada %>" required>
+          <label for="volumen"><b>Volumen</b></label>
+          <input type="text" placeholder="ingrese el volumen del comic" name="volumen" value="<%= productToEdit.volumen %>" required>
+          <label for="precioNormal"><b>Precio Normal</b></label>
+          <input type="text" placeholder="ingrese el precio del comic" name="precioNormal" value="<%= productToEdit.precioNormal %>" required>
+          <label for="descripcionCorta"><b>Descripción corta</b></label>
+          <input type="text" placeholder="ingrese un breve texto del comic" name="descripcionCorta" value="<%= productToEdit.descripcionCorta %>" required>
+          <label for="descripcionDetallada"><b>Descripcion detallada</b></label>
+          <input type="text" placeholder="ingrese el texto del comic" name="descripcionDetallada" value="<%= productToEdit.descripcionDetallada %>" required>
+          <label for="autor"><b>Autor</b></label>
+          <input type="text" placeholder="ingrese el autor del comic" name="autor" value="<%= productToEdit.autor %>" required>
+          <label for="illustrador"><b>Illustrador</b></label>
+          <input type="text" placeholder="ingrese el illustrador del comic" name="illustrador" value="<%= productToEdit.illustrador %>" required>
+          <label for="categoria"><b>Categoria</b></label>
+          <input type="text" placeholder="ingrese la categoria del comic" name="categoria" value="<%= productToEdit.categoria %>" required>
+          <label for="paisOrigen"><b>País</b></label>
+          <input type="text" placeholder="ingrese el pais del comic" name="paisOrigen" value="<%= productToEdit.paisOrigen %>" required>
+          <br/>
+          <label for="publicacion"><b>Fecha de publicación</b></label>
+          <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" value="<%= productToEdit.publicacion %>" required>
+          <br/> <br/>
+          <label for="img"><b>Imagen</b></label>
+          <input type="file" name="img" required>
+        </div>
+
+        <div class="container2">
+          <button type="submit" class="button">Actualizar</button>
+        </div>
+      </form>
+      </main>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>
