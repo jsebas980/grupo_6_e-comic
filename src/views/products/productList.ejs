@@ -15,8 +15,9 @@
       </div>
 
       <div>
-        <h2>Listado de productos</h2>
-        <table>
+        <h2 class="Listardoh2">Listado de productos</h2>
+        <table class="fl-table">
+          <thead>
           <tr>
             <th>id</th>
             <th>titulo</th>
@@ -31,7 +32,8 @@
             <th>publicacion</th>
             <th>img</th>
           </tr>
-
+        </thead>
+        <tbody>
           <% comicProductos.forEach(function(product){ %>
                  <tr>
                    <td><%= product.id %></td>
@@ -48,6 +50,7 @@
                    <td><%= product.img %></td>
                  </tr>    
                 <% }) %>
+              </tbody>
         </table>
       </div>
     </main>

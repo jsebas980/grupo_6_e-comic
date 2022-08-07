@@ -37,7 +37,7 @@
 }
 
 .product_cart #details {
-  padding: 30px 50px;
+  padding: 2px 5px;
   min-height: 300px
 }
 
@@ -47,9 +47,8 @@
 }
 
 .product_cart form {
-  width: 50%;
-  margin: 25px auto;
-  border: 1px solid #ccc;
+  width: 99%;
+  margin: auto;
 }
 
 .product_cart input[type="text"],

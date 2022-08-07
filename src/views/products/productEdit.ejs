@@ -11,9 +11,9 @@
           <h1>Edit</h1>
         </div>
 
-        <div class="container">
+        <fieldset id="left">
           <label for="id"><b>Identificador</b></label>
-          <input type="text" placeholder="ingrese el código del comic" name="id" value="<%= productToEdit.id %>" required>
+          <input type="text" placeholder="ingrese el código del comic" name="id" value="<%= productToEdit.id %>" required>          
           <label for="titulo"><b>Titulo</b></label>
           <input type="text" placeholder="ingrese el título del comic" name="titulo" value="<%= productToEdit.titulo %>" required>
           <label for="temporada"><b>Temporada</b></label>
@@ -26,6 +26,8 @@
           <input type="text" placeholder="ingrese un breve texto del comic" name="descripcionCorta" value="<%= productToEdit.descripcionCorta %>" required>
           <label for="descripcionDetallada"><b>Descripcion detallada</b></label>
           <input type="text" placeholder="ingrese el texto del comic" name="descripcionDetallada" value="<%= productToEdit.descripcionDetallada %>" required>
+        </fieldset>
+        <fieldset id="right">
           <label for="autor"><b>Autor</b></label>
           <input type="text" placeholder="ingrese el autor del comic" name="autor" value="<%= productToEdit.autor %>" required>
           <label for="illustrador"><b>Illustrador</b></label>
@@ -37,9 +39,11 @@
           <br/>
           <label for="publicacion"><b>Fecha de publicación</b></label>
           <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" value="<%= productToEdit.publicacion %>" required>
-          <br/> <br/>
+        </fieldset>
+        <fieldset id="center">
           <label for="img"><b>Imagen</b></label>
           <input type="file" name="img" required>
+        </fieldset>
         </div>
 
         <div class="container2">

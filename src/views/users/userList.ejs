@@ -13,10 +13,9 @@
           <input type="search" id="search" placeholder="Search..." />
         </div>
       </div>
-
-      <div>
-        <h2>Listado de usuarios</h2>
-        <table>
+      <h2 class="Listardoh2">Listado de usuarios</h2>
+        <table class="fl-table table-wrapper">
+          <thead>
           <tr>
             <th>id</th>
             <th>firstname</th>
@@ -29,7 +28,8 @@
             <th>category</th>
             <th>img</th>
           </tr>
-
+        </thead>
+        <tbody>
           <% comicUsers.forEach(function(user){ %>
                  <tr>
                    <td><%= user.id %></td>
@@ -44,8 +44,8 @@
                    <td><%= user.img %></td>
                  </tr>    
                 <% }) %>
+              </tbody>
         </table>
-      </div>
     </main>
     <!-- Footer -->
     <%- include('../partials/footer.ejs') %>

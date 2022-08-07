@@ -1,16 +1,27 @@
 .product_edit form {
-    width: 50%;
+    max-width: 1200px;
     margin: 25px auto;
     border: 1px solid #ccc;
 }
 
+
+.product_edit fieldset {border: 0; padding: 0; position: relative}
+.product_edit #left {float: left; width: 46%; margin: 2%; }
+.product_edit #right {float: left; width: 46%; margin: 2%; }
+.product_edit #center {margin: 2%; width: 95%; }
+.product_edit label {float: left; margin: 15px 8px 2px;}
+.product_edit input {clear: both; float: left}
+
+
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"] {
     width: 100%;
     height: 50px;
     background: #3a3c3e;
     border: none;
-    font-size: 10pt;
+    font-size: 22px;
     color: #262626;
     padding: 12px 20px;
     -webkit-border-radius: 5px;
@@ -20,7 +31,6 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-
     -webkit-transition: background 0.55s ease;
     -moz-transition: background 0.55s ease;
     -ms-transition: background 0.55s ease;
@@ -29,32 +39,46 @@
 }
 
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]::-webkit-input-placeholder {
     color: #65737e;
 }
 
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]:-moz-placeholder {
     /* Firefox 18- */
     color: #65737e;
 }
 
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]::-moz-placeholder {
     /* Firefox 19+ */
     color: #65737e;
 }
 
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]:-ms-input-placeholder {
     color: #65737e;
 }
 
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]:hover,
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]:focus,
 .product_edit input[type="text"],
+.product_edit input[type="file"],
+.product_edit input[type="date"],
 .product_edit input[type="password"]:active {
     outline: none;
     background: #ffffff;
@@ -204,8 +228,11 @@
 
 @media (max-width: 768px) {
     .product_edit form {
-        width: 85%;
+        width: 98%;
     }
+
+    .product_edit #left {float: left; width: 95%; margin: 2%; }
+.product_edit #right {float: left; width: 95%; margin: 2%; }
 
     .product_edit .container2 {
         height: 155px;

@@ -11,7 +11,7 @@
           <h1>Load</h1>
         </div>
 
-        <div class="container">
+        <fieldset id="left">
           <label for="id"><b>Identificador</b></label>
           <input type="text" placeholder="ingrese el código del comic" name="id" required>
           <label for="firstname"><b>Nombre</b></label>
@@ -20,6 +20,8 @@
           <input type="text" placeholder="ingrese la temporada del comic" name="lastname" required>
           <label for="gender"><b>Genero</b></label>
           <input type="text" placeholder="ingrese el volumen del comic" name="gender" required>
+        </fieldset>
+        <fieldset id="right">
           <label for="email"><b>Correo electronico</b></label>
           <input type="text" placeholder="ingrese el precio del comic" name="email" required>
           <label for="phonenumber"><b>Teléfono / Celular</b></label>
@@ -28,13 +30,15 @@
           <input type="text" placeholder="ingrese el texto del comic" name="city" required>
           <label for="category"><b>Autor</b></label>
           <input type="text" placeholder="ingrese el autor del comic" name="category" required>
-          <br/> <br/>
+        </fieldset>
+        <fieldset id="center">
           <label for="img"><b>Imagen</b></label>
           <input type="file" name="img" required>
+        </fieldset>
         </div>
 
         <div class="container2">
-          <button type="submit" class="registerbtn">Guardar</button>
+          <button type="submit" class="button">Guardar</button>
         </div>
       </form>
       </main>
