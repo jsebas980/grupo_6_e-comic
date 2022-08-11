@@ -24,8 +24,6 @@
           <input type="text" placeholder="ingrese el precio del comic" name="precioNormal" value="<%= productToEdit.precioNormal %>" required>
           <label for="descripcionCorta"><b>Descripción corta</b></label>
           <input type="text" placeholder="ingrese un breve texto del comic" name="descripcionCorta" value="<%= productToEdit.descripcionCorta %>" required>
-          <label for="descripcionDetallada"><b>Descripcion detallada</b></label>
-          <input type="text" placeholder="ingrese el texto del comic" name="descripcionDetallada" value="<%= productToEdit.descripcionDetallada %>" required>
         </fieldset>
         <fieldset id="right">
           <label for="autor"><b>Autor</b></label>
@@ -35,14 +33,26 @@
           <label for="categoria"><b>Categoria</b></label>
           <input type="text" placeholder="ingrese la categoria del comic" name="categoria" value="<%= productToEdit.categoria %>" required>
           <label for="paisOrigen"><b>País</b></label>
-          <input type="text" placeholder="ingrese el pais del comic" name="paisOrigen" value="<%= productToEdit.paisOrigen %>" required>
-          <br/>
+          <select size="1" autocomplete="shipping country" data-backup="country"
+          class="field__input field__input--select" aria-required="true"
+          name="paisOrigen" id="paisOrigen"
+          placeholder="ingrese el pais del comic" value="<%= productToEdit.paisOrigen %>">
+          <option data-code="CO" value="Colombia">Colombia</option>
+          <option data-code="PE" value="Peru">Perú</option>
+          <option data-code="MX" value="Mexico">México</option>
+          <option data-code="VE" value="Venezuela">Venezuela</option>
+          <option disabled="disabled" value="---">---</option>
+          <option data-code="AR" value="Argentina">Argentina</option>
+        </select>
           <label for="publicacion"><b>Fecha de publicación</b></label>
           <input type="date" placeholder="ingrese la fecha de publicacion del comic" name="publicacion" value="<%= productToEdit.publicacion %>" required>
         </fieldset>
         <fieldset id="center">
+          <label for="descripcionDetallada"><b>Descripcion detallada</b></label>
+          <textarea name="descripcionDetallada" id="descripcionDetallada" cols="30" rows="10" required><%= productToEdit.descripcionDetallada %></textarea>
           <label for="img"><b>Imagen</b></label>
           <input type="file" name="img" required>
+          <img src="/images/img/<%= productToEdit.img %>" alt="<%= productToEdit.titulo %>"  width="303.08px" height="454.63px">
         </fieldset>
         </div>
 

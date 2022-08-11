@@ -38,6 +38,74 @@
     transition: background 0.55s ease;
 }
 
+.product_edit select {
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border: none;
+    font-size: 22px;
+    color: #262626;
+    padding: 12px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-transition: background 0.55s ease;
+    -moz-transition: background 0.55s ease;
+    -ms-transition: background 0.55s ease;
+    -o-transition: background 0.55s ease;
+    transition: background 0.55s ease;
+}
+
+
+.product_edit textarea {
+    width: 100%;
+    height: 180px;
+    background: #fff;
+    border: none;
+    font-size: 22px;
+    color: #262626;
+    padding: 12px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-transition: background 0.55s ease;
+    -moz-transition: background 0.55s ease;
+    -ms-transition: background 0.55s ease;
+    -o-transition: background 0.55s ease;
+    transition: background 0.55s ease;
+}
+
+.product_edit .inputClass { 
+    pointer-events: none; 
+}
+
+.product_edit .product-content {
+    padding: 2rem 1rem;
+}
+
+.product_edit .card-header-title {
+    margin: 35px 0 55px 0;
+
+}
+
+.product_edit .product-title {
+    font-size: 3rem;
+    font-family: Adventure;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+
 .product_edit input[type="text"],
 .product_edit input[type="file"],
 .product_edit input[type="date"],

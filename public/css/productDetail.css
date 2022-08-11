@@ -52,6 +52,27 @@
 
 }
 
+.product_detail a.text-uppercase {
+    border: 1px solid #1f2932;
+    color: #1f2932;
+    font-weight: 600;
+    border-radius: 0px;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 5px;
+    font: 700 1.2rem "Roboto Slab", sans-serif;
+    border-radius: 50px;
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 250ms ease-in-out;
+    float: right;
+  }
+  
+.product_detail a.text-uppercase:hover {
+    background-color: #1f2932;
+    text-align: center;
+    color: #fff;
+  }
+
 .product_detail .product-title {
     font-size: 3rem;
     font-family: Adventure;

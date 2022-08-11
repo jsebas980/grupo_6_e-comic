@@ -66,11 +66,14 @@
                   <li>País origen: <span>
                       <%= producto.paisOrigen %>
                     </span></li>
+                    <li>Identificador: <span>
+                      <%= producto.id %>
+                    </span></li>
                 </ul>
               </div>
               <div class="edit-delete" action="">
-                <a href="/products/productEdit/<%= producto.id %>">Editar</a>
-                <a href="/products/productDelete/<%= producto.id %>">Borrar </a>
+                <div class="ml-auto"><a href="/products/productEdit/<%= producto.id %>" class="text-uppercase">Editar</a></div>
+                <div class="ml-auto"><a href="/products/productDelete/<%= producto.id %>" class="text-uppercase">Borrar </a></div>
             </div>
               <div class="purchase-info">
                 <input type="number" min="0" value="1">

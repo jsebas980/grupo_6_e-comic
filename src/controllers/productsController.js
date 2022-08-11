@@ -44,6 +44,7 @@ const productController = {
             illustrador: req.body.illustrador,
             categoria: req.body.categoria,
             publicacion: req.body.publicacion,
+            paisOrigen: req.body.paisOrigen,
             img: req.file.originalname
         };
 
@@ -79,7 +80,8 @@ const productController = {
 
     /*** Crear un producto OK***/
     productCreate: (req, res) => {
-		res.render('products/productLoad')
+        let productToId = comicProductos[comicProductos.length - 1].id + 1;
+		res.render('products/productLoad', {productToId})
 	},
 
     productload: (req, res) => {
@@ -103,6 +105,7 @@ const productController = {
             illustrador: req.body.illustrador,
             categoria: req.body.categoria,
             publicacion: req.body.publicacion,
+            paisOrigen: req.body.paisOrigen,
             img: image
         };
         comicProductos.push(newProduct)

@@ -20,10 +20,11 @@
     font-size: 6px;
     font-weight: normal;
     border-collapse: collapse;
-    width: 95%;
+    max-width: 1210px;
     overflow: scroll;
     white-space: nowrap;
     background-color: white;
+    margin: auto;
 }
 
 .fl-table td,

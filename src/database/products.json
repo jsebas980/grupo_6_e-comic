@@ -360,21 +360,6 @@
   "img": "04.jpg"
  },
  {
-  "id": 25,
-  "titulo": "One-Punch Man",
-  "temporada": "Temp 1",
-  "volumen": "Vol. 4",
-  "descripcionCorta": "malesuada",
-  "descripcionDetallada": "auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi",
-  "precioNormal": 1659.01,
-  "autor": "Myranda Zavattero",
-  "illustrador": "AeneanSitAmet.jpeg",
-  "categoria": "comic",
-  "publicacion": "2022/12/01",
-  "paisOrigen": "China",
-  "img": "04.jpg"
- },
- {
   "id": 27,
   "titulo": "One-Punch Man",
   "temporada": "Temp 2",
@@ -731,6 +716,21 @@
   "illustrador": "NecEuismod.jpeg",
   "categoria": "historieta",
   "publicacion": "2022-12-01",
+  "img": "01.jpg"
+ },
+ {
+  "id": 51,
+  "titulo": "test",
+  "temporada": "test",
+  "volumen": "test",
+  "descripcionCorta": "testette",
+  "descripcionDetallada": "test",
+  "precioNormal": "12345678",
+  "autor": "test",
+  "illustrador": "test",
+  "categoria": "test",
+  "publicacion": "2022-08-10",
+  "paisOrigen": "Colombia",
   "img": "01.jpg"
  }
 ]
