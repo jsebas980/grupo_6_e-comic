@@ -1,9 +1,18 @@
 var express = require('express');
 var router = express.Router();
+const {check, validationResult, body} = require('express-validator')
 const userController = require('../controllers/usersController');
 const path = require('path');
 const multer = require('multer');
 
+const validateUsuario = [ body('firstname').notEmpty().withMessage('Debes completar el nombre'),
+   body('lastname').notEmpty().withMessage('Debes completar los apellidos'),
+   body('email').notEmpty().withMessage('Debes completar el correo electronico'),
+   body('phonenumber').notEmpty().withMessage('Debes completar el teléfono o celular'),
+   body('city').notEmpty().withMessage('Debes completar la ciudad'),
+   body('category').notEmpty().withMessage('Debes completar la categoria'),
+   body('password').notEmpty().withMessage('Debes completar la contraseña')
+]
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -13,7 +22,7 @@ const storage = multer.diskStorage({
       cb(null, file.originalname);
    }
 });
-var uploadFile = multer({storage: storage})
+var uploadFile = multer({ storage: storage })
 
 /* GET home page. */
 router.get('/login', userController.login);
@@ -35,6 +44,6 @@ router.get('/userList', userController.userList);
 
 /*** Crear un producto OK***/
 router.get('/userLoad', userController.userCreate);
-router.post('/userLoad', uploadFile.single('img'), userController.userload);
+router.post('/userLoad', validateUsuario, userController.userload);
 
 module.exports = router;
