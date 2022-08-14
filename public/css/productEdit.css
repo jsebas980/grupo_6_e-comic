@@ -4,13 +4,59 @@
     border: 1px solid #ccc;
 }
 
+.product_edit p.errors {
+    color: red !important;
+    border-color: red !important;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 18px;
+    display: flex;
 
-.product_edit fieldset {border: 0; padding: 0; position: relative}
-.product_edit #left {float: left; width: 46%; margin: 2%; }
-.product_edit #right {float: left; width: 46%; margin: 2%; }
-.product_edit #center {margin: 2%; width: 95%; }
-.product_edit label {float: left; margin: 15px 8px 2px;}
-.product_edit input {clear: both; float: left}
+    /*this centers the text horizontally*/
+    justify-content: center;
+  
+    /*this centers the text vertically*/
+    align-items: center;
+  
+    height: 20px;
+    color: #fff;
+    font-size: 1.2rem;
+    background-color: #b392a33a;
+    margin: 10px 10px;
+}
+
+.product_edit fieldset {
+    border: 0;
+    padding: 0;
+    position: relative
+}
+
+.product_edit #left {
+    float: left;
+    width: 46%;
+    margin: 2%;
+}
+
+.product_edit #right {
+    float: left;
+    width: 46%;
+    margin: 2%;
+}
+
+.product_edit #center {
+    margin: 2%;
+    width: 95%;
+}
+
+.product_edit label {
+    float: left;
+    margin: 15px 8px 2px;
+}
+
+.product_edit input {
+    clear: both;
+    float: left
+}
 
 
 .product_edit input[type="text"],
@@ -83,8 +129,8 @@
     transition: background 0.55s ease;
 }
 
-.product_edit .inputClass { 
-    pointer-events: none; 
+.product_edit .inputClass {
+    pointer-events: none;
 }
 
 .product_edit .product-content {
@@ -299,8 +345,17 @@
         width: 98%;
     }
 
-    .product_edit #left {float: left; width: 95%; margin: 2%; }
-.product_edit #right {float: left; width: 95%; margin: 2%; }
+    .product_edit #left {
+        float: left;
+        width: 95%;
+        margin: 2%;
+    }
+
+    .product_edit #right {
+        float: left;
+        width: 95%;
+        margin: 2%;
+    }
 
     .product_edit .container2 {
         height: 155px;

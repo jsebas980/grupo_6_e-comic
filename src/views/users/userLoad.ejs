@@ -8,49 +8,53 @@
     <%- include('../partials/header.ejs') %>
       <form action="/users/userLoad" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
-          <h1>Load</h1>
+          <h1>Creación de un usuario e<span>C</span>omic</h1>
+        </div>
+        <fieldset id="left">
+          <label for="firstname"><b>Nombre</b></label>
+          <input type="text" placeholder="Ingrese el nombre" name="firstname"
+            value="<%= locals.old && old.firstname ? old.firstname : '' %>">
+          <label for="lastname"><b>Apellidos</b></label>
+          <input type="text" placeholder="Ingrese los apellidos" name="lastname"
+            value="<%= locals.old && old.lastname ? old.lastname : '' %>">
+          <label for="category"><b>Categoría</b></label>
+          <select size="1" autocomplete="role" data-backup="role" class="field__input field__input--select"
+            aria-required="true" name="category" id="category" placeholder="Ingrese la categoria">
+            <option disabled="disabled" selected="selected" value="---">---</option>
+            <option data-code="US" value="user" value="<%= locals.old && old.category === 'user' ? 'selected' : '' %>">
+              Usuario</option>
+            <option data-code="AD" value="admin"
+              value="<%= locals.old && old.category === 'admin' ? 'selected' : '' %>">Administrador</option> 
+          </select>
+        </fieldset>
+        <fieldset id="right">
+          <label for="email"><b>Correo electronico</b></label>
+          <input type="text" placeholder="Ingrese el correo electronico" name="email"
+            value="<%= locals.old && old.email ? old.email : '' %>">
+          <label for="phonenumber"><b>Teléfono / Celular</b></label>
+          <input type="text" placeholder="Ingrese el teléfono o celular" name="phonenumber"
+            value="<%= locals.old && old.phonenumber ? old.phonenumber : '' %>">
+          <label for="city"><b>Ciudad</b></label>
+          <input type="text" placeholder="Ingrese el ciudad" name="city"
+            value="<%= locals.old && old.city ? old.city : '' %>">
+          <label for="password"><b>Contraseña</b></label>
+          <input type="text" placeholder="Ingrese la contraseña" name="password">
+        </fieldset>
+        <fieldset id="center">
+          <label for="img"><b>Imagen</b></label>
+          <input type="file" name="img">
+        </fieldset>
         </div>
         <% if (locals.errors) { 
           errors.forEach(error => { %>
-          <p>
+          <p class="errors">
             <%= error.msg %>
           </p>
         <% }) 
          } %>
-              <fieldset id="left">
-                <label for="id"><b>Identificador</b></label>
-                <input type="text" class="inputClass" name="id" readonly>
-                <label for="firstname"><b>Nombre</b></label>
-                <input type="text" placeholder="Ingrese el nombre" name="firstname" value="<%= locals.old && old.firstname ? old.firstname : '' %>">
-                <label for="lastname"><b>Apellidos</b></label>
-                <input type="text" placeholder="Ingrese los apellidos" name="lastname" value="<%= locals.old && old.lastname ? old.lastname : '' %>">
-              </fieldset>
-              <fieldset id="right">
-                <label for="email"><b>Correo electronico</b></label>
-                <input type="text" placeholder="Ingrese el correo electronico" name="email" value="<%= locals.old && old.email ? old.email : '' %>">
-                <label for="phonenumber"><b>Teléfono / Celular</b></label>
-                <input type="text" placeholder="Ingrese el teléfono o celular" name="phonenumber" value="<%= locals.old && old.phonenumber ? old.phonenumber : '' %>">
-                <label for="city"><b>Ciudad</b></label>
-                <input type="text" placeholder="Ingrese el ciudad" name="city" value="<%= locals.old && old.city ? old.city : '' %>">
-                <label for="category"><b>Categoría</b></label>
-                <select size="1" autocomplete="role" data-backup="role" class="field__input field__input--select"
-                  aria-required="true" name="category" id="category" placeholder="Ingrese la categoria">
-                  <option data-code="US" value="user" value="<%= locals.old && old.category === 'user' ? 'selected' : '' %>">Usuario</option>
-                  <option data-code="AD" value="admin" value="<%= locals.old && old.category === 'admin' ? 'selected' : '' %>">Administrador</option>
-                  <option disabled="disabled" selected="selected" value="---">---</option>
-                </select>
-                <label for="password"><b>Contraseña</b></label>
-                <input type="text" placeholder="Ingrese la contraseña" name="password">
-              </fieldset>
-              <fieldset id="center">
-                <label for="img"><b>Imagen</b></label>
-                <input type="file" name="img">
-              </fieldset>
-              </div>
-
-              <div class="container2">
-                <button type="submit" class="button">Guardar</button>
-              </div>
+        <div class="container2">
+          <button type="submit" class="button">Guardar</button>
+        </div>
       </form>
       </main>
       <!-- Footer -->

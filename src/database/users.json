@@ -7,7 +7,7 @@
   "password": "$2a$10$p4IKf6Fr30XN15Jk91lu3eDt5yH6be8qCHBPTK49GW6CulieXB3Za",
   "phonenumber": "6356773885",
   "city": "Mende",
-  "img": "https://robohash.org/nihilidiure.bmp?size=500x500&set=set1",
+  "img": "user1.png",
   "role": "admin"
  },
  {
@@ -18,7 +18,7 @@
   "password": "$2a$10$Def4Vc8CTZQwODTUuaKcGuN4343PxFCuNwPL0E.AJ58m04W4NmozW",
   "phonenumber": "9665666741",
   "city": "Timoulilt",
-  "img": "https://robohash.org/autvoluptatibus.png?size=500x500&set=set1",
+  "img": "user2.png",
   "role": "user"
  },
  {
@@ -29,7 +29,7 @@
   "password": "$2a$10$N7gf.HMfACltf7Ca79Vgx.2ap41L/oS1DHoud2kG/w/B0uzp66LW6",
   "phonenumber": "7455940491",
   "city": "Morelos",
-  "img": "https://robohash.org/necessitatibusrationesuscipit.jpg?size=500x500&set=set1",
+  "img": "user3.png",
   "role": "user"
  },
  {
@@ -40,7 +40,7 @@
   "password": "$2a$10$5HpOz6Odhi4KBfz.se9hmuXaVtegV8Bq4Hmk70WU8XbTrOmx0kfHu",
   "phonenumber": "2539109437",
   "city": "Junín",
-  "img": "https://robohash.org/quovelitet.bmp?size=500x500&set=set1",
+  "img": "user4.png",
   "role": "user"
  },
  {
@@ -51,7 +51,7 @@
   "password": "$2a$10$QaYf08pPZomgBbW5.uzjLunP9F2EZ8Agv4fw6DNFjDMgwaANq87be",
   "phonenumber": "4401875451",
   "city": "Pak Phli",
-  "img": "https://robohash.org/enimaaut.jpg?size=500x500&set=set1",
+  "img": "user5.png",
   "role": "user"
  },
  {
@@ -62,7 +62,7 @@
   "password": "$2a$10$X7valkR7.FdGK/N8E3NFjeM//GRDz70LaKbo7a8UJW4EzI1oiAnuW",
   "phonenumber": "7892522250",
   "city": "Blagoveshchensk",
-  "img": "https://robohash.org/rerumdolorcommodi.jpg?size=500x500&set=set1",
+  "img": "user6.png",
   "role": "user"
  },
  {
@@ -73,7 +73,7 @@
   "password": "$2a$10$WATIEJwtmN5PL6ACdggdY.2r8hnshIStuKNYoTRz4XOZucF05lDnW",
   "phonenumber": "7248872990",
   "city": "Smiths Falls",
-  "img": "https://robohash.org/quidoloresvoluptate.png?size=500x500&set=set1",
+  "img": "user7.png",
   "role": "user"
  },
  {
@@ -84,7 +84,7 @@
   "password": "$2a$10$hwR/TvmIXnxGA97nfVitu.AYkWHJpH8TbzjX9EJfj6Y2478b0fR1m",
   "phonenumber": "8021096501",
   "city": "Bayt Ūlā",
-  "img": "https://robohash.org/delenitiautmolestiae.png?size=500x500&set=set1",
+  "img": "user8.png",
   "role": "user"
  },
  {
@@ -95,7 +95,7 @@
   "password": "$2a$10$J9yjWekCQTljuSYcElAmhuUs7U3XBtlI/uLJYvkUCFu3UatskMjWm",
   "phonenumber": "3687940087",
   "city": "Rietavas",
-  "img": "https://robohash.org/totamcorruptiinventore.jpg?size=500x500&set=set1",
+  "img": "user9.png",
   "role": "user"
  },
  {
@@ -107,7 +107,7 @@
   "phonenumber": "test",
   "city": "test",
   "role": "user",
-  "img": "2022-08-07 13_09_34-Playground Digital House.png"
+  "img": "user10.png"
  },
  {
   "id": 11,
@@ -117,6 +117,6 @@
   "password": "$2a$10$aLqQFC98TzRiEabr/HCXTuVUeVtk53mq3D8OTPbjvOaW5MQht6g2e",
   "phonenumber": "",
   "city": "",
-  "img": "default.jpg"
+  "img": "user11.png"
  }
 ]
