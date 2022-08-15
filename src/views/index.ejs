@@ -19,7 +19,8 @@
             <ul class="flip-items">
               <% producto.forEach(comic=>{ %>
                 <li data-flip-title="<%= comic.volumen %>" data-flip-category="<%= comic.temporada %>">
-                  <a href="/products/productDetail/<%= comic.id %>"><img src="/images/img/<%= comic.img %>" aria-label="drawing of a cat" /></a>
+                  <a href="/products/productDetail/<%= comic.id %>"><img src="/images/img/<%= comic.img %>"
+                      aria-label="drawing of a cat" /></a>
                 </li>
                 <%})%>
 
@@ -53,7 +54,8 @@
                 </h6>
               </div>
               <div class="card-body">
-                <a href="/products/productDetail/<%= comic.id %>"><img src="/images/img/<%= comic.img %>" aria-label="drawing of a cat" /></a>
+                <a href="/products/productDetail/<%= comic.id %>"><img src="/images/img/<%= comic.img %>"
+                    aria-label="drawing of a cat" /></a>
                 <p>
                   <%= comic.descripcionCorta %>
                 </p>
@@ -63,9 +65,9 @@
             <%})%>
         </div>
       </main>
+
       <!-- Footer -->
       <%- include('./partials/footer.ejs') %>
-
   </body>
 
 </html>

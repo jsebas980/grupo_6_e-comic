@@ -38,7 +38,7 @@ const validateUsuario = [
       })
 ]
 
-/*** Ejecucion del multer de una imagen de usuario ***/
+/*** Ejecucion del multer de una imagen de un usuario ***/
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
       cb(null, '../public/images/imgUsers/');

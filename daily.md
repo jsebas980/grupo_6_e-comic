@@ -12,7 +12,7 @@
 
 - Se presento falla en las hojas de estilos por la ubicación de los archivos a la nueva estructura
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (21/07/2022)
 
@@ -28,7 +28,7 @@
 
 - La manipulación de las ramma a la hora de sincronizar el contenido
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (23/07/2022)
 
@@ -44,7 +44,7 @@
 
 - Falla tecnica en el internet para la sincronizacion de las ramas y trabajo del equipo.
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (26/07/2022)
 
@@ -58,9 +58,7 @@
 
 ## 3. Impedimentos
 
--
-
---------------------------------------------------------------------------------------------------
+- ***
 
 # Daily (30/07/2022)
 
@@ -70,13 +68,13 @@
 
 ## 2. Que se va a hacer hoy?
 
-- Correcciones en la ruta del llamado de las hojas de estilos e imagenes con el apoyo de Nehuen 
+- Correcciones en la ruta del llamado de las hojas de estilos e imagenes con el apoyo de Nehuen
 
 ## 3. Impedimentos
 
-- 
+-
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (02/08/2022)
 
@@ -86,13 +84,13 @@
 
 ## 2. Que se va a hacer hoy?
 
-- Configuraciones de los CRUD en las paginas de productos 
+- Configuraciones de los CRUD en las paginas de productos
 
 ## 3. Impedimentos
 
 - Se descuadra la incovacion y trasnferencia del archivo imagen al json y carpeta img con relacion al metodo HTTP
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (04/08/2022)
 
@@ -108,7 +106,7 @@
 
 - Incoveniente que los registros no se modificaban y la imagen no se guardaba en la carpeta correspondiente a la ruta
 
---------------------------------------------------------------------------------------------------
+---
 
 # Daily (06/08/2022)
 
@@ -124,4 +122,4 @@
 
 - Se descuadra la hoja de estilo de la pagina 404 y se estaba sobrescribiendo el archivo products.json en vez de users.json
 
---------------------------------------------------------------------------------------------------
+---

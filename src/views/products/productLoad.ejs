@@ -6,11 +6,11 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+
       <form action="/products/productLoad" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Load</h1>
         </div>
-
         <fieldset id="left">
           <label for="id"><b>Identificador</b></label>
           <input type="text" class="inputClass" name="id" value="<%= productToId %>" readonly>
@@ -33,7 +33,9 @@
           <label for="categoria"><b>Categoria</b></label>
           <input type="text" placeholder="ingrese la categoria del comic" name="categoria" required>
           <label for="paisOrigen"><b>País</b></label>
-          <select size="1" autocomplete="shipping country" data-backup="country" class="field__input field__input--select" aria-required="true" name="paisOrigen" id="paisOrigen" placeholder="ingrese el pais del comic">
+          <select size="1" autocomplete="shipping country" data-backup="country"
+            class="field__input field__input--select" aria-required="true" name="paisOrigen" id="paisOrigen"
+            placeholder="ingrese el pais del comic">
             <option data-code="CO" value="Colombia">Colombia</option>
             <option data-code="PE" value="Peru">Perú</option>
             <option data-code="MX" value="Mexico">México</option>
@@ -51,12 +53,12 @@
           <input type="file" name="img" required>
         </fieldset>
         </div>
-
         <div class="container2">
           <button type="submit" class="button">Guardar</button>
         </div>
       </form>
       </main>
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>

@@ -6,6 +6,7 @@ let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
 const bcrypt = require("bcryptjs");
 
 const userController = {
+    /* CONTROLLER usuarios */
 
     /*** Pagina de login de usuario ***/
     login: (req, res) => {

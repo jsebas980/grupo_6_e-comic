@@ -6,6 +6,7 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+
       <form action="/users/userLoad" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Creación de un usuario e<span>C</span>omic</h1>
@@ -24,7 +25,7 @@
             <option data-code="US" value="user" value="<%= locals.old && old.category === 'user' ? 'selected' : '' %>">
               Usuario</option>
             <option data-code="AD" value="admin"
-              value="<%= locals.old && old.category === 'admin' ? 'selected' : '' %>">Administrador</option> 
+              value="<%= locals.old && old.category === 'admin' ? 'selected' : '' %>">Administrador</option>
           </select>
         </fieldset>
         <fieldset id="right">
@@ -45,18 +46,17 @@
           <input type="file" name="img">
         </fieldset>
         </div>
-        <% if (locals.errors) { 
-          errors.forEach(error => { %>
+        <% if (locals.errors) { errors.forEach(error=> { %>
           <p class="errors">
             <%= error.msg %>
           </p>
-        <% }) 
-         } %>
-        <div class="container2">
-          <button type="submit" class="button">Guardar</button>
-        </div>
+          <% }) } %>
+            <div class="container2">
+              <button type="submit" class="button">Guardar</button>
+            </div>
       </form>
       </main>
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
