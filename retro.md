@@ -19,6 +19,7 @@
 
 ## 5. Dejar de hacer
 
+
 --------------------------------------------------------------------------------------------------
 
 # La retrospectiva Sprint 2
@@ -53,3 +54,29 @@
 ## 5. Dejar de hacer
 
 1. Pensar para mas tardes
+
+
+--------------------------------------------------------------------------------------------------
+
+# La retrospectiva Sprint 5
+
+## 1. Comenzar a hacer
+
+1. 
+
+## 2. Hacer más
+
+1. 
+
+## 3. Continuar haciendo
+
+1. 
+
+## 4. Hacer menos
+
+1. 
+
+## 5. Dejar de hacer
+
+1. 
+

@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+// ? Variables y Requiere
+const express = require('express');
+const router = express.Router();
 const mainController = require('../controllers/mainController');
 
-/* GET home page. */
+/*** Muestra la pagina de inicio ***/
 router.get('/', mainController.index);
+
+/*** Muestra la pagina no encuentra pagina ***/
 router.get('/404', mainController.notFound);
 
 module.exports = router;

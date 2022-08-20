@@ -6,6 +6,7 @@
   <body class="product_detail">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+
       <main class="main">
         <div class="box">
           <div class="container-1">
@@ -23,48 +24,45 @@
                   <img src="/images/imgUsers/<%= usuario.img %>" alt="<%= usuario.firstname %>">
                 </div>
               </div>
-              <!-- <div class = "img-select">
-            <div class = "img-item">
-              <a href = "#" data-id = "1">
-                <img src = "static/images/img/<%= usuario.img %>" alt = "shoe image">
-              </a>
-            </div>
-          </div> -->
             </div>
             <!-- card right -->
             <div class="product-content">
               <div class="card-header-title">
                 <h2 class="product-title">
-                  <%= usuario.firstname %> <%= usuario.lastname %>
+                  <%= usuario.firstname %>
+                    <%= usuario.lastname %>
                 </h2>
               </div>
-
               <div class="product-detail">
                 <h2>Quien soy: </h2>
                 <ul>
-                  <li>Genero: <span>
-                    <%= usuario.gender %>
-                  </span></li>
+                  <li>Identificador: <span>
+                      <%= usuario.id %>
+                    </span></li>
+                  <li>Categoría: <span>
+                      <%= usuario.role %>
+                    </span></li>
                   <li>Correo electronico: <span>
                       <%= usuario.email %>
                     </span></li>
                   <li>Teléfono / Celular: <span>
                       <%= usuario.phonenumber %>
                     </span></li>
-                  <li>Categoría: <span>
-                      <%= usuario.category %>
+                  <li>Ciudad: <span>
+                      <%= usuario.city %>
                     </span></li>
                 </ul>
               </div>
               <div class="edit-delete" action="">
-                <a href="/users/userEdit/<%= usuario.id %>">Editar</a>
-                <a href="/users/userDelete/<%= usuario.id %>">Borrar </a>
-                
-            </div>
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userEdit/<%= usuario.id %>">Editar</a></div>
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userDelete/<%= usuario.id %>">Borrar </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </main>
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>

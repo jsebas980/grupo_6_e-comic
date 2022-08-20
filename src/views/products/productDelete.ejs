@@ -6,15 +6,18 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+
       <form action="/products/productDelete/<%= productToEdit.id %>?_method=DELETE" method="POST">
         <div class="imgcontainer">
-          <h1>Delete <%= productToEdit.id %></h1>
+          <h1>Delete <%= productToEdit.id %>
+          </h1>
         </div>
         <div class="product-content">
           <div class="card-header-title">
-            
             <h2 class="product-title">
-              <img src="/images/img/<%= productToEdit.img %>" alt="<%= productToEdit.titulo %>"  width="303.08px" height="454.63px"> <%= productToEdit.titulo %> - <%= productToEdit.temporada %> - <%= productToEdit.volumen %>
+              <img src="/images/img/<%= productToEdit.img %>" alt="<%= productToEdit.titulo %>" width="303.08px"
+                height="454.63px">
+              <%= productToEdit.titulo %> - <%= productToEdit.temporada %> - <%= productToEdit.volumen %>
             </h2>
           </div>
         </div>
@@ -23,6 +26,7 @@
         </div>
       </form>
       </main>
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>

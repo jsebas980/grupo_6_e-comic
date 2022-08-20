@@ -6,6 +6,7 @@
   <body class="product_detail">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+
       <main class="main">
         <div class="box">
           <div class="container-1">
@@ -13,7 +14,6 @@
             <input type="search" id="search" placeholder="Search..." />
           </div>
         </div>
-
         <div class="card-wrapper">
           <div class="card-dtls">
             <!-- card left -->
@@ -23,13 +23,6 @@
                   <img src="/images/img/<%= producto.img %>" alt="shoe image">
                 </div>
               </div>
-              <!-- <div class = "img-select">
-            <div class = "img-item">
-              <a href = "#" data-id = "1">
-                <img src = "static/images/img/<%= producto.img %>" alt = "shoe image">
-              </a>
-            </div>
-          </div> -->
             </div>
             <!-- card right -->
             <div class="product-content">
@@ -38,13 +31,11 @@
                   <%= producto.titulo %>
                 </h2>
               </div>
-
               <div class="product-price">
                 <p class="last-price">Precio normal: <span>$<%= producto.precioNormal %></span></p>
                 <p class="new-price">Precio con descuento: <span>$<%= producto.precioNormal-producto.precioNormal*0.05
                       %> (5%)</span></p>
               </div>
-
               <div class="product-detail">
                 <h2>Acerca del comic: </h2>
                 <p>
@@ -66,15 +57,17 @@
                   <li>País origen: <span>
                       <%= producto.paisOrigen %>
                     </span></li>
-                    <li>Identificador: <span>
+                  <li>Identificador: <span>
                       <%= producto.id %>
                     </span></li>
                 </ul>
               </div>
               <div class="edit-delete" action="">
-                <div class="ml-auto"><a href="/products/productEdit/<%= producto.id %>" class="text-uppercase">Editar</a></div>
-                <div class="ml-auto"><a href="/products/productDelete/<%= producto.id %>" class="text-uppercase">Borrar </a></div>
-            </div>
+                <div class="ml-auto"><a href="/products/productEdit/<%= producto.id %>"
+                    class="text-uppercase">Editar</a></div>
+                <div class="ml-auto"><a href="/products/productDelete/<%= producto.id %>" class="text-uppercase">Borrar
+                  </a></div>
+              </div>
               <div class="purchase-info">
                 <input type="number" min="0" value="1">
                 <button type="button" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir al carrito</button>
@@ -82,10 +75,9 @@
             </div>
           </div>
         </div>
-
-
         <script src="static/dist/script.js"></script>
       </main>
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
