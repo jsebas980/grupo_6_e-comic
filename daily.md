@@ -123,3 +123,35 @@
 - Se descuadra la hoja de estilo de la pagina 404 y se estaba sobrescribiendo el archivo products.json en vez de users.json
 
 ---
+
+# Daily (13/08/2022)
+
+## 1. Que se hizo ayer?
+
+- La restructuracion de las implementacion de las entidades de los usuarios según la estructura de Rutas, Controladores, Vistas, Directorio de imagenes y Colección
+
+## 2. Que se va a hacer hoy?
+
+- Configuraciones de los registros a los fomrulacion de creacion de usuarios para incluir los campos minimos, multer, bcrypt.js y asi mismo el envio de JSON users
+
+## 3. Impedimentos
+
+- Se descuadros la rama Sprint_5 en el pull con los compañeros ya que no se esta llevando los ultimos cambios, se encontro un percanse en el route en el cual se encargaba de la creacion de un usuario al JSON al momento de validar el diligenciamiento de los campos con el express-validator
+
+---
+
+# Daily (18/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se organizo y se sincronizo la rama Sprint_5 con todos los del equipo en sus diferentes equipos; asi mismo corrigio la validacion del diligenciamiento del usuario mediante express-validator
+
+## 2. Que se va a hacer hoy?
+
+- Configuracion de los modulos de express-session y cookie-parser al proyecto integrador eComic; asi mismo la implementacion del login usuario
+
+## 3. Impedimentos
+
+- Se encontro una inconsistencia en las verificaciondes de los middleware de usuarios para restringir unas visuales a unas opciones segun la session iniciada en el portal de la pagina.
+
+---

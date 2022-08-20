@@ -4,6 +4,7 @@ const { validationResult } = require('express-validator');
 let archivoUsers = "./database/users.json";
 let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
 const bcrypt = require("bcryptjs");
+const User = require('../models/user.js');
 
 const userController = {
     /* CONTROLLER usuarios */
@@ -11,6 +12,42 @@ const userController = {
     /*** Pagina de login de usuario ***/
     login: (req, res) => {
         res.render("./users/login");
+    },
+
+    /*** Ejecuta el login de usuario ***/
+    loginProcess: (req, res) => {
+        
+        let userToLogin = User.findByField('email', req.body.email)
+        //! res.send(userToLogin);
+        if (userToLogin){
+            let isOKThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+            if (isOKThePassword){
+                delete userToLogin.password;
+                req.session.userLogged = userToLogin;
+                console.log(req.session);
+                res.render("users/userDetail", { usuario: userToLogin });
+            }
+            return res.render('users/login', {
+                errors:{
+                    email:{
+                        msg:'Las credenciales son inválidas'
+                    }
+                }
+            })
+
+        }
+        return res.render('users/login', {
+            errors:{
+                email:{
+                    msg:'No se encuentra este email en nuestra base de datos'
+                }
+            }
+        })
+    },
+
+    logout: (req, res) => {
+        req.session.destroy();
+        res.redirect("/");
     },
 
     /*** Pagina de registro de un usuario ***/

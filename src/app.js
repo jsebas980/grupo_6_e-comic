@@ -3,10 +3,21 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const path = require('path');
 const methodOverride = require('method-override');
+const session = require('express-session');
 const app = express();
 const routerMain = require('./routes/main');
 const routerProducts = require('./routes/products');
 const routerUsers = require('./routes/users');
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+
+//! Ejecución de la session */
+app.use(session( {
+  secret: "Nuestro mensaje secreto",
+  resave: false,
+  saveUninitialized: false,
+
+}));
+app.use(userLoggedMiddleware);
 
 //! Visualizacion de las vista EJS */
 app.set('views', path.join(__dirname, 'views'));

@@ -5,6 +5,8 @@ const { body } = require('express-validator');
 const userController = require('../controllers/usersController');
 const path = require('path');
 const multer = require('multer');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware')
 
 /*** Ejecucion del express validator de un usuario ***/
 const validateUsuario = [
@@ -49,12 +51,18 @@ const storage = multer.diskStorage({
 });
 var uploadFile = multer({ storage: storage })
 
-/*** Muestra la pagina de login y registro de un usuario ***/
-router.get('/login', userController.login);
-router.get('/register', userController.register);
+/*** Muestra la pagina de login de un usuario ***/
+router.get('/login', guestMiddleware, userController.login);
+router.post('/login', userController.loginProcess);
+
+/*** Muestra la pagina registro de un usuario ***/
+router.get('/register', guestMiddleware, userController.register);
+
+/*** Muestra la pagina logout de un usuario ***/
+router.get('/logout', userController.logout);
 
 /*** Muestra la pagina del detalle de un usuario ***/
-router.get('/userDetail/:userId', userController.userDetail);
+router.get('/userDetail/:userId', authMiddleware, userController.userDetail);
 
 /*** Muestra la pagina de la edicion de un usuario ***/
 router.get('/userEdit/:id', userController.userEdit);
