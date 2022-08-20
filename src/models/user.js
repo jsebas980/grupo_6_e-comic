@@ -1,5 +1,7 @@
+// ? Variables y Requiere
 const fs = require("fs");
 
+/*** Ejecucion de las funciones para la sesion y validaciones internas ***/
 const User = {
   filename: "./database/users.json",
 
