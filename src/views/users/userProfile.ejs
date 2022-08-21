@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+
+        <div class="card-wrapper">
+          <div class="card-dtls">
+            <!-- card left -->
+            <div class="product-imgs">
+              <div class="img-display">
+                <div class="img-showcase">
+                  <img src="/images/imgUsers/<%= usuario.img %>" alt="<%= usuario.firstname %>">
+                </div>
+              </div>
+            </div>
+            <!-- card right -->
+            <div class="product-content">
+              <div class="card-header-title">
+                <h2 class="product-title">
+                  <%= usuario.firstname %>
+                    <%= usuario.lastname %>
+                </h2>
+              </div>
+              <div class="product-detail">
+                <h2>Quien soy: </h2>
+                <ul>
+                  <li>Identificador: <span>
+                      <%= usuario.id %>
+                    </span></li>
+                  <li>Categoría: <span>
+                      <%= usuario.role %>
+                    </span></li>
+                  <li>Correo electronico: <span>
+                      <%= usuario.email %>
+                    </span></li>
+                  <li>Teléfono / Celular: <span>
+                      <%= usuario.phonenumber %>
+                    </span></li>
+                  <li>Ciudad: <span>
+                      <%= usuario.city %>
+                    </span></li>
+                </ul>
+              </div>
+              <div class="edit-delete" action="">
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userEdit/<%= usuario.id %>">Editar</a></div>
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userDelete/<%= usuario.id %>">Borrar </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

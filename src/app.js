@@ -17,6 +17,7 @@ app.use(session( {
   saveUninitialized: false,
 
 }));
+
 app.use(userLoggedMiddleware);
 
 //! Visualizacion de las vista EJS */

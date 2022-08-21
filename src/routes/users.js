@@ -56,6 +56,9 @@ router.get('/login', guestMiddleware, userController.login);
 router.post('/login', userController.loginProcess);
 
 /*** Muestra la pagina registro de un usuario ***/
+router.get('/profile', authMiddleware, userController.profile);
+
+/*** Muestra la pagina registro de un usuario ***/
 router.get('/register', guestMiddleware, userController.register);
 
 /*** Muestra la pagina logout de un usuario ***/
@@ -65,18 +68,18 @@ router.get('/logout', userController.logout);
 router.get('/userDetail/:userId', authMiddleware, userController.userDetail);
 
 /*** Muestra la pagina de la edicion de un usuario ***/
-router.get('/userEdit/:id', userController.userEdit);
+router.get('/userEdit/:id', authMiddleware, userController.userEdit);
 router.patch('/userEdit/:id', uploadFile.single('img'), validateUsuario, userController.userUpdate);
 
 /*** Muestra la pagina de la eliminacion de un usuario ***/
-router.get('/userDelete/:id', userController.userDelete);
+router.get('/userDelete/:id', authMiddleware, userController.userDelete);
 router.delete('/userDelete/:id', userController.userDestroy);
 
 /*** Muestra la pagina del listado de los usuarios ***/
-router.get('/userList', userController.userList);
+router.get('/userList', authMiddleware, userController.userList);
 
 /*** Muestra la pagina de la creacion de un usuario ***/
-router.get('/userCreate', userController.userCreate);
+router.get('/userCreate', authMiddleware, userController.userCreate);
 router.post('/userLoad', uploadFile.single('img'), validateUsuario, userController.userload);
 
 module.exports = router;

@@ -5,27 +5,28 @@ let archivoUsers = "./database/users.json";
 let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
 const bcrypt = require("bcryptjs");
 const User = require('../models/user.js');
+const { Console } = require('console');
 
 const userController = {
     /* CONTROLLER usuarios */
 
     /*** Pagina de login de usuario ***/
     login: (req, res) => {
-        res.render("./users/login");
+        console.log(req.session);
+        return res.render("./users/login");
     },
 
     /*** Ejecuta el login de usuario ***/
     loginProcess: (req, res) => {
         
         let userToLogin = User.findByField('email', req.body.email)
-        //! res.send(userToLogin);
         if (userToLogin){
             let isOKThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
             if (isOKThePassword){
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
                 console.log(req.session);
-                res.render("users/userDetail", { usuario: userToLogin });
+                return res.redirect('profile')
             }
             return res.render('users/login', {
                 errors:{
@@ -47,12 +48,22 @@ const userController = {
 
     logout: (req, res) => {
         req.session.destroy();
-        res.redirect("/");
+        console.log(req.session);
+        return res.redirect("/");
+    },
+
+      /*** Muestra el detalle de un usuario ***/
+    profile: (req, res) => {
+        console.log('Profile es ESTE')
+        console.log(req.session)
+        let usuario = comicUsers.find((user) => user.id == req.session.userLogged.id);
+        console.log(usuario)
+        res.render("users/userProfile", { usuario: usuario });
     },
 
     /*** Pagina de registro de un usuario ***/
     register: (req, res) => {
-        res.render("./users/register");
+        return res.render("./users/register");
     },
 
     /*** Muestra el detalle de un usuario ***/
@@ -65,7 +76,7 @@ const userController = {
     userEdit: (req, res) => {
         let id = req.params.id;
         let userToEdit = comicUsers.find((user) => user.id == id);
-        res.render("users/userEdit", { userToEdit, });
+        return res.render("users/userEdit", { userToEdit, });
     },
 
     /*** Ejecuta la actualizacion de un usuario ***/
@@ -98,10 +109,10 @@ const userController = {
             });
             fs.writeFileSync(archivoUsers, JSON.stringify(newUsers, null, " "));
             let usuario = comicUsers.find((user) => user.id == id);
-            res.render("users/userDetail", { usuario: usuario });
+            return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            res.render("users/userEdit", { errors: errors.array(), old: req.body });
+            return res.render("users/userEdit", { errors: errors.array(), old: req.body });
         }
     },
 
@@ -109,7 +120,7 @@ const userController = {
     userDelete: (req, res) => {
         let id = req.params.id;
         let userToEdit = comicUsers.find((user) => user.id == id);
-        res.render("users/userDelete", {
+        return res.render("users/userDelete", {
             userToEdit,
         });
     },
@@ -124,13 +135,13 @@ const userController = {
 
     /*** Imprimir todos los usuarios en una lista ***/
     userList: (req, res) => {
-        res.render("users/userList", { comicUsers });
+        return res.render("users/userList", { comicUsers });
     },
 
     /*** Muestra la pagina de creacion de un usuario ***/
     userCreate: (req, res) => {
         let userToId = comicUsers[comicUsers.length - 1].id + 1;
-        res.render("users/userLoad", {
+        return res.render("users/userLoad", {
             userToId,
         });
     },
@@ -157,10 +168,10 @@ const userController = {
             comicUsers.push(newUser);
             fs.writeFileSync(archivoUsers, JSON.stringify(comicUsers, null, " "));
             let usuario = comicUsers.find((user) => user.id == idUser);
-            res.render("users/userDetail", { usuario: usuario });
+            return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            res.render("users/userLoad", { errors: errors.array(), old: req.body });
+            return res.render("users/userLoad", { errors: errors.array(), old: req.body });
         }
     },
 
