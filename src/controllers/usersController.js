@@ -12,7 +12,6 @@ const userController = {
 
     /*** Pagina de login de usuario ***/
     login: (req, res) => {
-        console.log(req.session);
         return res.render("./users/login");
     },
 
@@ -25,8 +24,11 @@ const userController = {
             if (isOKThePassword){
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
-                console.log(req.session);
-                return res.redirect('profile')
+                console.log(req.body);
+                if(req.body.remember){
+                    res.cookie('userEmail', req.body.email, { maxAge: 60 * 1000, httpOnly: true });
+                }
+                return res.redirect('profile');
             }
             return res.render('users/login', {
                 errors:{
@@ -47,17 +49,15 @@ const userController = {
     },
 
     logout: (req, res) => {
+        res.clearCookie('userEmail');
         req.session.destroy();
-        console.log(req.session);
         return res.redirect("/");
     },
 
       /*** Muestra el detalle de un usuario ***/
     profile: (req, res) => {
-        console.log('Profile es ESTE')
-        console.log(req.session)
+        console.log("Cookies :  ", req.cookies);
         let usuario = comicUsers.find((user) => user.id == req.session.userLogged.id);
-        console.log(usuario)
         res.render("users/userProfile", { usuario: usuario });
     },
 

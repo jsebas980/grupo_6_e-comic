@@ -155,3 +155,19 @@
 - Se encontro una inconsistencia en las verificaciondes de los middleware de usuarios para restringir unas visuales a unas opciones segun la session iniciada en el portal de la pagina.
 
 ---
+
+# Daily (20/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se corrigio el problema que se venia presentando en las verificacion del middleware segun la session incializada dentro del proyecto
+
+## 2. Que se va a hacer hoy?
+
+- Configurar todos los middlewares de sessiones segun el invitado, el usuario logueado dentro de la base de datos y el redireccionamiendo en caso de error
+
+## 3. Impedimentos
+
+- 
+
+---
