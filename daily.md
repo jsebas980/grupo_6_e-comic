@@ -171,3 +171,19 @@
 - 
 
 ---
+
+# Daily (23/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se continuo con las configuraciones del middleware de session entre el login de usuario y asi mismo la implementación de las rutas huespedes a la cuales son accesibles cualquier usuario, con o sin login.
+
+## 2. Que se va a hacer hoy?
+
+- Se realiza la implementación de las funciones con la posibilidad de recordar el perfil del usuario con el checkbox mediante cookies
+
+## 3. Impedimentos
+
+- Inconveniente con el almacenamiento  y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
+
+---
