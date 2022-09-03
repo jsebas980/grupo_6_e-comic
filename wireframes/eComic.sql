@@ -11,10 +11,10 @@ USE `eComic_db`;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40103 SET TIME_ZONE=`+00:00` */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=`NO_AUTO_VALUE_ON_ZERO` */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- ------------------------JUANDIEGO-------------------------------------------
@@ -126,8 +126,6 @@ CREATE TABLE `carrito_productos` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_productos`)
         REFERENCES productos (`id`),
-  FOREIGN KEY (`id_personas`)
-        REFERENCES personas (`id`),
   FOREIGN KEY (`id_carrito`)
         REFERENCES carrito (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -142,8 +140,8 @@ DROP TABLE IF EXISTS `detalle_factura`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `detalle_factura` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cantidad` int NOT NULL
-  `precio` float NOT NULL,
+  `cantidad` int NOT NULL,
+  `precio` float DEFAULT NULL,
   `subtotal` float NOT NULL,
   `oferta` boolean DEFAULT NULL,
   `descuento` float DEFAULT NULL,
@@ -154,6 +152,34 @@ CREATE TABLE `detalle_factura` (
         REFERENCES factura (`id`),
   FOREIGN KEY (`id_productos`)
         REFERENCES productos (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `carrito`
+--
+
+DROP TABLE IF EXISTS `carrito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carrito` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombrecompleto` varchar(100) NOT NULL,
+  `correoelectronico` varchar(100) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `numerotelefono` varchar(100) NOT NULL,
+  `ciudad` varchar(100) NOT NULL,
+  `detallesadicionales` varchar(600) NOT NULL,
+  `id_usuario` int NOT NULL,
+  `id_pais` int NOT NULL,
+  `id_provincia` int NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_usuario`)
+        REFERENCES usuario (`id`),
+  FOREIGN KEY (`id_pais`)
+        REFERENCES pais (`id`),
+  FOREIGN KEY (`id_provincia`)
+        REFERENCES provincia (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -213,8 +239,8 @@ CREATE TABLE `provincia` (
   `nombre` varchar(100) NOT NULL,
   `id_pais` int NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY('id_pais') 
-    REFERENCES pais('id')
+  FOREIGN KEY (`id_pais`) 
+    REFERENCES pais (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,10 +276,10 @@ CREATE TABLE `usuario` (
   `id_provincia` int NOT NULL,
   `imagen` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY('id_pais') 
-    REFERENCES pais('id'),
-  FOREIGN KEY('id_provincia') 
-    REFERENCES provincia('id')
+  FOREIGN KEY(`id_pais`) 
+    REFERENCES pais(`id`),
+  FOREIGN KEY(`id_provincia`) 
+    REFERENCES provincia(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -270,10 +296,10 @@ CREATE TABLE `rol_usuario` (
   `id_usuario` int NOT NULL,
   `id_rol` int NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY('id_usuario') 
-    REFERENCES usuario('id'),
-  FOREIGN KEY('id_rol') 
-    REFERENCES rol('id')
+  FOREIGN KEY(`id_usuario`) 
+    REFERENCES usuario(`id`),
+  FOREIGN KEY(`id_rol`) 
+    REFERENCES rol(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -302,12 +328,12 @@ CREATE TABLE `factura` (
   `ciudad` varchar(100) NOT NULL,
   `detalleadicionales` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY('id_usuario') 
-    REFERENCES usuario('id'),
-  FOREIGN KEY('id_estadofactura') 
-    REFERENCES estado_factura('id'),
-  FOREIGN KEY('id_modopago') 
-    REFERENCES modo_pago('id')
+  FOREIGN KEY(`id_usuario`) 
+    REFERENCES usuario(`id`),
+  FOREIGN KEY(`id_estadofactura`) 
+    REFERENCES estado_factura(`id`),
+  FOREIGN KEY(`id_modopago`) 
+    REFERENCES modo_pago(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
