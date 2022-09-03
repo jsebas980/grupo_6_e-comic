@@ -17,34 +17,79 @@ USE `eComic_db`;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+------------------------JUANDIEGO-------------------------------------------
 --
--- Table structure for table `albumes`
+-- Table structure for table `personas`
 --
 
-DROP TABLE IF EXISTS `albumes`;
+DROP TABLE IF EXISTS `personas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `albumes` (
-  `id` smallint(6) NOT NULL,
-  `titulo` varchar(95) DEFAULT NULL,
-  `id_artista` smallint(6) DEFAULT NULL,
+CREATE TABLE `personas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `artistas`
+-- Table structure for table `roles_personas`
 --
 
-DROP TABLE IF EXISTS `artistas`;
+DROP TABLE IF EXISTS `roles_personas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `artistas` (
-  `id` smallint(6) NOT NULL,
-  `nombre` varchar(85) DEFAULT NULL,
+CREATE TABLE `roles_personas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `categoria`
+--
+
+DROP TABLE IF EXISTS `categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categoria` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name_categoria` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+------------------------SEBAS-------------------------------------------
+--
+-- Table structure for table `estado_factura`
+--
+
+DROP TABLE IF EXISTS `estado_factura`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estado_factura` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `modo_pago`
+--
+
+
+DROP TABLE IF EXISTS `modo_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `modo_pago` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Dumping data for table `artistas`
