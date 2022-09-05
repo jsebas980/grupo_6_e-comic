@@ -7,7 +7,6 @@ USE
   `eComic_db`;
 
 -- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
---
 -- Host: localhost    Database: eComic_db
 -- ------------------------------------------------------
 -- Server version	5.7.28-0ubuntu0.18.04.4
@@ -42,9 +41,11 @@ USE
 ;
 
 -- ------------------------JUANDIEGO-------------------------------------------
---
 -- Table structure for table `personas`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `personas`;
 
@@ -56,17 +57,26 @@ DROP TABLE
 
 CREATE TABLE
   `personas` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombrecompleto` VARCHAR (200) DEFAULT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombrecompleto` varchar(200) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `rol_personas`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `rol_personas`;
 
@@ -78,17 +88,26 @@ DROP TABLE
 
 CREATE TABLE
   `rol_personas` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `tiporol` VARCHAR (200) DEFAULT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `tiporol` varchar(200) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `categoria`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `categoria`;
 
@@ -100,17 +119,26 @@ DROP TABLE
 
 CREATE TABLE
   `categoria` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombrecategoria` VARCHAR (100) DEFAULT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombrecategoria` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `productos_personas`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `productos_personas`;
 
@@ -122,6 +150,7 @@ DROP TABLE
 
 CREATE TABLE
   `productos_personas` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `id_productos` INT NOT NULL,
     `id_personas` INT NOT NULL,
@@ -131,13 +160,26 @@ CREATE TABLE
     FOREIGN KEY (`id_personas`) REFERENCES PERSONAS(`id`),
     FOREIGN KEY (`id_rol`) REFERENCES ROL_PERSONAS(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `id_productos` int NOT NULL,
+    `id_personas` int NOT NULL,
+    `id_rol` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_productos`) REFERENCES productos (`id`),
+    FOREIGN KEY (`id_personas`) REFERENCES personas (`id`),
+    FOREIGN KEY (`id_rol`) REFERENCES rol_personas (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `productos`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `productos`;
 
@@ -149,6 +191,7 @@ DROP TABLE
 
 CREATE TABLE
   `productos` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `titulo` VARCHAR (200) NOT NULL,
     `temporada` VARCHAR (200) NOT NULL,
@@ -167,13 +210,35 @@ CREATE TABLE
     FOREIGN KEY (`id_categoria`) REFERENCES CATEGORIA(`id`),
     FOREIGN KEY (`id_pais`) REFERENCES PAIS(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `titulo` varchar(200) NOT NULL,
+    `temporada` varchar(200) NOT NULL,
+    `volumen` varchar(200) NOT NULL,
+    `descripcioncorta` varchar(60) NOT NULL,
+    `descripciondetallada` varchar(200) NOT NULL,
+    `precionormal` float NOT NULL,
+    `publicacion` date NOT NULL,
+    `imagen` varchar(100) NOT NULL,
+    `precio` float NOT NULL,
+    `descontinuado` boolean DEFAULT NULL,
+    `stock` int NOT NULL,
+    `id_categoria` int NOT NULL,
+    `id_pais` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_categoria`) REFERENCES categoria (`id`),
+    FOREIGN KEY (`id_pais`) REFERENCES pais (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `carrito_productos`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `carrito_productos`;
 
@@ -185,6 +250,7 @@ DROP TABLE
 
 CREATE TABLE
   `carrito_productos` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `id_productos` INT NOT NULL,
     `id_carrito` INT NOT NULL,
@@ -192,13 +258,24 @@ CREATE TABLE
     FOREIGN KEY (`id_productos`) REFERENCES PRODUCTOS(`id`),
     FOREIGN KEY (`id_carrito`) REFERENCES CARRITO(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `id_productos` int NOT NULL,
+    `id_carrito` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_productos`) REFERENCES productos (`id`),
+    FOREIGN KEY (`id_carrito`) REFERENCES carrito (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `detalle_factura`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `detalle_factura`;
 
@@ -210,6 +287,7 @@ DROP TABLE
 
 CREATE TABLE
   `detalle_factura` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `cantidad` INT NOT NULL,
     `precio` FLOAT DEFAULT NULL,
@@ -222,13 +300,29 @@ CREATE TABLE
     FOREIGN KEY (`id_factura`) REFERENCES FACTURA(`id`),
     FOREIGN KEY (`id_productos`) REFERENCES PRODUCTOS(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `cantidad` int NOT NULL,
+    `precio` float DEFAULT NULL,
+    `subtotal` float NOT NULL,
+    `oferta` boolean DEFAULT NULL,
+    `descuento` float DEFAULT NULL,
+    `id_factura` int NOT NULL,
+    `id_productos` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_factura`) REFERENCES factura (`id`),
+    FOREIGN KEY (`id_productos`) REFERENCES productos (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `carrito`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `carrito`;
 
@@ -240,6 +334,7 @@ DROP TABLE
 
 CREATE TABLE
   `carrito` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombrecompleto` VARCHAR (100) NOT NULL,
     `correoelectronico` VARCHAR (100) NOT NULL,
@@ -255,14 +350,33 @@ CREATE TABLE
     FOREIGN KEY (`id_pais`) REFERENCES PAIS(`id`),
     FOREIGN KEY (`id_provincia`) REFERENCES PROVINCIA(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombrecompleto` varchar(100) NOT NULL,
+    `correoelectronico` varchar(100) NOT NULL,
+    `direccion` varchar(100) NOT NULL,
+    `numerotelefono` varchar(100) NOT NULL,
+    `ciudad` varchar(100) NOT NULL,
+    `detallesadicionales` varchar(600) NOT NULL,
+    `id_usuario` int NOT NULL,
+    `id_pais` int NOT NULL,
+    `id_provincia` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_usuario`) REFERENCES usuario (`id`),
+    FOREIGN KEY (`id_pais`) REFERENCES pais (`id`),
+    FOREIGN KEY (`id_provincia`) REFERENCES provincia (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
 -- ------------------------SEBAS-------------------------------------------
---
 -- Table structure for table `estado_factura`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `estado_factura`;
 
@@ -274,17 +388,26 @@ DROP TABLE
 
 CREATE TABLE
   `estado_factura` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombre` VARCHAR (100) NOT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `modo_pago`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `modo_pago`;
 
@@ -296,18 +419,28 @@ DROP TABLE
 
 CREATE TABLE
   `modo_pago` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombre` VARCHAR (100) NOT NULL,
     `otrosdetalles` VARCHAR (100) NOT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(100) NOT NULL,
+    `otrosdetalles` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `pais`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `pais`;
 
@@ -319,17 +452,26 @@ DROP TABLE
 
 CREATE TABLE
   `pais` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombre` VARCHAR (100) NOT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `provincia`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `provincia`;
 
@@ -341,19 +483,30 @@ DROP TABLE
 
 CREATE TABLE
   `provincia` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombre` VARCHAR (100) NOT NULL,
     `id_pais` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_pais`) REFERENCES PAIS(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(100) NOT NULL,
+    `id_pais` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_pais`) REFERENCES pais (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `rol`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `rol`;
 
@@ -365,17 +518,26 @@ DROP TABLE
 
 CREATE TABLE
   `rol` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `tiporol` VARCHAR (100) NOT NULL,
     PRIMARY KEY (`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `tiporol` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `usuario`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `usuario`;
 
@@ -387,6 +549,7 @@ DROP TABLE
 
 CREATE TABLE
   `usuario` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `nombre` VARCHAR (100) NOT NULL,
     `apellido` VARCHAR (100) NOT NULL,
@@ -400,13 +563,30 @@ CREATE TABLE
     FOREIGN KEY (`id_pais`) REFERENCES PAIS(`id`),
     FOREIGN KEY (`id_provincia`) REFERENCES PROVINCIA(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(100) NOT NULL,
+    `apellido` varchar(100) NOT NULL,
+    `correoelectronico` varchar(100) NOT NULL,
+    `contraseña` varchar(100) NOT NULL,
+    `numerotelefono` varchar(100) NOT NULL,
+    `id_pais` int NOT NULL,
+    `id_provincia` int NOT NULL,
+    `imagen` varchar(50) NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY(`id_pais`) REFERENCES pais(`id`),
+    FOREIGN KEY(`id_provincia`) REFERENCES provincia(`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `rol_usuario`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `rol_usuario`;
 
@@ -418,6 +598,7 @@ DROP TABLE
 
 CREATE TABLE
   `rol_usuario` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `fecha` DATETIME NOT NULL,
     `id_usuario` INT NOT NULL,
@@ -426,13 +607,25 @@ CREATE TABLE
     FOREIGN KEY (`id_usuario`) REFERENCES USUARIO(`id`),
     FOREIGN KEY (`id_rol`) REFERENCES ROL(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `fecha` datetime NOT NULL,
+    `id_usuario` int NOT NULL,
+    `id_rol` int NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY(`id_usuario`) REFERENCES usuario(`id`),
+    FOREIGN KEY(`id_rol`) REFERENCES rol(`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
 
---
 -- Table structure for table `factura`
+<<<<<<< HEAD
 --
+=======
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 DROP TABLE
   IF EXISTS `factura`;
 
@@ -444,6 +637,7 @@ DROP TABLE
 
 CREATE TABLE
   `factura` (
+<<<<<<< HEAD
     `id` INT NOT NULL auto_increment,
     `id_usuario` INT NOT NULL,
     `id_estadofactura` INT NOT NULL,
@@ -465,6 +659,29 @@ CREATE TABLE
     FOREIGN KEY (`id_estadofactura`) REFERENCES ESTADO_FACTURA(`id`),
     FOREIGN KEY (`id_modopago`) REFERENCES MODO_PAGO(`id`)
   ) engine = innodb DEFAULT charset = utf8mb4;
+=======
+    `id` int NOT NULL AUTO_INCREMENT,
+    `id_usuario` int NOT NULL,
+    `id_estadofactura` int NOT NULL,
+    `envio` varchar(100) NOT NULL,
+    `impuesto` int NOT NULL,
+    `total` float NOT NULL,
+    `id_modopago` int NOT NULL,
+    `fecha` datetime NOT NULL,
+    `nombrecompleto` varchar(100) NOT NULL,
+    `correoelectronico` varchar(100) NOT NULL,
+    `direccion` varchar(100) NOT NULL,
+    `numerotelefono` varchar(100) NOT NULL,
+    `id_pais` int NOT NULL,
+    `id_provincia` int NOT NULL,
+    `ciudad` varchar(100) NOT NULL,
+    `detalleadicionales` varchar(200) NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY(`id_usuario`) REFERENCES usuario(`id`),
+    FOREIGN KEY(`id_estadofactura`) REFERENCES estado_factura(`id`),
+    FOREIGN KEY(`id_modopago`) REFERENCES modo_pago(`id`)
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+>>>>>>> 3a0adc3792888de1bbeaf544b5fdd1ad992749e9
 
 /*!40101 SET character_set_client = @saved_cs_client */
 ;
