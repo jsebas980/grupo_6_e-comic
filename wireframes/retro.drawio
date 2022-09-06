@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-06T00:48:06.876Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" etag="ns-hW7AVX3CPs4fkM5er" version="20.2.8" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-06T00:50:07.345Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" etag="KyxYA6spGKTbobIPtJba" version="20.2.8" type="github">
   <diagram id="RpFu40IY92sFL-ZjySHk" name="retro Sprint 1">
     <mxGraphModel dx="2514" dy="1160" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -11,19 +11,19 @@
           <mxGeometry x="162" y="74" width="250" height="160" as="geometry" />
         </mxCell>
         <mxCell id="CtC0rIaw9Dw2bhlOY4eu-14" value="&lt;div&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;ser mas participativos&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" parent="1" vertex="1">
-          <mxGeometry x="1323" y="404" width="250" height="93" as="geometry" />
+          <mxGeometry x="1261" y="644" width="250" height="93" as="geometry" />
         </mxCell>
-        <mxCell id="CtC0rIaw9Dw2bhlOY4eu-26" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;No alargar las sesiones en contenidos innecesarios&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#F8F9FA;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#212529;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;gradientColor=none;" parent="1" vertex="1">
-          <mxGeometry x="225" y="646" width="360" height="106" as="geometry" />
-        </mxCell>
-        <mxCell id="CtC0rIaw9Dw2bhlOY4eu-27" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Distribuir mejor las cargas de trabajo&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#F8F9FA;html=1;whiteSpace=wrap;fillColor=#ffffff;fontColor=#212529;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;gradientColor=none;" parent="1" vertex="1">
-          <mxGeometry x="945" y="162" width="360" height="106" as="geometry" />
+        <mxCell id="CtC0rIaw9Dw2bhlOY4eu-26" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;No perder el hilo de la reunion en temas que esten por fuera del mismo&lt;/b&gt;&lt;/span&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" parent="1" vertex="1">
+          <mxGeometry x="125" y="617" width="360" height="106" as="geometry" />
         </mxCell>
         <mxCell id="bSynLcLltYtDhGuuOGzl-1" value="&lt;div&gt;&lt;b style=&quot;font-size: 20px; background-color: initial;&quot;&gt;Seguir con las reuniones periodicas sin perder la continuidad del proyecto&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" vertex="1" parent="1">
           <mxGeometry x="471" y="126" width="250" height="178" as="geometry" />
         </mxCell>
         <mxCell id="bSynLcLltYtDhGuuOGzl-2" value="&lt;div&gt;&lt;b style=&quot;font-size: 20px; background-color: initial;&quot;&gt;Debatir ideas&amp;nbsp;&lt;/b&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" vertex="1" parent="1">
           <mxGeometry x="621" y="343" width="250" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="bSynLcLltYtDhGuuOGzl-3" value="&lt;div&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Quedarse callados&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" vertex="1" parent="1">
+          <mxGeometry x="715" y="874" width="360" height="106" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
