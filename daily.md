@@ -186,4 +186,36 @@
 
 - Inconveniente con el almacenamiento  y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
 
+SPRINT 6
+---
+
+# Daily (25/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se realizo la entrega al profesor del Sprint_5 al cual esta en la espera de la retroalimentacion del mismo.
+
+## 2. Que se va a hacer hoy?
+
+- Se realia el diseño del diagrama de base de datos Entidad y relacion (DER); asi mismo comienzo del sprint 6 en el Trello
+## 3. Impedimentos
+
+- 
+
+---
+
+# Daily (01/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se continuo con el diseño del DER al proyecto eComic.
+
+## 2. Que se va a hacer hoy?
+
+- Se realiza las relaciones y tipo de datos en las variables de cada una de las tablas en el DER
+
+## 3. Impedimentos
+
+- 
+
 ---
