@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-09-06T00:50:07.345Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" etag="KyxYA6spGKTbobIPtJba" version="20.2.8" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-06T00:51:41.623Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" etag="E5Tl5FrGHCZaNizRWyaq" version="20.2.8" type="github">
   <diagram id="RpFu40IY92sFL-ZjySHk" name="retro Sprint 1">
     <mxGraphModel dx="2514" dy="1160" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -24,6 +24,9 @@
         </mxCell>
         <mxCell id="bSynLcLltYtDhGuuOGzl-3" value="&lt;div&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Quedarse callados&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" vertex="1" parent="1">
           <mxGeometry x="715" y="874" width="360" height="106" as="geometry" />
+        </mxCell>
+        <mxCell id="bSynLcLltYtDhGuuOGzl-4" value="&lt;div&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;No participar en la actividad de la reunion asi sea en contribuir en comentarios&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="html=1;shadow=1;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#82b366;html=1;whiteSpace=wrap;fillColor=#d5e8d4;verticalAlign=bottom;align=center;spacing=20;spacingBottom=0;fontSize=14;fontFamily=Lucida Console;" vertex="1" parent="1">
+          <mxGeometry x="711" y="697" width="360" height="139" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
