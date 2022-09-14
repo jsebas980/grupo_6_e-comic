@@ -20,7 +20,6 @@ app.use(session( {
 }));
 
 app.use(cookies());
-
 app.use(userLoggedMiddleware);
 
 //! Visualizacion de las vista EJS */
