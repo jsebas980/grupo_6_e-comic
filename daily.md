@@ -219,3 +219,19 @@ SPRINT 6
 - 
 
 ---
+
+# Daily (03/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se organizo las relaciones 1:N - N:M a cada una de las tablas según al proyecto
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la estructura del archivo structure.sql con base al Sprint_6 para la creacion de la base de datos, tablas, primary key, foreign key en cada una.
+
+## 3. Impedimentos
+
+- 
+
+---
