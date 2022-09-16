@@ -174,6 +174,10 @@ module.exports = sequelize => {
       as: "detalleproductos",
       foreignKey: "id_productos"
     });
+    ProductosModel.hasMany(models.ProductosPersonasModel, { 
+      as: "productospersonas",
+      foreignKey: "id_productos"
+    });
 
   };
 

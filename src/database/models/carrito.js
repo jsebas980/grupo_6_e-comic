@@ -141,7 +141,7 @@ module.exports = sequelize => {
     });
     CarritoModel.belongsTo(models.ProvinciaModel, {
       as: "provinciacarrito",
-      foreignKey: "id_pais"
+      foreignKey: "id_provincia"
     });
     CarritoModel.belongsTo(models.UsuarioModel, {
       as: "usuariocarrito",
