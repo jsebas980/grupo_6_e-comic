@@ -29,5 +29,29 @@ module.exports = sequelize => {
     indexes: []
   };
   const PaisModel = sequelize.define("pais_model", attributes, options);
+
+  //Relaciones con el modelo
+  PaisModel.associate = function (models) {
+    PaisModel.hasMany(models.ProductosModel, { 
+      as: "productospais",
+      foreignKey: "id_pais"
+    });
+
+    PaisModel.hasMany(models.UsuarioModel, { 
+      as: "usuario",
+      foreignKey: "id_pais"
+    });
+
+    PaisModel.hasMany(models.ProvinciaModel, { 
+      as: "provincia",
+      foreignKey: "id_pais"
+    });
+
+    PaisModel.hasMany(models.CarritoModel, { 
+      as: "carrito",
+      foreignKey: "id_pais"
+    });
+  };
+
   return PaisModel;
 };

@@ -29,5 +29,14 @@ module.exports = sequelize => {
     indexes: []
   };
   const CategoriaModel = sequelize.define("categoria_model", attributes, options);
+
+  //Relaciones con el modelo
+  CategoriaModel.associate = function (models) {
+    CategoriaModel.hasMany(models.ProductosModel, { 
+        as: "productoscategorias",
+        foreignKey: "id_categoria"
+    });
+  };
+
   return CategoriaModel;
 };

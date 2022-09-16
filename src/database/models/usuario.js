@@ -110,5 +110,34 @@ module.exports = sequelize => {
     }]
   };
   const UsuarioModel = sequelize.define("usuario_model", attributes, options);
+
+  UsuarioModel.associate = function (models) {
+    UsuarioModel.belongsTo(models.PaisModel, {
+        as: "pais",
+        foreignKey: "id_pais"
+    });
+
+    UsuarioModel.belongsTo(models.ProvinciaModel, {
+        as: "provincia",
+        foreignKey: "id_provincia"
+    }); 
+
+    UsuarioModel.hasMany(models.RolUsuarioModel, { 
+      as: "rol_usuario",
+      foreignKey: "id_usuario"
+    });
+
+    UsuarioModel.hasMany(models.carritoModel, { 
+      as: "carrito",
+      foreignKey: "id_usuario"
+    });
+
+    UsuarioModel.hasMany(models.FacturaModel, { 
+      as: "facturausuario",
+      foreignKey: "id_usuario"
+    });
+
+  };
+
   return UsuarioModel;
 };

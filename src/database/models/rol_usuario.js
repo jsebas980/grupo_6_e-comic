@@ -65,5 +65,18 @@ module.exports = sequelize => {
     }]
   };
   const RolUsuarioModel = sequelize.define("rol_usuario_model", attributes, options);
+
+  RolUsuarioModel.associate = function (models) {
+    RolUsuarioModel.belongsTo(models.RolModel, {
+        as: "roles",
+        foreignKey: "id_rol"
+    });
+    RolUsuarioModel.belongsTo(models.UsuarioModel, {
+      as: "usuario",
+      foreignKey: "id_usuario"
+    });
+
+  };
+
   return RolUsuarioModel;
 };

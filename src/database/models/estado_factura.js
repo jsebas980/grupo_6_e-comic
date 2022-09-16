@@ -29,5 +29,14 @@ module.exports = sequelize => {
     indexes: []
   };
   const EstadoFacturaModel = sequelize.define("estado_factura_model", attributes, options);
+
+//Relaciones con el modelo
+EstadoFacturaModel.associate = function (models) {
+  EstadoFacturaModel.hasMany(models.FacturaModel, { 
+      as: "facturaestado",
+      foreignKey: "id_estadofactura"
+  });
+};
+
   return EstadoFacturaModel;
 };

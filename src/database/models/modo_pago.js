@@ -38,5 +38,14 @@ module.exports = sequelize => {
     indexes: []
   };
   const ModoPagoModel = sequelize.define("modo_pago_model", attributes, options);
+
+//Relaciones con el modelo
+ModoPagoModel.associate = function (models) {
+  ModoPagoModel.hasMany(models.FacturaModel, { 
+      as: "facturamodopago",
+      foreignKey: "id_modopago"
+  });
+};
+
   return ModoPagoModel;
 };
