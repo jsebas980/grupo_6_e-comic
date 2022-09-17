@@ -76,20 +76,20 @@ module.exports = sequelize => {
   const ProductosPersonasModel = sequelize.define("productos_personas_model", attributes, options);
 
   //Relaciones con el modelo
-  ProductosPersonasModel.associate = function (models) {
-    ProductosPersonasModel.belongsTo(models.PersonasModel, {
-        as: "personas",
-        foreignKey: "id_personas"
-    });
-    ProductosPersonasModel.belongsTo(models.RolPersonasModel, {
-      as: "rolespersonas",
-      foreignKey: "id_rol"
-    });
-    ProductosPersonasModel.belongsTo(models.ProductosModel, {
-      as: "productos",
-      foreignKey: "id_productos"
-    });
-  };
+  // ProductosPersonasModel.associate = function (models) {
+  //   ProductosPersonasModel.belongsTo(models.PersonasModel, {
+  //       as: "personas",
+  //       foreignKey: "id_personas"
+  //   });
+  //   ProductosPersonasModel.belongsTo(models.RolPersonasModel, {
+  //     as: "rolespersonas",
+  //     foreignKey: "id_rol"
+  //   });
+  //   ProductosPersonasModel.belongsTo(models.ProductosModel, {
+  //     as: "productos",
+  //     foreignKey: "id_productos"
+  //   });
+  // };
 
   return ProductosPersonasModel;
 };

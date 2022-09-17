@@ -31,12 +31,12 @@ module.exports = sequelize => {
   const RolPersonasModel = sequelize.define("rol_personas_model", attributes, options);
 
   //Relaciones con el modelo
-  RolPersonasModel.associate = function (models) {
-    RolPersonasModel.hasMany(models.ProductosPersonasModel, { 
-        as: "rolpersonas",
-        foreignKey: "id_rol"
-    });
-  };
+  // RolPersonasModel.associate = function (models) {
+  //   RolPersonasModel.hasMany(models.ProductosPersonasModel, { 
+  //       as: "rolpersonas",
+  //       foreignKey: "id_rol"
+  //   });
+  // };
 
   return RolPersonasModel;
 };

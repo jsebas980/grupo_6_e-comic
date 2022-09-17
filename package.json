@@ -2,9 +2,10 @@
   "name": "grupo_6_e-comic",
   "version": "1.0.0",
   "description": "Proyecto integrador para el curso de fullstack con Digital House",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "nodemon ./src/app.js"
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,11 @@
     "method-override": "^3.0.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.19",
-    "sequelize": "^6.22.0",
+    "sequelize": "^6.22.1",
     "sequelize-automate": "^1.2.2",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

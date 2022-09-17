@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+        <h2 class="Listardoh2">Listado de usuarios</h2>
+        <table class="fl-table table-wrapper">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>firstname</th>
+              <th>lastname</th>
+              <th>email</th>
+              <th>password</th>
+              <th>phonenumber</th>
+              <th>city</th>
+              <th>gender</th>
+              <th>category</th>
+              <th>img</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% usuarioCrud.forEach(function(user){ %>
+              <tr>
+                <td>
+                  <%= user.id %>
+                </td>
+                <td>
+                  <%= user.nombre %>
+                </td>
+                <td>
+                  <%= user.apellido %>
+                </td>
+                <td>
+                  <%= user.correoelectronico %>
+                </td>
+                <td>
+                  <%= user.contraseña %>
+                </td>
+                <td>
+                  <%= user.numerotelefono %>
+                </td>
+                <td>
+                  <%= user.id_pais %>
+                </td>
+                <td>
+                  <%= user.id_provincia %>
+                </td>
+                <td>
+                  <%= user.imagen %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </main>
+      
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

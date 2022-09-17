@@ -58,17 +58,17 @@ module.exports = sequelize => {
   const CarritoProductosModel = sequelize.define("carrito_productos_model", attributes, options);
 
   //Relaciones con el modelo
-  CarritoProductosModel.associate = function (models) {
-    CarritoProductosModel.belongsTo(models.ProductosModel, {
-      as: "productoscarritos",
-      foreignKey: "id_productos"
-    });
-    CarritoProductosModel.belongsTo(models.CarritoModel, {
-      as: "carrito",
-      foreignKey: "id_carrito"
-    });
+  // CarritoProductosModel.associate = function (models) {
+  //   CarritoProductosModel.belongsTo(models.ProductosModel, {
+  //     as: "productoscarrito",
+  //     foreignKey: "id_productos"
+  //   });
+  //   CarritoProductosModel.belongsTo(models.CarritoModel, {
+  //     as: "carrito",
+  //     foreignKey: "id_carrito"
+  //   });
 
-  };
+  // };
 
   return CarritoProductosModel;
 };

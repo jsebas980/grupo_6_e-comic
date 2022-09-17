@@ -48,23 +48,23 @@ module.exports = sequelize => {
   };
   const ProvinciaModel = sequelize.define("provincia_model", attributes, options);
 
-  ProvinciaModel.associate = function (models) {
-    ProvinciaModel.belongsTo(models.PaisModel, {
-        as: "pais",
-        foreignKey: "id_pais"
-    });
+  // ProvinciaModel.associate = function (models) {
+  //   ProvinciaModel.belongsTo(models.PaisModel, {
+  //       as: "pais",
+  //       foreignKey: "id_pais"
+  //   });
 
-    ProvinciaModel.hasMany(models.UsuarioModel, { 
-      as: "usuario",
-      foreignKey: "id_provincia"
-    });
+  //   ProvinciaModel.hasMany(models.UsuarioModel, { 
+  //     as: "usuario",
+  //     foreignKey: "id_provincia"
+  //   });
 
-    ProvinciaModel.hasMany(models.CarritoModel, { 
-      as: "carrito",
-      foreignKey: "id_provincia"
-    });
+  //   ProvinciaModel.hasMany(models.CarritoModel, { 
+  //     as: "carrito",
+  //     foreignKey: "id_provincia"
+  //   });
 
-  };
+  // };
 
   return ProvinciaModel;
 };

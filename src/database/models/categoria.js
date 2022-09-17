@@ -28,7 +28,14 @@ module.exports = sequelize => {
     comment: "",
     indexes: []
   };
-  const CategoriaModel = sequelize.define("categoria_model", attributes, options);
+  const CategoriaModel = sequelize.define("categoria", attributes, options);
+
+  sequelize.sync().then(() => {
+    console.log('eComic Sync created successfully!');
+ }).catch((error) => {
+    console.error('Unable to create table : ', error);
+ });
+
 
   //Relaciones con el modelo
   CategoriaModel.associate = function (models) {

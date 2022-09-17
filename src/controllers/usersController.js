@@ -7,6 +7,13 @@ const bcrypt = require("bcryptjs");
 const User = require('../models/user.js');
 const { Console } = require('console');
 
+const path = require('path');
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+
+const Usuarios = db.UsuarioModel;
+
 const userController = {
     /* CONTROLLER usuarios */
 
@@ -181,6 +188,109 @@ const userController = {
     //           user.password = bcrypt.hashSync(user.password, 10);
     //           user.role =  "user";
     //       });
+
+
+    // ! CRUD de los usuarios
+    list: (req, res) => {
+        Usuarios.findAll()
+            .then(usuarioCrud => {
+                return res.render('users/usuarioListcrud.ejs', {usuarioCrud})
+            })
+    },
+    detail: (req, res) => {
+        Movies.findByPk(req.params.id)
+            .then(movie => {
+                return res.render('moviesDetail.ejs', {movie});
+            });
+    },
+    new: (req, res) => {
+        Movies.findAll({
+            order : [
+                ['release_date', 'DESC']
+            ],
+            limit: 5
+        })
+            .then(movies => {
+                return res.render('newestMovies', {movies});
+            });
+    },
+    recomended: (req, res) => {
+        Movies.findAll({
+            where: {
+                rating: {[db.Sequelize.Op.gte] : 8}
+            },
+            order: [
+                ['rating', 'DESC']
+            ]
+        })
+            .then(movies => {
+                return res.render('recommendedMovies.ejs', {movies});
+            });
+    },
+    //Aqui dispongo las rutas para trabajar con el CRUD
+    add: function (req, res) {
+        Genres.findAll()
+        .then(allGenres => {
+            return res.render("moviesAdd", {allGenres:allGenres})
+        })
+        .catch(error => res.send(error))
+    },
+
+    create: function (req,res) {
+        Movies.create({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length,
+            genre_id: req.body.genre_id
+        });
+        return res.redirect('/movies');
+    },
+
+    edit: function(req,res) {
+        let promMovies = Movies.findByPk(req.params.id);
+        let promGenres = Genres.findAll();
+        Promise
+        .all([promMovies, promGenres])
+        .then(function([Movie, allGenres]) {
+            return  res.render('moviesEdit', {Movie:Movie, allGenres:allGenres})})
+        .catch(error => res.send(error))
+    },
+
+    update: function (req,res) {
+        db.Movie.update({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length,
+            genre_id: req.body.genre_id
+        },{
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(()=>{
+            return res.redirect('/movies')})
+        .catch(error => res.send(error));
+    },
+
+    delete: function (req,res) {
+        let Movie = Movies.findByPk(req.params.id)
+        return res.redirect(('/moviesDelete'), {Movie:Movie})
+    },
+    destroy: function (req,res) {
+        Movies.destroy({
+            where: {id: req.params.id},
+            force: true
+            })
+            .then(()=>{
+                return res.redirect('/movies');
+            })
+            .catch(error => res.send(error))         
+    }
+
 
 };
 

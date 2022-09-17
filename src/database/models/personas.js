@@ -31,12 +31,12 @@ module.exports = sequelize => {
   const PersonasModel = sequelize.define("personas_model", attributes, options);
 
   //Relaciones con el modelo
-  PersonasModel.associate = function (models) {
-    PersonasModel.hasMany(models.ProductosPersonasModel, { 
-        as: "productospersonas",
-        foreignKey: "id_personas"
-    });
-  };
+  // PersonasModel.associate = function (models) {
+  //   PersonasModel.hasMany(models.ProductosPersonasModel, { 
+  //       as: "productospersonas",
+  //       foreignKey: "id_personas"
+  //   });
+  // };
 
   return PersonasModel;
 };

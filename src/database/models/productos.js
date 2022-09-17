@@ -157,29 +157,29 @@ module.exports = sequelize => {
   const ProductosModel = sequelize.define("productos_model", attributes, options);
 
   //Relaciones con el modelo
-  ProductosModel.associate = function (models) {
-    ProductosModel.belongsTo(models.CategoriaModel, {
-      as: "categorias",
-      foreignKey: "id_categoria"
-    });
-    ProductosModel.belongsTo(models.PaisModel, {
-      as: "paisproductos",
-      foreignKey: "id_pais"
-    });
-    ProductosModel.hasMany(models.CarritoProductosModel, { 
-      as: "carritoproductos",
-      foreignKey: "id_productos"
-    });
-    ProductosModel.hasMany(models.DetalleFacturaModel, { 
-      as: "detalleproductos",
-      foreignKey: "id_productos"
-    });
-    ProductosModel.hasMany(models.ProductosPersonasModel, { 
-      as: "productospersonas",
-      foreignKey: "id_productos"
-    });
+  // ProductosModel.associate = function (models) {
+  //   ProductosModel.belongsTo(models.CategoriaModel, {
+  //     as: "categorias",
+  //     foreignKey: "id_categoria"
+  //   });
+  //   ProductosModel.belongsTo(models.PaisModel, {
+  //     as: "paisproductos",
+  //     foreignKey: "id_pais"
+  //   });
+  //   ProductosModel.hasMany(models.CarritoProductosModel, { 
+  //     as: "carritoproductos",
+  //     foreignKey: "id_productos"
+  //   });
+  //   ProductosModel.hasMany(models.DetalleFacturaModel, { 
+  //     as: "detalleproductos",
+  //     foreignKey: "id_productos"
+  //   });
+  //   ProductosModel.hasMany(models.ProductosPersonasModel, { 
+  //     as: "productospersonas",
+  //     foreignKey: "id_productos"
+  //   });
 
-  };
+  // };
 
   return ProductosModel;
 };
