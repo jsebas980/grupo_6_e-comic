@@ -26,17 +26,18 @@ module.exports = sequelize => {
   const options = {
     tableName: "rol_personas",
     comment: "",
+    timestamps: false,
     indexes: []
   };
   const RolPersonasModel = sequelize.define("rol_personas_model", attributes, options);
 
   //Relaciones con el modelo
-  // RolPersonasModel.associate = function (models) {
-  //   RolPersonasModel.hasMany(models.ProductosPersonasModel, { 
-  //       as: "rolpersonas",
-  //       foreignKey: "id_rol"
-  //   });
-  // };
+  RolPersonasModel.associate = function (models) {
+    RolPersonasModel.hasMany(models.productos_personas_model, { 
+        as: "rolpersonas",
+        foreignKey: "id_rol"
+    });
+  };
 
   return RolPersonasModel;
 };

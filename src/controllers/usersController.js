@@ -1,18 +1,16 @@
 // ? Variables y Requiere
-const fs = require('fs');
-const { validationResult } = require('express-validator');
-let archivoUsers = "./database/users.json";
-let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
-const bcrypt = require("bcryptjs");
-const User = require('../models/user.js');
-const { Console } = require('console');
+// const fs = require('fs');
+// const { validationResult } = require('express-validator');
+// let archivoUsers = "./database/users.json";
+// let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
+// const bcrypt = require("bcryptjs");
+// const User = require('../models/user.js');
+// const { Console } = require('console');
 
-const path = require('path');
-const db = require('../database/models');
+const db = require('../database/models/');
 const sequelize = db.sequelize;
-const { Op } = require("sequelize");
 
-const Usuarios = db.UsuarioModel;
+//console.log(sequelize.models.usuario_model.findByPk(8));
 
 const userController = {
     /* CONTROLLER usuarios */
@@ -24,32 +22,32 @@ const userController = {
 
     /*** Ejecuta el login de usuario ***/
     loginProcess: (req, res) => {
-        
+
         let userToLogin = User.findByField('email', req.body.email)
-        if (userToLogin){
+        if (userToLogin) {
             let isOKThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if (isOKThePassword){
+            if (isOKThePassword) {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
                 console.log(req.body);
-                if(req.body.remember){
+                if (req.body.remember) {
                     res.cookie('userEmail', req.body.email, { maxAge: 60 * 1000, httpOnly: true });
                 }
                 return res.redirect('profile');
             }
             return res.render('users/login', {
-                errors:{
-                    email:{
-                        msg:'Las credenciales son inválidas'
+                errors: {
+                    email: {
+                        msg: 'Las credenciales son inválidas'
                     }
                 }
             })
 
         }
         return res.render('users/login', {
-            errors:{
-                email:{
-                    msg:'No se encuentra este email en nuestra base de datos'
+            errors: {
+                email: {
+                    msg: 'No se encuentra este email en nuestra base de datos'
                 }
             }
         })
@@ -61,7 +59,7 @@ const userController = {
         return res.redirect("/");
     },
 
-      /*** Muestra el detalle de un usuario ***/
+    /*** Muestra el detalle de un usuario ***/
     profile: (req, res) => {
         console.log("Cookies :  ", req.cookies);
         let usuario = comicUsers.find((user) => user.id == req.session.userLogged.id);
@@ -191,104 +189,106 @@ const userController = {
 
 
     // ! CRUD de los usuarios
-    list: (req, res) => {
-        Usuarios.findAll()
+    listCRUD: (req, res) => {
+        db.usuario_model.findAll()
             .then(usuarioCrud => {
-                return res.render('users/usuarioListcrud.ejs', {usuarioCrud})
+                return res.render('users/userListcrud', { usuarioCrud })
             })
     },
-    detail: (req, res) => {
-        Movies.findByPk(req.params.id)
-            .then(movie => {
-                return res.render('moviesDetail.ejs', {movie});
+    userDetailCRUD: (req, res) => {
+        db.usuario_model.findByPk(req.params.id)
+            .then(usuarioCrud => {
+                return res.render('users/userDetailcrud', { usuarioCrud });
             });
     },
-    new: (req, res) => {
-        Movies.findAll({
-            order : [
-                ['release_date', 'DESC']
-            ],
-            limit: 5
-        })
-            .then(movies => {
-                return res.render('newestMovies', {movies});
-            });
-    },
-    recomended: (req, res) => {
-        Movies.findAll({
-            where: {
-                rating: {[db.Sequelize.Op.gte] : 8}
-            },
-            order: [
-                ['rating', 'DESC']
-            ]
-        })
-            .then(movies => {
-                return res.render('recommendedMovies.ejs', {movies});
-            });
-    },
-    //Aqui dispongo las rutas para trabajar con el CRUD
-    add: function (req, res) {
-        Genres.findAll()
-        .then(allGenres => {
-            return res.render("moviesAdd", {allGenres:allGenres})
-        })
-        .catch(error => res.send(error))
+    // new: (req, res) => {
+    //     Movies.findAll({
+    //         order : [
+    //             ['release_date', 'DESC']
+    //         ],
+    //         limit: 5
+    //     })
+    //         .then(movies => {
+    //             return res.render('newestMovies', {movies});
+    //         });
+    // },
+    // recomended: (req, res) => {
+    //     Movies.findAll({
+    //         where: {
+    //             rating: {[db.Sequelize.Op.gte] : 8}
+    //         },
+    //         order: [
+    //             ['rating', 'DESC']
+    //         ]
+    //     })
+    //         .then(movies => {
+    //             return res.render('recommendedMovies.ejs', {movies});
+    //         });
+    // },
+
+    userCreateCRUD: (req, res) => {
+        return res.render("users/userLoadCRUD");
     },
 
-    create: function (req,res) {
-        Movies.create({
-            title: req.body.title,
-            rating: req.body.rating,
-            awards: req.body.awards,
-            release_date: req.body.release_date,
-            length: req.body.length,
-            genre_id: req.body.genre_id
+    createCRUD: function (req, res) {
+        console.log(req.body);
+        db.usuario_model.create({
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            correoelectronico: req.body.correoelectronico,
+            contraseña: req.body.contraseña,
+            numerotelefono: req.body.numerotelefono,
+            id_pais: req.body.id_pais,
+            id_provincia: req.body.id_provincia,
+            imagen: req.body.imagen,
         });
-        return res.redirect('/movies');
+        return res.redirect("/");
     },
 
-    edit: function(req,res) {
-        let promMovies = Movies.findByPk(req.params.id);
-        let promGenres = Genres.findAll();
-        Promise
-        .all([promMovies, promGenres])
-        .then(function([Movie, allGenres]) {
-            return  res.render('moviesEdit', {Movie:Movie, allGenres:allGenres})})
-        .catch(error => res.send(error))
+    editCRUD: function (req, res) {
+        db.usuario_model.findByPk(req.params.id)
+            .then(usuarioCrud => {
+                return res.render('users/userEditcrud', { usuarioCrud });
+            })
+            .catch(error => res.send(error))
     },
 
-    update: function (req,res) {
-        db.Movie.update({
-            title: req.body.title,
-            rating: req.body.rating,
-            awards: req.body.awards,
-            release_date: req.body.release_date,
-            length: req.body.length,
-            genre_id: req.body.genre_id
-        },{
+    updateCRUD: function (req, res) {
+        db.usuario_model.update({
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            correoelectronico: req.body.correoelectronico,
+            contraseña: req.body.contraseña,
+            numerotelefono: req.body.numerotelefono,
+            id_pais: req.body.id_pais,
+            id_provincia: req.body.id_provincia,
+            imagen: req.body.imagen,
+        }, {
             where: {
                 id: req.params.id
             }
         })
-        .then(()=>{
-            return res.redirect('/movies')})
-        .catch(error => res.send(error));
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch(error => res.send(error));
     },
 
-    delete: function (req,res) {
-        let Movie = Movies.findByPk(req.params.id)
-        return res.redirect(('/moviesDelete'), {Movie:Movie})
+    deleteCRUD: function (req, res) {
+        db.usuario_model.findByPk(req.params.id)
+            .then(usuarioCrud => {
+                return res.render('users/userDeletecrud', { usuarioCrud });
+            });
     },
-    destroy: function (req,res) {
-        Movies.destroy({
-            where: {id: req.params.id},
+    destroyCRUD: function (req, res) {
+        db.usuario_model.destroy({
+            where: { id: req.params.id },
             force: true
+        })
+            .then(() => {
+                return res.redirect("/");
             })
-            .then(()=>{
-                return res.redirect('/movies');
-            })
-            .catch(error => res.send(error))         
+            .catch(error => res.send(error))
     }
 
 

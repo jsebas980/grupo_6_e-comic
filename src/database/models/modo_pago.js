@@ -35,17 +35,18 @@ module.exports = sequelize => {
   const options = {
     tableName: "modo_pago",
     comment: "",
+    timestamps: false,
     indexes: []
   };
   const ModoPagoModel = sequelize.define("modo_pago_model", attributes, options);
 
 //Relaciones con el modelo
-// ModoPagoModel.associate = function (models) {
-//   ModoPagoModel.hasMany(models.FacturaModel, { 
-//       as: "facturamodopago",
-//       foreignKey: "id_modopago"
-//   });
-// };
+ModoPagoModel.associate = function (models) {
+  ModoPagoModel.hasMany(models.factura_model, { 
+      as: "facturamodopago",
+      foreignKey: "id_modopago"
+  });
+};
 
   return ModoPagoModel;
 };

@@ -142,6 +142,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "productos",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_categoria",
       unique: false,
@@ -157,29 +158,29 @@ module.exports = sequelize => {
   const ProductosModel = sequelize.define("productos_model", attributes, options);
 
   //Relaciones con el modelo
-  // ProductosModel.associate = function (models) {
-  //   ProductosModel.belongsTo(models.CategoriaModel, {
-  //     as: "categorias",
-  //     foreignKey: "id_categoria"
-  //   });
-  //   ProductosModel.belongsTo(models.PaisModel, {
-  //     as: "paisproductos",
-  //     foreignKey: "id_pais"
-  //   });
-  //   ProductosModel.hasMany(models.CarritoProductosModel, { 
-  //     as: "carritoproductos",
-  //     foreignKey: "id_productos"
-  //   });
-  //   ProductosModel.hasMany(models.DetalleFacturaModel, { 
-  //     as: "detalleproductos",
-  //     foreignKey: "id_productos"
-  //   });
-  //   ProductosModel.hasMany(models.ProductosPersonasModel, { 
-  //     as: "productospersonas",
-  //     foreignKey: "id_productos"
-  //   });
+  ProductosModel.associate = function (models) {
+    ProductosModel.belongsTo(models.categoria_model, {
+      as: "categorias",
+      foreignKey: "id_categoria"
+    });
+     ProductosModel.belongsTo(models.pais_model, {
+       as: "paisproductos",
+       foreignKey: "id_pais"
+     });
+     ProductosModel.hasMany(models.carrito_productos_model, { 
+       as: "carritoproductos",
+       foreignKey: "id_productos"
+     });
+     ProductosModel.hasMany(models.detalle_factura_model, { 
+      as: "detalleproductos",
+       foreignKey: "id_productos"
+     });
+    ProductosModel.hasMany(models.productos_personas_model, { 
+       as: "productospersonas",
+       foreignKey: "id_productos"
+     });
 
-  // };
+  };
 
   return ProductosModel;
 };

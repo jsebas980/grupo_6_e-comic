@@ -82,4 +82,19 @@ router.get('/userList', authMiddleware, userController.userList);
 router.get('/userCreate', authMiddleware, userController.userCreate);
 router.post('/userLoad', uploadFile.single('img'), validateUsuario, userController.userload);
 
+// ! CRUD de los usuarios
+
+/*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
+router.get('/userListCRUD', userController.listCRUD);
+router.get('/userDetailCRUD/:id', userController.userDetailCRUD);
+
+router.get('/userCreateCRUD', userController.userCreateCRUD);
+router.post('/userInsertCRUD', userController.createCRUD);
+
+router.get('/userEditCRUD/:id', userController.editCRUD);
+router.patch('/userEditCRUD/:id', userController.updateCRUD);
+
+router.get('/userDeleteCRUD/:id', userController.deleteCRUD);
+router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);
+
 module.exports = router;

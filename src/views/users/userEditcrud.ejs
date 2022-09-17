@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_edit">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <form action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST" >
+        <div class="imgcontainer">
+          <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
+        </div>
+        <fieldset id="left">
+          <label for="nombre"><b>Nombre</b></label>
+          <input type="text" placeholder="ingrese el título del comic" name="nombre"
+            value="<%= usuarioCrud.nombre %>">
+          <label for="apellido"><b>Apellidos</b></label>
+          <input type="text" placeholder="ingrese la temporada del comic" name="apellido"
+            value="<%= usuarioCrud.apellido %>">
+        </fieldset>
+        <fieldset id="right">
+          <label for="correoelectronico"><b>Correo electronico</b></label>
+          <input type="text" placeholder="ingrese el precio del comic" name="correoelectronico" value="<%= usuarioCrud.correoelectronico %>">
+          <label for="numerotelefono"><b>Teléfono / Celular</b></label>
+          <input type="text" placeholder="ingrese un breve texto del comic" name="numerotelefono"
+            value="<%= usuarioCrud.numerotelefono %>">
+            <label for="id_pais"><b>Pais</b></label>
+          <input type="text" placeholder="ingrese el texto del comic" name="id_pais" value="<%= usuarioCrud.id_pais %>">
+          <label for="id_provincia"><b>Ciudad/Provincia</b></label>
+          <input type="text" placeholder="ingrese el texto del comic" name="id_provincia" value="<%= usuarioCrud.id_provincia %>">
+          <label for="contraseña"><b>Contraseña</b></label>
+          <input type="text" placeholder="Ingrese la contraseña" name="contraseña" value="<%= usuarioCrud.contraseña %>">
+        </fieldset>
+        <fieldset id="center">
+          <label for="imagen"><b>Imagen</b></label>
+          <input type="text" placeholder="Ingrese la imagen" name="imagen" value="<%= usuarioCrud.imagen %>">
+        </fieldset>
+        </div>
+            <div class="container2">
+              <button type="submit" class="button">Actualizar</button>
+            </div>
+      </form>
+      </main>
+      
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

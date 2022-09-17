@@ -164,6 +164,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "factura",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_usuario",
       unique: false,
@@ -184,25 +185,25 @@ module.exports = sequelize => {
   const FacturaModel = sequelize.define("factura_model", attributes, options);
 
 //Relaciones con el modelo
-// FacturaModel.associate = function (models) {
-//   FacturaModel.hasMany(models.DetalleFacturaModel, {
-//     as: "facturadetalle",
-//     foreignKey: "id_factura"
-//   });
-//   FacturaModel.belongsTo(models.EstadoFacturaModel, {
-//     as: "estadofactura",
-//     foreignKey: "id_estadofactura"
-//   });
-//   FacturaModel.belongsTo(models.ModoPagoModel, {
-//     as: "modopagofactura",
-//     foreignKey: "id_modopago"
-//   });
-//   FacturaModel.belongsTo(models.UsuarioModel, {
-//     as: "usuariofactura",
-//     foreignKey: "id_usuario"
-//   });
+FacturaModel.associate = function (models) {
+  FacturaModel.hasMany(models.detalle_factura_model, {
+    as: "facturadetalle",
+    foreignKey: "id_factura"
+  });
+  FacturaModel.belongsTo(models.estado_factura_model, {
+    as: "estadofactura",
+    foreignKey: "id_estadofactura"
+  });
+  FacturaModel.belongsTo(models.modo_pago_model, {
+    as: "modopagofactura",
+    foreignKey: "id_modopago"
+  });
+  FacturaModel.belongsTo(models.usuario_model, {
+    as: "usuariofactura",
+    foreignKey: "id_usuario"
+  });
 
-// };
+};
 
   return FacturaModel;
 };

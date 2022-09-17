@@ -88,6 +88,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "detalle_factura",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_factura",
       unique: false,
@@ -103,17 +104,17 @@ module.exports = sequelize => {
   const DetalleFacturaModel = sequelize.define("detalle_factura_model", attributes, options);
 
   //Relaciones con el modelo
-  // DetalleFacturaModel.associate = function (models) {
-  //   DetalleFacturaModel.belongsTo(models.ProductosModel, {
-  //     as: "productosdetalle",
-  //     foreignKey: "id_productos"
-  //   });
-  //   DetalleFacturaModel.belongsTo(models.FacturaModel, {
-  //     as: "factura",
-  //     foreignKey: "id_factura"
-  //   });
+  DetalleFacturaModel.associate = function (models) {
+    DetalleFacturaModel.belongsTo(models.productos_model, {
+      as: "productosdetalle",
+      foreignKey: "id_productos"
+    });
+    DetalleFacturaModel.belongsTo(models.factura_model, {
+      as: "factura",
+      foreignKey: "id_factura"
+    });
 
-  // };
+  };
 
   return DetalleFacturaModel;
 };

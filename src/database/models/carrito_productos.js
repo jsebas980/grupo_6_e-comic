@@ -43,6 +43,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "carrito_productos",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_productos",
       unique: false,
@@ -58,17 +59,17 @@ module.exports = sequelize => {
   const CarritoProductosModel = sequelize.define("carrito_productos_model", attributes, options);
 
   //Relaciones con el modelo
-  // CarritoProductosModel.associate = function (models) {
-  //   CarritoProductosModel.belongsTo(models.ProductosModel, {
-  //     as: "productoscarrito",
-  //     foreignKey: "id_productos"
-  //   });
-  //   CarritoProductosModel.belongsTo(models.CarritoModel, {
-  //     as: "carrito",
-  //     foreignKey: "id_carrito"
-  //   });
+  CarritoProductosModel.associate = function (models) {
+    CarritoProductosModel.belongsTo(models.productos_model, {
+      as: "productoscarrito",
+      foreignKey: "id_productos"
+    });
+    CarritoProductosModel.belongsTo(models.carrito_model, {
+      as: "carrito",
+      foreignKey: "id_carrito"
+    });
 
-  // };
+  };
 
   return CarritoProductosModel;
 };

@@ -26,17 +26,18 @@ module.exports = sequelize => {
   const options = {
     tableName: "rol",
     comment: "",
+    timestamps: false,
     indexes: []
   };
   const RolModel = sequelize.define("rol_model", attributes, options);
 
   //Relaciones con el modelo
-  // RolModel.associate = function (models) {
-  //   RolModel.hasMany(models.RolUsuarioModel, { 
-  //       as: "rolusuario",
-  //       foreignKey: "id_rol"
-  //   });
-  // };
+  RolModel.associate = function (models) {
+    RolModel.hasMany(models.rol_usuario_model, { 
+        as: "rolusuario",
+        foreignKey: "id_rol"
+    });
+  };
 
   return RolModel;
 };

@@ -26,17 +26,18 @@ module.exports = sequelize => {
   const options = {
     tableName: "personas",
     comment: "",
+    timestamps: false,
     indexes: []
   };
   const PersonasModel = sequelize.define("personas_model", attributes, options);
 
   //Relaciones con el modelo
-  // PersonasModel.associate = function (models) {
-  //   PersonasModel.hasMany(models.ProductosPersonasModel, { 
-  //       as: "productospersonas",
-  //       foreignKey: "id_personas"
-  //   });
-  // };
+  PersonasModel.associate = function (models) {
+    PersonasModel.hasMany(models.productos_personas_model, { 
+        as: "productospersonas",
+        foreignKey: "id_personas"
+    });
+  };
 
   return PersonasModel;
 };

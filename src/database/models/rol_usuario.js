@@ -52,6 +52,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "rol_usuario",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_usuario",
       unique: false,
@@ -66,17 +67,17 @@ module.exports = sequelize => {
   };
   const RolUsuarioModel = sequelize.define("rol_usuario_model", attributes, options);
 
-  // RolUsuarioModel.associate = function (models) {
-  //   RolUsuarioModel.belongsTo(models.RolModel, {
-  //       as: "roles",
-  //       foreignKey: "id_rol"
-  //   });
-  //   RolUsuarioModel.belongsTo(models.UsuarioModel, {
-  //     as: "usuario",
-  //     foreignKey: "id_usuario"
-  //   });
+  RolUsuarioModel.associate = function (models) {
+    RolUsuarioModel.belongsTo(models.rol_model, {
+        as: "roles",
+        foreignKey: "id_rol"
+    });
+    RolUsuarioModel.belongsTo(models.usuario_model, {
+      as: "usuario",
+      foreignKey: "id_usuario"
+    });
 
-  // };
+  };
 
   return RolUsuarioModel;
 };

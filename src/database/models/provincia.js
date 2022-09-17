@@ -39,6 +39,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "provincia",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_pais",
       unique: false,
@@ -48,23 +49,23 @@ module.exports = sequelize => {
   };
   const ProvinciaModel = sequelize.define("provincia_model", attributes, options);
 
-  // ProvinciaModel.associate = function (models) {
-  //   ProvinciaModel.belongsTo(models.PaisModel, {
-  //       as: "pais",
-  //       foreignKey: "id_pais"
-  //   });
+  ProvinciaModel.associate = function (models) {
+    ProvinciaModel.belongsTo(models.pais_model, {
+        as: "pais",
+        foreignKey: "id_pais"
+    });
 
-  //   ProvinciaModel.hasMany(models.UsuarioModel, { 
-  //     as: "usuario",
-  //     foreignKey: "id_provincia"
-  //   });
+    ProvinciaModel.hasMany(models.usuario_model, { 
+      as: "usuario",
+      foreignKey: "id_provincia"
+    });
 
-  //   ProvinciaModel.hasMany(models.CarritoModel, { 
-  //     as: "carrito",
-  //     foreignKey: "id_provincia"
-  //   });
+    ProvinciaModel.hasMany(models.carrito_model, { 
+      as: "carrito",
+      foreignKey: "id_provincia"
+    });
 
-  // };
+  };
 
   return ProvinciaModel;
 };

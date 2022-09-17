@@ -56,6 +56,7 @@ module.exports = sequelize => {
   const options = {
     tableName: "productos_personas",
     comment: "",
+    timestamps: false,
     indexes: [{
       name: "id_productos",
       unique: false,
@@ -76,20 +77,20 @@ module.exports = sequelize => {
   const ProductosPersonasModel = sequelize.define("productos_personas_model", attributes, options);
 
   //Relaciones con el modelo
-  // ProductosPersonasModel.associate = function (models) {
-  //   ProductosPersonasModel.belongsTo(models.PersonasModel, {
-  //       as: "personas",
-  //       foreignKey: "id_personas"
-  //   });
-  //   ProductosPersonasModel.belongsTo(models.RolPersonasModel, {
-  //     as: "rolespersonas",
-  //     foreignKey: "id_rol"
-  //   });
-  //   ProductosPersonasModel.belongsTo(models.ProductosModel, {
-  //     as: "productos",
-  //     foreignKey: "id_productos"
-  //   });
-  // };
+  ProductosPersonasModel.associate = function (models) {
+    ProductosPersonasModel.belongsTo(models.personas_model, {
+        as: "personas",
+        foreignKey: "id_personas"
+    });
+    ProductosPersonasModel.belongsTo(models.rol_personas_model, {
+      as: "rolespersonas",
+      foreignKey: "id_rol"
+    });
+    ProductosPersonasModel.belongsTo(models.productos_model, {
+      as: "productos",
+      foreignKey: "id_productos"
+    });
+  };
 
   return ProductosPersonasModel;
 };
