@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     id_usuario: {
       type: DataTypes.INTEGER(11),
@@ -23,8 +21,8 @@ module.exports = sequelize => {
       field: "id_usuario",
       references: {
         key: "id",
-        model: "usuario_model"
-      }
+        model: "usuario_model",
+      },
     },
     id_estadofactura: {
       type: DataTypes.INTEGER(11),
@@ -36,8 +34,8 @@ module.exports = sequelize => {
       field: "id_estadofactura",
       references: {
         key: "id",
-        model: "estado_factura_model"
-      }
+        model: "estado_factura_model",
+      },
     },
     envio: {
       type: DataTypes.STRING(100),
@@ -46,7 +44,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "envio"
+      field: "envio",
     },
     impuesto: {
       type: DataTypes.INTEGER(11),
@@ -55,7 +53,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "impuesto"
+      field: "impuesto",
     },
     total: {
       type: DataTypes.FLOAT,
@@ -64,7 +62,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "total"
+      field: "total",
     },
     id_modopago: {
       type: DataTypes.INTEGER(11),
@@ -76,8 +74,8 @@ module.exports = sequelize => {
       field: "id_modopago",
       references: {
         key: "id",
-        model: "modo_pago_model"
-      }
+        model: "modo_pago_model",
+      },
     },
     fecha: {
       type: DataTypes.DATE,
@@ -86,7 +84,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "fecha"
+      field: "fecha",
     },
     nombrecompleto: {
       type: DataTypes.STRING(100),
@@ -95,7 +93,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombrecompleto"
+      field: "nombrecompleto",
     },
     correoelectronico: {
       type: DataTypes.STRING(100),
@@ -104,7 +102,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "correoelectronico"
+      field: "correoelectronico",
     },
     direccion: {
       type: DataTypes.STRING(100),
@@ -113,7 +111,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "direccion"
+      field: "direccion",
     },
     numerotelefono: {
       type: DataTypes.STRING(100),
@@ -122,7 +120,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "numerotelefono"
+      field: "numerotelefono",
     },
     id_pais: {
       type: DataTypes.INTEGER(11),
@@ -131,7 +129,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "id_pais"
+      field: "id_pais",
     },
     id_provincia: {
       type: DataTypes.INTEGER(11),
@@ -140,7 +138,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "id_provincia"
+      field: "id_provincia",
     },
     ciudad: {
       type: DataTypes.STRING(100),
@@ -149,7 +147,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "ciudad"
+      field: "ciudad",
     },
     detalleadicionales: {
       type: DataTypes.STRING(200),
@@ -158,52 +156,60 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "detalleadicionales"
-    }
+      field: "detalleadicionales",
+    },
   };
   const options = {
     tableName: "factura",
     comment: "",
     timestamps: false,
-    indexes: [{
-      name: "id_usuario",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_usuario"]
-    }, {
-      name: "id_estadofactura",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_estadofactura"]
-    }, {
-      name: "id_modopago",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_modopago"]
-    }]
+    indexes: [
+      {
+        name: "id_usuario",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_usuario"],
+      },
+      {
+        name: "id_estadofactura",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_estadofactura"],
+      },
+      {
+        name: "id_modopago",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_modopago"],
+      },
+    ],
   };
-  const FacturaModel = sequelize.define("factura_model", attributes, options);
 
-//Relaciones con el modelo
-FacturaModel.associate = function (models) {
-  FacturaModel.hasMany(models.detalle_factura_model, {
-    as: "facturadetalle",
-    foreignKey: "id_factura"
-  });
-  FacturaModel.belongsTo(models.estado_factura_model, {
-    as: "estadofactura",
-    foreignKey: "id_estadofactura"
-  });
-  FacturaModel.belongsTo(models.modo_pago_model, {
-    as: "modopagofactura",
-    foreignKey: "id_modopago"
-  });
-  FacturaModel.belongsTo(models.usuario_model, {
-    as: "usuariofactura",
-    foreignKey: "id_usuario"
-  });
+  const FacturaModel = sequelize.define(
+    "factura_model", 
+    attributes, 
+    options
+  );
 
-};
+  //Relaciones con el modelo
+  FacturaModel.associate = function (models) {
+    FacturaModel.hasMany(models.detalle_factura_model, {
+      as: "facturadetalle",
+      foreignKey: "id_factura",
+    });
+    FacturaModel.belongsTo(models.estado_factura_model, {
+      as: "estadofactura",
+      foreignKey: "id_estadofactura",
+    });
+    FacturaModel.belongsTo(models.modo_pago_model, {
+      as: "modopagofactura",
+      foreignKey: "id_modopago",
+    });
+    FacturaModel.belongsTo(models.usuario_model, {
+      as: "usuariofactura",
+      foreignKey: "id_usuario",
+    });
+  };
 
   return FacturaModel;
 };

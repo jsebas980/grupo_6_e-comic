@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     nombrecategoria: {
       type: DataTypes.STRING(100),
@@ -20,16 +18,20 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombrecategoria"
-    }
+      field: "nombrecategoria",
+    },
   };
   const options = {
     tableName: "categoria",
     comment: "",
     timestamps: false,
-    indexes: []
+    indexes: [],
   };
-  const CategoriaModel = sequelize.define("categoria_model", attributes, options);
+  const CategoriaModel = sequelize.define(
+    "categoria_model",
+    attributes,
+    options
+  );
 
   // sequelize.sync().then(() => {
   //   console.log('eComic Sync created successfully!');
@@ -37,12 +39,11 @@ module.exports = sequelize => {
   //   console.error('Unable to create table : ', error);
   // });
 
-
   //Relaciones con el modelo
   CategoriaModel.associate = function (models) {
     CategoriaModel.hasMany(models.productos_model, {
       as: "productoscategorias",
-      foreignKey: "id_categoria"
+      foreignKey: "id_categoria",
     });
   };
 

@@ -1,15 +1,14 @@
 // ? Variables y Requiere
-// const fs = require('fs');
-// const { validationResult } = require('express-validator');
-// let archivoUsers = "./database/users.json";
-// let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
-// const bcrypt = require("bcryptjs");
-// const User = require('../models/user.js');
-// const { Console } = require('console');
+const fs = require('fs');
+const { validationResult } = require('express-validator');
+let archivoUsers = "./database/users.json";
+let comicUsers = JSON.parse(fs.readFileSync(archivoUsers, "utf-8"));
+const bcrypt = require("bcryptjs");
+const User = require('../models/user.js');
+const { Console } = require('console');
 
-const db = require('../database/models/');
+const db = require("../database/models/");
 const sequelize = db.sequelize;
-
 //console.log(sequelize.models.usuario_model.findByPk(8));
 
 const userController = {
@@ -22,39 +21,43 @@ const userController = {
 
     /*** Ejecuta el login de usuario ***/
     loginProcess: (req, res) => {
-
-        let userToLogin = User.findByField('email', req.body.email)
+        let userToLogin = User.findByField("email", req.body.email);
         if (userToLogin) {
-            let isOKThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+            let isOKThePassword = bcrypt.compareSync(
+                req.body.password,
+                userToLogin.password
+            );
             if (isOKThePassword) {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
                 console.log(req.body);
                 if (req.body.remember) {
-                    res.cookie('userEmail', req.body.email, { maxAge: 60 * 1000, httpOnly: true });
+                    res.cookie("userEmail", req.body.email, {
+                        maxAge: 60 * 1000,
+                        httpOnly: true,
+                    });
                 }
-                return res.redirect('profile');
+                return res.redirect("profile");
             }
-            return res.render('users/login', {
+            return res.render("users/login", {
                 errors: {
                     email: {
-                        msg: 'Las credenciales son inválidas'
-                    }
-                }
-            })
-
+                        msg: "Las credenciales son inválidas",
+                    },
+                },
+            });
         }
-        return res.render('users/login', {
+        return res.render("users/login", {
             errors: {
                 email: {
-                    msg: 'No se encuentra este email en nuestra base de datos'
-                }
-            }
-        })
+                    msg: "No se encuentra este email en nuestra base de datos",
+                },
+            },
+        });
     },
 
     logout: (req, res) => {
-        res.clearCookie('userEmail');
+        res.clearCookie("userEmail");
         req.session.destroy();
         return res.redirect("/");
     },
@@ -62,7 +65,9 @@ const userController = {
     /*** Muestra el detalle de un usuario ***/
     profile: (req, res) => {
         console.log("Cookies :  ", req.cookies);
-        let usuario = comicUsers.find((user) => user.id == req.session.userLogged.id);
+        let usuario = comicUsers.find(
+            (user) => user.id == req.session.userLogged.id
+        );
         res.render("users/userProfile", { usuario: usuario });
     },
 
@@ -74,14 +79,14 @@ const userController = {
     /*** Muestra el detalle de un usuario ***/
     userDetail: (req, res) => {
         let usuario = comicUsers.find((user) => user.id == req.params.userId);
-        res.render("users/userDetail", { usuario: usuario, });
+        res.render("users/userDetail", { usuario: usuario });
     },
 
     /*** Muestra la pagina de edicion de un usuario ***/
     userEdit: (req, res) => {
         let id = req.params.id;
         let userToEdit = comicUsers.find((user) => user.id == id);
-        return res.render("users/userEdit", { userToEdit, });
+        return res.render("users/userEdit", { userToEdit });
     },
 
     /*** Ejecuta la actualizacion de un usuario ***/
@@ -117,7 +122,10 @@ const userController = {
             return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            return res.render("users/userEdit", { errors: errors.array(), old: req.body });
+            return res.render("users/userEdit", {
+                errors: errors.array(),
+                old: req.body,
+            });
         }
     },
 
@@ -176,7 +184,10 @@ const userController = {
             return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            return res.render("users/userLoad", { errors: errors.array(), old: req.body });
+            return res.render("users/userLoad", {
+                errors: errors.array(),
+                old: req.body,
+            });
         }
     },
 
@@ -187,44 +198,17 @@ const userController = {
     //           user.role =  "user";
     //       });
 
-
     // ! CRUD de los usuarios
     listCRUD: (req, res) => {
-        db.usuario_model.findAll()
-            .then(usuarioCrud => {
-                return res.render('users/userListcrud', { usuarioCrud })
-            })
+        db.usuario_model.findAll().then((usuarioCrud) => {
+            return res.render("users/userListcrud", { usuarioCrud });
+        });
     },
     userDetailCRUD: (req, res) => {
-        db.usuario_model.findByPk(req.params.id)
-            .then(usuarioCrud => {
-                return res.render('users/userDetailcrud', { usuarioCrud });
-            });
+        db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+            return res.render("users/userDetailcrud", { usuarioCrud });
+        });
     },
-    // new: (req, res) => {
-    //     Movies.findAll({
-    //         order : [
-    //             ['release_date', 'DESC']
-    //         ],
-    //         limit: 5
-    //     })
-    //         .then(movies => {
-    //             return res.render('newestMovies', {movies});
-    //         });
-    // },
-    // recomended: (req, res) => {
-    //     Movies.findAll({
-    //         where: {
-    //             rating: {[db.Sequelize.Op.gte] : 8}
-    //         },
-    //         order: [
-    //             ['rating', 'DESC']
-    //         ]
-    //     })
-    //         .then(movies => {
-    //             return res.render('recommendedMovies.ejs', {movies});
-    //         });
-    // },
 
     userCreateCRUD: (req, res) => {
         return res.render("users/userLoadCRUD");
@@ -246,51 +230,81 @@ const userController = {
     },
 
     editCRUD: function (req, res) {
-        db.usuario_model.findByPk(req.params.id)
-            .then(usuarioCrud => {
-                return res.render('users/userEditcrud', { usuarioCrud });
+        db.usuario_model
+            .findByPk(req.params.id)
+            .then((usuarioCrud) => {
+                return res.render("users/userEditcrud", { usuarioCrud });
             })
-            .catch(error => res.send(error))
+            .catch((error) => res.send(error));
     },
 
     updateCRUD: function (req, res) {
-        db.usuario_model.update({
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            correoelectronico: req.body.correoelectronico,
-            contraseña: req.body.contraseña,
-            numerotelefono: req.body.numerotelefono,
-            id_pais: req.body.id_pais,
-            id_provincia: req.body.id_provincia,
-            imagen: req.body.imagen,
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
+        db.usuario_model
+            .update(
+                {
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    correoelectronico: req.body.correoelectronico,
+                    contraseña: req.body.contraseña,
+                    numerotelefono: req.body.numerotelefono,
+                    id_pais: req.body.id_pais,
+                    id_provincia: req.body.id_provincia,
+                    imagen: req.body.imagen,
+                },
+                {
+                    where: {
+                        id: req.params.id,
+                    },
+                }
+            )
             .then(() => {
                 return res.redirect("/");
             })
-            .catch(error => res.send(error));
+            .catch((error) => res.send(error));
     },
 
     deleteCRUD: function (req, res) {
-        db.usuario_model.findByPk(req.params.id)
-            .then(usuarioCrud => {
-                return res.render('users/userDeletecrud', { usuarioCrud });
-            });
+        db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+            return res.render("users/userDeletecrud", { usuarioCrud });
+        });
     },
     destroyCRUD: function (req, res) {
-        db.usuario_model.destroy({
-            where: { id: req.params.id },
-            force: true
-        })
+        db.usuario_model
+            .destroy({
+                where: { id: req.params.id },
+                force: true,
+            })
             .then(() => {
                 return res.redirect("/");
             })
-            .catch(error => res.send(error))
-    }
+            .catch((error) => res.send(error));
+    },
+    
+    // new: (req, res) => {
+    //     Movies.findAll({
+    //         order : [
+    //             ['release_date', 'DESC']
+    //         ],
+    //         limit: 5
+    //     })
+    //         .then(movies => {
+    //             return res.render('newestMovies', {movies});
+    //         });
+    // },
 
+    // recomended: (req, res) => {
+    //     Movies.findAll({
+    //         where: {
+    //             rating: {[db.Sequelize.Op.gte] : 8}
+    //         },
+    //         order: [
+    //             ['rating', 'DESC']
+    //         ]
+    //     })
+    //         .then(movies => {
+    //             return res.render('recommendedMovies.ejs', {movies});
+    //         });
+    // },
 
 };
 

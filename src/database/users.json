@@ -1,133 +1,133 @@
 [
- {
-  "id": 1,
-  "firstname": "Ebony",
-  "lastname": "Stallebrass",
-  "email": "estallebrass0@tripadvisor.com",
-  "password": "$2a$10$p4IKf6Fr30XN15Jk91lu3eDt5yH6be8qCHBPTK49GW6CulieXB3Za",
-  "phonenumber": "6356773885",
-  "city": "Mende",
-  "img": "user1.png",
-  "role": "admin"
- },
- {
-  "id": 2,
-  "firstname": "Clara",
-  "lastname": "Laurenzi",
-  "email": "claurenzi1@bbb.org",
-  "password": "$2a$10$Def4Vc8CTZQwODTUuaKcGuN4343PxFCuNwPL0E.AJ58m04W4NmozW",
-  "phonenumber": "9665666741",
-  "city": "Timoulilt",
-  "img": "user2.png",
-  "role": "user"
- },
- {
-  "id": 3,
-  "firstname": "Lee",
-  "lastname": "Alvy",
-  "email": "lalvy2@shareasale.com",
-  "password": "$2a$10$N7gf.HMfACltf7Ca79Vgx.2ap41L/oS1DHoud2kG/w/B0uzp66LW6",
-  "phonenumber": "7455940491",
-  "city": "Morelos",
-  "img": "user3.png",
-  "role": "user"
- },
- {
-  "id": 4,
-  "firstname": "Cord",
-  "lastname": "Gillison",
-  "email": "cgillison3@skype.com",
-  "password": "$2a$10$5HpOz6Odhi4KBfz.se9hmuXaVtegV8Bq4Hmk70WU8XbTrOmx0kfHu",
-  "phonenumber": "2539109437",
-  "city": "Junín",
-  "img": "user4.png",
-  "role": "user"
- },
- {
-  "id": 5,
-  "firstname": "Aeriel",
-  "lastname": "Mardoll",
-  "email": "amardoll4@baidu.com",
-  "password": "$2a$10$QaYf08pPZomgBbW5.uzjLunP9F2EZ8Agv4fw6DNFjDMgwaANq87be",
-  "phonenumber": "4401875451",
-  "city": "Pak Phli",
-  "img": "user5.png",
-  "role": "user"
- },
- {
-  "id": 6,
-  "firstname": "Christian",
-  "lastname": "Larvin",
-  "email": "clarvin5@phoca.cz",
-  "password": "$2a$10$X7valkR7.FdGK/N8E3NFjeM//GRDz70LaKbo7a8UJW4EzI1oiAnuW",
-  "phonenumber": "7892522250",
-  "city": "Blagoveshchensk",
-  "img": "user6.png",
-  "role": "user"
- },
- {
-  "id": 7,
-  "firstname": "Myrtie",
-  "lastname": "Tree",
-  "email": "mtree6@qq.com",
-  "password": "$2a$10$WATIEJwtmN5PL6ACdggdY.2r8hnshIStuKNYoTRz4XOZucF05lDnW",
-  "phonenumber": "7248872990",
-  "city": "Smiths Falls",
-  "img": "user7.png",
-  "role": "user"
- },
- {
-  "id": 8,
-  "firstname": "Fairfax",
-  "lastname": "Howen",
-  "email": "fhowen7@furl.net",
-  "password": "$2a$10$hwR/TvmIXnxGA97nfVitu.AYkWHJpH8TbzjX9EJfj6Y2478b0fR1m",
-  "phonenumber": "8021096501",
-  "city": "Bayt Ūlā",
-  "img": "user8.png",
-  "role": "user"
- },
- {
-  "id": 9,
-  "firstname": "Lorain",
-  "lastname": "Ingleton",
-  "email": "lingleton8@tripadvisor.com",
-  "password": "$2a$10$J9yjWekCQTljuSYcElAmhuUs7U3XBtlI/uLJYvkUCFu3UatskMjWm",
-  "phonenumber": "3687940087",
-  "city": "Rietavas",
-  "img": "user9.png",
-  "role": "user"
- },
- {
-  "id": 10,
-  "firstname": "test",
-  "lastname": "test",
-  "email": "juan.rodriguez@summa-sci.com",
-  "password": "$2a$10$batNEHUclB1ulH5yQx0o4uj6Ykep5woPY6CF27DuzY0Xgi1j81XhK",
-  "phonenumber": "test",
-  "city": "test",
-  "role": "user",
-  "img": "user10.png"
- },
- {
-  "id": 11,
-  "firstname": "",
-  "lastname": "",
-  "email": "",
-  "password": "$2a$10$aLqQFC98TzRiEabr/HCXTuVUeVtk53mq3D8OTPbjvOaW5MQht6g2e",
-  "phonenumber": "",
-  "city": "",
-  "img": "user11.png"
- },
- {
-  "id": 12,
-  "firstname": "Mario",
-  "lastname": "Rodriguez Toro",
-  "email": "mario@summa.com",
-  "password": "$2a$10$GWZM/Xc3/IulK28xh4mFx.8qwvGaiSZ/Us4vMjnhnRTDZqFGuw8vS",
-  "phonenumber": "152364789521",
-  "city": "test",
-  "role": "user",
-  "img": "user11.png"
- }
+    {
+        "id": 1,
+        "firstname": "Ebony",
+        "lastname": "Stallebrass",
+        "email": "estallebrass0@tripadvisor.com",
+        "password": "$2a$10$p4IKf6Fr30XN15Jk91lu3eDt5yH6be8qCHBPTK49GW6CulieXB3Za",
+        "phonenumber": "6356773885",
+        "city": "Mende",
+        "img": "user1.png",
+        "role": "admin"
+    },
+    {
+        "id": 2,
+        "firstname": "Clara",
+        "lastname": "Laurenzi",
+        "email": "claurenzi1@bbb.org",
+        "password": "$2a$10$Def4Vc8CTZQwODTUuaKcGuN4343PxFCuNwPL0E.AJ58m04W4NmozW",
+        "phonenumber": "9665666741",
+        "city": "Timoulilt",
+        "img": "user2.png",
+        "role": "user"
+    },
+    {
+        "id": 3,
+        "firstname": "Lee",
+        "lastname": "Alvy",
+        "email": "lalvy2@shareasale.com",
+        "password": "$2a$10$N7gf.HMfACltf7Ca79Vgx.2ap41L/oS1DHoud2kG/w/B0uzp66LW6",
+        "phonenumber": "7455940491",
+        "city": "Morelos",
+        "img": "user3.png",
+        "role": "user"
+    },
+    {
+        "id": 4,
+        "firstname": "Cord",
+        "lastname": "Gillison",
+        "email": "cgillison3@skype.com",
+        "password": "$2a$10$5HpOz6Odhi4KBfz.se9hmuXaVtegV8Bq4Hmk70WU8XbTrOmx0kfHu",
+        "phonenumber": "2539109437",
+        "city": "Junín",
+        "img": "user4.png",
+        "role": "user"
+    },
+    {
+        "id": 5,
+        "firstname": "Aeriel",
+        "lastname": "Mardoll",
+        "email": "amardoll4@baidu.com",
+        "password": "$2a$10$QaYf08pPZomgBbW5.uzjLunP9F2EZ8Agv4fw6DNFjDMgwaANq87be",
+        "phonenumber": "4401875451",
+        "city": "Pak Phli",
+        "img": "user5.png",
+        "role": "user"
+    },
+    {
+        "id": 6,
+        "firstname": "Christian",
+        "lastname": "Larvin",
+        "email": "clarvin5@phoca.cz",
+        "password": "$2a$10$X7valkR7.FdGK/N8E3NFjeM//GRDz70LaKbo7a8UJW4EzI1oiAnuW",
+        "phonenumber": "7892522250",
+        "city": "Blagoveshchensk",
+        "img": "user6.png",
+        "role": "user"
+    },
+    {
+        "id": 7,
+        "firstname": "Myrtie",
+        "lastname": "Tree",
+        "email": "mtree6@qq.com",
+        "password": "$2a$10$WATIEJwtmN5PL6ACdggdY.2r8hnshIStuKNYoTRz4XOZucF05lDnW",
+        "phonenumber": "7248872990",
+        "city": "Smiths Falls",
+        "img": "user7.png",
+        "role": "user"
+    },
+    {
+        "id": 8,
+        "firstname": "Fairfax",
+        "lastname": "Howen",
+        "email": "fhowen7@furl.net",
+        "password": "$2a$10$hwR/TvmIXnxGA97nfVitu.AYkWHJpH8TbzjX9EJfj6Y2478b0fR1m",
+        "phonenumber": "8021096501",
+        "city": "Bayt Ūlā",
+        "img": "user8.png",
+        "role": "user"
+    },
+    {
+        "id": 9,
+        "firstname": "Lorain",
+        "lastname": "Ingleton",
+        "email": "lingleton8@tripadvisor.com",
+        "password": "$2a$10$J9yjWekCQTljuSYcElAmhuUs7U3XBtlI/uLJYvkUCFu3UatskMjWm",
+        "phonenumber": "3687940087",
+        "city": "Rietavas",
+        "img": "user9.png",
+        "role": "user"
+    },
+    {
+        "id": 10,
+        "firstname": "test",
+        "lastname": "test",
+        "email": "juan.rodriguez@summa-sci.com",
+        "password": "$2a$10$batNEHUclB1ulH5yQx0o4uj6Ykep5woPY6CF27DuzY0Xgi1j81XhK",
+        "phonenumber": "test",
+        "city": "test",
+        "role": "user",
+        "img": "user10.png"
+    },
+    {
+        "id": 11,
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "password": "$2a$10$aLqQFC98TzRiEabr/HCXTuVUeVtk53mq3D8OTPbjvOaW5MQht6g2e",
+        "phonenumber": "",
+        "city": "",
+        "img": "user11.png"
+    },
+    {
+        "id": 12,
+        "firstname": "Mario",
+        "lastname": "Rodriguez Toro",
+        "email": "mario@summa.com",
+        "password": "$2a$10$GWZM/Xc3/IulK28xh4mFx.8qwvGaiSZ/Us4vMjnhnRTDZqFGuw8vS",
+        "phonenumber": "152364789521",
+        "city": "test",
+        "role": "user",
+        "img": "user11.png"
+    }
 ]

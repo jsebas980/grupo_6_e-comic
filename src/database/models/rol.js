@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     tiporol: {
       type: DataTypes.STRING(100),
@@ -20,22 +18,27 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "tiporol"
-    }
+      field: "tiporol",
+    },
   };
   const options = {
     tableName: "rol",
     comment: "",
     timestamps: false,
-    indexes: []
+    indexes: [],
   };
-  const RolModel = sequelize.define("rol_model", attributes, options);
+
+  const RolModel = sequelize.define(
+    "rol_model", 
+    attributes, 
+    options
+  );
 
   //Relaciones con el modelo
   RolModel.associate = function (models) {
-    RolModel.hasMany(models.rol_usuario_model, { 
-        as: "rolusuario",
-        foreignKey: "id_rol"
+    RolModel.hasMany(models.rol_usuario_model, {
+      as: "rolusuario",
+      foreignKey: "id_rol",
     });
   };
 

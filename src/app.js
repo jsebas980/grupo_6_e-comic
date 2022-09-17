@@ -16,7 +16,6 @@ app.use(session( {
   secret: "Nuestro mensaje secreto",
   resave: false,
   saveUninitialized: false,
-
 }));
 
 app.use(cookies());

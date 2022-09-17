@@ -3,12 +3,9 @@ const fs = require("fs");
 let archivo = "./database/products.json";
 let comicProductos = JSON.parse(fs.readFileSync(archivo, "utf-8"));
 
-const path = require('path');
-const db = require('../database/models');
-const sequelize = db.sequelize;
-const { Op } = require("sequelize");
-
-const Productos = db.ProductosModel;
+const dbp = require("../database/models/");
+const sequelize = dbp.sequelize;
+//console.log(sequelize.models.usuario_model.findByPk(8));
 
 const productController = {
     /* CONTROLLER productos */
@@ -132,106 +129,113 @@ const productController = {
         res.render("products/productDetail", { producto: producto });
     },
 
-// ! CRUD de los productos
-list: (req, res) => {
-    Movies.findAll()
-        .then(movies => {
-            return res.render('moviesList.ejs', {movies})
-        })
-},
-detail: (req, res) => {
-    Movies.findByPk(req.params.id)
-        .then(movie => {
-            return res.render('moviesDetail.ejs', {movie});
-        });
-},
-new: (req, res) => {
-    Movies.findAll({
-        order : [
-            ['release_date', 'DESC']
-        ],
-        limit: 5
-    })
-        .then(movies => {
-            return res.render('newestMovies', {movies});
-        });
-},
-recomended: (req, res) => {
-    Movies.findAll({
-        where: {
-            rating: {[db.Sequelize.Op.gte] : 8}
-        },
-        order: [
-            ['rating', 'DESC']
-        ]
-    })
-        .then(movies => {
-            return res.render('recommendedMovies.ejs', {movies});
-        });
-},
-//Aqui dispongo las rutas para trabajar con el CRUD
-add: function (req, res) {
-    Genres.findAll()
-    .then(allGenres => {
-        return res.render("moviesAdd", {allGenres:allGenres})
-    })
-    .catch(error => res.send(error))
-},
-
-create: function (req,res) {
-    Movies.create({
-        title: req.body.title,
-        rating: req.body.rating,
-        awards: req.body.awards,
-        release_date: req.body.release_date,
-        length: req.body.length,
-        genre_id: req.body.genre_id
+// ! CRUD de los usuarios
+listCRUD: (req, res) => {
+    dbp.usuario_model.findAll().then((usuarioCrud) => {
+        return res.render("users/userListcrud", { usuarioCrud });
     });
-    return res.redirect('/movies');
+},
+userDetailCRUD: (req, res) => {
+    dbp.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+        return res.render("users/userDetailcrud", { usuarioCrud });
+    });
 },
 
-edit: function(req,res) {
-    let promMovies = Movies.findByPk(req.params.id);
-    let promGenres = Genres.findAll();
-    Promise
-    .all([promMovies, promGenres])
-    .then(function([Movie, allGenres]) {
-        return  res.render('moviesEdit', {Movie:Movie, allGenres:allGenres})})
-    .catch(error => res.send(error))
+userCreateCRUD: (req, res) => {
+    return res.render("users/userLoadCRUD");
 },
 
-update: function (req,res) {
-    db.Movie.update({
-        title: req.body.title,
-        rating: req.body.rating,
-        awards: req.body.awards,
-        release_date: req.body.release_date,
-        length: req.body.length,
-        genre_id: req.body.genre_id
-    },{
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(()=>{
-        return res.redirect('/movies')})
-    .catch(error => res.send(error));
+createCRUD: function (req, res) {
+    console.log(req.body);
+    dbp.usuario_model.create({
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        correoelectronico: req.body.correoelectronico,
+        contraseña: req.body.contraseña,
+        numerotelefono: req.body.numerotelefono,
+        id_pais: req.body.id_pais,
+        id_provincia: req.body.id_provincia,
+        imagen: req.body.imagen,
+    });
+    return res.redirect("/");
 },
 
-delete: function (req,res) {
-    let Movie = Movies.findByPk(req.params.id)
-    return res.redirect(('/moviesDelete'), {Movie:Movie})
-},
-destroy: function (req,res) {
-    Movies.destroy({
-        where: {id: req.params.id},
-        force: true
+editCRUD: function (req, res) {
+    dbp.usuario_model
+        .findByPk(req.params.id)
+        .then((usuarioCrud) => {
+            return res.render("users/userEditcrud", { usuarioCrud });
         })
-        .then(()=>{
-            return res.redirect('/movies');
+        .catch((error) => res.send(error));
+},
+
+updateCRUD: function (req, res) {
+    dbp.usuario_model
+        .update(
+            {
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                correoelectronico: req.body.correoelectronico,
+                contraseña: req.body.contraseña,
+                numerotelefono: req.body.numerotelefono,
+                id_pais: req.body.id_pais,
+                id_provincia: req.body.id_provincia,
+                imagen: req.body.imagen,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            }
+        )
+        .then(() => {
+            return res.redirect("/");
         })
-        .catch(error => res.send(error))         
-}
+        .catch((error) => res.send(error));
+},
+
+deleteCRUD: function (req, res) {
+    dbp.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+        return res.render("users/userDeletecrud", { usuarioCrud });
+    });
+},
+destroyCRUD: function (req, res) {
+    dbp.usuario_model
+        .destroy({
+            where: { id: req.params.id },
+            force: true,
+        })
+        .then(() => {
+            return res.redirect("/");
+        })
+        .catch((error) => res.send(error));
+},
+
+// new: (req, res) => {
+//     Movies.findAll({
+//         order : [
+//             ['release_date', 'DESC']
+//         ],
+//         limit: 5
+//     })
+//         .then(movies => {
+//             return res.render('newestMovies', {movies});
+//         });
+// },
+
+// recomended: (req, res) => {
+//     Movies.findAll({
+//         where: {
+//             rating: {[db.Sequelize.Op.gte] : 8}
+//         },
+//         order: [
+//             ['rating', 'DESC']
+//         ]
+//     })
+//         .then(movies => {
+//             return res.render('recommendedMovies.ejs', {movies});
+//         });
+// },
 
 
 };

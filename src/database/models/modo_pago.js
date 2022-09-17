@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     nombre: {
       type: DataTypes.STRING(100),
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombre"
+      field: "nombre",
     },
     otrosdetalles: {
       type: DataTypes.STRING(100),
@@ -29,24 +27,29 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "otrosdetalles"
-    }
+      field: "otrosdetalles",
+    },
   };
   const options = {
     tableName: "modo_pago",
     comment: "",
     timestamps: false,
-    indexes: []
+    indexes: [],
   };
-  const ModoPagoModel = sequelize.define("modo_pago_model", attributes, options);
+  
+  const ModoPagoModel = sequelize.define(
+    "modo_pago_model",
+    attributes,
+    options
+  );
 
-//Relaciones con el modelo
-ModoPagoModel.associate = function (models) {
-  ModoPagoModel.hasMany(models.factura_model, { 
+  //Relaciones con el modelo
+  ModoPagoModel.associate = function (models) {
+    ModoPagoModel.hasMany(models.factura_model, {
       as: "facturamodopago",
-      foreignKey: "id_modopago"
-  });
-};
+      foreignKey: "id_modopago",
+    });
+  };
 
   return ModoPagoModel;
 };

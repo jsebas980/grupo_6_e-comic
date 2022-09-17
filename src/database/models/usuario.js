@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     nombre: {
       type: DataTypes.STRING(100),
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "nombre"
+      field: "nombre",
     },
     apellido: {
       type: DataTypes.STRING(100),
@@ -29,7 +27,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "apellido"
+      field: "apellido",
     },
     correoelectronico: {
       type: DataTypes.STRING(100),
@@ -38,7 +36,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "correoelectronico"
+      field: "correoelectronico",
     },
     contraseña: {
       type: DataTypes.STRING(100),
@@ -47,7 +45,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "contraseña"
+      field: "contraseña",
     },
     numerotelefono: {
       type: DataTypes.STRING(100),
@@ -56,7 +54,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "numerotelefono"
+      field: "numerotelefono",
     },
     id_pais: {
       type: DataTypes.INTEGER(11),
@@ -68,8 +66,8 @@ module.exports = sequelize => {
       field: "id_pais",
       references: {
         key: "id",
-        model: "pais_model"
-      }
+        model: "pais_model",
+      },
     },
     id_provincia: {
       type: DataTypes.INTEGER(11),
@@ -81,8 +79,8 @@ module.exports = sequelize => {
       field: "id_provincia",
       references: {
         key: "id",
-        model: "provincia_model"
-      }
+        model: "provincia_model",
+      },
     },
     imagen: {
       type: DataTypes.STRING(50),
@@ -91,53 +89,61 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "imagen"
-    }
+      field: "imagen",
+    },
   };
   const options = {
     tableName: "usuario",
     comment: "",
     timestamps: false,
-    indexes: [{
-      name: "id_pais",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_pais"]
-    }, {
-      name: "usuario_ibfk_2",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_provincia"]
-    }]
+    indexes: [
+      {
+        name: "id_pais",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_pais"],
+      },
+      {
+        name: "usuario_ibfk_2",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_provincia"],
+      },
+    ],
   };
-  const UsuarioModel = sequelize.define("usuario_model", attributes, options);
 
+  const UsuarioModel = sequelize.define(
+    "usuario_model", 
+    attributes, 
+    options
+  );
+
+  //Relaciones con el modelo
   UsuarioModel.associate = function (models) {
     UsuarioModel.belongsTo(models.pais_model, {
-        as: "pais",
-        foreignKey: "id_pais"
+      as: "pais",
+      foreignKey: "id_pais",
     });
 
     UsuarioModel.belongsTo(models.provincia_model, {
-        as: "provincia",
-        foreignKey: "id_provincia"
-    }); 
+      as: "provincia",
+      foreignKey: "id_provincia",
+    });
 
-    UsuarioModel.hasMany(models.rol_usuario_model, { 
+    UsuarioModel.hasMany(models.rol_usuario_model, {
       as: "rol_usuario",
-      foreignKey: "id_usuario"
+      foreignKey: "id_usuario",
     });
 
-    UsuarioModel.hasMany(models.carrito_model, { 
+    UsuarioModel.hasMany(models.carrito_model, {
       as: "carrito",
-      foreignKey: "id_usuario"
+      foreignKey: "id_usuario",
     });
 
-    UsuarioModel.hasMany(models.factura_model, { 
+    UsuarioModel.hasMany(models.factura_model, {
       as: "facturausuario",
-      foreignKey: "id_usuario"
+      foreignKey: "id_usuario",
     });
-
   };
 
   return UsuarioModel;

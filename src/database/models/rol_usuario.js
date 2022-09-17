@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     fecha: {
       type: DataTypes.DATE,
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "fecha"
+      field: "fecha",
     },
     id_usuario: {
       type: DataTypes.INTEGER(11),
@@ -32,8 +30,8 @@ module.exports = sequelize => {
       field: "id_usuario",
       references: {
         key: "id",
-        model: "usuario_model"
-      }
+        model: "usuario_model",
+      },
     },
     id_rol: {
       type: DataTypes.INTEGER(11),
@@ -45,38 +43,45 @@ module.exports = sequelize => {
       field: "id_rol",
       references: {
         key: "id",
-        model: "rol_model"
-      }
-    }
+        model: "rol_model",
+      },
+    },
   };
   const options = {
     tableName: "rol_usuario",
     comment: "",
     timestamps: false,
-    indexes: [{
-      name: "id_usuario",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_usuario"]
-    }, {
-      name: "id_rol",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_rol"]
-    }]
+    indexes: [
+      {
+        name: "id_usuario",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_usuario"],
+      },
+      {
+        name: "id_rol",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_rol"],
+      },
+    ],
   };
-  const RolUsuarioModel = sequelize.define("rol_usuario_model", attributes, options);
+
+  const RolUsuarioModel = sequelize.define(
+    "rol_usuario_model",
+    attributes,
+    options
+  );
 
   RolUsuarioModel.associate = function (models) {
     RolUsuarioModel.belongsTo(models.rol_model, {
-        as: "roles",
-        foreignKey: "id_rol"
+      as: "roles",
+      foreignKey: "id_rol",
     });
     RolUsuarioModel.belongsTo(models.usuario_model, {
       as: "usuario",
-      foreignKey: "id_usuario"
+      foreignKey: "id_usuario",
     });
-
   };
 
   return RolUsuarioModel;
