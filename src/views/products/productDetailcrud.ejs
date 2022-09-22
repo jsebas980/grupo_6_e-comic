@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="card-dtls">
+            <!-- card left -->
+            <div class="product-imgs">
+              <div class="img-display">
+                <div class="img-showcase">
+                  <img src="/images/img/<%= productoCrud.imagen %>" alt="<%= productoCrud.id %>">
+                </div>
+              </div>
+            </div>
+            <!-- card right -->
+            <div class="product-content">
+              <div class="card-header-title">
+                <h2 class="product-title">
+                  <%= productoCrud.titulo %>
+                </h2>
+              </div>
+              <div class="product-price">
+                <p class="last-price">Precio normal: <span>$<%= productoCrud.precio %></span></p>
+                <p class="new-price">Precio con descuento: <span>$<%= productoCrud.precio-productoCrud.precio*0.05
+                      %> (5%)</span></p>
+              </div>
+              <div class="product-detail">
+                <h2>Acerca del comic: </h2>
+                <p>
+                  <%= productoCrud.descripcioncorta %>
+                </p>
+                <p>
+                  <%= productoCrud.descripciondetallada %>
+                </p>
+                <ul>
+                  <li>Autor: <span>
+                      <%= productoCrud.autor %>
+                    </span></li>
+                  <li>Ilustrador: <span>
+                      <%= productoCrud.illustrador %>
+                    </span></li>
+                  <li>Categoría: <span>
+                      <%= productoCrud.id_categoria %>
+                    </span></li>
+                  <li>Publicación: <span>
+                      <%= productoCrud.publicacion %>
+                    </span></li>
+                  <li>País origen: <span>
+                      <%= productoCrud.id_pais %>
+                    </span></li>
+                  <li>Identificador: <span>
+                      <%= productoCrud.id %>
+                    </span></li>
+                </ul>
+              </div>
+              <div class="edit-delete" action="">
+                <div class="ml-auto"><a href="/products/productEdit/<%= productoCrud.id %>"
+                    class="text-uppercase">Editar</a></div>
+                <div class="ml-auto"><a href="/products/productDelete/<%= productoCrud.id %>" class="text-uppercase">Borrar
+                  </a></div>
+              </div>
+              <div class="purchase-info">
+                <input type="number" min="0" value="1">
+                <button type="button" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir al carrito</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="static/dist/script.js"></script>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

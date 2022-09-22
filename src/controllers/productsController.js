@@ -5,7 +5,7 @@ let comicProductos = JSON.parse(fs.readFileSync(archivo, "utf-8"));
 
 const dbp = require("../database/models/");
 const sequelize = dbp.sequelize;
-//console.log(sequelize.models.usuario_model.findByPk(8));
+//console.log(sequelize.models.productos_model.findByPk(8));
 
 const productController = {
     /* CONTROLLER productos */
@@ -129,58 +129,69 @@ const productController = {
         res.render("products/productDetail", { producto: producto });
     },
 
-// ! CRUD de los usuarios
+// ! CRUD de los productos
 listCRUD: (req, res) => {
-    dbp.usuario_model.findAll().then((usuarioCrud) => {
-        return res.render("users/userListcrud", { usuarioCrud });
-    });
-},
-userDetailCRUD: (req, res) => {
-    dbp.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
-        return res.render("users/userDetailcrud", { usuarioCrud });
+    dbp.productos_model.findAll().then((productoCrud) => {
+        return res.render("products/productListcrud", { productoCrud });
     });
 },
 
-userCreateCRUD: (req, res) => {
-    return res.render("users/userLoadCRUD");
+productDetailCRUD: (req, res) => {
+    dbp.productos_model.findByPk(req.params.id).then((productoCrud) => {
+        return res.render("products/productDetailcrud", { productoCrud });
+    });
+},
+
+productCreateCRUD: (req, res) => {
+    return res.render("products/productLoadCRUD");
 },
 
 createCRUD: function (req, res) {
     console.log(req.body);
-    dbp.usuario_model.create({
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        correoelectronico: req.body.correoelectronico,
-        contraseña: req.body.contraseña,
-        numerotelefono: req.body.numerotelefono,
-        id_pais: req.body.id_pais,
-        id_provincia: req.body.id_provincia,
+    dbp.productos_model.create({
+        titulo: req.body.titulo,
+        temporada: req.body.temporada,
+        volumen: req.body.volumen,
+        descripcioncorta: req.body.descripcioncorta,
+        descripciondetallada: req.body.descripciondetallada,
+        precionormal: req.body.precionormal,
+        publicacion: req.body.publicacion,
         imagen: req.body.imagen,
+        precio: req.body.precio,
+        descontinuado: req.body.descontinuado,
+        stock: req.body.stock,
+        id_categoria: req.body.id_categoria,
+        id_pais: req.body.id_pais
     });
     return res.redirect("/");
 },
 
 editCRUD: function (req, res) {
-    dbp.usuario_model
+    dbp.productos_model
         .findByPk(req.params.id)
-        .then((usuarioCrud) => {
-            return res.render("users/userEditcrud", { usuarioCrud });
+        .then((productoCrud) => {
+            return res.render("products/productEditcrud", { productoCrud });
         })
         .catch((error) => res.send(error));
 },
 
 updateCRUD: function (req, res) {
-    dbp.usuario_model
+    dbp.productos_model
         .update(
             {
-                nombre: req.body.nombre,
-                apellido: req.body.apellido,
-                correoelectronico: req.body.correoelectronico,
-                contraseña: req.body.contraseña,
-                numerotelefono: req.body.numerotelefono,
-                id_pais: req.body.id_pais,
-                id_provincia: req.body.id_provincia,
+                titulo: req.body.titulo,
+                temporada: req.body.temporada,
+                volumen: req.body.volumen,
+                descripcioncorta: req.body.descripcioncorta,
+                descripciondetallada: req.body.descripciondetallada,
+                precionormal: req.body.precionormal,
+                publicacion: req.body.publicacion,
                 imagen: req.body.imagen,
+                precio: req.body.precio,
+                descontinuado: req.body.descontinuado,
+                stock: req.body.stock,
+                id_categoria: req.body.id_categoria,
+                id_pais: req.body.id_pais
             },
             {
                 where: {
@@ -195,12 +206,12 @@ updateCRUD: function (req, res) {
 },
 
 deleteCRUD: function (req, res) {
-    dbp.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
-        return res.render("users/userDeletecrud", { usuarioCrud });
+    dbp.productos_model.findByPk(req.params.id).then((productoCrud) => {
+        return res.render("products/productDeletecrud", { productoCrud });
     });
 },
 destroyCRUD: function (req, res) {
-    dbp.usuario_model
+    dbp.productos_model
         .destroy({
             where: { id: req.params.id },
             force: true,

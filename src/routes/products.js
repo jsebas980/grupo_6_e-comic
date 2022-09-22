@@ -40,4 +40,19 @@ router.get('/productList', authMiddleware, productController.productList);
 router.get('/productCreate', authMiddleware, productController.productCreate);
 router.post('/productLoad', uploadFile.single('img'), productController.productload);
 
+// ! CRUD de los productos
+
+/*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
+router.get('/productListCRUD', productController.listCRUD);
+router.get('/productDetailCRUD/:id', productController.productDetailCRUD);
+
+router.get('/productCreateCRUD', productController.productCreateCRUD);
+router.post('/productInsertCRUD', productController.createCRUD);
+
+router.get('/productEditCRUD/:id', productController.editCRUD);
+router.patch('/productEditCRUD/:id', productController.updateCRUD);
+
+router.get('/productDeleteCRUD/:id', productController.deleteCRUD);
+router.delete('/productDeleteCRUD/:id', productController.destroyCRUD);
+
 module.exports = router;

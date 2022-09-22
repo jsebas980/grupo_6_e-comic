@@ -204,6 +204,7 @@ const userController = {
             return res.render("users/userListcrud", { usuarioCrud });
         });
     },
+    
     userDetailCRUD: (req, res) => {
         db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
             return res.render("users/userDetailcrud", { usuarioCrud });
