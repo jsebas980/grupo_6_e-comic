@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="bill_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+
+        <div>
+          <h2 class="Listardoh2">Listado de las facturas</h2>
+          <table class="fl-table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>usuario</th>
+                <th>estadofactura</th>
+                <th>envio</th>
+                <th>impuesto</th>
+                <th>total</th>
+                <th>modopago</th>
+                <th>fecha</th>
+                <th>nombrecompleto</th>
+                <th>correoelectronico</th>
+                <th>direccion</th>
+                <th>numerotelefono</th>
+                <th>pais</th>
+                <th>provincia</th>
+                <th>ciudad</th>
+                <th>detalleadicionales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% facturaCrud.forEach(function(bill){ %>
+                <tr>
+                  <td>
+                    <%= bill.id %>
+                  </td>
+                  <td>
+                    <%= bill.id_usuario %>
+                  </td>
+                  <td>
+                    <%= bill.id_estadofactura %>
+                  </td>
+                  <td>
+                    <%= bill.envio %>
+                  </td>
+                  <td>
+                    <%= bill.impuesto %>
+                  </td>
+                  <td>
+                    <%= bill.total %>
+                  </td>
+                  <td>
+                    <%= bill.id_modopago %>
+                  </td>
+                  <td>
+                    <%= bill.fecha %>
+                  </td>
+                  <td>
+                    <%= bill.nombrecompleto %>
+                  </td>
+                  <td>
+                    <%= bill.correoelectronico %>
+                  </td>
+                  <td>
+                    <%= bill.direccion %>
+                  </td>
+                  <td>
+                    <%= bill.numerotelefono %>
+                  </td>
+                  <td>
+                    <%= bill.id_pais %>
+                  </td>
+                  <td>
+                    <%= bill.id_provincia %>
+                  </td>
+                  <td>
+                    <%= bill.ciudad %>
+                  </td>
+                  <td>
+                    <%= bill.detalleadicionales %>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

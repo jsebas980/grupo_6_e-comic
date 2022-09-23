@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_edit">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <form action="/bills/billInsertCRUD" method="POST">
+        <div class="imgcontainer">
+          <h1>Load</h1>
+        </div>
+        <fieldset id="left">
+          <label for="id_usuario"><b>Usuario</b></label>
+          <input type="text" placeholder="ingrese el usuario" name="id_usuario" required>
+          <label for="id_estadofactura"><b>Estado factura</b></label>
+          <input type="text" placeholder="ingrese la estado factura" name="id_estadofactura" required>
+          <label for="envio"><b>Envio</b></label>
+          <input type="text" placeholder="ingrese el envio" name="envio" required>
+          <label for="impuesto"><b>Impuesto</b></label>
+          <input type="text" placeholder="ingrese el impuesto" name="impuesto" required>
+          <label for="total"><b>Total</b></label>
+          <input type="text" placeholder="ingrese el total" name="total" required>
+          <label for="id_modopago"><b>Modopago</b></label>
+          <input type="text" placeholder="ingrese el modo de pago" name="id_modopago" required>
+          <label for="fecha"><b>fecha</b></label>
+          <input type="text" placeholder="ingrese el fecha" name="fecha" required>
+        </fieldset>
+        <fieldset id="right">
+          <label for="id_pais"><b>Pais</b></label>
+          <input type="text" placeholder="ingrese el pais" name="id_pais" required>
+          <label for="id_provincia"><b>Provincia</b></label>
+          <input type="text" placeholder="ingrese el provincia" name="id_provincia" required>
+          <label for="ciudad"><b>Ciudad</b></label>
+          <input type="text" placeholder="ingrese la ciudad" name="ciudad" required>
+        </fieldset>
+        <fieldset id="center">
+          <label for="nombrecompleto"><b>Nombre completo</b></label>
+          <input type="text" placeholder="ingrese la descripcion corta" name="nombrecompleto" required>
+          <label for="correoelectronico"><b>Correo electronico</b></label>
+          <input type="text" placeholder="ingrese la correo electronico" name="correoelectronico" required>
+          <label for="direccion"><b>Direccion</b></label>
+          <input type="text" placeholder="ingrese la direccion" name="direccion" required>
+          <label for="numerotelefono"><b>Numero telefono</b></label>
+          <input type="text" placeholder="ingrese la número de telefono" name="numerotelefono" required>
+          <label for="detalleadicionales"><b>Descripcion detallada</b></label>
+          <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10" required></textarea>
+          <!-- <input type="file" name="imagen" required>-->
+        </fieldset>
+        </div>
+        <div class="container2">
+          <button type="submit" class="button">Guardar</button>
+        </div>
+      </form>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

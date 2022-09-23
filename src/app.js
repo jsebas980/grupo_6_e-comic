@@ -9,6 +9,7 @@ const app = express();
 const routerMain = require('./routes/main');
 const routerProducts = require('./routes/products');
 const routerUsers = require('./routes/users');
+const routerBills = require('./routes/bills');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //! Ejecución de la session */
@@ -41,6 +42,7 @@ app.use('/', routerMain);
 app.use('/404', routerMain);
 app.use('/products', routerProducts);
 app.use('/users', routerUsers);
+app.use('/bills', routerBills);
 
 //! Configuracion de la pagina 404 */
 app.use((req, res, next) => {
@@ -49,5 +51,5 @@ app.use((req, res, next) => {
 
 //! Configuracion del puerto 3000 */
 app.listen(3000, () => {
-  console.log("Servidor grupo_6_OK");
+  console.log("Servidor Grupo_6_OK - go to http://localhost:3000/");
 });
