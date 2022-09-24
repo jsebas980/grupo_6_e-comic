@@ -15,7 +15,7 @@
           </div>
         </div>
         <h2 class="Listardoh2">Listado de usuarios</h2>
-        <table class="fl-table table-wrapper">
+        <table  id="myTable" width="100%" class="fl-table table-wrapper">
           <thead>
             <tr>
               <th>id</th>
@@ -65,7 +65,11 @@
           </tbody>
         </table>
       </main>
-
+      <script>
+        $(document).ready(function(){
+            $('#myTable').dataTable();
+        });
+        </script>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
