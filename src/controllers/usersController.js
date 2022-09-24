@@ -9,7 +9,25 @@ const { Console } = require('console');
 
 const db = require("../database/models/");
 const sequelize = db.sequelize;
-//console.log(sequelize.models.usuario_model.findByPk(8));
+//console.log(db.usuario_model);
+// db.usuario_model.findAll().then((usuarioCrud) => {
+//     //console.log(usuarioCrud);
+//     usuarioCrud.forEach(function (user) {
+//         //console.log(user.id)
+//         console.log(user.contraseña)
+//         //console.log(user);
+//         db.usuario_model.update({
+//             contraseña: bcrypt.hashSync(user.contraseña, 10)
+//         },
+//             {
+//                 where: {
+//                     id: user.id,
+//                 },
+//             })
+//     })
+// });
+
+
 
 const userController = {
     /* CONTROLLER usuarios */
@@ -200,11 +218,13 @@ const userController = {
 
     // ! CRUD de los usuarios
     listCRUD: (req, res) => {
-        db.usuario_model.findAll().then((usuarioCrud) => {
+        db.usuario_model.findAll({
+            attributes: { exclude: ['contraseña'] }
+          }).then((usuarioCrud) => {
             return res.render("users/userListcrud", { usuarioCrud });
         });
     },
-    
+
     userDetailCRUD: (req, res) => {
         db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
             return res.render("users/userDetailcrud", { usuarioCrud });
@@ -264,6 +284,18 @@ const userController = {
             .catch((error) => res.send(error));
     },
 
+    userPassRole: (req, res) => {
+        console.log(req.body.contraseña);
+        db.usuario_model.update({
+            contraseña: bcrypt.hashSync(req.body.contraseña2, 10)
+        },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            })
+    },
+
     deleteCRUD: function (req, res) {
         db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
             return res.render("users/userDeletecrud", { usuarioCrud });
@@ -280,7 +312,7 @@ const userController = {
             })
             .catch((error) => res.send(error));
     },
-    
+
     // new: (req, res) => {
     //     Movies.findAll({
     //         order : [

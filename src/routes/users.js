@@ -97,4 +97,6 @@ router.patch('/userEditCRUD/:id', userController.updateCRUD);
 router.get('/userDeleteCRUD/:id', userController.deleteCRUD);
 router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);
 
+router.patch('/userPassRole/:id', userController.userPassRole);
+
 module.exports = router;
