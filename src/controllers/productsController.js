@@ -222,33 +222,6 @@ destroyCRUD: function (req, res) {
         .catch((error) => res.send(error));
 },
 
-// new: (req, res) => {
-//     Movies.findAll({
-//         order : [
-//             ['release_date', 'DESC']
-//         ],
-//         limit: 5
-//     })
-//         .then(movies => {
-//             return res.render('newestMovies', {movies});
-//         });
-// },
-
-// recomended: (req, res) => {
-//     Movies.findAll({
-//         where: {
-//             rating: {[db.Sequelize.Op.gte] : 8}
-//         },
-//         order: [
-//             ['rating', 'DESC']
-//         ]
-//     })
-//         .then(movies => {
-//             return res.render('recommendedMovies.ejs', {movies});
-//         });
-// },
-
-
 };
 
 module.exports = productController;
