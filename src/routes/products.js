@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
       cb(null, file.originalname);
    }
 });
-var uploadFile = multer({storage: storage})
+var uploadFile = multer({ storage: storage })
 
 /*** Muestra la pagina del detalle de un producto ***/
 router.get('/productDetail/:comicId', productController.productDetail);

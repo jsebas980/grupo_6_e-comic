@@ -22,25 +22,25 @@ const mainController = {
     },
 
     indexCRUD: (req, res) => {
-        dbp.productos_model.findAll({ order:[Sequelize.literal('RAND()')], limit: 10 })
-        .then(producto => {
-            return res.render("indexCRUD", { producto: producto });
-        });
-},
+        dbp.productos_model.findAll({ order: [Sequelize.literal('RAND()')], limit: 10 })
+            .then(producto => {
+                return res.render("indexCRUD", { producto: producto });
+            });
+    },
 
-// recomended: (req, res) => {
-//     Movies.findAll({
-//         where: {
-//             rating: {[db.Sequelize.Op.gte] : 8}
-//         },
-//         order: [
-//             ['rating', 'DESC']
-//         ]
-//     })
-//         .then(movies => {
-//             return res.render('recommendedMovies.ejs', {movies});
-//         });
-// },
+    // recomended: (req, res) => {
+    //     Movies.findAll({
+    //         where: {
+    //             rating: {[db.Sequelize.Op.gte] : 8}
+    //         },
+    //         order: [
+    //             ['rating', 'DESC']
+    //         ]
+    //     })
+    //         .then(movies => {
+    //             return res.render('recommendedMovies.ejs', {movies});
+    //         });
+    // },
 };
 
 module.exports = mainController;

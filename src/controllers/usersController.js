@@ -48,7 +48,7 @@ const userController = {
             if (isOKThePassword) {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
-                console.log(req.body);
+                //console.log(req.body);
                 if (req.body.remember) {
                     res.cookie("userEmail", req.body.email, {
                         maxAge: 60 * 1000,
@@ -82,7 +82,7 @@ const userController = {
 
     /*** Muestra el detalle de un usuario ***/
     profile: (req, res) => {
-        console.log("Cookies :  ", req.cookies);
+        //console.log("Cookies :  ", req.cookies);
         let usuario = comicUsers.find(
             (user) => user.id == req.session.userLogged.id
         );
@@ -220,7 +220,7 @@ const userController = {
     listCRUD: (req, res) => {
         db.usuario_model.findAll({
             attributes: { exclude: ['contraseña'] }
-          }).then((usuarioCrud) => {
+        }).then((usuarioCrud) => {
             return res.render("users/userListcrud", { usuarioCrud });
         });
     },
@@ -236,7 +236,7 @@ const userController = {
     },
 
     createCRUD: function (req, res) {
-        console.log(req.body);
+        //console.log(req.body);
         db.usuario_model.create({
             nombre: req.body.nombre,
             apellido: req.body.apellido,
@@ -285,7 +285,7 @@ const userController = {
     },
 
     userPassRole: (req, res) => {
-        console.log(req.body.contraseña);
+        //console.log(req.body.contraseña);
         db.usuario_model.update({
             contraseña: bcrypt.hashSync(req.body.contraseña2, 10)
         },

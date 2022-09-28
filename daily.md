@@ -72,9 +72,7 @@
 
 ## 3. Impedimentos
 
--
-
----
+- ***
 
 # Daily (02/08/2022)
 
@@ -168,7 +166,7 @@
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -184,10 +182,9 @@
 
 ## 3. Impedimentos
 
-- Inconveniente con el almacenamiento  y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
+- Inconveniente con el almacenamiento y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
 
-SPRINT 6
----
+## SPRINT 6
 
 # Daily (25/08/2022)
 
@@ -198,9 +195,10 @@ SPRINT 6
 ## 2. Que se va a hacer hoy?
 
 - Se realia el diseño del diagrama de base de datos Entidad y relacion (DER); asi mismo comienzo del sprint 6 en el Trello
+
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -216,7 +214,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -232,7 +230,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -248,7 +246,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -264,7 +262,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -280,7 +278,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -288,7 +286,7 @@ SPRINT 6
 
 ## 1. Que se hizo ayer?
 
-- Se termina de hacer las configuraciones necesaria para conectar con la base de datos de eComic_db y la estructura del modelamiento con cada una de las tablas 
+- Se termina de hacer las configuraciones necesaria para conectar con la base de datos de eComic_db y la estructura del modelamiento con cada una de las tablas
 
 ## 2. Que se va a hacer hoy?
 
@@ -297,7 +295,6 @@ SPRINT 6
 ## 3. Impedimentos
 
 - Se encuentra un impedimiento en la ejecucion del proyecto integrador ya que las relaciones por medio de sequilize no estaba reconociendo esta mismas dentro de la ejecucion por medio de sequelize automate.
-
 
 ---
 
@@ -309,11 +306,11 @@ SPRINT 6
 
 ## 2. Que se va a hacer hoy?
 
-- Se va terminar de hacer la configuracion en el modelamiento y asociacion de las tablas con la relaciones, para posteriormente empezar a crear los CRUD  a cada uno de los procesos Usuario, Productos y Facturas.
+- Se va terminar de hacer la configuracion en el modelamiento y asociacion de las tablas con la relaciones, para posteriormente empezar a crear los CRUD a cada uno de los procesos Usuario, Productos y Facturas.
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -337,7 +334,7 @@ SPRINT 6
 
 ## 1. Que se hizo ayer?
 
-- Se termino de organizar los CRUD de usuarios tanto en las views, controllers y routers 
+- Se termino de organizar los CRUD de usuarios tanto en las views, controllers y routers
 
 ## 2. Que se va a hacer hoy?
 
@@ -345,7 +342,7 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -353,7 +350,7 @@ SPRINT 6
 
 ## 1. Que se hizo ayer?
 
-- Se termino de organizar los CRUD de productos tanto en las views, controllers y routers 
+- Se termino de organizar los CRUD de productos tanto en las views, controllers y routers
 
 ## 2. Que se va a hacer hoy?
 
@@ -361,7 +358,8 @@ SPRINT 6
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
+## SPRINT 7

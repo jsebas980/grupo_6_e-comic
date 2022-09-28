@@ -13,7 +13,7 @@ const routerBills = require('./routes/bills');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //! Ejecución de la session */
-app.use(session( {
+app.use(session({
   secret: "Nuestro mensaje secreto",
   resave: false,
   saveUninitialized: false,
