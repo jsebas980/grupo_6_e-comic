@@ -28,19 +28,6 @@ const mainController = {
             });
     },
 
-    // recomended: (req, res) => {
-    //     Movies.findAll({
-    //         where: {
-    //             rating: {[db.Sequelize.Op.gte] : 8}
-    //         },
-    //         order: [
-    //             ['rating', 'DESC']
-    //         ]
-    //     })
-    //         .then(movies => {
-    //             return res.render('recommendedMovies.ejs', {movies});
-    //         });
-    // },
 };
 
 module.exports = mainController;
