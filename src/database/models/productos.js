@@ -64,15 +64,24 @@ module.exports = (sequelize) => {
       autoIncrement: false,
       comment: null,
       field: "precionormal",
+      get: function() { // or use get(){ }
+        return this.getDataValue('precionormal')
+        .toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      }
     },
     publicacion: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "publicacion",
+      get: function() { // or use get(){ }
+        return this.getDataValue('publicacion')
+          .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      
     },
     imagen: {
       type: DataTypes.STRING(100),
@@ -91,6 +100,10 @@ module.exports = (sequelize) => {
       autoIncrement: false,
       comment: null,
       field: "precio",
+      get: function() { // or use get(){ }
+        return this.getDataValue('precio')
+        .toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      }
     },
     descontinuado: {
       type: DataTypes.INTEGER(1),

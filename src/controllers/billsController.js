@@ -6,7 +6,9 @@ const billController = {
 
     // ! CRUD de los facturas
     listCRUD: (req, res) => {
-        dbd.factura_model.findAll().then((facturaCrud) => {
+        dbd.factura_model.findAll({
+            include: [{ association: 'estadofactura' },{ association: 'modopagofactura' },{ association: 'usuariofactura' }] 
+        }).then((facturaCrud) => {
             return res.render("bills/billListcrud", { facturaCrud });
         });
     },

@@ -5,7 +5,7 @@ let comicProductos = JSON.parse(fs.readFileSync(archivo, "utf-8"));
 
 const dbp = require("../database/models/");
 const sequelize = dbp.sequelize;
-//console.log(sequelize.models.productos_model.findByPk(8));
+console.log(sequelize);
 
 const productController = {
     /* CONTROLLER productos */
@@ -131,7 +131,7 @@ const productController = {
 
     // ! CRUD de los productos
     listCRUD: (req, res) => {
-        dbp.productos_model.findAll().then((productoCrud) => {
+        dbp.productos_model.findAll({ include: [{ association: 'paisproductos' },{ association: 'categorias' }] }).then((productoCrud) => {
             return res.render("products/productListcrud", { productoCrud });
         });
     },

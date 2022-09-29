@@ -21,19 +21,19 @@
             <thead>
               <tr>
                 <th>id</th>
-                <th>titulo</th>
-                <th>temporada</th>
-                <th>volumen</th>
-                <th>descripcionCorta</th>
-                <th>descripciondetallada</th>
-                <th>precionormal</th>
-                <th>publicacion</th>
-                <th>precio</th>
-                <th>descontinuado</th>
-                <th>stock</th>
-                <th>id_categoria</th>
-                <th>id_pais</th>
-                <th>imagen</th>
+                <th>Titulo</th>
+                <th>Temporada</th>
+                <th>Volumen</th>
+                <th>Publicacion</th>
+                <th>Descripcion corta</th>
+                <th>Precio normal</th>
+                <th>Precio venta</th>
+                <th>Descontinuado</th>
+                <th>Stock</th>
+                <th>Categoria</th>
+                <th>Pais</th>
+                <th>Imagen</th>
+                <th>Descripcion detallada</th>
               </tr>
             </thead>
             <tbody>
@@ -52,16 +52,13 @@
                     <%= product.volumen %>
                   </td>
                   <td>
+                    <%= product.publicacion %>
+                  </td>
+                  <td>
                     <%= product.descripcioncorta %>
                   </td>
                   <td>
-                    <%= product.descripciondetallada %>
-                  </td>
-                  <td>
                     <%= product.precionormal %>
-                  </td>
-                  <td>
-                    <%= product.publicacion %>
                   </td>
                   <td>
                     <%= product.precio %>
@@ -73,13 +70,16 @@
                     <%= product.stock %>
                   </td>
                   <td>
-                    <%= product.id_categoria %>
+                    <%= product.categorias.nombrecategoria %>
                   </td>
                   <td>
-                    <%= product.id_pais %>
+                    <%= product.paisproductos.nombre %>
                   </td>
                   <td>
                     <%= product.imagen %>
+                  </td>
+                  <td>
+                    <%= product.descripciondetallada %>
                   </td>
                 </tr>
                 <% }) %>

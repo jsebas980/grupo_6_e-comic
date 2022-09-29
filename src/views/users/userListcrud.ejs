@@ -19,14 +19,14 @@
           <thead>
             <tr>
               <th>id</th>
-              <th>nombre</th>
-              <th>apellido</th>
-              <th>correoelectronico</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo electronico</th>
               <!-- <th>password</th> -->
-              <th>numerotelefono</th>
-              <th>id_pais</th>
-              <th>id_provincia</th>
-              <th>imagen</th>
+              <th>Numero de telefono</th>
+              <th>Pais</th>
+              <th>Departamento / provincia</th>
+              <th>URL imagen</th>
             </tr>
           </thead>
           <tbody>
@@ -51,10 +51,10 @@
                   <%= user.numerotelefono %>
                 </td>
                 <td>
-                  <%= user.id_pais %>
+                  <%= user.pais.nombre %>
                 </td>
                 <td>
-                  <%= user.id_provincia %>
+                  <%= user.provincia.nombre %>
                 </td>
                 <td>
                   <%= user.imagen %>

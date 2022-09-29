@@ -219,7 +219,8 @@ const userController = {
     // ! CRUD de los usuarios
     listCRUD: (req, res) => {
         db.usuario_model.findAll({
-            attributes: { exclude: ['contraseña'] }
+            attributes: { exclude: ['contraseña'] },
+            include: [{ association: 'pais' },{ association: 'provincia' }] 
         }).then((usuarioCrud) => {
             return res.render("users/userListcrud", { usuarioCrud });
         });
