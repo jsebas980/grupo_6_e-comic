@@ -74,6 +74,57 @@ const userController = {
         });
     },
 
+    loginProcessCRUD: (req, res) => {
+        db.usuario_model.findOne({ 
+            where: { 
+                correoelectronico: req.body.email 
+            } })
+            .then(function (userToLogin) {
+            //if (userToLogin) {
+                // console.log('user id is ' + userToLogin.id);
+                // console.log('userObject id is ' + userToLogin.nombre + ' ' + userToLogin.apellido);
+                // console.log('password is ' + req.body.password);
+                // console.log('contraseña is ' + userToLogin.contraseña);
+                let isOKThePassword = bcrypt.compareSync(
+                    req.body.password,
+                    userToLogin.contraseña
+                );
+                // console.log('isOKThePassword is ' + isOKThePassword);
+                if (isOKThePassword) {
+                    delete userToLogin.contraseña;
+                    req.session.userLogged = userToLogin;
+                    //console.log(req.body);
+                    if (req.body.remember) {
+                        res.cookie("userEmail", req.body.email, {
+                            maxAge: 60 * 1000,
+                            httpOnly: true,
+                        });
+                    }
+                    console.log('Connection has been established successfully.');
+                    return res.redirect("profileCRUD");
+                }
+                return res.render("users/login", {
+                    errors: {
+                        email: {
+                            msg: "Las credenciales son inválidas",
+                        },
+                    },
+                });
+            //} 
+        }).catch((error) => {
+            //console.log('unknown user');
+            //console.log('Not found!');
+            //console.error('loginProcessCRUD : ', error);
+            return res.render("users/login", {
+                errors: {
+                    email: {
+                        msg: "No se encuentra este email en nuestra base de datos",
+                    },
+                },
+            })
+         });
+    },
+
     logout: (req, res) => {
         res.clearCookie("userEmail");
         req.session.destroy();
@@ -87,6 +138,19 @@ const userController = {
             (user) => user.id == req.session.userLogged.id
         );
         res.render("users/userProfile", { usuario: usuario });
+    },
+
+    profileCRUD: (req, res) => {
+        console.log("Cookies :  ", req.cookies);
+        console.log("Session :  ", req.session);
+        db.usuario_model.findOne({ 
+            where: { 
+                id: req.session.userLogged.id 
+            } })
+            .then(function (usuario) {
+                res.render("users/userProfilecrud", { usuario: usuario });
+            });
+        
     },
 
     /*** Pagina de registro de un usuario ***/
@@ -220,7 +284,7 @@ const userController = {
     listCRUD: (req, res) => {
         db.usuario_model.findAll({
             attributes: { exclude: ['contraseña'] },
-            include: [{ association: 'pais' },{ association: 'provincia' }] 
+            include: [{ association: 'pais' }, { association: 'provincia' }]
         }).then((usuarioCrud) => {
             return res.render("users/userListcrud", { usuarioCrud });
         });
@@ -267,7 +331,7 @@ const userController = {
                     nombre: req.body.nombre,
                     apellido: req.body.apellido,
                     correoelectronico: req.body.correoelectronico,
-                    contraseña: req.body.contraseña,
+                    contraseña:  bcrypt.hashSync(req.body.contraseña, 10),
                     numerotelefono: req.body.numerotelefono,
                     id_pais: req.body.id_pais,
                     id_provincia: req.body.id_provincia,
@@ -288,7 +352,7 @@ const userController = {
     userPassRole: (req, res) => {
         //console.log(req.body.contraseña);
         db.usuario_model.update({
-            contraseña: bcrypt.hashSync(req.body.contraseña2, 10)
+            contraseña: bcrypt.hashSync(req.body.contraseña, 10)
         },
             {
                 where: {

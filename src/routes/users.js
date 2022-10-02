@@ -1,7 +1,7 @@
 // ? Variables y Requiere
 const express = require('express');
 const router = express.Router();
-const { body } = require('express-validator');
+const { body, check, oneOf, validationResult } = require('express-validator');
 const userController = require('../controllers/usersController');
 const path = require('path');
 const multer = require('multer');
@@ -40,6 +40,35 @@ const validateUsuario = [
       })
 ]
 
+const validation = [
+   oneOf([
+      check('email')
+         .exists()
+         .not().isEmpty()
+         .withMessage('correo electronico is required'),
+
+      check('email')
+         .exists()
+         .not().isEmpty()
+         .withMessage('correo electronico is required')
+         .isEmail()
+         .withMessage('correo electronico not valid'),
+   ]),
+   check('password')
+      .exists()
+      .withMessage('contraseña is required')
+];
+
+function handleValidationErrors(req, res, next) {
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+      console.log(util.inspect(errors.array()));
+      return res.status(422).json({ errors: errors.array() });
+   }
+   next();
+};
+
+
 /*** Ejecucion del multer de una imagen de un usuario ***/
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
@@ -53,10 +82,12 @@ var uploadFile = multer({ storage: storage })
 
 /*** Muestra la pagina de login de un usuario ***/
 router.get('/login', guestMiddleware, userController.login);
-router.post('/login', userController.loginProcess);
+router.post('/login', validation, handleValidationErrors, userController.loginProcessCRUD);
+
 
 /*** Muestra la pagina registro de un usuario ***/
 router.get('/profile', authMiddleware, userController.profile);
+router.get('/profileCRUD', authMiddleware, userController.profileCRUD);
 
 /*** Muestra la pagina registro de un usuario ***/
 router.get('/register', guestMiddleware, userController.register);
@@ -65,36 +96,36 @@ router.get('/register', guestMiddleware, userController.register);
 router.get('/logout', userController.logout);
 
 /*** Muestra la pagina del detalle de un usuario ***/
-router.get('/userDetail/:userId', authMiddleware, userController.userDetail);
+//router.get('/userDetail/:userId', authMiddleware, userController.userDetail);
 
 /*** Muestra la pagina de la edicion de un usuario ***/
-router.get('/userEdit/:id', authMiddleware, userController.userEdit);
-router.patch('/userEdit/:id', uploadFile.single('img'), validateUsuario, userController.userUpdate);
+//router.get('/userEdit/:id', authMiddleware, userController.userEdit);
+//router.patch('/userEdit/:id', uploadFile.single('img'), validateUsuario, userController.userUpdate);
 
 /*** Muestra la pagina de la eliminacion de un usuario ***/
-router.get('/userDelete/:id', authMiddleware, userController.userDelete);
-router.delete('/userDelete/:id', userController.userDestroy);
+//router.get('/userDelete/:id', authMiddleware, userController.userDelete);
+//router.delete('/userDelete/:id', userController.userDestroy);
 
 /*** Muestra la pagina del listado de los usuarios ***/
-router.get('/userList', authMiddleware, userController.userList);
+//router.get('/userList', authMiddleware, userController.userList);
 
 /*** Muestra la pagina de la creacion de un usuario ***/
-router.get('/userCreate', authMiddleware, userController.userCreate);
-router.post('/userLoad', uploadFile.single('img'), validateUsuario, userController.userload);
+//router.get('/userCreate', authMiddleware, userController.userCreate);
+//router.post('/userLoad', uploadFile.single('img'), validateUsuario, userController.userload);
 
 // ! CRUD de los usuarios
 
 /*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
-router.get('/userListCRUD', userController.listCRUD);
-router.get('/userDetailCRUD/:id', userController.userDetailCRUD);
+router.get('/userListCRUD', authMiddleware, userController.listCRUD);
+router.get('/userDetailCRUD/:id', authMiddleware, userController.userDetailCRUD);
 
-router.get('/userCreateCRUD', userController.userCreateCRUD);
-router.post('/userInsertCRUD', userController.createCRUD);
+router.get('/userCreateCRUD', authMiddleware, userController.userCreateCRUD);
+router.post('/userInsertCRUD', uploadFile.single('img'), validateUsuario, userController.createCRUD);
 
 router.get('/userEditCRUD/:id', userController.editCRUD);
-router.patch('/userEditCRUD/:id', userController.updateCRUD);
+router.patch('/userEditCRUD/:id', uploadFile.single('img'), validateUsuario, userController.updateCRUD);
 
-router.get('/userDeleteCRUD/:id', userController.deleteCRUD);
+router.get('/userDeleteCRUD/:id', authMiddleware, userController.deleteCRUD);
 router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);
 
 router.patch('/userPassRole/:id', userController.userPassRole);

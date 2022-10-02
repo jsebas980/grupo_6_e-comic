@@ -79,7 +79,7 @@ module.exports = (sequelize) => {
       field: "publicacion",
       get: function() { // or use get(){ }
         return this.getDataValue('publicacion')
-          .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+          .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
       }
       
     },

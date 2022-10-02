@@ -32,8 +32,8 @@
                 </h2>
               </div>
               <div class="product-price">
-                <p class="last-price">Precio normal: <span>$<%= (productoCrud.precio).toFixed(2) %></span></p>
-                <p class="new-price">Precio con descuento: <span>$<%= (productoCrud.precio-productoCrud.precio*0.05).toFixed(2) %> (5%)</span></p>
+                <p class="last-price">Precio normal: <span><%= productoCrud.precio %></span></p>
+                <p class="new-price">Precio con descuento: <span><%= Number(productoCrud.precio.replace(/[$,]+/g,""))-Number(productoCrud.precio.replace(/[$,]+/g,""))*0.05 %> (5%)</span></p>
               </div>
               <div class="product-detail">
                 <h2>Acerca del comic: </h2>

@@ -22,13 +22,13 @@ var uploadFile = multer({ storage: storage })
 // ! CRUD de los facturas
 
 /*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
-router.get('/billListCRUD', billController.listCRUD);
-router.get('/billDetailCRUD/:id', billController.billDetailCRUD);
+router.get('/billListCRUD', authMiddleware, billController.listCRUD);
+router.get('/billDetailCRUD/:id', authMiddleware, billController.billDetailCRUD);
 
-router.get('/billCreateCRUD', billController.billCreateCRUD);
+router.get('/billCreateCRUD', authMiddleware, billController.billCreateCRUD);
 router.post('/billInsertCRUD', billController.createCRUD);
 
-router.get('/billEditCRUD/:id', billController.editCRUD);
+router.get('/billEditCRUD/:id', authMiddleware, billController.editCRUD);
 router.patch('/billEditCRUD/:id', billController.updateCRUD);
 
 module.exports = router;

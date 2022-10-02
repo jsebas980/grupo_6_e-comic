@@ -14,7 +14,7 @@ const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //! Ejecución de la session */
 app.use(session({
-  secret: "Nuestro mensaje secreto",
+  secret: "eComic - secret!",
   resave: false,
   saveUninitialized: false,
 }));
@@ -51,5 +51,9 @@ app.use((req, res, next) => {
 
 //! Configuracion del puerto 3000 */
 app.listen(3000, () => {
-  console.log("Servidor Grupo_6_OK - go to http://localhost:3000/");
+  console.log("*----------------------------------------------*");
+  console.log("Servidor ejecutandose en el puerto 3000");
+  console.log("Grupo 6 - ir a http://localhost:3000/");
+  console.log("eComic - Connection successfully!");
+  console.log("*----------------------------------------------*");
 });

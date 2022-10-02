@@ -20,39 +20,40 @@ const storage = multer.diskStorage({
 var uploadFile = multer({ storage: storage })
 
 /*** Muestra la pagina del detalle de un producto ***/
-router.get('/productDetail/:comicId', productController.productDetail);
+//router.get('/productDetail/:comicId', productController.productDetail);
 
 /*** Muestra la pagina del carrito de compras ***/
 router.get('/productCart', authMiddleware, productController.productCart);
 
 /*** Muestra la pagina de la edicion de un producto ***/
-router.get('/productEdit/:id', authMiddleware, productController.productEdit);
-router.patch('/productEdit/:id', uploadFile.single('img'), productController.productUpdate);
+//router.get('/productEdit/:id', authMiddleware, productController.productEdit);
+//router.patch('/productEdit/:id', uploadFile.single('img'), productController.productUpdate);
 
 /*** Muestra la pagina de la eliminacion de un producto ***/
-router.get('/productDelete/:id', authMiddleware, productController.productDelete);
-router.delete('/productDelete/:id', productController.productDestroy);
+//router.get('/productDelete/:id', authMiddleware, productController.productDelete);
+//router.delete('/productDelete/:id', productController.productDestroy);
 
 /*** Muestra la pagina del listado de los usuarios ***/
-router.get('/productList', authMiddleware, productController.productList);
+//router.get('/productList', authMiddleware, productController.productList);
 
 /*** Muestra la pagina de la creacion de un producto ***/
-router.get('/productCreate', authMiddleware, productController.productCreate);
-router.post('/productLoad', uploadFile.single('img'), productController.productload);
+//router.get('/productCreate', authMiddleware, productController.productCreate);
+//router.post('/productLoad', uploadFile.single('img'), productController.productload);
 
 // ! CRUD de los productos
 
 /*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
 router.get('/productListCRUD', productController.listCRUD);
+
 router.get('/productDetailCRUD/:id', productController.productDetailCRUD);
 
-router.get('/productCreateCRUD', productController.productCreateCRUD);
-router.post('/productInsertCRUD', productController.createCRUD);
+router.get('/productCreateCRUD', authMiddleware, productController.productCreateCRUD);
+router.post('/productInsertCRUD', uploadFile.single('img'), productController.createCRUD);
 
-router.get('/productEditCRUD/:id', productController.editCRUD);
-router.patch('/productEditCRUD/:id', productController.updateCRUD);
+router.get('/productEditCRUD/:id', authMiddleware, productController.editCRUD);
+router.patch('/productEditCRUD/:id', uploadFile.single('img'), productController.updateCRUD);
 
-router.get('/productDeleteCRUD/:id', productController.deleteCRUD);
+router.get('/productDeleteCRUD/:id', authMiddleware, productController.deleteCRUD);
 router.delete('/productDeleteCRUD/:id', productController.destroyCRUD);
 
 module.exports = router;

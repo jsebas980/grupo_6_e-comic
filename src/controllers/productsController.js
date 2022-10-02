@@ -5,7 +5,7 @@ let comicProductos = JSON.parse(fs.readFileSync(archivo, "utf-8"));
 
 const dbp = require("../database/models/");
 const sequelize = dbp.sequelize;
-console.log(sequelize);
+//console.log(sequelize);
 
 const productController = {
     /* CONTROLLER productos */
