@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_edit">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <form action="/products/productDeleteCRUD/<%= productoCrud.id %>?_method=DELETE" method="POST">
+        <div class="imgcontainer">
+          <h1>Delete <%= productoCrud.id %>
+          </h1>
+        </div>
+        <div class="product-content">
+          <div class="card-header-title">
+            <h2 class="product-title">
+              <img src="/images/img/<%= productoCrud.imagen %>" alt="<%= productoCrud.titulo %>" width="303.08px" height="454.63px">
+              <%= productoCrud.titulo %> - <%= productoCrud.temporada %> - <%= productoCrud.volumen %>
+            </h2>
+          </div>
+        </div>
+        <div class="container2">
+          <button type="submit" class="button">Eliminar</button>
+        </div>
+      </form>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

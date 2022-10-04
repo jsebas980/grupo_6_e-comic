@@ -7,6 +7,28 @@ const bcrypt = require("bcryptjs");
 const User = require('../models/user.js');
 const { Console } = require('console');
 
+const db = require("../database/models/");
+const sequelize = db.sequelize;
+//console.log(db.usuario_model);
+// db.usuario_model.findAll().then((usuarioCrud) => {
+//     //console.log(usuarioCrud);
+//     usuarioCrud.forEach(function (user) {
+//         //console.log(user.id)
+//         console.log(user.contraseña)
+//         //console.log(user);
+//         db.usuario_model.update({
+//             contraseña: bcrypt.hashSync(user.contraseña, 10)
+//         },
+//             {
+//                 where: {
+//                     id: user.id,
+//                 },
+//             })
+//     })
+// });
+
+
+
 const userController = {
     /* CONTROLLER usuarios */
 
@@ -17,48 +39,118 @@ const userController = {
 
     /*** Ejecuta el login de usuario ***/
     loginProcess: (req, res) => {
-        
-        let userToLogin = User.findByField('email', req.body.email)
-        if (userToLogin){
-            let isOKThePassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if (isOKThePassword){
+        let userToLogin = User.findByField("email", req.body.email);
+        if (userToLogin) {
+            let isOKThePassword = bcrypt.compareSync(
+                req.body.password,
+                userToLogin.password
+            );
+            if (isOKThePassword) {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
-                console.log(req.body);
-                if(req.body.remember){
-                    res.cookie('userEmail', req.body.email, { maxAge: 60 * 1000, httpOnly: true });
+                //console.log(req.body);
+                if (req.body.remember) {
+                    res.cookie("userEmail", req.body.email, {
+                        maxAge: 60 * 1000,
+                        httpOnly: true,
+                    });
                 }
-                return res.redirect('profile');
+                return res.redirect("profile");
             }
-            return res.render('users/login', {
-                errors:{
-                    email:{
-                        msg:'Las credenciales son inválidas'
-                    }
-                }
-            })
-
+            return res.render("users/login", {
+                errors: {
+                    email: {
+                        msg: "Las credenciales son inválidas",
+                    },
+                },
+            });
         }
-        return res.render('users/login', {
-            errors:{
-                email:{
-                    msg:'No se encuentra este email en nuestra base de datos'
+        return res.render("users/login", {
+            errors: {
+                email: {
+                    msg: "No se encuentra este email en nuestra base de datos",
+                },
+            },
+        });
+    },
+
+    loginProcessCRUD: (req, res) => {
+        db.usuario_model.findOne({ 
+            where: { 
+                correoelectronico: req.body.email 
+            } })
+            .then(function (userToLogin) {
+            //if (userToLogin) {
+                // console.log('user id is ' + userToLogin.id);
+                // console.log('userObject id is ' + userToLogin.nombre + ' ' + userToLogin.apellido);
+                // console.log('password is ' + req.body.password);
+                // console.log('contraseña is ' + userToLogin.contraseña);
+                let isOKThePassword = bcrypt.compareSync(
+                    req.body.password,
+                    userToLogin.contraseña
+                );
+                // console.log('isOKThePassword is ' + isOKThePassword);
+                if (isOKThePassword) {
+                    delete userToLogin.contraseña;
+                    req.session.userLogged = userToLogin;
+                    //console.log(req.body);
+                    if (req.body.remember) {
+                        res.cookie("userEmail", req.body.email, {
+                            maxAge: 60 * 1000,
+                            httpOnly: true,
+                        });
+                    }
+                    console.log('Connection has been established successfully.');
+                    return res.redirect("profileCRUD");
                 }
-            }
-        })
+                return res.render("users/login", {
+                    errors: {
+                        email: {
+                            msg: "Las credenciales son inválidas",
+                        },
+                    },
+                });
+            //} 
+        }).catch((error) => {
+            //console.log('unknown user');
+            //console.log('Not found!');
+            //console.error('loginProcessCRUD : ', error);
+            return res.render("users/login", {
+                errors: {
+                    email: {
+                        msg: "No se encuentra este email en nuestra base de datos",
+                    },
+                },
+            })
+         });
     },
 
     logout: (req, res) => {
-        res.clearCookie('userEmail');
+        res.clearCookie("userEmail");
         req.session.destroy();
         return res.redirect("/");
     },
 
-      /*** Muestra el detalle de un usuario ***/
+    /*** Muestra el detalle de un usuario ***/
     profile: (req, res) => {
-        console.log("Cookies :  ", req.cookies);
-        let usuario = comicUsers.find((user) => user.id == req.session.userLogged.id);
+        //console.log("Cookies :  ", req.cookies);
+        let usuario = comicUsers.find(
+            (user) => user.id == req.session.userLogged.id
+        );
         res.render("users/userProfile", { usuario: usuario });
+    },
+
+    profileCRUD: (req, res) => {
+        console.log("Cookies :  ", req.cookies);
+        console.log("Session :  ", req.session);
+        db.usuario_model.findOne({ 
+            where: { 
+                id: req.session.userLogged.id 
+            } })
+            .then(function (usuario) {
+                res.render("users/userProfilecrud", { usuario: usuario });
+            });
+        
     },
 
     /*** Pagina de registro de un usuario ***/
@@ -69,14 +161,14 @@ const userController = {
     /*** Muestra el detalle de un usuario ***/
     userDetail: (req, res) => {
         let usuario = comicUsers.find((user) => user.id == req.params.userId);
-        res.render("users/userDetail", { usuario: usuario, });
+        res.render("users/userDetail", { usuario: usuario });
     },
 
     /*** Muestra la pagina de edicion de un usuario ***/
     userEdit: (req, res) => {
         let id = req.params.id;
         let userToEdit = comicUsers.find((user) => user.id == id);
-        return res.render("users/userEdit", { userToEdit, });
+        return res.render("users/userEdit", { userToEdit });
     },
 
     /*** Ejecuta la actualizacion de un usuario ***/
@@ -112,7 +204,10 @@ const userController = {
             return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            return res.render("users/userEdit", { errors: errors.array(), old: req.body });
+            return res.render("users/userEdit", {
+                errors: errors.array(),
+                old: req.body,
+            });
         }
     },
 
@@ -171,7 +266,10 @@ const userController = {
             return res.render("users/userDetail", { usuario: usuario });
         } else {
             // Si hay errores, volvemos al formulario con los mensajes
-            return res.render("users/userLoad", { errors: errors.array(), old: req.body });
+            return res.render("users/userLoad", {
+                errors: errors.array(),
+                old: req.body,
+            });
         }
     },
 
@@ -181,6 +279,104 @@ const userController = {
     //           user.password = bcrypt.hashSync(user.password, 10);
     //           user.role =  "user";
     //       });
+
+    // ! CRUD de los usuarios
+    listCRUD: (req, res) => {
+        db.usuario_model.findAll({
+            attributes: { exclude: ['contraseña'] },
+            include: [{ association: 'pais' }, { association: 'provincia' }]
+        }).then((usuarioCrud) => {
+            return res.render("users/userListcrud", { usuarioCrud });
+        });
+    },
+
+    userDetailCRUD: (req, res) => {
+        db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+            return res.render("users/userDetailcrud", { usuarioCrud });
+        });
+    },
+
+    userCreateCRUD: (req, res) => {
+        return res.render("users/userLoadCRUD");
+    },
+
+    createCRUD: function (req, res) {
+        //console.log(req.body);
+        db.usuario_model.create({
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            correoelectronico: req.body.correoelectronico,
+            contraseña: req.body.contraseña,
+            numerotelefono: req.body.numerotelefono,
+            id_pais: req.body.id_pais,
+            id_provincia: req.body.id_provincia,
+            imagen: req.body.imagen,
+        });
+        return res.redirect("/");
+    },
+
+    editCRUD: function (req, res) {
+        db.usuario_model
+            .findByPk(req.params.id)
+            .then((usuarioCrud) => {
+                return res.render("users/userEditcrud", { usuarioCrud });
+            })
+            .catch((error) => res.send(error));
+    },
+
+    updateCRUD: function (req, res) {
+        db.usuario_model
+            .update(
+                {
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    correoelectronico: req.body.correoelectronico,
+                    contraseña:  bcrypt.hashSync(req.body.contraseña, 10),
+                    numerotelefono: req.body.numerotelefono,
+                    id_pais: req.body.id_pais,
+                    id_provincia: req.body.id_provincia,
+                    imagen: req.body.imagen,
+                },
+                {
+                    where: {
+                        id: req.params.id,
+                    },
+                }
+            )
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((error) => res.send(error));
+    },
+
+    userPassRole: (req, res) => {
+        //console.log(req.body.contraseña);
+        db.usuario_model.update({
+            contraseña: bcrypt.hashSync(req.body.contraseña, 10)
+        },
+            {
+                where: {
+                    id: req.params.id,
+                },
+            })
+    },
+
+    deleteCRUD: function (req, res) {
+        db.usuario_model.findByPk(req.params.id).then((usuarioCrud) => {
+            return res.render("users/userDeletecrud", { usuarioCrud });
+        });
+    },
+    destroyCRUD: function (req, res) {
+        db.usuario_model
+            .destroy({
+                where: { id: req.params.id },
+                force: true,
+            })
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((error) => res.send(error));
+    },
 
 };
 

@@ -3,6 +3,10 @@ const fs = require("fs");
 let archivo = "./database/products.json";
 let comicProductos = JSON.parse(fs.readFileSync(archivo, "utf-8"));
 
+const dbp = require("../database/models/");
+const sequelize = dbp.sequelize;
+//console.log(sequelize);
+
 const productController = {
     /* CONTROLLER productos */
 
@@ -18,7 +22,7 @@ const productController = {
     productCart: (req, res) => {
         res.render("products/productCart");
     },
-    
+
     /*** Muestra la pagina de edicion de un producto ***/
     productEdit: (req, res) => {
         let id = req.params.id;
@@ -64,7 +68,7 @@ const productController = {
         fs.writeFileSync(archivo, JSON.stringify(newProducts, null, " "));
         res.redirect("/");
     },
-    
+
     /*** Muestra la pagina de eliminacion de un producto ***/
     productDelete: (req, res) => {
         let id = req.params.id;
@@ -89,7 +93,7 @@ const productController = {
     /*** Muestra la pagina de creacion de un producto ***/
     productCreate: (req, res) => {
         let productToId = comicProductos[comicProductos.length - 1].id + 1;
-        res.render("products/productLoad", { 
+        res.render("products/productLoad", {
             productToId,
         });
     },
@@ -98,7 +102,7 @@ const productController = {
     productload: (req, res) => {
         let image;
         let idComic = comicProductos[comicProductos.length - 1].id + 1;
-        console.log(req.file);
+        //console.log(req.file);
         if (req.file != undefined) {
             image = req.file.originalname;
         } else {
@@ -124,6 +128,100 @@ const productController = {
         let producto = comicProductos.find((producto) => producto.id == idComic);
         res.render("products/productDetail", { producto: producto });
     },
+
+    // ! CRUD de los productos
+    listCRUD: (req, res) => {
+        dbp.productos_model.findAll({ include: [{ association: 'paisproductos' },{ association: 'categorias' }] }).then((productoCrud) => {
+            return res.render("products/productListcrud", { productoCrud });
+        });
+    },
+
+    productDetailCRUD: (req, res) => {
+        dbp.productos_model.findByPk(req.params.id).then((productoCrud) => {
+            return res.render("products/productDetailcrud", { productoCrud });
+        });
+    },
+
+    productCreateCRUD: (req, res) => {
+        return res.render("products/productLoadCRUD");
+    },
+
+    createCRUD: function (req, res) {
+        //console.log(req.body);
+        dbp.productos_model.create({
+            titulo: req.body.titulo,
+            temporada: req.body.temporada,
+            volumen: req.body.volumen,
+            descripcioncorta: req.body.descripcioncorta,
+            descripciondetallada: req.body.descripciondetallada,
+            precionormal: req.body.precionormal,
+            publicacion: req.body.publicacion,
+            imagen: req.body.imagen,
+            precio: req.body.precio,
+            descontinuado: req.body.descontinuado,
+            stock: req.body.stock,
+            id_categoria: req.body.id_categoria,
+            id_pais: req.body.id_pais
+        });
+        return res.redirect("/");
+    },
+
+    editCRUD: function (req, res) {
+        dbp.productos_model
+            .findByPk(req.params.id)
+            .then((productoCrud) => {
+                return res.render("products/productEditcrud", { productoCrud });
+            })
+            .catch((error) => res.send(error));
+    },
+
+    updateCRUD: function (req, res) {
+        dbp.productos_model
+            .update(
+                {
+                    titulo: req.body.titulo,
+                    temporada: req.body.temporada,
+                    volumen: req.body.volumen,
+                    descripcioncorta: req.body.descripcioncorta,
+                    descripciondetallada: req.body.descripciondetallada,
+                    precionormal: req.body.precionormal,
+                    publicacion: req.body.publicacion,
+                    imagen: req.body.imagen,
+                    precio: req.body.precio,
+                    descontinuado: req.body.descontinuado,
+                    stock: req.body.stock,
+                    id_categoria: req.body.id_categoria,
+                    id_pais: req.body.id_pais
+                },
+                {
+                    where: {
+                        id: req.params.id,
+                    },
+                }
+            )
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((error) => res.send(error));
+    },
+
+    deleteCRUD: function (req, res) {
+        dbp.productos_model.findByPk(req.params.id).then((productoCrud) => {
+            return res.render("products/productDeletecrud", { productoCrud });
+        });
+    },
+    destroyCRUD: function (req, res) {
+        dbp.productos_model
+            .destroy({
+                where: { id: req.params.id },
+                force: true,
+            })
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((error) => res.send(error));
+    },
+
 };
 
 module.exports = productController;

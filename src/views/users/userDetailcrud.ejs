@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="card-dtls">
+            <!-- card left -->
+            <div class="product-imgs">
+              <div class="img-display">
+                <div class="img-showcase">
+                  <img src="<%= usuarioCrud.imagen %>" alt="<%= usuarioCrud.nombre %>">
+                </div>
+              </div>
+            </div>
+            <!-- card right -->
+            <div class="product-content">
+              <div class="card-header-title">
+                <h2 class="product-title">
+                  <%= usuarioCrud.nombre %>
+                    <%= usuarioCrud.apellido %>
+                </h2>
+              </div>
+              <div class="product-detail">
+                <h2>Quien soy: </h2>
+                <ul>
+                  <li>Identificador: <span>
+                      <%= usuarioCrud.id %>
+                    </span></li>
+                  <li>Contraseña: <span>
+                      <%= usuarioCrud.contraseña %>
+                    </span></li>
+                  <li>Correo electronico: <span>
+                      <%= usuarioCrud.correoelectronico %>
+                    </span></li>
+                  <li>Teléfono / Celular: <span>
+                      <%= usuarioCrud.numerotelefono %>
+                    </span></li>
+                  <li>Pais: <span>
+                      <%= usuarioCrud.id_pais %>
+                    </span></li>
+                  <li>Ciudad/Provincia: <span>
+                      <%= usuarioCrud.id_provincia %>
+                    </span></li>
+                </ul>
+              </div>
+              <div class="edit-delete" action="">
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userEditcrud/<%= usuarioCrud.id %>">Editar</a>
+                </div>
+                <div class="ml-auto"><a class="text-uppercase" href="/users/userDeletecrud/<%= usuarioCrud.id %>">Borrar
+                  </a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

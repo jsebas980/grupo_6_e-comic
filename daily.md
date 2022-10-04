@@ -72,9 +72,7 @@
 
 ## 3. Impedimentos
 
--
-
----
+- ***
 
 # Daily (02/08/2022)
 
@@ -168,7 +166,7 @@
 
 ## 3. Impedimentos
 
-- 
+-
 
 ---
 
@@ -184,6 +182,184 @@
 
 ## 3. Impedimentos
 
-- Inconveniente con el almacenamiento  y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
+- Inconveniente con el almacenamiento y la duracion programa del perfil dentro de la cookie a la cual se requiere leer en el navegador
+
+## SPRINT 6
+
+# Daily (25/08/2022)
+
+## 1. Que se hizo ayer?
+
+- Se realizo la entrega al profesor del Sprint_5 al cual esta en la espera de la retroalimentacion del mismo.
+
+## 2. Que se va a hacer hoy?
+
+- Se realia el diseño del diagrama de base de datos Entidad y relacion (DER); asi mismo comienzo del sprint 6 en el Trello
+
+## 3. Impedimentos
+
+-
 
 ---
+
+# Daily (01/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se continuo con el diseño del DER al proyecto eComic.
+
+## 2. Que se va a hacer hoy?
+
+- Se realiza las relaciones y tipo de datos en las variables de cada una de las tablas en el DER
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (03/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se organizo las relaciones 1:N - N:M a cada una de las tablas según al proyecto
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la estructura del archivo structure.sql con base al Sprint_6 para la creacion de la base de datos, tablas, primary key, foreign key en cada una.
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (08/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termino de crear el archivo estructura con la creacion de la base de datos de eComic en el MySql
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realiza el plan de trabajo, plantilla y codigo para poblar de primera mano las tablas maestras de la base de datos como son personas, rol_personas, categoria, estado factura, modo pago, rol, pais y provincia.
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (10/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termino de poblar el contenido de registros con el apoyo del mockaroo para contar con data de ejemplo hacia las tablas personas, rol_personas, categoria, estado factura, modo pago, rol, pais y provincia
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realiza el plan de trabajo, plantilla y codigo para poblar de primera mano las tablas detalladas como es producto personas, carrito producto, detalle factura, rol usuario, producto, carrito, factura y usuarios.
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (10/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termino de poblar el contenido de registros con el apoyo del mockaroo para contar con data de ejemplo hacia las tablas producto personas, carrito producto, detalle factura, rol usuario, producto, carrito, factura y usuarios
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la instalacion del sequelize, mysql2 para la conexion hacia la base de datos de mysql; asi mismo se va a realizar el modelamiento de las tablas eComic, conexion de la base de datos con el proyecto integrador
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (13/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termina de hacer las configuraciones necesaria para conectar con la base de datos de eComic_db y la estructura del modelamiento con cada una de las tablas
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la configuracion de las asociaciones de las tablas con las relaciones hasMany y belongsTo.
+
+## 3. Impedimentos
+
+- Se encuentra un impedimiento en la ejecucion del proyecto integrador ya que las relaciones por medio de sequilize no estaba reconociendo esta mismas dentro de la ejecucion por medio de sequelize automate.
+
+---
+
+# Daily (15/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se corrige el impedimiento del dia anterior al cual se indentificaba que era en relacion al alias que esta nombra en el sequelize automate.
+
+## 2. Que se va a hacer hoy?
+
+- Se va terminar de hacer la configuracion en el modelamiento y asociacion de las tablas con la relaciones, para posteriormente empezar a crear los CRUD a cada uno de los procesos Usuario, Productos y Facturas.
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (17/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se hizo la configuracion de la escrutura de CRUD para usuarios.
+
+## 2. Que se va a hacer hoy?
+
+- Se va a dar continuidad a la estructura de los CRUD para usuarios.
+
+## 3. Impedimentos
+
+- No se esta reconociendo el CRUD con el modelos de los usuarios con base a la escrutura sequelize configurada al proyecto
+
+---
+
+# Daily (20/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termino de organizar los CRUD de usuarios tanto en las views, controllers y routers
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la estructura de los CRUD para productos.
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (22/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termino de organizar los CRUD de productos tanto en las views, controllers y routers
+
+## 2. Que se va a hacer hoy?
+
+- Se va a realizar la estructura de los CRUD para facturas.
+
+## 3. Impedimentos
+
+-
+
+---
+
+## SPRINT 7
