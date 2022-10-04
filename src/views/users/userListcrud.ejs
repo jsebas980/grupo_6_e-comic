@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+        <h2 class="Listardoh2">Listado de usuarios</h2>
+        <table id="myTable" width="100%" class="fl-table table-wrapper">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo electronico</th>
+              <!-- <th>password</th> -->
+              <th>Numero de telefono</th>
+              <th>Pais</th>
+              <th>Departamento / provincia</th>
+              <th>URL imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% usuarioCrud.forEach(function(user){ %>
+              <tr>
+                <td>
+                  <%= user.id %>
+                </td>
+                <td>
+                  <%= user.nombre %>
+                </td>
+                <td>
+                  <%= user.apellido %>
+                </td>
+                <td>
+                  <%= user.correoelectronico %>
+                </td>
+                <!-- <td>
+                  <%= user.contraseña %>
+                </td> -->
+                <td>
+                  <%= user.numerotelefono %>
+                </td>
+                <td>
+                  <%= user.pais.nombre %>
+                </td>
+                <td>
+                  <%= user.provincia.nombre %>
+                </td>
+                <td>
+                  <%= user.imagen %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </main>
+      <script src="/js/tablet.js"></script>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

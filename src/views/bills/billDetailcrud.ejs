@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="product_detail">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Search..." />
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="card-dtls">
+            <!-- card left -->
+            <div class="product-imgs">
+              <div class="card-header-title">
+                <h2 class="product-title">
+                  <%= facturaCrud.id %>
+                </h2>
+              </div>
+              <div class="product-detail">
+                <ul>
+                  <li>id_usuario: <span>
+                      <%= facturaCrud.id_usuario %>
+                    </span></li>
+                  <li>id_estadofactura: <span>
+                      <%= facturaCrud.id_estadofactura %>
+                    </span></li>
+                  <li>envio: <span>
+                      <%= facturaCrud.envio %>
+                    </span></li>
+                  <li>impuesto: <span>
+                      <%= facturaCrud.impuesto %>
+                    </span></li>
+                  <li>total: <span>
+                      <%= facturaCrud.total %>
+                    </span></li>
+                  <li>id_modopago: <span>
+                      <%= facturaCrud.id_modopago %>
+                    </span></li>
+                  <li>fecha: <span>
+                      <%= facturaCrud.fecha %>
+                    </span></li>
+                </ul>
+              </div>
+            </div>
+            <!-- card right -->
+            <div class="product-content">
+              <div class="product-detail">
+                <ul>
+                  <li>nombrecompleto: <span>
+                    <%= facturaCrud.nombrecompleto %>
+                  </span></li>
+                <li>correoelectronico: <span>
+                    <%= facturaCrud.correoelectronico %>
+                  </span></li>
+                <li>direccion: <span>
+                    <%= facturaCrud.direccion %>
+                  </span></li>
+                  <li>numerotelefono: <span>
+                    <%= facturaCrud.numerotelefono %>
+                  </span></li>
+                  <li>pais: <span>
+                      <%= facturaCrud.id_pais %>
+                    </span></li>
+                  <li>provincia: <span>
+                      <%= facturaCrud.id_provincia %>
+                    </span></li>
+                  <li>ciudad: <span>
+                      <%= facturaCrud.ciudad %>
+                    </span></li>
+                </ul>
+                <p>
+                  <%= facturaCrud.detalleadicionales %>
+                </p>
+              </div>
+              <div class="edit-delete" action="">
+                <div class="ml-auto"><a href="/bills/billEditCRUD/<%= facturaCrud.id %>"
+                    class="text-uppercase">Editar</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="static/dist/script.js"></script>
+      </main>
+
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

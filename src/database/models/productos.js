@@ -1,8 +1,6 @@
-const {
-  DataTypes
-} = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.exports = sequelize => {
+module.exports = (sequelize) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -11,7 +9,7 @@ module.exports = sequelize => {
       primaryKey: true,
       autoIncrement: true,
       comment: null,
-      field: "id"
+      field: "id",
     },
     titulo: {
       type: DataTypes.STRING(200),
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "titulo"
+      field: "titulo",
     },
     temporada: {
       type: DataTypes.STRING(200),
@@ -29,7 +27,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "temporada"
+      field: "temporada",
     },
     volumen: {
       type: DataTypes.STRING(200),
@@ -38,7 +36,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "volumen"
+      field: "volumen",
     },
     descripcioncorta: {
       type: DataTypes.STRING(200),
@@ -47,7 +45,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "descripcioncorta"
+      field: "descripcioncorta",
     },
     descripciondetallada: {
       type: DataTypes.STRING(4000),
@@ -56,7 +54,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "descripciondetallada"
+      field: "descripciondetallada",
     },
     precionormal: {
       type: DataTypes.FLOAT,
@@ -65,16 +63,25 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "precionormal"
+      field: "precionormal",
+      get: function() { // or use get(){ }
+        return this.getDataValue('precionormal')
+        .toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      }
     },
     publicacion: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "publicacion"
+      field: "publicacion",
+      get: function() { // or use get(){ }
+        return this.getDataValue('publicacion')
+          .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+      }
+      
     },
     imagen: {
       type: DataTypes.STRING(100),
@@ -83,7 +90,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "imagen"
+      field: "imagen",
     },
     precio: {
       type: DataTypes.FLOAT,
@@ -92,7 +99,11 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "precio"
+      field: "precio",
+      get: function() { // or use get(){ }
+        return this.getDataValue('precio')
+        .toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      }
     },
     descontinuado: {
       type: DataTypes.INTEGER(1),
@@ -101,7 +112,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "descontinuado"
+      field: "descontinuado",
     },
     stock: {
       type: DataTypes.INTEGER(11),
@@ -110,7 +121,7 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "stock"
+      field: "stock",
     },
     id_categoria: {
       type: DataTypes.INTEGER(11),
@@ -122,8 +133,8 @@ module.exports = sequelize => {
       field: "id_categoria",
       references: {
         key: "id",
-        model: "categoria_model"
-      }
+        model: "categoria_model",
+      },
     },
     id_pais: {
       type: DataTypes.INTEGER(11),
@@ -135,25 +146,58 @@ module.exports = sequelize => {
       field: "id_pais",
       references: {
         key: "id",
-        model: "pais_model"
-      }
-    }
+        model: "pais_model",
+      },
+    },
   };
   const options = {
     tableName: "productos",
     comment: "",
-    indexes: [{
-      name: "id_categoria",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_categoria"]
-    }, {
-      name: "id_pais",
-      unique: false,
-      type: "BTREE",
-      fields: ["id_pais"]
-    }]
+    timestamps: false,
+    indexes: [
+      {
+        name: "id_categoria",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_categoria"],
+      },
+      {
+        name: "id_pais",
+        unique: false,
+        type: "BTREE",
+        fields: ["id_pais"],
+      },
+    ],
   };
-  const ProductosModel = sequelize.define("productos_model", attributes, options);
+  const ProductosModel = sequelize.define(
+    "productos_model",
+    attributes,
+    options
+  );
+
+  //Relaciones con el modelo
+  ProductosModel.associate = function (models) {
+    ProductosModel.belongsTo(models.categoria_model, {
+      as: "categorias",
+      foreignKey: "id_categoria",
+    });
+    ProductosModel.belongsTo(models.pais_model, {
+      as: "paisproductos",
+      foreignKey: "id_pais",
+    });
+    ProductosModel.hasMany(models.carrito_productos_model, {
+      as: "carritoproductos",
+      foreignKey: "id_productos",
+    });
+    ProductosModel.hasMany(models.detalle_factura_model, {
+      as: "detalleproductos",
+      foreignKey: "id_productos",
+    });
+    ProductosModel.hasMany(models.productos_personas_model, {
+      as: "productospersonas",
+      foreignKey: "id_productos",
+    });
+  };
+
   return ProductosModel;
 };

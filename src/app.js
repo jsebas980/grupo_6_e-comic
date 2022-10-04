@@ -9,14 +9,14 @@ const app = express();
 const routerMain = require('./routes/main');
 const routerProducts = require('./routes/products');
 const routerUsers = require('./routes/users');
+const routerBills = require('./routes/bills');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 //! Ejecución de la session */
-app.use(session( {
-  secret: "Nuestro mensaje secreto",
+app.use(session({
+  secret: "eComic - secret!",
   resave: false,
   saveUninitialized: false,
-
 }));
 
 app.use(cookies());
@@ -42,6 +42,7 @@ app.use('/', routerMain);
 app.use('/404', routerMain);
 app.use('/products', routerProducts);
 app.use('/users', routerUsers);
+app.use('/bills', routerBills);
 
 //! Configuracion de la pagina 404 */
 app.use((req, res, next) => {
@@ -50,5 +51,9 @@ app.use((req, res, next) => {
 
 //! Configuracion del puerto 3000 */
 app.listen(3000, () => {
-  console.log("Servidor grupo_6_OK");
+  console.log("*----------------------------------------------*");
+  console.log("Servidor ejecutandose en el puerto 3000");
+  console.log("Grupo 6 - ir a http://localhost:3000/");
+  console.log("eComic - Connection successfully!");
+  console.log("*----------------------------------------------*");
 });
