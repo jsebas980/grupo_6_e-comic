@@ -12,7 +12,7 @@
                     <h1>Login</h1>
                     <img src="/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar">
                 </div>
-
+               
                 <div class="container">
                     <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
                     <label for="email"><b>Usuario</b></label>
@@ -22,14 +22,26 @@
                             <%= errors.email.msg %>
                         </p>
                         <% } %>
-                            <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
-                            <label for="password"><b>Contraseña</b></label>
-                            <input type="password" placeholder="Enter Password" name="password">
-                            <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+                        <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
+                        <label for="password"><b>Contraseña</b></label>
+                        <input type="password" placeholder="Enter Password" name="password">
+                        <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
                             <label>
                                 <input type="checkbox" name="remember"> Recordarme la sesión iniciada
                             </label>
-                            <button type="submit" class="button">Login</button>
+                        <button type="submit" class="button">Login</button>
+
+
+                         <% if(typeof alert != 'undefined') { %>
+                        <% alert.forEach(function(error) { %>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <%= error.msg %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        <% }) %>
+                    <% } %>
                 </div>
 
                 <div class="container2">
