@@ -7,42 +7,66 @@
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
 
-      <form action="/users/userInsertCRUD" method="POST">
+      <form action="/users/userInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Creación de un usuario e<span>C</span>omic</h1>
         </div>
-        <fieldset id="left">
-          <label for="firstname"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese el nombre" name="nombre"
-            value="">
-          <label for="lastname"><b>Apellidos</b></label>
-          <input type="text" placeholder="Ingrese los apellidos" name="apellido"
-            value="">
-        </fieldset>
-        <fieldset id="right">
-          <label for="email"><b>Correo electronico</b></label>
-          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico"
-            value="">
-          <label for="phonenumber"><b>Teléfono / Celular</b></label>
-          <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
-            value="">
-          <label for="city"><b>Pais</b></label>
-          <input type="text" placeholder="Ingrese el pais" name="id_pais"
-            value="">
-            <label for="city"><b>Ciudad/Provincia</b></label>
-            <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia"
-              value="">
-          <label for="password"><b>Contraseña</b></label>
-          <input type="text" placeholder="Ingrese la contraseña" name="contraseña">
-        </fieldset>
-        <fieldset id="center">
-          <label for="password"><b>Imagen</b></label>
-          <input type="text" placeholder="Ingrese la imagen" name="imagen">
-        </fieldset>
-        </div>
-        <div class="container2">
-          <button type="submit" class="button">Guardar</button>
-        </div>
+        <% if(typeof alert !='undefined' ) { %>
+          <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <%= error.msg %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <% }) %>
+              <% } %>
+                <fieldset id="left">
+                  <label for="firstname"><b>Nombre</b></label>
+                  <input type="text" placeholder="Ingrese el nombre" name="nombre" value="">
+                  <label for="lastname"><b>Apellidos</b></label>
+                  <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="">
+                </fieldset>
+                <fieldset id="right">
+                  <label for="email"><b>Correo electronico</b></label>
+                  <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="">
+                  <label for="phonenumber"><b>Teléfono / Celular</b></label>
+                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="">
+                  <label for="city"><b>Pais</b></label>
+                  <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value=""> -->
+                  <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
+                    <option disabled selected value> -- select an option -- </option>
+                    <% if(typeof promPais !='undefined' ) { %>
+                      <% promPais.forEach(function(pais) { %>
+                        <option value="<%= pais.id %>">
+                          <%= pais.nombre %>
+                        </option>
+                        <% }) %>
+                          <% } %>
+                  </select>
+                  <label for="city"><b>Ciudad/Provincia</b></label>
+                  <!-- <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value=""> -->
+                  <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
+                    <option disabled selected value> -- select an option -- </option>
+                    <% if(typeof promProvincia !='undefined' ) { %>
+                      <% promProvincia.forEach(function(prov) { %>
+                        <option value="<%= prov.id %>">
+                          <%= prov.nombre %>
+                        </option>
+                        <% }) %>
+                          <% } %>
+                  </select>
+                  <label for="password"><b>Contraseña</b></label>
+                  <input type="text" placeholder="Ingrese la contraseña" name="contraseña" value="">
+                </fieldset>
+                <fieldset id="center">
+                  <label for="img"><b>Imagen</b></label>
+                  <input type="file" name="imagen">
+                </fieldset>
+                </div>
+                <div class="container2">
+                  <button type="submit" class="button">Guardar</button>
+                </div>
       </form>
       </main>
 
