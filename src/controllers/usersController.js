@@ -27,8 +27,6 @@ const sequelize = db.sequelize;
 //     })
 // });
 
-
-
 const userController = {
     /* CONTROLLER usuarios */
 
@@ -75,12 +73,13 @@ const userController = {
     },
 
     loginProcessCRUD: (req, res) => {
-        db.usuario_model.findOne({ 
-            where: { 
-                correoelectronico: req.body.email 
-            } })
+        db.usuario_model.findOne({
+            where: {
+                correoelectronico: req.body.email
+            }
+        })
             .then(function (userToLogin) {
-            //if (userToLogin) {
+                //if (userToLogin) {
                 // console.log('user id is ' + userToLogin.id);
                 // console.log('userObject id is ' + userToLogin.nombre + ' ' + userToLogin.apellido);
                 // console.log('password is ' + req.body.password);
@@ -110,19 +109,19 @@ const userController = {
                         },
                     },
                 });
-            //} 
-        }).catch((error) => {
-            //console.log('unknown user');
-            //console.log('Not found!');
-            //console.error('loginProcessCRUD : ', error);
-            return res.render("users/login", {
-                errors: {
-                    email: {
-                        msg: "No se encuentra este email en nuestra base de datos",
+                //} 
+            }).catch((error) => {
+                //console.log('unknown user');
+                //console.log('Not found!');
+                //console.error('loginProcessCRUD : ', error);
+                return res.render("users/login", {
+                    errors: {
+                        email: {
+                            msg: "No se encuentra este email en nuestra base de datos",
+                        },
                     },
-                },
-            })
-         });
+                })
+            });
     },
 
     logout: (req, res) => {
@@ -143,14 +142,15 @@ const userController = {
     profileCRUD: (req, res) => {
         console.log("Cookies :  ", req.cookies);
         console.log("Session :  ", req.session);
-        db.usuario_model.findOne({ 
-            where: { 
-                id: req.session.userLogged.id 
-            } })
+        db.usuario_model.findOne({
+            where: {
+                id: req.session.userLogged.id
+            }
+        })
             .then(function (usuario) {
                 res.render("users/userProfilecrud", { usuario: usuario });
             });
-        
+
     },
 
     /*** Pagina de registro de un usuario ***/
@@ -174,8 +174,6 @@ const userController = {
     /*** Ejecuta la actualizacion de un usuario ***/
     userUpdate: (req, res) => {
         let errors = validationResult(req);
-        //! res.send(req.body);
-        //! res.send(errors);
         if (errors.isEmpty()) {
             // No hay errores, seguimos adelante
             let id = req.params.id;
@@ -297,16 +295,21 @@ const userController = {
     },
 
     userCreateCRUD: (req, res) => {
-        return res.render("users/userLoadCRUD");
+        let promPais = db.pais_model.findAll();
+        let promProvincia = db.provincia_model.findAll();
+        Promise
+            .all([promPais, promProvincia])
+            .then(function ([promPais, promProvincia]) {
+                return res.render("users/userLoadCRUD", { promPais: promPais, promProvincia: promProvincia })
+            }).catch(error => res.send(error));
     },
 
     createCRUD: function (req, res) {
-        //console.log(req.body);
         db.usuario_model.create({
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             correoelectronico: req.body.correoelectronico,
-            contraseña: req.body.contraseña,
+            contraseña: bcrypt.hashSync(req.body.contraseña, 10),
             numerotelefono: req.body.numerotelefono,
             id_pais: req.body.id_pais,
             id_provincia: req.body.id_provincia,
@@ -316,12 +319,14 @@ const userController = {
     },
 
     editCRUD: function (req, res) {
-        db.usuario_model
-            .findByPk(req.params.id)
-            .then((usuarioCrud) => {
-                return res.render("users/userEditcrud", { usuarioCrud });
-            })
-            .catch((error) => res.send(error));
+        let promPais = db.pais_model.findAll();
+        let promProvincia = db.provincia_model.findAll();
+        let usuarioCrud = db.usuario_model.findByPk(req.params.id);
+        Promise
+            .all([promPais, promProvincia, usuarioCrud])
+            .then(function ([promPais, promProvincia, usuarioCrud]) {
+                return res.render("users/userEditcrud", { promPais: promPais, promProvincia: promProvincia, usuarioCrud: usuarioCrud })
+            }).catch(error => res.send(error));
     },
 
     updateCRUD: function (req, res) {
@@ -331,7 +336,7 @@ const userController = {
                     nombre: req.body.nombre,
                     apellido: req.body.apellido,
                     correoelectronico: req.body.correoelectronico,
-                    contraseña:  bcrypt.hashSync(req.body.contraseña, 10),
+                    contraseña: bcrypt.hashSync(req.body.contrasena, 10),
                     numerotelefono: req.body.numerotelefono,
                     id_pais: req.body.id_pais,
                     id_provincia: req.body.id_provincia,

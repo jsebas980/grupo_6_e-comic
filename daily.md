@@ -362,4 +362,54 @@
 
 ---
 
-## SPRINT 7
+# Daily (27/09/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termina de esctructurar los CRUD para las facturas hacia las funciones de listados, crear, modificar y eliminar validando en el mysql
+
+## 2. Que se va a hacer hoy?
+
+- Se va a validar en y organizar el proyecto con los CRUD en su interacion y ejecucion; asi mismo se estara detallando y validando informacion de muestra con las referencias en sus descripciones
+
+## 3. Impedimentos
+
+-
+
+---
+
+ ## SPRINT 7
+---
+
+# Daily (01/10/2022)
+
+## 1. Que se hizo ayer?
+
+- Se termina de ajustar los ultimos detalles a los puntos para el cierre del Sprint 6, se traslada las tarjeta del trello
+
+## 2. Que se va a hacer hoy?
+
+- Se realiza el inicio del Srpint 7, se crea las tarjetas a los puntos del Sprint 7, se empieza a configurar las validaciones del back-end y front-end con el proyecto 
+
+## 3. Impedimentos
+
+-
+
+---
+
+# Daily (04/10/2022)
+
+## 1. Que se hizo ayer?
+
+- Se corrige unas configuraciones en las validaciones de login
+
+## 2. Que se va a hacer hoy?
+
+- Realizar las configuraciones del usuario, factura en el back-end y se crea la rama Sprint_7 en el Github
+
+
+## 3. Impedimentos
+
+- no estabo dando el resultado del express-validator con las falla y los errores 
+
+---

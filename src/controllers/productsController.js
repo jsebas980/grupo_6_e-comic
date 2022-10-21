@@ -143,25 +143,30 @@ const productController = {
     },
 
     productCreateCRUD: (req, res) => {
-        return res.render("products/productLoadCRUD");
+        let promPais = dbp.pais_model.findAll();
+        let promCategoria = dbp.categoria_model.findAll();
+        Promise
+            .all([promPais, promCategoria])
+            .then(function ([promPais, promCategoria]) {
+                return res.render("products/productLoadCRUD", { promPais: promPais, promCategoria: promCategoria })
+            }).catch(error => res.send(error));
     },
 
     createCRUD: function (req, res) {
-        //console.log(req.body);
         dbp.productos_model.create({
             titulo: req.body.titulo,
             temporada: req.body.temporada,
             volumen: req.body.volumen,
-            descripcioncorta: req.body.descripcioncorta,
-            descripciondetallada: req.body.descripciondetallada,
             precionormal: req.body.precionormal,
             publicacion: req.body.publicacion,
-            imagen: req.body.imagen,
             precio: req.body.precio,
             descontinuado: req.body.descontinuado,
             stock: req.body.stock,
             id_categoria: req.body.id_categoria,
-            id_pais: req.body.id_pais
+            id_pais: req.body.id_pais,
+            descripcioncorta: req.body.descripcioncorta,
+            descripciondetallada: req.body.descripciondetallada,
+            imagen: req.body.imagen,
         });
         return res.redirect("/");
     },

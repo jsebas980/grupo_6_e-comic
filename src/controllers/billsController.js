@@ -7,7 +7,7 @@ const billController = {
     // ! CRUD de los facturas
     listCRUD: (req, res) => {
         dbd.factura_model.findAll({
-            include: [{ association: 'estadofactura' },{ association: 'modopagofactura' },{ association: 'usuariofactura' }] 
+            include: [{ association: 'estadofactura' }, { association: 'modopagofactura' }, { association: 'usuariofactura' }]
         }).then((facturaCrud) => {
             return res.render("bills/billListcrud", { facturaCrud });
         });
@@ -24,7 +24,6 @@ const billController = {
     },
 
     createCRUD: function (req, res) {
-        //console.log(req.body);
         dbd.factura_model.create({
             id_usuario: req.body.id_usuario,
             id_estadofactura: req.body.id_estadofactura,
@@ -49,6 +48,7 @@ const billController = {
         dbd.factura_model
             .findByPk(req.params.id)
             .then((facturaCrud) => {
+                console.log(facturaCrud);
                 return res.render("bills/billEditcrud", { facturaCrud });
             })
             .catch((error) => res.send(error));
@@ -56,10 +56,23 @@ const billController = {
 
     updateCRUD: function (req, res) {
         dbd.factura_model
-            .update(
-                {
-                    id_estadofactura: req.body.id_estadofactura
-                },
+            .update({
+                id_usuario: req.body.id_usuario,
+                id_estadofactura: req.body.id_estadofactura,
+                envio: req.body.envio,
+                impuesto: req.body.impuesto,
+                total: req.body.total,
+                id_modopago: req.body.id_modopago,
+                fecha: req.body.fecha,
+                nombrecompleto: req.body.nombrecompleto,
+                correoelectronico: req.body.correoelectronico,
+                direccion: req.body.direccion,
+                numerotelefono: req.body.numerotelefono,
+                id_pais: req.body.id_pais,
+                id_provincia: req.body.id_provincia,
+                ciudad: req.body.ciudad,
+                detalleadicionales: req.body.detalleadicionales
+            },
                 {
                     where: {
                         id: req.params.id,
@@ -71,7 +84,6 @@ const billController = {
             })
             .catch((error) => res.send(error));
     }
-
 };
 
 module.exports = billController;

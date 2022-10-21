@@ -1,30 +1,45 @@
 // ? Variables y Requiere
 const express = require('express');
 const router = express.Router();
-const { body, check, oneOf, validationResult } = require('express-validator');
 const userController = require('../controllers/usersController');
+const { body, check, validationResult } = require('express-validator');
 const path = require('path');
 const multer = require('multer');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-const authMiddleware = require('../middlewares/authMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware');
 
 /*** Ejecucion del express validator de un usuario ***/
+//.isIn(['user', 'admin']).withMessage('Debes completar la Ciudad/Provincia válida'),
 const validateUsuario = [
-   body('firstname').notEmpty().withMessage('Debes completar el nombre').bail()
-      .isLength({ min: 3 }).withMessage('El nombre debe ser más largo'),
-   body('lastname').notEmpty().withMessage('Debes completar los apellidos').bail()
-      .isLength({ min: 3 }).withMessage('El nombre debe ser más largo'),
-   body('email').notEmpty().withMessage('Debes completar el correo electronico').bail()
-      .isEmail().withMessage('Debes completar un correo electronico válido'),
-   body('phonenumber').notEmpty().withMessage('Debes completar el teléfono o celular').bail()
-      .isInt().isLength({ min: 7 }).withMessage('Debes completar un teléfono o celular válido'),
-   body('city').notEmpty().withMessage('Debes completar la ciudad').bail()
-      .isLength({ min: 3 }).withMessage('Debes completar la ciudad válida'),
-   body('category').notEmpty().withMessage('Debes completar la categoria').bail()
-      .isIn(['user', 'admin']).withMessage('Debes completar la categoria válida'),
-   body('password').notEmpty().withMessage('Debes completar la contraseña').bail()
-      .isLength({ min: 8 }).withMessage('Debes completar la contraseña, debe ser más larga, mínimo 8 letras, y debe contener mayúscula, un número y un carácter especial.'),
-   body('img')
+   body('nombre').notEmpty().withMessage('Debes completar el Nombre').bail()
+      .isLength({ min: 3 }).withMessage('El Nombre debe ser más largo'),
+   body('apellido').notEmpty().withMessage('Debes completar los Apellidos').bail()
+      .isLength({ min: 3 }).withMessage('El Apellidos debe ser más largo'),
+   body('correoelectronico').notEmpty().withMessage('Debes completar el Correo electronico').bail()
+      .isEmail().withMessage('Debes completar un Correo electronico válido'),
+   body('numerotelefono').notEmpty().withMessage('Debes completar el Teléfono / Celular').bail()
+      .isInt().isLength({ min: 7 }).withMessage('Debes completar un Teléfono / Celular válido'),
+   body('id_pais').notEmpty().withMessage('Debes completar la Pais').bail()
+      .isLength({ min: 1 }).withMessage('Debes completar la Pais válida'),
+   body('id_provincia').notEmpty().withMessage('Debes completar la Ciudad/Provincia').bail()
+      .isLength({ min: 1 }).withMessage('Debes completar la Pais válida'),
+   body('contraseña').notEmpty().withMessage('Debes completar la Contraseña').bail()
+      .isLength({ min: 8 }).withMessage('Debes ser más larga, mínimo 8 letras.').bail()
+      .isStrongPassword({
+         minLength: 8,
+         minLowercase: 1,
+         minUppercase: 1,
+         minNumbers: 1,
+         minSymbols: 1,
+         returnScore: false,
+         pointsPerUnique: 1,
+         pointsPerRepeat: 0.5,
+         pointsForContainingLower: 10,
+         pointsForContainingUpper: 10,
+         pointsForContainingNumber: 10,
+         pointsForContainingSymbol: 10,
+      }).withMessage('Debe contener minimo una letra mayúscula, una letra mayúscula, un número y un carácter especial.'),
+   body('imagen')
       .custom((value, { req }) => {
          let file = req.file;
          let extensionesValidas = ['.jpg', '.jpeg', '.png', '.gif'];
@@ -38,36 +53,60 @@ const validateUsuario = [
          }
          return true;
       })
-]
+];
+
+function usersValidationErrors(req, res, next) {
+   const errors = validationResult(req)
+   if (!errors.isEmpty()) {
+      console.log(req.url);
+      console.log(req.body);
+      //console.log(validationResult(req).mapped());
+      const alert = errors.array()
+      if (req.url.indexOf('/userInsertCRUD') >= 0){
+         //return res.status(422).jsonp(errors.array());
+         res.render("users/userLoadCRUD", {
+            alert
+         })
+      }
+      if (req.url.indexOf('/userEditCRUD') >= 0){
+         return res.status(422).jsonp(errors.array());
+         res.render("users/userEditCRUD/"+req.params.id, {
+            alert
+         })
+      }     
+   } else {
+      console.log("no hay errores: " + errors)
+      next();
+   }
+};
 
 const validation = [
-   oneOf([
-      check('email')
-         .exists()
-         .not().isEmpty()
-         .withMessage('correo electronico is required'),
-
-      check('email')
-         .exists()
-         .not().isEmpty()
-         .withMessage('correo electronico is required')
-         .isEmail()
-         .withMessage('correo electronico not valid'),
-   ]),
+   check('email')
+      .exists()
+      .withMessage('Correo electronico es requerido').bail()
+      .isLength({ min: 8 })
+      .withMessage('Debes completar la Correo electronico, debe ser más larga, mínimo 8 letras').bail()
+      .isEmail()
+      .withMessage('Debes completar un Correo electronico válido'),
    check('password')
       .exists()
-      .withMessage('contraseña is required')
+      .withMessage('Contraseña es requerido').bail()
+      .isLength({ min: 8 })
+      .withMessage('Debes completar la Contraseña, debe ser más larga, mínimo 8 letras, y debe contener mayúscula, un número y un carácter especial.')
 ];
 
 function handleValidationErrors(req, res, next) {
-   const errors = validationResult(req);
+   const errors = validationResult(req)
    if (!errors.isEmpty()) {
-      console.log(util.inspect(errors.array()));
-      return res.status(422).json({ errors: errors.array() });
+      return res.status(422).jsonp(errors.array());
+      const alert = errors.array()
+      res.render('./users/login', {
+         alert
+      })
+   } else {
+      next();
    }
-   next();
 };
-
 
 /*** Ejecucion del multer de una imagen de un usuario ***/
 const storage = multer.diskStorage({
@@ -120,10 +159,10 @@ router.get('/userListCRUD', authMiddleware, userController.listCRUD);
 router.get('/userDetailCRUD/:id', authMiddleware, userController.userDetailCRUD);
 
 router.get('/userCreateCRUD', authMiddleware, userController.userCreateCRUD);
-router.post('/userInsertCRUD', uploadFile.single('img'), validateUsuario, userController.createCRUD);
+router.post('/userInsertCRUD', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.createCRUD);
 
 router.get('/userEditCRUD/:id', userController.editCRUD);
-router.patch('/userEditCRUD/:id', uploadFile.single('img'), validateUsuario, userController.updateCRUD);
+router.patch('/userEditCRUD/:id', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.updateCRUD);
 
 router.get('/userDeleteCRUD/:id', authMiddleware, userController.deleteCRUD);
 router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);

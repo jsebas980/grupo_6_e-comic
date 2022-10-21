@@ -7,43 +7,61 @@
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
 
-      <form action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST" >
+      <form action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
         </div>
         <fieldset id="left">
           <label for="nombre"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese el nombre" name="nombre"
-            value="<%= usuarioCrud.nombre %>">
+          <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= usuarioCrud.nombre %>">
           <label for="apellido"><b>Apellidos</b></label>
-          <input type="text" placeholder="Ingrese los apellidos" name="apellido"
-            value="<%= usuarioCrud.apellido %>">
+          <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= usuarioCrud.apellido %>">
         </fieldset>
         <fieldset id="right">
           <label for="correoelectronico"><b>Correo electronico</b></label>
-          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="<%= usuarioCrud.correoelectronico %>">
+          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico"
+            value="<%= usuarioCrud.correoelectronico %>">
           <label for="numerotelefono"><b>Teléfono / Celular</b></label>
           <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
             value="<%= usuarioCrud.numerotelefono %>">
-            <label for="id_pais"><b>Pais</b></label>
-          <input type="text" placeholder="Ingrese el pais" name="id_pais" value="<%= usuarioCrud.id_pais %>">
+          <label for="id_pais"><b>Pais</b></label>
+          <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value="<%= usuarioCrud.id_pais %>> -->
+          <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
+            <% if(typeof promPais !='undefined' ) { %>
+              <% promPais.forEach(function(pais) { %>
+                <option value="<%= usuarioCrud.id_pais %>" selected>
+                  <%= pais.nombre %>
+                </option>
+                <% }) %>
+                  <% } %>
+          </select>
           <label for="id_provincia"><b>Ciudad/Provincia</b></label>
-          <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value="<%= usuarioCrud.id_provincia %>">
-          <label for="contraseña"><b>Contraseña</b></label>
-          <input type="text" placeholder="Ingrese la contraseña" name="contraseña" value="<%= usuarioCrud.contraseña %>">
+          <!-- <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value="<%= usuarioCrud.id_provincia %>"> -->
+          <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
+            <% if(typeof promProvincia !='undefined' ) { %>
+              <% promProvincia.forEach(function(prov) { %>
+                <option value="<%= usuarioCrud.id_provincia %>" selected>
+                  <%= prov.nombre %>
+                </option>
+                <% }) %>
+                  <% } %>
+          </select>
+          <label for="password"><b>Contraseña</b></label>
+          <input type="text" placeholder="Ingrese la contraseña" name="contrasena">
         </fieldset>
         <fieldset id="center">
-          <label for="imagen"><b>Imagen</b></label>
-          <input type="text" placeholder="Ingrese la imagen" name="imagen" value="<%= usuarioCrud.imagen %>">
+          <label for="img"><b>Imagen</b></label>
+          <input type="file" name="imagen">
         </fieldset>
         </div>
-            <div class="container2">
-              <button type="submit" class="button">Actualizar</button>
-            </div>
+        </div>
+        <div class="container2">
+          <button type="submit" class="button">Actualizar</button>
+        </div>
       </form>
 
       </main>
-      
+
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
