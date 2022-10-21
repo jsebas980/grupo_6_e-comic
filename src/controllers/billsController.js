@@ -55,6 +55,7 @@ const billController = {
     },
 
     updateCRUD: function (req, res) {
+        console.log("El id de la factura es: " + req.params.id)
         dbd.factura_model
             .update(
                 {

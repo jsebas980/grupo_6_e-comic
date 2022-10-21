@@ -7,7 +7,7 @@
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
 
-    <form action="/bills/billEditCRUD/<%= facturaCrud.id %>?_method=PATCH" method="POST">
+    <form action="/bills/billEditCRUD/<%= facturaCrud.id %>?_method=PATCH" method="POST" enctype="multipart/form-data" >
         <div class="imgcontainer">
           <h1>Edit</h1>
         </div>
