@@ -58,70 +58,24 @@ const validateUsuario = [
 function usersValidationErrors(req, res, next) {
    const errors = validationResult(req)
    if (!errors.isEmpty()) {
-      return res.status(422).jsonp(errors.array());
+      console.log(req.url);
+      console.log(req.body);
+      //console.log(validationResult(req).mapped());
       const alert = errors.array()
-      res.render('./users/userLoadCRUD', {
-         alert
-      })
+      if (req.url.indexOf('/userInsertCRUD') >= 0){
+         //return res.status(422).jsonp(errors.array());
+         res.render("users/userLoadCRUD", {
+            alert
+         })
+      }
+      if (req.url.indexOf('/userEditCRUD') >= 0){
+         return res.status(422).jsonp(errors.array());
+         res.render("users/userEditCRUD/"+req.params.id, {
+            alert
+         })
+      }     
    } else {
-      next();
-   }
-};
-
-const validateUsuarioEdit = [
-   body('nombre').notEmpty().withMessage('Debes completar el Nombre').bail()
-      .isLength({ min: 3 }).withMessage('El Nombre debe ser más largo'),
-   body('apellido').notEmpty().withMessage('Debes completar los Apellidos').bail()
-      .isLength({ min: 3 }).withMessage('El Apellidos debe ser más largo'),
-   body('correoelectronico').notEmpty().withMessage('Debes completar el Correo electronico').bail()
-      .isEmail().withMessage('Debes completar un Correo electronico válido'),
-   body('numerotelefono').notEmpty().withMessage('Debes completar el Teléfono / Celular').bail()
-      .isInt().isLength({ min: 7 }).withMessage('Debes completar un Teléfono / Celular válido'),
-   body('id_pais').notEmpty().withMessage('Debes completar la Pais').bail()
-      .isLength({ min: 1 }).withMessage('Debes completar la Pais válida'),
-   body('id_provincia').notEmpty().withMessage('Debes completar la Ciudad/Provincia').bail()
-      .isLength({ min: 1 }).withMessage('Debes completar la Pais válida'),
-   body('contrasena').notEmpty().withMessage('Debes completar la Contraseña').bail()
-      .isLength({ min: 8 }).withMessage('Debes ser más larga, mínimo 8 letras.').bail()
-      .isStrongPassword({
-         minLength: 8,
-         minLowercase: 1,
-         minUppercase: 1,
-         minNumbers: 1,
-         minSymbols: 1,
-         returnScore: false,
-         pointsPerUnique: 1,
-         pointsPerRepeat: 0.5,
-         pointsForContainingLower: 10,
-         pointsForContainingUpper: 10,
-         pointsForContainingNumber: 10,
-         pointsForContainingSymbol: 10,
-      }).withMessage('Debe contener minimo una letra mayúscula, una letra mayúscula, un número y un carácter especial.'),
-   body('imagen')
-      .custom((value, { req }) => {
-         let file = req.file;
-         let extensionesValidas = ['.jpg', '.jpeg', '.png', '.gif'];
-         if (!file) {
-            null;
-         } else {
-            let fileExtension = path.extname(file.originalname);
-            if (!extensionesValidas.includes(fileExtension)) {
-               throw new Error('Solo se aceptan archivos JPG, JPEG, PNG y GIF');
-            }
-         }
-         return true;
-      })
-];
-
-function usersEditValidationErrors(req, res, next) {
-   const errors = validationResult(req)
-   if (!errors.isEmpty()) {
-      return res.status(422).jsonp(errors.array());
-      const alert = errors.array()
-      res.render("/", {
-         alert
-      })
-   } else {
+      console.log("no hay errores: " + errors)
       next();
    }
 };
@@ -140,7 +94,6 @@ const validation = [
       .isLength({ min: 8 })
       .withMessage('Debes completar la Contraseña, debe ser más larga, mínimo 8 letras, y debe contener mayúscula, un número y un carácter especial.')
 ];
-
 
 function handleValidationErrors(req, res, next) {
    const errors = validationResult(req)
@@ -209,7 +162,7 @@ router.get('/userCreateCRUD', authMiddleware, userController.userCreateCRUD);
 router.post('/userInsertCRUD', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.createCRUD);
 
 router.get('/userEditCRUD/:id', userController.editCRUD);
-router.patch('/userEditCRUD/:id', uploadFile.single('imagen'), validateUsuarioEdit, usersEditValidationErrors, userController.updateCRUD);
+router.patch('/userEditCRUD/:id', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.updateCRUD);
 
 router.get('/userDeleteCRUD/:id', authMiddleware, userController.deleteCRUD);
 router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);

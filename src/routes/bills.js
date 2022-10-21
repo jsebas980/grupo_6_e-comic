@@ -2,87 +2,70 @@
 const express = require('express');
 const router = express.Router();
 const billController = require('../controllers/billsController');
-const { body, check, validationResult } = require('express-validator');
-const path = require('path');
-const multer = require('multer');
+const { body, validationResult } = require('express-validator');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware')
-console.log("prueba")
-// /*** Ejecucion del express validator de un Factura ***/
-// //.isIn(['user', 'admin']).withMessage('Debes completar la Ciudad/Provincia válida'),
-// const validateFacturaEdit = [
-//    body('titulo').notEmpty().withMessage('Debes completar el Titulo').bail()
-//       .isLength({ min: 5 }).withMessage('El Titulo debe ser más largo'),
-//    body('temporada').notEmpty().withMessage('Debes completar la Temporada').bail()
-//       .isLength({ min: 3 }).withMessage('El Temporada debe ser más largo'),
-//    body('volumen').notEmpty().withMessage('Debes completar el Volumen').bail()
-//       .isLength({ min: 3 }).withMessage('El Volumen debe ser más largo'),
-//    body('stock').notEmpty().withMessage('Debes completar el Stock').bail()
-//       .isInt().withMessage('El Stock debe ser númerico'),
-//    body('descontinuado').notEmpty().withMessage('Debes completar el Descontinuado').bail()
-//       .isInt().withMessage('El Descontinuado debe ser númerico'),
-//    body('precionormal').notEmpty().withMessage('Debes completar el Precio').bail()
-//       .isInt().withMessage('El Precio debe ser númerico'),
-//    body('precio').notEmpty().withMessage('Debes completar el Precio').bail()
-//       .isInt().withMessage('El Precio debe ser númerico'),
-//    body('id_categoria').notEmpty().withMessage('Debes completar la Categoria').bail()
-//       .isLength({ min: 1 }).withMessage('Debes ser una Categoria válida'),
-//    body('id_pais').notEmpty().withMessage('Debes completar el Pais').bail()
-//       .isLength({ min: 1 }).withMessage('Debes ser un Pais válido'),
-//    body('publicacion').notEmpty().withMessage('Debes completar la Fecha de publicación').bail()
-//       .isDate().withMessage('Debes ser una fecha valida'),
-//    body('descripcioncorta').notEmpty().withMessage('Debes completar la Descripción corta').bail()
-//       .isLength({ min: 10 }).withMessage('Debes ser más larga, mínimo 10 letras'),
-//    body('descripciondetallada').notEmpty().withMessage('Debes completar la Descripcion detallada').bail()
-//       .isLength({ min: 20 }).withMessage('Debes ser más larga, mínimo 20 letras'),
-//    body('imagen')
-//       .custom((value, { req }) => {
-//          let file = req.file;
-//          let extensionesValidas = ['.jpg', '.jpeg', '.png', '.gif'];
-//          if (!file) {
-//             null;
-//          } else {
-//             let fileExtension = path.extname(file.originalname);
-//             if (!extensionesValidas.includes(fileExtension)) {
-//                throw new Error('Solo se aceptan archivos JPG, JPEG, PNG y GIF');
-//             }
-//          }
-//          return true;
-//       })
-// ];
 
 
-validateFacturaEdit = [
-   body('id_estadofactura').isLength({min: 1}).withMessage('Debes completar el estado de la factura').bail()
+/*** Ejecucion del express validator de un Factura ***/
+//.isIn(['user', 'admin']).withMessage('Debes completar la Ciudad/Provincia válida'),
+const validateFactura = [
+   body('id_usuario').notEmpty().withMessage('Debes completar el Usuario').bail()
+      .isLength({ min: 1 }).withMessage('El Usuario debe ser más largo'),
+   body('id_estadofactura').notEmpty().withMessage('Debes completar el Estado factura').bail()
+      .isInt().withMessage('El Estado factura debe ser númerico'),
+   body('envio').notEmpty().withMessage('Debes completar el Envio').bail()
+      .isLength({ min: 3 }).withMessage('El Envio debe ser más largo'),
+   body('impuesto').notEmpty().withMessage('Debes completar el Impuesto').bail()
+      .isInt().withMessage('El Impuesto debe ser númerico'),
+   body('total').notEmpty().withMessage('Debes completar el Total').bail()
+      .isInt().withMessage('El Total debe ser númerico'),
+   body('id_modopago').notEmpty().withMessage('Debes completar el Modo de pago').bail()
+      .isInt().withMessage('El Modo de pago debe ser númerico'),
+   body('fecha').notEmpty().withMessage('Debes completar la Fecha').bail()
+      .isDate().withMessage('Debes ser una fecha valida'),
+   body('id_pais').notEmpty().withMessage('Debes completar el Pais').bail()
+      .isLength({ min: 1 }).withMessage('Debes ser un Pais válido'),
+   body('id_provincia').notEmpty().withMessage('Debes completar la Provincia').bail()
+      .isLength({ min: 1 }).withMessage('Debes ser una Provincia válida'),
+   body('ciudad').notEmpty().withMessage('Debes completar la Ciudad').bail()
+      .isLength({ min: 1 }).withMessage('La Ciudad debe ser más largo'),
+   body('nombrecompleto').notEmpty().withMessage('Debes completar el Nombre completo').bail()
+      .isLength({ min: 2 }).withMessage('Debes ser más largo'),
+   body('correoelectronico').notEmpty().withMessage('Debes completar el Correo electronico').bail()
+      .isEmail().withMessage('Debes completar un Correo electronico válido'),
+   body('direccion').notEmpty().withMessage('Debes completar la Dirección').bail()
+      .isLength({ min: 10 }).withMessage('Debes ser más larga'),
+   body('numerotelefono').notEmpty().withMessage('Debes completar el Teléfono / Celular').bail()
+      .isAlphanumeric().withMessage('Debes completar un Teléfono / Celular válido'),
+   body('detalleadicionales').notEmpty().withMessage('Debes completar la Descripcion detallada').bail()
+      .isLength({ min: 1 }).withMessage('Debes ser más larga, mínimo 10 letras'),
 ];
 
-
-function FacturaEditValidationErrors(req, res, next) {
+function FacturaValidationErrors(req, res, next) {
    const errors = validationResult(req)
-   console.log(body('id_estadofactura'))
    if (!errors.isEmpty()) {
-      console.log(validationResult(req).mapped())
-      return res.status(422).jsonp(errors.array());
+      console.log(req.url);
+      console.log(req.body);
+      //console.log(validationResult(req).mapped());
       const alert = errors.array()
-      res.render("/", {
-         alert
-      })
+      if (req.url.indexOf('/billInsertCRUD') >= 0){
+         //return res.status(422).jsonp(errors.array());
+         res.render("bills/billLoadCRUD", {
+            alert
+         })
+      }
+      if (req.url.indexOf('/billEditCRUD') >= 0){
+         return res.status(422).jsonp(errors.array());
+         res.render("bills/billEditCRUD/"+req.params.id, {
+            alert
+         })
+      }     
    } else {
       console.log("no hay errores: " + errors)
       next();
    }
 };
-
-/*** Ejecucion del multer de una imagen de un billo ***/
-const storage = multer.diskStorage({
-   destination: function (req, file, cb) {
-      cb(null, '../public/images/img/');
-   },
-   filename: function (req, file, cb) {
-      cb(null, file.originalname);
-   }
-});
-var uploadFile = multer({ storage: storage })
 
 // ! CRUD de los facturas
 
@@ -90,13 +73,10 @@ var uploadFile = multer({ storage: storage })
 router.get('/billListCRUD', authMiddleware, billController.listCRUD);
 router.get('/billDetailCRUD/:id', authMiddleware, billController.billDetailCRUD);
 
-//router.get('/billCreateCRUD', authMiddleware, billController.billCreateCRUD);
-//router.post('/billInsertCRUD', validateFactura, productsValidationErrors, billController.createCRUD);
+router.get('/billCreateCRUD', billController.billCreateCRUD);
+router.post('/billInsertCRUD', validateFactura, FacturaValidationErrors, billController.createCRUD);
 
-router.get('/billEditCRUD/:id', authMiddleware, billController.editCRUD);
-router.patch('/billEditCRUD/:id', validateFacturaEdit, FacturaEditValidationErrors, billController.updateCRUD);
-
-//router.get('/billEditCRUD/:id', authMiddleware, billController.editCRUD);
-//router.patch('/billEditCRUD/:id', validateFacturaEdit, FacturaEditValidationErrors, billController.updateCRUD);
+router.get('/billEditCRUD/:id', billController.editCRUD);
+router.patch('/billEditCRUD/:id', validateFactura, FacturaValidationErrors, billController.updateCRUD);
 
 module.exports = router;

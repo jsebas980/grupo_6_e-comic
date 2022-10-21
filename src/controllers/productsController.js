@@ -153,22 +153,21 @@ const productController = {
     },
 
     createCRUD: function (req, res) {
-        console.log(req.body);
-        // dbp.productos_model.create({
-        //     titulo: req.body.titulo,
-        //     temporada: req.body.temporada,
-        //     volumen: req.body.volumen,
-        //     precionormal: req.body.precionormal,
-        //     publicacion: req.body.publicacion,
-        //     precio: req.body.precio,
-        //     descontinuado: req.body.descontinuado,
-        //     stock: req.body.stock,
-        //     id_categoria: req.body.id_categoria,
-        //     id_pais: req.body.id_pais,
-        //     descripcioncorta: req.body.descripcioncorta,
-        //     descripciondetallada: req.body.descripciondetallada,
-        //     imagen: req.body.imagen,
-        // });
+        dbp.productos_model.create({
+            titulo: req.body.titulo,
+            temporada: req.body.temporada,
+            volumen: req.body.volumen,
+            precionormal: req.body.precionormal,
+            publicacion: req.body.publicacion,
+            precio: req.body.precio,
+            descontinuado: req.body.descontinuado,
+            stock: req.body.stock,
+            id_categoria: req.body.id_categoria,
+            id_pais: req.body.id_pais,
+            descripcioncorta: req.body.descripcioncorta,
+            descripciondetallada: req.body.descripciondetallada,
+            imagen: req.body.imagen,
+        });
         return res.redirect("/");
     },
 
@@ -182,7 +181,6 @@ const productController = {
     },
 
     updateCRUD: function (req, res) {
-        console.log(req.body);
         dbp.productos_model
             .update(
                 {
