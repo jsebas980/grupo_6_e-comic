@@ -101,7 +101,6 @@ const validateUsuario = [
 ];
 
 function usersValidationErrors(req, res, next) {
-<<<<<<< HEAD
   console.log(req.url);
   console.log(req.body);
   const errors = validationResult(req);
@@ -127,31 +126,6 @@ function usersValidationErrors(req, res, next) {
     next();
   }
 }
-=======
-   const errors = validationResult(req)
-   if (!errors.isEmpty()) {
-      console.log(req.url);
-      console.log(req.body);
-      //console.log(validationResult(req).mapped());
-      const alert = errors.array()
-      if (req.url.indexOf('/userInsertCRUD') >= 0){
-         //return res.status(422).jsonp(errors.array());
-         res.render("users/userLoadCRUD", {
-            alert
-         })
-      }
-      if (req.url.indexOf('/userEditCRUD') >= 0){
-         return res.status(422).jsonp(errors.array());
-         res.render("users/userEditCRUD/"+req.params.id, {
-            alert
-         })
-      }     
-   } else {
-      console.log("no hay errores: " + errors)
-      next();
-   }
-};
->>>>>>> a9efbc54e62ff3446c39ff139a50452e5b8b0d1d
 
 const validation = [
   check("email")
@@ -217,19 +191,4 @@ router.patch("/userEditCRUD/:id", uploadFile.single("imagenuser"), validateUsuar
 router.get("/userDeleteCRUD/:id", authMiddleware, userController.deleteCRUD);
 router.delete("/userDeleteCRUD/:id", userController.destroyCRUD);
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-router.get('/userCreateCRUD', authMiddleware, userController.userCreateCRUD);
-router.post('/userInsertCRUD', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.createCRUD);
-
-router.get('/userEditCRUD/:id', userController.editCRUD);
-router.patch('/userEditCRUD/:id', uploadFile.single('imagen'), validateUsuario, usersValidationErrors, userController.updateCRUD);
-
-router.get('/userDeleteCRUD/:id', authMiddleware, userController.deleteCRUD);
-router.delete('/userDeleteCRUD/:id', userController.destroyCRUD);
-
-router.patch('/userPassRole/:id', userController.userPassRole);
-
-module.exports = router;
->>>>>>> a9efbc54e62ff3446c39ff139a50452e5b8b0d1d

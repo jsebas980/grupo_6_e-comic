@@ -1,21 +1,12 @@
 // ? Variables y Requiere
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
 const productController = require("../controllers/productsController");
 const { body, validationResult } = require("express-validator");
 const path = require("path");
 const multer = require("multer");
 const guestMiddleware = require("../middlewares/guestMiddleware");
 const authMiddleware = require("../middlewares/authMiddleware");
-=======
-const productController = require('../controllers/productsController');
-const { body, validationResult } = require('express-validator');
-const path = require('path');
-const multer = require('multer');
-const guestMiddleware = require('../middlewares/guestMiddleware');
-const authMiddleware = require('../middlewares/authMiddleware');
->>>>>>> a9efbc54e62ff3446c39ff139a50452e5b8b0d1d
 
 /*** Ejecucion del express validator de un producto ***/
 //.isIn(['user', 'admin']).withMessage('Debes completar la Ciudad/Provincia válida'),
@@ -108,7 +99,6 @@ const validateProducto = [
 ];
 
 function productsValidationErrors(req, res, next) {
-<<<<<<< HEAD
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     console.log(req.url);
@@ -132,31 +122,6 @@ function productsValidationErrors(req, res, next) {
     next();
   }
 }
-=======
-   const errors = validationResult(req)
-   if (!errors.isEmpty()) {
-      console.log(req.url);
-      console.log(req.body);
-      //console.log(validationResult(req).mapped());
-      const alert = errors.array()
-      if (req.url.indexOf('/productInsertCRUD') >= 0){
-         //return res.status(422).jsonp(errors.array());
-         res.render("products/productLoadCRUD", {
-            alert
-         })
-      }
-      if (req.url.indexOf('/productEditCRUD') >= 0){
-         return res.status(422).jsonp(errors.array());
-         res.render("products/productEditCRUD/"+req.params.id, {
-            alert
-         })
-      }     
-   } else {
-      console.log("no hay errores: " + errors)
-      next();
-   }
-};
->>>>>>> a9efbc54e62ff3446c39ff139a50452e5b8b0d1d
 
 /*** Ejecucion del multer de una imagen de un producto ***/
 const storage = multer.diskStorage({
@@ -207,17 +172,4 @@ router.get(
 );
 router.delete("/productDeleteCRUD/:id", productController.destroyCRUD);
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-router.get('/productCreateCRUD', productController.productCreateCRUD);
-router.post('/productInsertCRUD', uploadFile.single('imagen'), validateProducto, productsValidationErrors, productController.createCRUD);
-
-router.get('/productEditCRUD/:id', productController.editCRUD);
-router.patch('/productEditCRUD/:id',uploadFile.single('imagen'), validateProducto, productsValidationErrors, productController.updateCRUD);
-
-router.get('/productDeleteCRUD/:id', authMiddleware, productController.deleteCRUD);
-router.delete('/productDeleteCRUD/:id', productController.destroyCRUD);
-
-module.exports = router;
->>>>>>> a9efbc54e62ff3446c39ff139a50452e5b8b0d1d
