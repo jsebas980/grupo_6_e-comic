@@ -2,11 +2,10 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
-
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
+    <main class="main">
       <form action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
@@ -25,7 +24,6 @@
           <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
             value="<%= usuarioCrud.numerotelefono %>">
           <label for="id_pais"><b>Pais</b></label>
-          <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value="<%= usuarioCrud.id_pais %>> -->
           <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
             <% if(typeof promPais !='undefined' ) { %>
               <% promPais.forEach(function(pais) { %>
@@ -36,7 +34,6 @@
                   <% } %>
           </select>
           <label for="id_provincia"><b>Ciudad/Provincia</b></label>
-          <!-- <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value="<%= usuarioCrud.id_provincia %>"> -->
           <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
             <% if(typeof promProvincia !='undefined' ) { %>
               <% promProvincia.forEach(function(prov) { %>
@@ -51,7 +48,7 @@
         </fieldset>
         <fieldset id="center">
           <label for="img"><b>Imagen</b></label>
-          <input type="file" name="imagen">
+          <input type="file" name="imagenuser">
         </fieldset>
         </div>
         </div>
@@ -59,11 +56,8 @@
           <button type="submit" class="button">Actualizar</button>
         </div>
       </form>
-
       </main>
-
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

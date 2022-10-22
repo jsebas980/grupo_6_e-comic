@@ -27,12 +27,8 @@ module.exports = (sequelize) => {
     timestamps: false,
     indexes: [],
   };
-  
-  const PersonasModel = sequelize.define(
-    "personas_model", 
-    attributes, 
-    options
-  );
+
+  const PersonasModel = sequelize.define("personas_model", attributes, options);
 
   //Relaciones con el modelo
   PersonasModel.associate = function (models) {

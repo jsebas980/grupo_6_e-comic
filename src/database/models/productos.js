@@ -81,7 +81,6 @@ module.exports = (sequelize) => {
       //   return this.getDataValue('publicacion')
       //     .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
       // }
-      
     },
     imagen: {
       type: DataTypes.STRING(100),

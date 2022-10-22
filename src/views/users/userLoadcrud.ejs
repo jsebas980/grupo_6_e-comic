@@ -2,14 +2,13 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
-
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
+    <main class="main">
       <form action="/users/userInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
-          <h1>Creación de un usuario e<span>C</span>omic</h1>
+          <h1>Creación de un usuario en e<span>C</span>omic</h1>
         </div>
         <% if(typeof alert !='undefined' ) { %>
           <% alert.forEach(function(error) { %>
@@ -28,11 +27,11 @@
                   <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="">
                 </fieldset>
                 <fieldset id="right">
-                  <label for="email"><b>Correo electronico</b></label>
+                  <label for="email"><b>Correo electrónico</b></label>
                   <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="">
                   <label for="phonenumber"><b>Teléfono / Celular</b></label>
                   <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="">
-                  <label for="city"><b>Pais</b></label>
+                  <label for="city"><b>País</b></label>
                   <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value=""> -->
                   <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
                     <option disabled selected value> -- select an option -- </option>
@@ -44,7 +43,7 @@
                         <% }) %>
                           <% } %>
                   </select>
-                  <label for="city"><b>Ciudad/Provincia</b></label>
+                  <label for="city"><b>Ciudad / Provincia</b></label>
                   <!-- <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value=""> -->
                   <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
                     <option disabled selected value> -- select an option -- </option>
@@ -57,21 +56,19 @@
                           <% } %>
                   </select>
                   <label for="password"><b>Contraseña</b></label>
-                  <input type="text" placeholder="Ingrese la contraseña" name="contraseña" value="">
+                  <input type="password" placeholder="Ingrese la contraseña" name="contrasena">
                 </fieldset>
                 <fieldset id="center">
-                  <label for="img"><b>Imagen</b></label>
-                  <input type="file" name="imagen">
+                  <label><b>Imagen</b></label>
+                  <input type="file" name="imagenuser">
                 </fieldset>
                 </div>
                 <div class="container2">
-                  <button type="submit" class="button">Guardar</button>
+                  <button type="submit" class="button">Guardar usuario</button>
                 </div>
       </form>
       </main>
-
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

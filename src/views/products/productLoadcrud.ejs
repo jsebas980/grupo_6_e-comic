@@ -2,14 +2,12 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
-
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
       <form action="/products/productInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
-          <h1>Load</h1>
+          <h1>Creación de un producto en e<span>C</span>omic</h1>
         </div>
         <% if(typeof alert !='undefined' ) { %>
           <% alert.forEach(function(error) { %>
@@ -23,20 +21,19 @@
               <% } %>
                 <fieldset id="left">
                   <label for="titulo"><b>Titulo</b></label>
-                  <input type="text" placeholder="ingrese el titulo" name="titulo">
+                  <input type="text" placeholder="Ingrese el titulo" name="titulo">
                   <label for="temporada"><b>Temporada</b></label>
-                  <input type="text" placeholder="ingrese la temporada" name="temporada">
+                  <input type="text" placeholder="Ingrese la temporada" name="temporada">
                   <label for="volumen"><b>Volumen</b></label>
-                  <input type="text" placeholder="ingrese el volumen" name="volumen">
+                  <input type="text" placeholder="Ingrese el volumen" name="volumen">
                   <label for="stock"><b>Stock</b></label>
-                  <input type="text" placeholder="ingrese el stock" name="stock">
+                  <input type="text" placeholder="Ingrese el stock" name="stock">
                   <label for="descontinuado"><b>Descontinuado</b></label>
-                  <input type="text" placeholder="ingrese el descontinuado" name="descontinuado">
-
+                  <input type="text" placeholder="Ingrese el descontinuado" name="descontinuado">
                 </fieldset>
                 <fieldset id="right">
-                  <label for="id_categoria"><b>Categoria</b></label>
-                  <!-- <input type="text" placeholder="ingrese la categoria" name="id_categoria"> -->
+                  <label for="id_categoria"><b>Categoría</b></label>
+                  <!-- <input type="text" placeholder="Ingrese la categoria" name="id_categoria"> -->
                   <select name="id_categoria" placeholder="Ingrese la categoria">
                     <option disabled selected value> -- select an option -- </option>
                     <% if(typeof promCategoria !='undefined' ) { %>
@@ -48,7 +45,7 @@
                           <% } %>
                   </select>
                   <label for="id_pais"><b>País</b></label>
-                  <!-- <input type="text" placeholder="ingrese el país" name="id_pais"> -->
+                  <!-- <input type="text" placeholder="Ingrese el país" name="id_pais"> -->
                   <select name="id_pais" placeholder="Ingrese el país">
                     <option disabled selected value> -- select an option -- </option>
                     <% if(typeof promPais !='undefined' ) { %>
@@ -60,31 +57,29 @@
                           <% } %>
                   </select>
                   <label for="publicacion"><b>Fecha de publicación</b></label>
-                  <input type="date" placeholder="ingrese la fecha de publicacion" name="publicacion">
-                  <label for="precionormal"><b>Precio</b></label>
-                  <input type="text" placeholder="ingrese el precio" name="precionormal">
-                  <label for="precio"><b>precio</b></label>
-                  <input type="text" placeholder="ingrese el precio" name="precio">
+                  <input type="date" placeholder="Ingrese la fecha de publicacion" name="publicacion">
+                  <label for="precionormal"><b>Precio normal</b></label>
+                  <input type="text" placeholder="Ingrese el precio" name="precionormal">
+                  <label for="precio"><b>Precio</b></label>
+                  <input type="text" placeholder="Ingrese el precio" name="precio">
                 </fieldset>
                 <fieldset id="center">
                   <label for="descripcioncorta"><b>Descripción corta</b></label>
-                  <input type="text" placeholder="ingrese la descripcion corta" name="descripcioncorta">
-                  <label for="descripciondetallada"><b>Descripcion detallada</b></label>
+                  <input type="text" placeholder="Ingrese la descripcion corta" name="descripcioncorta">
+                  <label for="descripciondetallada"><b>Descripción detallada</b></label>
                   <textarea name="descripciondetallada" id="descripciondetallada" cols="30" rows="10"></textarea>
                 </fieldset>
                 <fieldset id="center">
                   <label for="img"><b>Imagen</b></label>
-                  <input type="texto" name="imagen">
+                  <input type="file" name="imagen">
                 </fieldset>
                 </div>
                 <div class="container2">
-                  <button type="submit" class="button">Guardar</button>
+                  <button type="submit" class="button">Guardar producto</button>
                 </div>
       </form>
       </main>
-
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

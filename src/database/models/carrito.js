@@ -131,11 +131,7 @@ module.exports = (sequelize) => {
     ],
   };
 
-  const CarritoModel = sequelize.define(
-    "carrito_model", 
-    attributes, 
-    options
-  );
+  const CarritoModel = sequelize.define("carrito_model", attributes, options);
 
   //Relaciones con el modelo
   CarritoModel.associate = function (models) {

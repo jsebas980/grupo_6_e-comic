@@ -11,8 +11,8 @@
 /* Table Styles */
 
 .table-wrapper {
-    margin: 5px 50px 50px;
-    box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+    margin: 5px 5px 5px;
+    /* box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2); */
 }
 
 .fl-table {

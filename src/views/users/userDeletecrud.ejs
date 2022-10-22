@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head -->
-<%- include('../partials/head.ejs') %>
-
+  <!-- Head -->
+  <%- include('../partials/head.ejs') %>
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
-      <form action="/users/userDeleteCRUD/<%= usuarioCrud.id %>?_method=DELETE" method="POST">
+    <main class="main">
+      <form
+        action="/users/userDeleteCRUD/<%= usuarioCrud.id %>?_method=DELETE"
+        method="POST"
+      >
         <div class="imgcontainer">
-          <h1>Delete <%= usuarioCrud.id %>
-          </h1>
+          <h1>Delete <%= usuarioCrud.id %></h1>
         </div>
         <div class="container2">
           <button type="submit" class="button">Eliminar</button>
         </div>
       </form>
-      </main>
-
-      <!-- Footer -->
-      <%- include('../partials/footer.ejs') %>
+    </main>
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

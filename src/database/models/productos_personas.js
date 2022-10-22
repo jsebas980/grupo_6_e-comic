@@ -76,7 +76,7 @@ module.exports = (sequelize) => {
       },
     ],
   };
-  
+
   const ProductosPersonasModel = sequelize.define(
     "productos_personas_model",
     attributes,

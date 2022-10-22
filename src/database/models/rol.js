@@ -28,11 +28,7 @@ module.exports = (sequelize) => {
     indexes: [],
   };
 
-  const RolModel = sequelize.define(
-    "rol_model", 
-    attributes, 
-    options
-  );
+  const RolModel = sequelize.define("rol_model", attributes, options);
 
   //Relaciones con el modelo
   RolModel.associate = function (models) {

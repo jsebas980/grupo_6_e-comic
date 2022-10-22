@@ -148,7 +148,7 @@ body {
   color: #fde428;
   transition: all 0.5s ease 0s;
   opacity: 2;
-  font: 700 1.6rem "Roboto Slab", sans-serif;
+  font: 500 1.1rem "Roboto Slab", sans-serif;
 }
 
 .header-login-signup .menudiv nav ul li a:hover i {

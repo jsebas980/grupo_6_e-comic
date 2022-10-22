@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
     timestamps: false,
     indexes: [],
   };
-  
+
   const ModoPagoModel = sequelize.define(
     "modo_pago_model",
     attributes,

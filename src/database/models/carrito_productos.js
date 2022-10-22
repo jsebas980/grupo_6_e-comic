@@ -57,7 +57,7 @@ module.exports = (sequelize) => {
       },
     ],
   };
-  
+
   const CarritoProductosModel = sequelize.define(
     "carrito_productos_model",
     attributes,

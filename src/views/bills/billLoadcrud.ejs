@@ -2,14 +2,12 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
-
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
       <form action="/bills/billInsertCRUD" method="POST">
         <div class="imgcontainer">
-          <h1>Load</h1>
+          <h1>Creación de una factura en e<span>C</span>omic</h1>
         </div>
         <% if(typeof alert !='undefined' ) { %>
           <% alert.forEach(function(error) { %>
@@ -21,52 +19,49 @@
             </div>
             <% }) %>
               <% } %>
-        <fieldset id="left">
-          <label for="id_usuario"><b>Usuario</b></label>
-          <input type="text" placeholder="ingrese el usuario" name="id_usuario" required>
-          <label for="id_estadofactura"><b>Estado factura</b></label>
-          <input type="text" placeholder="ingrese la estado factura" name="id_estadofactura" required>
-          <label for="envio"><b>Envio</b></label>
-          <input type="text" placeholder="ingrese el envio" name="envio" required>
-          <label for="impuesto"><b>Impuesto</b></label>
-          <input type="text" placeholder="ingrese el impuesto" name="impuesto" required>
-          <label for="total"><b>Total</b></label>
-          <input type="text" placeholder="ingrese el total" name="total" required>
-          <label for="id_modopago"><b>Modopago</b></label>
-          <input type="text" placeholder="ingrese el modo de pago" name="id_modopago" required>
-          <label for="fecha"><b>fecha</b></label>
-          <input type="text" placeholder="ingrese el fecha" name="fecha" required>
-        </fieldset>
-        <fieldset id="right">
-          <label for="id_pais"><b>Pais</b></label>
-          <input type="text" placeholder="ingrese el pais" name="id_pais" required>
-          <label for="id_provincia"><b>Provincia</b></label>
-          <input type="text" placeholder="ingrese el provincia" name="id_provincia" required>
-          <label for="ciudad"><b>Ciudad</b></label>
-          <input type="text" placeholder="ingrese la ciudad" name="ciudad" required>
-        </fieldset>
-        <fieldset id="center">
-          <label for="nombrecompleto"><b>Nombre completo</b></label>
-          <input type="text" placeholder="ingrese la descripcion corta" name="nombrecompleto" required>
-          <label for="correoelectronico"><b>Correo electronico</b></label>
-          <input type="text" placeholder="ingrese la correo electronico" name="correoelectronico" required>
-          <label for="direccion"><b>Direccion</b></label>
-          <input type="text" placeholder="ingrese la direccion" name="direccion" required>
-          <label for="numerotelefono"><b>Numero telefono</b></label>
-          <input type="text" placeholder="ingrese la número de telefono" name="numerotelefono" required>
-          <label for="detalleadicionales"><b>Descripcion detallada</b></label>
-          <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10" required></textarea>
-          <!-- <input type="file" name="imagen" required>-->
-        </fieldset>
-        </div>
-        <div class="container2">
-          <button type="submit" class="button">Guardar</button>
-        </div>
+                <fieldset id="left">
+                  <label for="id_usuario"><b>Usuario</b></label>
+                  <input type="text" placeholder="Ingrese el usuario" name="id_usuario">
+                  <label for="id_estadofactura"><b>Estado factura</b></label>
+                  <input type="text" placeholder="Ingrese la estado factura" name="id_estadofactura">
+                  <label for="envio"><b>Envió</b></label>
+                  <input type="text" placeholder="Ingrese el envio" name="envio">
+                  <label for="impuesto"><b>Impuesto</b></label>
+                  <input type="text" placeholder="Ingrese el impuesto" name="impuesto">
+                  <label for="total"><b>Total</b></label>
+                  <input type="text" placeholder="Ingrese el total" name="total">
+                  <label for="id_modopago"><b>Modo de pago</b></label>
+                  <input type="text" placeholder="Ingrese el modo de pago" name="id_modopago">
+                  <label for="fecha"><b>Fecha</b></label>
+                  <input type="date" placeholder="Ingrese el fecha" name="fecha">
+                </fieldset>
+                <fieldset id="right">
+                  <label for="id_pais"><b>País</b></label>
+                  <input type="text" placeholder="Ingrese el país" name="id_pais">
+                  <label for="id_provincia"><b>Provincia</b></label>
+                  <input type="text" placeholder="Ingrese el provincia" name="id_provincia">
+                  <label for="ciudad"><b>Ciudad</b></label>
+                  <input type="text" placeholder="Ingrese la ciudad" name="ciudad">
+                </fieldset>
+                <fieldset id="center">
+                  <label for="nombrecompleto"><b>Nombre completo</b></label>
+                  <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto">
+                  <label for="correoelectronico"><b>Correo electrónico</b></label>
+                  <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico">
+                  <label for="direccion"><b>Dirección</b></label>
+                  <input type="text" placeholder="Ingrese la dirección" name="direccion">
+                  <label for="numerotelefono"><b>Teléfono / Celular</b></label>
+                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono">
+                  <label for="detalleadicionales"><b>Descripción detallada</b></label>
+                  <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10"></textarea>
+                </fieldset>
+                </div>
+                <div class="container2">
+                  <button type="submit" class="button">Guardar factura</button>
+                </div>
       </form>
       </main>
-
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

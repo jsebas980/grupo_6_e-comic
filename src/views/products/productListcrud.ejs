@@ -1,95 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head -->
-<%- include('../partials/head.ejs') %>
-
+  <!-- Head -->
+  <%- include('../partials/head.ejs') %>
   <body class="product_detail">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
-      <main class="main">
-        <div class="box">
-          <div class="container-1">
-            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
-            <input type="search" id="search" placeholder="Search..." />
-          </div>
+    <main class="main">
+      <div class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+          <input type="search" id="search" placeholder="Search..." />
         </div>
-
-        <div>
-          <h2 class="Listardoh2">Listado de productos</h2>
-          <table id="myTable" width="100%" class="fl-table">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>Titulo</th>
-                <th>Temporada</th>
-                <th>Volumen</th>
-                <th>Publicacion</th>
-                <th>Descripcion corta</th>
-                <th>Precio normal</th>
-                <th>Precio venta</th>
-                <th>Descontinuado</th>
-                <th>Stock</th>
-                <th>Categoria</th>
-                <th>Pais</th>
-                <th>Imagen</th>
-                <th>Descripcion detallada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% productoCrud.forEach(function(product){ %>
-                <tr>
-                  <td>
-                    <%= product.id %>
-                  </td>
-                  <td>
-                    <%= product.titulo %>
-                  </td>
-                  <td>
-                    <%= product.temporada %>
-                  </td>
-                  <td>
-                    <%= product.volumen %>
-                  </td>
-                  <td>
-                    <%= product.publicacion %>
-                  </td>
-                  <td>
-                    <%= product.descripcioncorta %>
-                  </td>
-                  <td>
-                    <%= product.precionormal %>
-                  </td>
-                  <td>
-                    <%= product.precio %>
-                  </td>
-                  <td>
-                    <%= product.descontinuado %>
-                  </td>
-                  <td>
-                    <%= product.stock %>
-                  </td>
-                  <td>
-                    <%= product.categorias.nombrecategoria %>
-                  </td>
-                  <td>
-                    <%= product.paisproductos.nombre %>
-                  </td>
-                  <td>
-                    <%= product.imagen %>
-                  </td>
-                  <td>
-                    <%= product.descripciondetallada %>
-                  </td>
-                </tr>
-                <% }) %>
-            </tbody>
-          </table>
-        </div>
-      </main>
-      <script src="/js/tablet.js"></script>
-      <!-- Footer -->
-      <%- include('../partials/footer.ejs') %>
+      </div>
+      <div>
+        <h2 class="Listardoh2">Listado de productos</h2>
+        <table id="myTable" width="100%" class="fl-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titulo</th>
+              <th>Temporada</th>
+              <th>Volumen</th>
+              <th>Fecha de publicación</th>
+              <th>Descripción corta</th>
+              <th>Precio normal</th>
+              <th>Precio venta</th>
+              <th>Descontinuado</th>
+              <th>Stock</th>
+              <th>Categoría</th>
+              <th>País</th>
+              <th>Imagen</th>
+              <!-- <th>Descripción detallada</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <% productoCrud.forEach(function(product){ %>
+            <tr>
+              <td><%= product.id %></td>
+              <td><%= product.titulo %></td>
+              <td><%= product.temporada %></td>
+              <td><%= product.volumen %></td>
+              <td><%= product.publicacion %></td>
+              <td><%= product.descripcioncorta %></td>
+              <td><%= product.precionormal %></td>
+              <td><%= product.precio %></td>
+              <td><%= product.descontinuado %></td>
+              <td><%= product.stock %></td>
+              <td><%= product.categorias.nombrecategoria %></td>
+              <td><%= product.paisproductos.nombre %></td>
+              <td><%= product.imagen %></td>
+              <!-- <td><%= product.descripciondetallada %></td> -->
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="/js/tablet.js"></script>
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

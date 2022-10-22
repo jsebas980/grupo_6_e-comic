@@ -2,11 +2,9 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
-
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-
     <form action="/products/productEditCRUD/<%= productoCrud.id %>?_method=PATCH" method="POST"  enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Edit</h1>
@@ -51,9 +49,7 @@
         </div>
       </form>
       </main>
-
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>
-
 </html>

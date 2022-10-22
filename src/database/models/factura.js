@@ -63,10 +63,14 @@ module.exports = (sequelize) => {
       autoIncrement: false,
       comment: null,
       field: "total",
-      get: function() { // or use get(){ }
-        return this.getDataValue('total')
-        .toLocaleString('en-US',{ style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
-      }
+      get: function () {
+        // or use get(){ }
+        return this.getDataValue("total").toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+        });
+      },
     },
     id_modopago: {
       type: DataTypes.INTEGER(11),
@@ -89,10 +93,15 @@ module.exports = (sequelize) => {
       autoIncrement: false,
       comment: null,
       field: "fecha",
-      get: function() { // or use get(){ }
-        return this.getDataValue('fecha')
-          .toLocaleString('es-ES',{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      }
+      get: function () {
+        // or use get(){ }
+        return this.getDataValue("fecha").toLocaleString("es-ES", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      },
     },
     nombrecompleto: {
       type: DataTypes.STRING(100),
@@ -193,11 +202,7 @@ module.exports = (sequelize) => {
     ],
   };
 
-  const FacturaModel = sequelize.define(
-    "factura_model", 
-    attributes, 
-    options
-  );
+  const FacturaModel = sequelize.define("factura_model", attributes, options);
 
   //Relaciones con el modelo
   FacturaModel.associate = function (models) {

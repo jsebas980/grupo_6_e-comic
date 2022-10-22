@@ -112,11 +112,7 @@ module.exports = (sequelize) => {
     ],
   };
 
-  const UsuarioModel = sequelize.define(
-    "usuario_model", 
-    attributes, 
-    options
-  );
+  const UsuarioModel = sequelize.define("usuario_model", attributes, options);
 
   //Relaciones con el modelo
   UsuarioModel.associate = function (models) {
@@ -124,22 +120,18 @@ module.exports = (sequelize) => {
       as: "pais",
       foreignKey: "id_pais",
     });
-
     UsuarioModel.belongsTo(models.provincia_model, {
       as: "provincia",
       foreignKey: "id_provincia",
     });
-
     UsuarioModel.hasMany(models.rol_usuario_model, {
       as: "rol_usuario",
       foreignKey: "id_usuario",
     });
-
     UsuarioModel.hasMany(models.carrito_model, {
       as: "carrito",
       foreignKey: "id_usuario",
     });
-
     UsuarioModel.hasMany(models.factura_model, {
       as: "facturausuario",
       foreignKey: "id_usuario",

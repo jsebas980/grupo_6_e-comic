@@ -59,12 +59,10 @@ module.exports = (sequelize) => {
       as: "pais",
       foreignKey: "id_pais",
     });
-
     ProvinciaModel.hasMany(models.usuario_model, {
       as: "usuario",
       foreignKey: "id_provincia",
     });
-
     ProvinciaModel.hasMany(models.carrito_model, {
       as: "carrito",
       foreignKey: "id_provincia",
