@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
-  }
+  },
 });
 var uploadFile = multer({ storage: storage });
 
@@ -27,13 +27,17 @@ const validateUsuario = [
     .withMessage("Debes completar el nombre")
     .bail()
     .isLength({ min: 2 })
-    .withMessage("El nombre debe ser más largo, deberá tener al menos 2 caracteres."),
+    .withMessage(
+      "El nombre debe ser más largo, deberá tener al menos 2 caracteres."
+    ),
   body("apellido")
     .notEmpty()
     .withMessage("Debes completar los apellidos")
     .bail()
     .isLength({ min: 2 })
-    .withMessage("Los apellidos debe ser más largo, deberá tener al menos 2 caracteres."),
+    .withMessage(
+      "Los apellidos debe ser más largo, deberá tener al menos 2 caracteres."
+    ),
   body("correoelectronico")
     .notEmpty()
     .withMessage("Debes completar el correo electrónico")
@@ -46,7 +50,9 @@ const validateUsuario = [
     .bail()
     .isInt()
     .isLength({ min: 7 })
-    .withMessage("El teléfono o celular debe ser minimo de 7 caracteres y debe ser númerico"),
+    .withMessage(
+      "El teléfono o celular debe ser minimo de 7 caracteres y debe ser númerico"
+    ),
   body("id_pais")
     .notEmpty()
     .withMessage("Debes completar el país")
@@ -88,12 +94,16 @@ const validateUsuario = [
     console.log(req.file);
     let extensionesValidas = [".jpg", ".jpeg", ".png", ".gif"];
     if (!file) {
-      throw new Error('Tienes que subir una imagen');
+      throw new Error("Tienes que subir una imagen");
       null;
     } else {
       let fileExtension = path.extname(file.originalname);
       if (!extensionesValidas.includes(fileExtension)) {
-        throw new Error(`Las extensiones de archivo permitidas son ${extensionesValidas.join(', ')}`);
+        throw new Error(
+          `Las extensiones de archivo permitidas son ${extensionesValidas.join(
+            ", "
+          )}`
+        );
       }
     }
     return true;
@@ -164,7 +174,12 @@ function handleValidationErrors(req, res, next) {
 
 /*** Muestra la pagina de login de un usuario ***/
 router.get("/login", guestMiddleware, userController.login);
-router.post("/login", validation, handleValidationErrors, userController.loginProcessCRUD);
+router.post(
+  "/login",
+  validation,
+  handleValidationErrors,
+  userController.loginProcessCRUD
+);
 /*** Muestra la pagina registro de un usuario ***/
 router.get("/profileCRUD", authMiddleware, userController.profileCRUD);
 /*** Muestra la pagina registro de un usuario ***/
@@ -180,13 +195,29 @@ router.get("/logout", userController.logout);
 
 /*** Muestra la pagina del listado de los usuarios con CRUD DB ***/
 router.get("/userListCRUD", authMiddleware, userController.listCRUD);
-router.get("/userDetailCRUD/:id", authMiddleware, userController.userDetailCRUD);
+router.get(
+  "/userDetailCRUD/:id",
+  authMiddleware,
+  userController.userDetailCRUD
+);
 /*** Muestra la pagina de insertar los usuarios con CRUD DB ***/
 router.get("/userCreateCRUD", userController.userCreateCRUD);
-router.post("/userInsertCRUD", uploadFile.single("imagenuser"), validateUsuario, usersValidationErrors, userController.createCRUD);
+router.post(
+  "/userInsertCRUD",
+  uploadFile.single("imagenuser"),
+  validateUsuario,
+  usersValidationErrors,
+  userController.createCRUD
+);
 /*** Muestra la pagina de modificar los usuarios con CRUD DB ***/
 router.get("/userEditCRUD/:id", userController.editCRUD);
-router.patch("/userEditCRUD/:id", uploadFile.single("imagenuser"), validateUsuario, usersValidationErrors, userController.updateCRUD);
+router.patch(
+  "/userEditCRUD/:id",
+  uploadFile.single("imagenuser"),
+  validateUsuario,
+  usersValidationErrors,
+  userController.updateCRUD
+);
 /*** Muestra la pagina de eliminar los usuarios con CRUD DB ***/
 router.get("/userDeleteCRUD/:id", authMiddleware, userController.deleteCRUD);
 router.delete("/userDeleteCRUD/:id", userController.destroyCRUD);
