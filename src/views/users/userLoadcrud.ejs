@@ -22,15 +22,15 @@
               <% } %>
                 <fieldset id="left">
                   <label for="firstname"><b>Nombre</b></label>
-                  <input type="text" placeholder="Ingrese el nombre" name="nombre" value="">
+                  <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= locals.oldData ? oldData.nombre : null %>">
                   <label for="lastname"><b>Apellidos</b></label>
-                  <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="">
+                  <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= locals.oldData ? oldData.apellido : null %>">
                 </fieldset>
                 <fieldset id="right">
                   <label for="email"><b>Correo electrónico</b></label>
-                  <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="">
+                  <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>">
                   <label for="phonenumber"><b>Teléfono / Celular</b></label>
-                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="">
+                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>">
                   <label for="city"><b>País</b></label>
                   <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value=""> -->
                   <select name="id_pais" placeholder="Ingrese el ciudad/provincia">

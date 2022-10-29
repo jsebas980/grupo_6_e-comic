@@ -1,10 +1,7 @@
 // ? Variables y Requiere
-//import {palabras} from '../../public/js/search2.js';
-//const palabras= require('../../public/js/search2.js').default
-var Sequelize = require("sequelize");
+var { Sequelize, Op } = require("sequelize");
 const dbp = require("../database/models/");
-//const sequelize = dbp.sequelize;
-//console.log(sequelize.models.productos_model.findByPk(8));
+
 const mainController = {
     /* CONTROLLER general */
 
@@ -30,11 +27,21 @@ const mainController = {
         dbp.productos_model
             .findAll({
                 where: {
-                    titulo: { [Op.like]: "%" + req.body.palabra + "%" },
+                    titulo: { [Op.like]: "%" + decodeURI(req.params.id) + "%" },
                 },
             })
             .then((producto) => {
-                return res.render("indexCRUD", { producto: producto });
+                if (producto.length === 0){
+                    const alert = 'Producto no encontrado';
+                    dbp.productos_model
+                    .findAll({ order: [Sequelize.literal("RAND()")], limit: 10 })
+                    .then((producto) => {
+                        return res.render("indexCRUD", { producto: producto , alert });
+                    });
+                } else {
+                    return res.render("indexCRUD", { producto: producto });
+                }
+                
             });
     },
 };

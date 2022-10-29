@@ -22,48 +22,48 @@
                 <fieldset id="left">
                   <label for="id_usuario"><b>Usuario</b></label>
                   <input type="text" placeholder="ingrese el usuario" name="id_usuario"
-                    value="<%= facturaCrud.id_usuario %>">
+                    value="<%= facturaCrud.id_usuario ? oldData.id_usuario : null %>">
                   <label for="id_estadofactura"><b>Estado factura</b></label>
                   <input type="text" placeholder="ingrese la estado factura" name="id_estadofactura"
-                    value="<%= facturaCrud.id_estadofactura %>">
+                    value="<%= facturaCrud.id_estadofactura ? oldData.id_estadofactura : null %>">
                   <label for="envio"><b>Envio</b></label>
-                  <input type="text" placeholder="ingrese el envio" name="envio" value="<%= facturaCrud.envio %>">
+                  <input type="text" placeholder="ingrese el envio" name="envio" value="<%= facturaCrud.envio ? oldData.envio : null %>">
                   <label for="impuesto"><b>Impuesto</b></label>
                   <input type="text" placeholder="ingrese el impuesto" name="impuesto"
-                    value="<%= facturaCrud.impuesto %>">
+                    value="<%= facturaCrud.impuesto ? oldData.impuesto : null %>">
                   <label for="total"><b>Total</b></label>
-                  <input type="text" placeholder="ingrese el total" name="total" value="<%= facturaCrud.total %>">
+                  <input type="text" placeholder="ingrese el total" name="total" value="<%= facturaCrud.total ? oldData.total : null %>">
                   <label for="id_modopago"><b>Modo de pago</b></label>
                   <input type="text" placeholder="ingrese el modo de pago" name="id_modopago"
-                    value="<%= facturaCrud.id_modopago %>">
+                    value="<%= facturaCrud.id_modopago ? oldData.id_modopago : null %>">
                   <label for="fecha"><b>fecha</b></label>
-                  <input type="date" placeholder="ingrese el fecha" name="fecha" value="<%= facturaCrud.fecha %>">
+                  <input type="date" placeholder="ingrese el fecha" name="fecha" value="<%= facturaCrud.fecha ? oldData.fecha : null %>">
                 </fieldset>
                 <fieldset id="right">
                   <label for="id_pais"><b>Pais</b></label>
-                  <input type="text" placeholder="ingrese el pais" name="id_pais" value="<%= facturaCrud.id_pais %>">
+                  <input type="text" placeholder="ingrese el pais" name="id_pais" value="<%= facturaCrud.id_pais ? oldData.id_pais : null %>">
                   <label for="id_provincia"><b>Provincia</b></label>
                   <input type="text" placeholder="ingrese el provincia" name="id_provincia"
-                    value="<%= facturaCrud.id_provincia %>">
+                    value="<%= facturaCrud.id_provincia ? oldData.id_provincia : null %>">
                   <label for="ciudad"><b>Ciudad</b></label>
-                  <input type="text" placeholder="ingrese la ciudad" name="ciudad" value="<%= facturaCrud.ciudad %>">
+                  <input type="text" placeholder="ingrese la ciudad" name="ciudad" value="<%= facturaCrud.ciudad ? oldData.ciudad : null %>">
                 </fieldset>
                 <fieldset id="center">
                   <label for="nombrecompleto"><b>Nombre completo</b></label>
                   <input type="text" placeholder="ingrese la descripcion corta" name="nombrecompleto"
-                    value="<%= facturaCrud.nombrecompleto %>">
+                    value="<%= facturaCrud.nombrecompleto ? oldData.nombrecompleto : null %>">
                   <label for="correoelectronico"><b>Correo electronico</b></label>
                   <input type="text" placeholder="ingrese la correo electronico" name="correoelectronico"
-                    value="<%= facturaCrud.correoelectronico %>">
+                    value="<%= facturaCrud.correoelectronico ? oldData.correoelectronico : null %>">
                   <label for="direccion"><b>Direccion</b></label>
                   <input type="text" placeholder="ingrese la direccion" name="direccion"
-                    value="<%= facturaCrud.direccion %>">
+                    value="<%= facturaCrud.direccion ? oldData.direccion : null %>">
                   <label for="numerotelefono"><b>Teléfono / Celular</b></label>
                   <input type="text" placeholder="ingrese la número de telefono" name="numerotelefono"
-                    value="<%= facturaCrud.numerotelefono %>">
+                    value="<%= facturaCrud.numerotelefono ? oldData.numerotelefono : null %>">
                   <label for="detalleadicionales"><b>Descripción detallada</b></label>
                   <textarea name="detalleadicionales" id="detalleadicionales" cols="30"
-                    rows="10"><%= facturaCrud.detalleadicionales %></textarea>
+                    rows="10"><%= facturaCrud.detalleadicionales ? oldData.detalleadicionales : null %></textarea>
                 </fieldset>
                 </div>
                 <div class="container2">

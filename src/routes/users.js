@@ -91,7 +91,6 @@ const validateUsuario = [
     ),
   body("imagenuser").custom((value, { req }) => {
     let file = req.file;
-    console.log(req.file);
     let extensionesValidas = [".jpg", ".jpeg", ".png", ".gif"];
     if (!file) {
       throw new Error("Tienes que subir una imagen");
@@ -110,32 +109,33 @@ const validateUsuario = [
   }),
 ];
 
-function usersValidationErrors(req, res, next) {
-  console.log(req.url);
-  console.log(req.body);
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(req.url);
-    console.log(req.body);
-    //console.log(validationResult(req).mapped());
-    const alert = errors.array();
-    if (req.url.indexOf("/userInsertCRUD") >= 0) {
-      //return res.status(422).jsonp(errors.array());
-      res.render("users/userLoadCRUD", {
-        alert,
-      });
-    }
-    if (req.url.indexOf("/userEditCRUD") >= 0) {
-      return res.status(422).jsonp(errors.array());
-      res.render("users/userEditCRUD/" + req.params.id, {
-        alert,
-      });
-    }
-  } else {
-    console.log("no hay errores: " + errors);
-    next();
-  }
-}
+// function usersValidationErrors(req, res, next) {
+//   console.log(req.url);
+//   console.log(req.body);
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     console.log(req.url);
+//     console.log(req.body);
+//     //console.log(validationResult(req).mapped());
+//     const alert = errors.array();
+//     if (req.url.indexOf("/userInsertCRUD") >= 0) {
+//       //return res.status(422).jsonp(errors.array());
+//       res.render("users/userLoadCRUD", {
+//         alert,
+//       });
+//     }
+//     if (req.url.indexOf("/userEditCRUD") >= 0) {
+//       return res.status(422).jsonp(errors.array());
+//       res.render("users/userEditCRUD/" + req.params.id, {
+//         alert,
+//       });
+//     }
+//   } else {
+//     console.log("no hay errores: " + errors);
+//     next();
+//   }
+// }
+// usersValidationErrors,
 
 const validation = [
   check("email")
@@ -205,8 +205,7 @@ router.get("/userCreateCRUD", userController.userCreateCRUD);
 router.post(
   "/userInsertCRUD",
   uploadFile.single("imagenuser"),
-  validateUsuario,
-  usersValidationErrors,
+  validateUsuario,  
   userController.createCRUD
 );
 /*** Muestra la pagina de modificar los usuarios con CRUD DB ***/
@@ -215,7 +214,6 @@ router.patch(
   "/userEditCRUD/:id",
   uploadFile.single("imagenuser"),
   validateUsuario,
-  usersValidationErrors,
   userController.updateCRUD
 );
 /*** Muestra la pagina de eliminar los usuarios con CRUD DB ***/

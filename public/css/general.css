@@ -114,6 +114,14 @@
     outline: none;
     background: #ffffff;
   }
+
+  .invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
   
   .demo {
     padding: 1em 1em;

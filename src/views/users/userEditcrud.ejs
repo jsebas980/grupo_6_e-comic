@@ -10,19 +10,27 @@
         <div class="imgcontainer">
           <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
         </div>
+        <% if(typeof alert !='undefined' ) { %>
+          <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <%= error.msg %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <% }) %>
+              <% } %>
         <fieldset id="left">
           <label for="nombre"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= usuarioCrud.nombre %>">
+          <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= usuarioCrud.nombre ? oldData.nombre : null %>">
           <label for="apellido"><b>Apellidos</b></label>
-          <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= usuarioCrud.apellido %>">
+          <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= usuarioCrud.apellido ? oldData.apellido : null %>">
         </fieldset>
         <fieldset id="right">
           <label for="correoelectronico"><b>Correo electronico</b></label>
-          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico"
-            value="<%= usuarioCrud.correoelectronico %>">
+          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="<%= usuarioCrud.correoelectronico ? oldData.correoelectronico : null %>">
           <label for="numerotelefono"><b>Teléfono / Celular</b></label>
-          <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
-            value="<%= usuarioCrud.numerotelefono %>">
+          <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= usuarioCrud.numerotelefono ? oldData.numerotelefono : null %>">
           <label for="id_pais"><b>Pais</b></label>
           <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
             <% if(typeof promPais !='undefined' ) { %>
@@ -44,7 +52,7 @@
                   <% } %>
           </select>
           <label for="password"><b>Contraseña</b></label>
-          <input type="text" placeholder="Ingrese la contraseña" name="contrasena">
+          <input type="password" placeholder="Ingrese la contraseña" name="contrasena">
         </fieldset>
         <fieldset id="center">
           <label for="img"><b>Imagen</b></label>

@@ -18,42 +18,42 @@
                 </button>
             </div>
             <% }) %>
-              <% } %>
+              <% } %>            
                 <fieldset id="left">
                   <label for="id_usuario"><b>Usuario</b></label>
-                  <input type="text" placeholder="Ingrese el usuario" name="id_usuario">
+                  <input type="text" placeholder="Ingrese el usuario" name="id_usuario" value="<%= locals.oldData ? oldData.id_usuario : null %>">
                   <label for="id_estadofactura"><b>Estado factura</b></label>
-                  <input type="text" placeholder="Ingrese la estado factura" name="id_estadofactura">
+                  <input type="text" placeholder="Ingrese la estado factura" name="id_estadofactura" value="<%= locals.oldData ? oldData.id_estadofactura : null %>">
                   <label for="envio"><b>Envió</b></label>
-                  <input type="text" placeholder="Ingrese el envio" name="envio">
+                  <input type="text" placeholder="Ingrese el envio" name="envio" value="<%= locals.oldData ? oldData.envio : null %>">
                   <label for="impuesto"><b>Impuesto</b></label>
-                  <input type="text" placeholder="Ingrese el impuesto" name="impuesto">
+                  <input type="text" placeholder="Ingrese el impuesto" name="impuesto" value="<%= locals.oldData ? oldData.impuesto : null %>">
                   <label for="total"><b>Total</b></label>
-                  <input type="text" placeholder="Ingrese el total" name="total">
+                  <input type="text" placeholder="Ingrese el total" name="total" value="<%= locals.oldData ? oldData.total : null %>">
                   <label for="id_modopago"><b>Modo de pago</b></label>
-                  <input type="text" placeholder="Ingrese el modo de pago" name="id_modopago">
+                  <input type="text" placeholder="Ingrese el modo de pago" name="id_modopago" value="<%= locals.oldData ? oldData.id_modopago : null %>">
                   <label for="fecha"><b>Fecha</b></label>
-                  <input type="date" placeholder="Ingrese el fecha" name="fecha">
+                  <input type="date" placeholder="Ingrese el fecha" name="fecha" value="<%= locals.oldData ? oldData.fecha : null %>">
                 </fieldset>
                 <fieldset id="right">
                   <label for="id_pais"><b>País</b></label>
-                  <input type="text" placeholder="Ingrese el país" name="id_pais">
+                  <input type="text" placeholder="Ingrese el país" name="id_pais" value="<%= locals.oldData ? oldData.id_pais : null %>">
                   <label for="id_provincia"><b>Provincia</b></label>
-                  <input type="text" placeholder="Ingrese el provincia" name="id_provincia">
+                  <input type="text" placeholder="Ingrese el provincia" name="id_provincia" value="<%= locals.oldData ? oldData.id_provincia : null %>">
                   <label for="ciudad"><b>Ciudad</b></label>
-                  <input type="text" placeholder="Ingrese la ciudad" name="ciudad">
+                  <input type="text" placeholder="Ingrese la ciudad" name="ciudad" value="<%= locals.oldData ? oldData.ciudad : null %>">
                 </fieldset>
                 <fieldset id="center">
                   <label for="nombrecompleto"><b>Nombre completo</b></label>
-                  <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto">
+                  <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto" value="<%= locals.oldData ? oldData.nombrecompleto : null %>">
                   <label for="correoelectronico"><b>Correo electrónico</b></label>
-                  <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico">
+                  <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>">
                   <label for="direccion"><b>Dirección</b></label>
-                  <input type="text" placeholder="Ingrese la dirección" name="direccion">
+                  <input type="text" placeholder="Ingrese la dirección" name="direccion" value="<%= locals.oldData ? oldData.direccion : null %>">
                   <label for="numerotelefono"><b>Teléfono / Celular</b></label>
-                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono">
+                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>">
                   <label for="detalleadicionales"><b>Descripción detallada</b></label>
-                  <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10"></textarea>
+                  <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10"><%= locals.oldData ? oldData.detalleadicionales : null %></textarea>
                 </fieldset>
                 </div>
                 <div class="container2">
@@ -62,6 +62,9 @@
       </form>
       </main>
       <!-- Footer -->
-      <%- include('../partials/footer.ejs') %>
+      <%- include('../partials/footer.ejs') %> 
+      <script defer src="/js/validatorBills.js"></script>
+      <!-- <script defer src="/js/validator.js"></script>
+      <script defer src="/js/validateRegister.js"></script> -->
   </body>
 </html>

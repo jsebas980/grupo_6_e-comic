@@ -73,55 +73,61 @@ const validateProducto = [
     .withMessage("Debes ser una fecha valida"),
   body("descripcioncorta")
     .notEmpty()
-    .withMessage("Debes completar la Descripción corta")
+    .withMessage("Debes completar la descripción corta")
     .bail()
     .isLength({ min: 10 })
     .withMessage("Debes ser más larga, mínimo 10 letras"),
   body("descripciondetallada")
     .notEmpty()
-    .withMessage("Debes completar la Descripcion detallada")
+    .withMessage("Debes completar la descripcion detallada")
     .bail()
     .isLength({ min: 20 })
-    .withMessage("Debes ser más larga, mínimo 20 letras"),
+    .withMessage("Debes ser más larga la descripcion detallada, mínimo 20 letras"),
   body("imagen").custom((value, { req }) => {
     let file = req.file;
     let extensionesValidas = [".jpg", ".jpeg", ".png", ".gif"];
     if (!file) {
+      throw new Error("Tienes que subir una imagen");
       null;
     } else {
       let fileExtension = path.extname(file.originalname);
       if (!extensionesValidas.includes(fileExtension)) {
-        throw new Error("Solo se aceptan archivos JPG, JPEG, PNG y GIF");
+        throw new Error(
+          `Las extensiones de archivo permitidas son ${extensionesValidas.join(
+            ", "
+          )}`
+        );
       }
     }
     return true;
   }),
 ];
 
-function productsValidationErrors(req, res, next) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(req.url);
-    console.log(req.body);
-    //console.log(validationResult(req).mapped());
-    const alert = errors.array();
-    if (req.url.indexOf("/productInsertCRUD") >= 0) {
-      //return res.status(422).jsonp(errors.array());
-      res.render("products/productLoadCRUD", {
-        alert,
-      });
-    }
-    if (req.url.indexOf("/productEditCRUD") >= 0) {
-      return res.status(422).jsonp(errors.array());
-      res.render("products/productEditCRUD/" + req.params.id, {
-        alert,
-      });
-    }
-  } else {
-    console.log("no hay errores: " + errors);
-    next();
-  }
-}
+// function productsValidationErrors(req, res, next) {
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     console.log(req.url);
+//     console.log(req.body);
+//     //console.log(validationResult(req).mapped());
+//     const alert = errors.array();
+//     if (req.url.indexOf("/productInsertCRUD") >= 0) {
+//       //return res.status(422).jsonp(errors.array());
+//       res.render("products/productLoadCRUD", {
+//         alert,
+//       });
+//     }
+//     if (req.url.indexOf("/productEditCRUD") >= 0) {
+//       return res.status(422).jsonp(errors.array());
+//       res.render("products/productEditCRUD/" + req.params.id, {
+//         alert,
+//       });
+//     }
+//   } else {
+//     console.log("no hay errores: " + errors);
+//     next();
+//   }
+// }
+//productsValidationErrors,
 
 /*** Ejecucion del multer de una imagen de un producto ***/
 const storage = multer.diskStorage({
@@ -152,7 +158,6 @@ router.post(
   "/productInsertCRUD",
   uploadFile.single("imagen"),
   validateProducto,
-  productsValidationErrors,
   productController.createCRUD
 );
 /*** Muestra la pagina de modificar los productos con CRUD DB ***/
@@ -161,7 +166,6 @@ router.patch(
   "/productEditCRUD/:id",
   uploadFile.single("imagen"),
   validateProducto,
-  productsValidationErrors,
   productController.updateCRUD
 );
 /*** Muestra la pagina de eliminar de los productos con CRUD DB ***/

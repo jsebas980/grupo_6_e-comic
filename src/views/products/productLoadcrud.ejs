@@ -21,15 +21,15 @@
               <% } %>
                 <fieldset id="left">
                   <label for="titulo"><b>Titulo</b></label>
-                  <input type="text" placeholder="Ingrese el titulo" name="titulo">
+                  <input type="text" placeholder="Ingrese el titulo" name="titulo" value="<%= locals.oldData ? oldData.titulo : null %>">
                   <label for="temporada"><b>Temporada</b></label>
-                  <input type="text" placeholder="Ingrese la temporada" name="temporada">
+                  <input type="text" placeholder="Ingrese la temporada" name="temporada" value="<%= locals.oldData ? oldData.temporada : null %>">
                   <label for="volumen"><b>Volumen</b></label>
-                  <input type="text" placeholder="Ingrese el volumen" name="volumen">
+                  <input type="text" placeholder="Ingrese el volumen" name="volumen" value="<%= locals.oldData ? oldData.volumen : null %>">
                   <label for="stock"><b>Stock</b></label>
-                  <input type="text" placeholder="Ingrese el stock" name="stock">
+                  <input type="text" placeholder="Ingrese el stock" name="stock" value="<%= locals.oldData ? oldData.stock : null %>">
                   <label for="descontinuado"><b>Descontinuado</b></label>
-                  <input type="text" placeholder="Ingrese el descontinuado" name="descontinuado">
+                  <input type="text" placeholder="Ingrese el descontinuado" name="descontinuado" value="<%= locals.oldData ? oldData.descontinuado : null %>">
                 </fieldset>
                 <fieldset id="right">
                   <label for="id_categoria"><b>Categoría</b></label>
@@ -57,17 +57,17 @@
                           <% } %>
                   </select>
                   <label for="publicacion"><b>Fecha de publicación</b></label>
-                  <input type="date" placeholder="Ingrese la fecha de publicacion" name="publicacion">
+                  <input type="date" placeholder="Ingrese la fecha de publicacion" name="publicacion" value="<%= locals.oldData ? oldData.publicacion : null %>">
                   <label for="precionormal"><b>Precio normal</b></label>
-                  <input type="text" placeholder="Ingrese el precio" name="precionormal">
+                  <input type="text" placeholder="Ingrese el precio" name="precionormal" value="<%= locals.oldData ? oldData.precionormal : null %>">
                   <label for="precio"><b>Precio</b></label>
-                  <input type="text" placeholder="Ingrese el precio" name="precio">
+                  <input type="text" placeholder="Ingrese el precio" name="precio" value="<%= locals.oldData ? oldData.precio : null %>">
                 </fieldset>
                 <fieldset id="center">
                   <label for="descripcioncorta"><b>Descripción corta</b></label>
-                  <input type="text" placeholder="Ingrese la descripcion corta" name="descripcioncorta">
+                  <input type="text" placeholder="Ingrese la descripcion corta" name="descripcioncorta" value="<%= locals.oldData ? oldData.descripcioncorta : null %>">
                   <label for="descripciondetallada"><b>Descripción detallada</b></label>
-                  <textarea name="descripciondetallada" id="descripciondetallada" cols="30" rows="10"></textarea>
+                  <textarea name="descripciondetallada" id="descripciondetallada" cols="30" rows="10"><%= locals.oldData ? oldData.descripciondetallada : null %></textarea>
                 </fieldset>
                 <fieldset id="center">
                   <label for="img"><b>Imagen</b></label>

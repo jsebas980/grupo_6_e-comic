@@ -139,18 +139,37 @@ const userController = {
   },
 
   createCRUD: function (req, res) {
+    const resultValidation = validationResult(req);
     console.log(req.body);
-    db.usuario_model.create({
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
-      correoelectronico: req.body.correoelectronico,
-      contraseña: bcrypt.hashSync(req.body.contrasena, 10),
-      numerotelefono: req.body.numerotelefono,
-      id_pais: req.body.id_pais,
-      id_provincia: req.body.id_provincia,
-      imagen: req.file.originalname
-    });
-    return res.redirect("/");
+    console.log(resultValidation);
+    const alert = resultValidation.array();
+    if (resultValidation.errors.length > 0) {
+      let promPais = db.pais_model.findAll();
+      let promProvincia = db.provincia_model.findAll();
+      Promise.all([promPais, promProvincia])
+        .then(function ([promPais, promProvincia]) {
+          return res.render("users/userLoadCRUD", {
+            promPais: promPais,
+            promProvincia: promProvincia,
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+            alert,
+          });
+        })
+        .catch((error) => res.send(error));
+    } else {
+      db.usuario_model.create({
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        correoelectronico: req.body.correoelectronico,
+        contraseña: bcrypt.hashSync(req.body.contrasena, 10),
+        numerotelefono: req.body.numerotelefono,
+        id_pais: req.body.id_pais,
+        id_provincia: req.body.id_provincia,
+        imagen: req.file.originalname,
+      });
+      return res.redirect("/");
+    }
   },
 
   editCRUD: function (req, res) {
@@ -169,28 +188,50 @@ const userController = {
   },
 
   updateCRUD: function (req, res) {
-    db.usuario_model
-      .update(
-        {
-          nombre: req.body.nombre,
-          apellido: req.body.apellido,
-          correoelectronico: req.body.correoelectronico,
-          contraseña: bcrypt.hashSync(req.body.contrasena, 10),
-          numerotelefono: req.body.numerotelefono,
-          id_pais: req.body.id_pais,
-          id_provincia: req.body.id_provincia,
-          imagen: req.file.originalname
-        },
-        {
-          where: {
-            id: req.params.id,
+    const resultValidation = validationResult(req);
+    console.log(req.body);
+    console.log(resultValidation);
+    if (resultValidation.errors.length > 0) {
+      let promPais = db.pais_model.findAll();
+      let promProvincia = db.provincia_model.findAll();
+      let usuarioCrud = db.usuario_model.findByPk(req.params.id);
+      Promise.all([promPais, promProvincia, usuarioCrud])
+        .then(function ([promPais, promProvincia, usuarioCrud]) {
+          const alert = resultValidation.array();
+          return res.render("users/userEditcrud", {
+            promPais: promPais,
+            promProvincia: promProvincia,
+            usuarioCrud: usuarioCrud,
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+            alert,
+          });
+        })
+        .catch((error) => res.send(error));
+    } else {
+      db.usuario_model
+        .update(
+          {
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            correoelectronico: req.body.correoelectronico,
+            contraseña: bcrypt.hashSync(req.body.contrasena, 10),
+            numerotelefono: req.body.numerotelefono,
+            id_pais: req.body.id_pais,
+            id_provincia: req.body.id_provincia,
+            imagen: req.file.originalname,
           },
-        }
-      )
-      .then(() => {
-        return res.redirect("/");
-      })
-      .catch((error) => res.send(error));
+          {
+            where: {
+              id: req.params.id,
+            },
+          }
+        )
+        .then(() => {
+          return res.redirect("/");
+        })
+        .catch((error) => res.send(error));
+    }
   },
 
   userPassRole: (req, res) => {

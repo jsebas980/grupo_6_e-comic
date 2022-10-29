@@ -101,30 +101,31 @@ const validateFactura = [
     .withMessage("Debes ser más larga, mínimo 10 letras"),
 ];
 
-function FacturaValidationErrors(req, res, next) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(req.url);
-    console.log(req.body);
-    //console.log(validationResult(req).mapped());
-    const alert = errors.array();
-    if (req.url.indexOf("/billInsertCRUD") >= 0) {
-      //return res.status(422).jsonp(errors.array());
-      res.render("bills/billLoadCRUD", {
-        alert,
-      });
-    }
-    if (req.url.indexOf("/billEditCRUD") >= 0) {
-      return res.status(422).jsonp(errors.array());
-      res.render("bills/billEditCRUD/" + req.params.id, {
-        alert,
-      });
-    }
-  } else {
-    console.log("no hay errores: " + errors);
-    next();
-  }
-}
+// function FacturaValidationErrors(req, res, next) {
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     console.log(req.url);
+//     console.log(req.body);
+//     //console.log(validationResult(req).mapped());
+//     const alert = errors.array();
+//     if (req.url.indexOf("/billInsertCRUD") >= 0) {
+//       //return res.status(422).jsonp(errors.array());
+//       res.render("bills/billLoadCRUD", {
+//         alert,
+//       });
+//     }
+//     if (req.url.indexOf("/billEditCRUD") >= 0) {
+//       return res.status(422).jsonp(errors.array());
+//       res.render("bills/billEditCRUD/" + req.params.id, {
+//         alert,
+//       });
+//     }
+//   } else {
+//     console.log("no hay errores: " + errors);
+//     next();
+//   }
+// }
+//FacturaValidationErrors,
 
 // ! CRUD de los facturas
 
@@ -140,7 +141,6 @@ router.get("/billCreateCRUD", billController.billCreateCRUD);
 router.post(
   "/billInsertCRUD",
   validateFactura,
-  FacturaValidationErrors,
   billController.createCRUD
 );
 /*** Muestra la pagina de modificar las facturas con CRUD DB ***/
@@ -148,7 +148,6 @@ router.get("/billEditCRUD/:id", billController.editCRUD);
 router.patch(
   "/billEditCRUD/:id",
   validateFactura,
-  FacturaValidationErrors,
   billController.updateCRUD
 );
 
