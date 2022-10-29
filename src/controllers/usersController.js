@@ -89,8 +89,8 @@ const userController = {
 
   /*** Muestra el detalle de un usuario ***/
   profileCRUD: (req, res) => {
-    console.log("Cookies :  ", req.cookies);
-    console.log("Session :  ", req.session);
+    //console.log("Cookies :  ", req.cookies);
+    //console.log("Session :  ", req.session);
     db.usuario_model
       .findOne({
         where: {
@@ -140,8 +140,8 @@ const userController = {
 
   createCRUD: function (req, res) {
     const resultValidation = validationResult(req);
-    console.log(req.body);
-    console.log(resultValidation);
+    //console.log(req.body);
+    //console.log(resultValidation);
     const alert = resultValidation.array();
     if (resultValidation.errors.length > 0) {
       let promPais = db.pais_model.findAll();
@@ -189,8 +189,8 @@ const userController = {
 
   updateCRUD: function (req, res) {
     const resultValidation = validationResult(req);
-    console.log(req.body);
-    console.log(resultValidation);
+    //console.log(req.body);
+    //console.log(resultValidation);
     if (resultValidation.errors.length > 0) {
       let promPais = db.pais_model.findAll();
       let promProvincia = db.provincia_model.findAll();

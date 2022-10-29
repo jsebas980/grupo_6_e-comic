@@ -6,7 +6,7 @@
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
     <main class="main">
-      <form action="/users/userInsertCRUD" method="POST" enctype="multipart/form-data">
+      <form id="signup" action="/users/userInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Creación de un usuario en e<span>C</span>omic</h1>
         </div>
@@ -21,16 +21,29 @@
             <% }) %>
               <% } %>
                 <fieldset id="left">
+                  <div class="form-field">
                   <label for="firstname"><b>Nombre</b></label>
-                  <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= locals.oldData ? oldData.nombre : null %>">
+                  <input type="text" placeholder="Ingrese el nombre" name="nombre" id="nombre" class="form-control" data-name="nombre" value="<%= locals.oldData ? oldData.nombre : null %>" autocomplete="off">
+                  <small></small>
+                </div>
+                <div class="form-field">
                   <label for="lastname"><b>Apellidos</b></label>
-                  <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= locals.oldData ? oldData.apellido : null %>">
+                  <input type="text" placeholder="Ingrese los apellidos" name="apellido" id="apellido" class="form-control" data-name="apellido" value="<%= locals.oldData ? oldData.apellido : null %>" autocomplete="off">
+                  <small></small>
+                </div>
                 </fieldset>
                 <fieldset id="right">
+                  <div class="form-field">
                   <label for="email"><b>Correo electrónico</b></label>
-                  <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>">
+                  <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" id="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>" autocomplete="off">
+                  <small></small>
+                </div>
+                <div class="form-field">
                   <label for="phonenumber"><b>Teléfono / Celular</b></label>
-                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>">
+                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>" autocomplete="off">
+                  <small></small>
+                </div>
+                <div class="form-field">
                   <label for="city"><b>País</b></label>
                   <!-- <input type="text" placeholder="Ingrese el pais" name="id_pais" value=""> -->
                   <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
@@ -43,6 +56,8 @@
                         <% }) %>
                           <% } %>
                   </select>
+                </div>
+                <div class="form-field">
                   <label for="city"><b>Ciudad / Provincia</b></label>
                   <!-- <input type="text" placeholder="Ingrese el ciudad/provincia" name="id_provincia" value=""> -->
                   <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
@@ -55,12 +70,19 @@
                         <% }) %>
                           <% } %>
                   </select>
+                </div>
+                  <div class="form-field">
+                  <small></small>
                   <label for="password"><b>Contraseña</b></label>
-                  <input type="password" placeholder="Ingrese la contraseña" name="contrasena">
+                  <input type="password" placeholder="Ingrese la contraseña" name="contrasena" id="contrasena">
+                  
+                </div>
                 </fieldset>
                 <fieldset id="center">
+                  <div class="form-field">
                   <label><b>Imagen</b></label>
                   <input type="file" name="imagenuser">
+                </div>
                 </fieldset>
                 </div>
                 <div class="container2">
@@ -70,5 +92,6 @@
       </main>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
+	    <script defer src="/js/validateUser.js"></script>
   </body>
 </html>

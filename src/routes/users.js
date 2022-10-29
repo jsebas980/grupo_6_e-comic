@@ -70,7 +70,7 @@ const validateUsuario = [
     .withMessage("Debes completar la contraseña")
     .bail()
     .isLength({ min: 8 })
-    .withMessage("Debes ser más larga la contraseña, mínimo 8 letras.")
+    .withMessage("Debes ser más larga la contraseña, mínimo 8 caracteres.")
     .bail()
     .isStrongPassword({
       minLength: 8,
