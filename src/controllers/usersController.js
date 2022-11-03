@@ -182,6 +182,7 @@ const userController = {
           promPais: promPais,
           promProvincia: promProvincia,
           usuarioCrud: usuarioCrud,
+          oldData: usuarioCrud
         });
       })
       .catch((error) => res.send(error));
@@ -189,8 +190,8 @@ const userController = {
 
   updateCRUD: function (req, res) {
     const resultValidation = validationResult(req);
-    //console.log(req.body);
-    //console.log(resultValidation);
+    console.log(req.body);
+    console.log(resultValidation);
     if (resultValidation.errors.length > 0) {
       let promPais = db.pais_model.findAll();
       let promProvincia = db.provincia_model.findAll();

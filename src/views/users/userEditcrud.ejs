@@ -2,70 +2,102 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
+
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-    <main class="main">
-      <form action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
-        <div class="imgcontainer">
-          <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
-        </div>
-        <% if(typeof alert !='undefined' ) { %>
-          <% alert.forEach(function(error) { %>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <%= error.msg %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <% }) %>
-              <% } %>
-        <fieldset id="left">
-          <label for="nombre"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese el nombre" name="nombre" value="<%= usuarioCrud.nombre ? oldData.nombre : null %>">
-          <label for="apellido"><b>Apellidos</b></label>
-          <input type="text" placeholder="Ingrese los apellidos" name="apellido" value="<%= usuarioCrud.apellido ? oldData.apellido : null %>">
-        </fieldset>
-        <fieldset id="right">
-          <label for="correoelectronico"><b>Correo electronico</b></label>
-          <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" value="<%= usuarioCrud.correoelectronico ? oldData.correoelectronico : null %>">
-          <label for="numerotelefono"><b>Teléfono / Celular</b></label>
-          <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= usuarioCrud.numerotelefono ? oldData.numerotelefono : null %>">
-          <label for="id_pais"><b>Pais</b></label>
-          <select name="id_pais" placeholder="Ingrese el ciudad/provincia">
-            <% if(typeof promPais !='undefined' ) { %>
-              <% promPais.forEach(function(pais) { %>
-                <option value="<%= usuarioCrud.id_pais %>" selected>
-                  <%= pais.nombre %>
-                </option>
-                <% }) %>
-                  <% } %>
-          </select>
-          <label for="id_provincia"><b>Ciudad/Provincia</b></label>
-          <select name="id_provincia" placeholder="Ingrese el ciudad/provincia">
-            <% if(typeof promProvincia !='undefined' ) { %>
-              <% promProvincia.forEach(function(prov) { %>
-                <option value="<%= usuarioCrud.id_provincia %>" selected>
-                  <%= prov.nombre %>
-                </option>
-                <% }) %>
-                  <% } %>
-          </select>
-          <label for="password"><b>Contraseña</b></label>
-          <input type="password" placeholder="Ingrese la contraseña" name="contrasena">
-        </fieldset>
-        <fieldset id="center">
-          <label for="img"><b>Imagen</b></label>
-          <input type="file" name="imagenuser">
-        </fieldset>
-        </div>
-        </div>
-        <div class="container2">
-          <button type="submit" class="button">Actualizar</button>
-        </div>
-      </form>
+      <main class="main">
+        <form id="formValidate" action="/users/userEditCRUD/<%= usuarioCrud.id %>?_method=PATCH" method="POST"
+          enctype="multipart/form-data">
+          <div class="imgcontainer">
+            <h1>Edición del usuario <%= usuarioCrud.id %> en e<span>C</span>omic</h1>
+          </div>
+          <% if(typeof alert !='undefined' ) { %>
+            <% alert.forEach(function(error) { %>
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <%= error.msg %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <% }) %>
+                <% } %>
+                  <fieldset id="left">
+                    <div class="form-field">
+                      <label for="nombre"><b>Nombre</b></label>
+                      <input type="text" placeholder="Ingrese el nombre" name="nombre" id="nombre"
+                        value="<%= usuarioCrud.nombre ? oldData.nombre : null %>">
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                      <label for="apellido"><b>Apellidos</b></label>
+                      <input type="text" placeholder="Ingrese los apellidos" name="apellido" id="apellido"
+                        value="<%= usuarioCrud.apellido ? oldData.apellido : null %>">
+                      <small></small>
+                    </div>
+                  </fieldset>
+                  <fieldset id="right">
+                    <div class="form-field">
+                      <label for="correoelectronico"><b>Correo electronico</b></label>
+                      <input type="text" placeholder="Ingrese el correo electronico" name="correoelectronico" id="correoelectronico"
+                        value="<%= usuarioCrud.correoelectronico ? oldData.correoelectronico : null %>">
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                      <label for="numerotelefono"><b>Teléfono / Celular</b></label>
+                      <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" id="numerotelefono"
+                        value="<%= usuarioCrud.numerotelefono ? oldData.numerotelefono : null %>">
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                      <label for="id_pais"><b>Pais</b></label>
+                      <select name="id_pais" id="id_pais" placeholder="Ingrese el ciudad/provincia">
+                        <% if(typeof promPais !='undefined' ) { %>
+                          <% promPais.forEach(function(pais) { %>
+                            <option value="<%= usuarioCrud.id_pais %>" selected>
+                              <%= pais.nombre %>
+                            </option>
+                            <% }) %>
+                              <% } %>
+                      </select>
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                      <label for="id_provincia"><b>Ciudad/Provincia</b></label>
+                      <select name="id_provincia" id="id_provincia" placeholder="Ingrese el ciudad/provincia">
+                        <% if(typeof promProvincia !='undefined' ) { %>
+                          <% promProvincia.forEach(function(prov) { %>
+                            <option value="<%= usuarioCrud.id_provincia %>" selected>
+                              <%= prov.nombre %>
+                            </option>
+                            <% }) %>
+                              <% } %>
+                      </select>
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                      <label for="password"><b>Contraseña</b></label>
+                      <input type="password" placeholder="Ingrese la contraseña" name="contrasena" id="contrasena">
+                      <small></small>
+                    </div>
+                  </fieldset>
+                  <fieldset id="center">
+                    <div class="form-field">
+                      <label for="img"><b>Imagen</b></label>
+                      <input type="file" name="imagenuser" id="imagenuser">
+                      <small></small>
+                    </div>
+                  </fieldset>
+                  </div>
+                  </div>
+                  <div class="container2">
+                    <button type="submit" class="button">Actualizar</button>
+                  </div>
+        </form>
       </main>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
+      <script defer src="/js/validateUser.js"></script>
   </body>
+
 </html>

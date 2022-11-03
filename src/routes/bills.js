@@ -97,7 +97,7 @@ const validateFactura = [
     .notEmpty()
     .withMessage("Debes completar la Descripcion detallada")
     .bail()
-    .isLength({ min: 1 })
+    .isLength({ min: 10 })
     .withMessage("Debes ser más larga, mínimo 10 letras"),
 ];
 

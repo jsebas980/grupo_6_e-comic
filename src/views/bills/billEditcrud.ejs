@@ -2,12 +2,13 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
+
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/bills/billEditCRUD/<%= facturaCrud.id %>?_method=PATCH" method="POST">
+      <form id="formValidate" action="/bills/billEditCRUD/<%= facturaCrud.id %>?_method=PATCH" method="POST">
         <div class="imgcontainer">
-          <h1>Edit</h1>
+          <h1>Edición de la factura <%= facturaCrud.id %> en e<span>C</span>omic
         </div>
         <% if(typeof alert !='undefined' ) { %>
           <% alert.forEach(function(error) { %>
@@ -20,52 +21,130 @@
             <% }) %>
               <% } %>
                 <fieldset id="left">
-                  <label for="id_usuario"><b>Usuario</b></label>
-                  <input type="text" placeholder="ingrese el usuario" name="id_usuario"
-                    value="<%= facturaCrud.id_usuario ? oldData.id_usuario : null %>">
-                  <label for="id_estadofactura"><b>Estado factura</b></label>
-                  <input type="text" placeholder="ingrese la estado factura" name="id_estadofactura"
-                    value="<%= facturaCrud.id_estadofactura ? oldData.id_estadofactura : null %>">
-                  <label for="envio"><b>Envio</b></label>
-                  <input type="text" placeholder="ingrese el envio" name="envio" value="<%= facturaCrud.envio ? oldData.envio : null %>">
-                  <label for="impuesto"><b>Impuesto</b></label>
-                  <input type="text" placeholder="ingrese el impuesto" name="impuesto"
-                    value="<%= facturaCrud.impuesto ? oldData.impuesto : null %>">
-                  <label for="total"><b>Total</b></label>
-                  <input type="text" placeholder="ingrese el total" name="total" value="<%= facturaCrud.total ? oldData.total : null %>">
-                  <label for="id_modopago"><b>Modo de pago</b></label>
-                  <input type="text" placeholder="ingrese el modo de pago" name="id_modopago"
-                    value="<%= facturaCrud.id_modopago ? oldData.id_modopago : null %>">
-                  <label for="fecha"><b>fecha</b></label>
-                  <input type="date" placeholder="ingrese el fecha" name="fecha" value="<%= facturaCrud.fecha ? oldData.fecha : null %>">
+                  <div class="form-field">
+                    <label for="id_usuario"><b>Usuario</b></label>
+                    <input type="text" placeholder="Ingrese el usuario" name="id_usuario" id="id_usuario"
+                      value="<%= facturaCrud.id_usuario ? oldData.id_usuario : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_estadofactura"><b>Estado factura</b></label>
+                    <select name="id_estadofactura" id="id_estadofactura" placeholder="Ingrese la estado factura">
+                      <% if(typeof promEstado !='undefined' ) { %>
+                        <% promEstado.forEach(function(estado) { %>
+                          <option value="<%= estado.id %>">
+                            <%= estado.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="envio"><b>Envió</b></label>
+                    <input type="text" placeholder="Ingrese el envio" name="envio" id="envio"
+                      value="<%= facturaCrud.envio ? oldData.envio : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="impuesto"><b>Impuesto</b></label>
+                    <input type="text" placeholder="Ingrese el impuesto" name="impuesto" id="impuesto"
+                      value="<%= facturaCrud.impuesto ? oldData.impuesto : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="total"><b>Total</b></label>
+                    <input type="text" placeholder="Ingrese el total" name="total" id="total"
+                      value="<%= facturaCrud.total ? oldData.total : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_modopago"><b>Modo de pago</b></label>
+                    <select name="id_modopago" id="id_modopago" placeholder="Ingrese el modo de pago">
+                      <% if(typeof promModoPago !='undefined' ) { %>
+                        <% promModoPago.forEach(function(modopago) { %>
+                          <option value="<%= modopago.id %>">
+                            <%= modopago.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="fecha"><b>Fecha</b></label>
+                    <input type="date" placeholder="Ingrese el fecha" name="fecha" id="fecha"
+                      value="<%= facturaCrud.fecha ? oldData.fecha : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="right">
-                  <label for="id_pais"><b>Pais</b></label>
-                  <input type="text" placeholder="ingrese el pais" name="id_pais" value="<%= facturaCrud.id_pais ? oldData.id_pais : null %>">
-                  <label for="id_provincia"><b>Provincia</b></label>
-                  <input type="text" placeholder="ingrese el provincia" name="id_provincia"
-                    value="<%= facturaCrud.id_provincia ? oldData.id_provincia : null %>">
-                  <label for="ciudad"><b>Ciudad</b></label>
-                  <input type="text" placeholder="ingrese la ciudad" name="ciudad" value="<%= facturaCrud.ciudad ? oldData.ciudad : null %>">
+                  <div class="form-field">
+                    <label for="id_pais"><b>País</b></label>
+                    <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
+                      <% if(typeof promPais !='undefined' ) { %>
+                        <% promPais.forEach(function(pais) { %>
+                          <option value="<%= pais.id %>">
+                            <%= pais.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_provincia"><b>Provincia</b></label>
+                    <select name="id_provincia" id="id_provincia" placeholder="Ingrese el ciudad/provincia">
+                      <% if(typeof promProvincia !='undefined' ) { %>
+                        <% promProvincia.forEach(function(prov) { %>
+                          <option value="<%= prov.id %>">
+                            <%= prov.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="ciudad"><b>Ciudad</b></label>
+                    <input type="text" placeholder="Ingrese la ciudad" name="ciudad" id="ciudad"
+                      value="<%= facturaCrud.ciudad ? oldData.ciudad : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="center">
-                  <label for="nombrecompleto"><b>Nombre completo</b></label>
-                  <input type="text" placeholder="ingrese la descripcion corta" name="nombrecompleto"
-                    value="<%= facturaCrud.nombrecompleto ? oldData.nombrecompleto : null %>">
-                  <label for="correoelectronico"><b>Correo electronico</b></label>
-                  <input type="text" placeholder="ingrese la correo electronico" name="correoelectronico"
-                    value="<%= facturaCrud.correoelectronico ? oldData.correoelectronico : null %>">
-                  <label for="direccion"><b>Direccion</b></label>
-                  <input type="text" placeholder="ingrese la direccion" name="direccion"
-                    value="<%= facturaCrud.direccion ? oldData.direccion : null %>">
-                  <label for="numerotelefono"><b>Teléfono / Celular</b></label>
-                  <input type="text" placeholder="ingrese la número de telefono" name="numerotelefono"
-                    value="<%= facturaCrud.numerotelefono ? oldData.numerotelefono : null %>">
-                  <label for="detalleadicionales"><b>Descripción detallada</b></label>
-                  <textarea name="detalleadicionales" id="detalleadicionales" cols="30"
-                    rows="10"><%= facturaCrud.detalleadicionales ? oldData.detalleadicionales : null %></textarea>
+                  <div class="form-field">
+                    <label for="nombrecompleto"><b>Nombre completo</b></label>
+                    <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto" id="nombrecompleto"
+                      value="<%= facturaCrud.nombrecompleto ? oldData.nombrecompleto : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="correoelectronico"><b>Correo electrónico</b></label>
+                    <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico"
+                      id="correoelectronico"
+                      value="<%= facturaCrud.correoelectronico ? oldData.correoelectronico : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="direccion"><b>Dirección</b></label>
+                    <input type="text" placeholder="Ingrese la dirección" name="direccion" id="direccion"
+                      value="<%= facturaCrud.direccion ? oldData.direccion : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="numerotelefono"><b>Teléfono / Celular</b></label>
+                    <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
+                      id="numerotelefono" value="<%= facturaCrud.numerotelefono ? oldData.numerotelefono : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="detalleadicionales"><b>Descripción detallada</b></label>
+                    <textarea name="detalleadicionales" id="detalleadicionales" cols="30"
+                      rows="10"><%= facturaCrud.detalleadicionales ? oldData.detalleadicionales : null %></textarea>
+                    <small></small>
+                  </div>
                 </fieldset>
-                </div>
                 <div class="container2">
                   <button type="submit" class="button">Actualizar</button>
                 </div>
@@ -73,5 +152,7 @@
       </main>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
+        <script defer src="/js/validateBill.js"></script>
   </body>
+
 </html>

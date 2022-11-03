@@ -27,7 +27,20 @@ const billController = {
   },
 
   billCreateCRUD: async (req, res) => {
-    return res.render("bills/billLoadCRUD");
+    let promEstado = dbd.estado_factura_model.findAll();
+    let promModoPago = dbd.modo_pago_model.findAll();
+    let promPais = dbd.pais_model.findAll();
+    let promProvincia = dbd.provincia_model.findAll();
+    Promise.all([promEstado, promModoPago, promPais, promProvincia])
+      .then(function ([promEstado, promModoPago, promPais, promProvincia]) {
+        return res.render("bills/billLoadCRUD", {
+          promEstado: promEstado,
+          promModoPago: promModoPago,
+          promPais: promPais,
+          promProvincia: promProvincia,
+        });
+      })
+      .catch((error) => res.send(error));
   },
 
   createCRUD: function (req, res) {
@@ -64,11 +77,21 @@ const billController = {
   },
 
   editCRUD: function (req, res) {
-    dbd.factura_model
-      .findByPk(req.params.id)
-      .then((facturaCrud) => {
-        console.log(facturaCrud);
-        return res.render("bills/billEditcrud", { facturaCrud });
+    let promEstado = dbd.estado_factura_model.findAll();
+    let promModoPago = dbd.modo_pago_model.findAll();
+    let promPais = dbd.pais_model.findAll();
+    let promProvincia = dbd.provincia_model.findAll();
+    let facturaCrud = dbd.factura_model.findByPk(req.params.id);
+    Promise.all([promEstado, promModoPago, promPais, promProvincia, facturaCrud])
+      .then(function ([promEstado, promModoPago, promPais, promProvincia, facturaCrud]) {
+        return res.render("bills/billEditcrud", {
+          promEstado: promEstado,
+          promModoPago: promModoPago,
+          promPais: promPais,
+          promProvincia: promProvincia,
+          facturaCrud: facturaCrud,
+          oldData: facturaCrud,
+        });
       })
       .catch((error) => res.send(error));
   },

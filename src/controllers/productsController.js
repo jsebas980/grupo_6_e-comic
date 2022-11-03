@@ -82,10 +82,17 @@ const productController = {
   },
 
   editCRUD: function (req, res) {
-    dbp.productos_model
-      .findByPk(req.params.id)
-      .then((productoCrud) => {
-        return res.render("products/productEditcrud", { productoCrud });
+    let promPais = dbp.pais_model.findAll();
+    let promCategoria = dbp.categoria_model.findAll();
+    let productoCrud = dbp.productos_model.findByPk(req.params.id);
+    Promise.all([promPais, promCategoria, productoCrud])
+      .then(function ([promPais, promCategoria, productoCrud]) {
+        return res.render("products/productEditcrud", {
+          promPais: promPais,
+          promCategoria: promCategoria,
+          productoCrud: productoCrud,
+          oldData: productoCrud
+        });
       })
       .catch((error) => res.send(error));
   },

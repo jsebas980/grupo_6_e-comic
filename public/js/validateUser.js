@@ -1,12 +1,16 @@
-console.log("validateUser JS");
+console.log("validateUser Front-end JS");
 // https://www.javascripttutorial.net/javascript-dom/javascript-form-validation/
 window.addEventListener("load", function () {
   const usernameEl = document.querySelector("#nombre");
   const userlastnameEl = document.querySelector("#apellido");
   const emailEl = document.querySelector("#correoelectronico");
   const passwordEl = document.querySelector("#contrasena");
+  const phoneEl = document.querySelector("#numerotelefono");
+  const countryEl = document.querySelector("#id_pais");
+  const cityEl = document.querySelector("#id_provincia");
+  const imgEl = document.querySelector("#imagenuser");
 
-  const form = document.querySelector("#signup");
+  const form = document.querySelector("#formValidate");
 
   const checkUsername = () => {
     let valid = false;
@@ -86,6 +90,71 @@ window.addEventListener("load", function () {
     return valid;
   };
 
+  const checkNumber = () => {
+    let valid = false;
+
+    const phone = phoneEl.value.trim();
+
+    if (!isRequired(phone)) {
+      showError(phoneEl, "El teléfono / celular no debe estar vacio.");
+    } else if (!isNumberValid(phone)) {
+      showError(phoneEl, "El teléfono / celular debe ser solamente número");
+    } else {
+      showSuccess(phoneEl);
+      valid = true;
+    }
+
+    return valid;
+  };
+
+  const checkIdCountry = () => {
+    let valid = false;
+
+    const country = countryEl.value.trim();
+
+    if (!isRequired(country)) {
+      showError(countryEl, "El país no debe estar vacio.");
+    } else {
+      showSuccess(countryEl);
+      valid = true;
+    }
+
+    return valid;
+  };
+
+  const checkIdCity = () => {
+    let valid = false;
+
+    const city = cityEl.value.trim();
+
+    if (!isRequired(city)) {
+      showError(cityEl, "La ciudad o provincia no debe estar vacio.");
+    } else {
+      showSuccess(cityEl);
+      valid = true;
+    }
+
+    return valid;
+  };
+
+  const checkPictureValid = () => {
+    let valid = false;
+
+    const filePath = imgEl.value;
+
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i; // Allowing file type
+
+    if (!allowedExtensions.exec(filePath)) {
+      showError(imgEl, "La imagen debe ser en formato valido.");
+      imgEl.value = "";
+    } else {
+      showSuccess(countryEl);
+      valid = true;
+    }
+
+    return valid;
+  };
+
   const isEmailValid = (email) => {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -97,6 +166,11 @@ window.addEventListener("load", function () {
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
     );
     return re.test(password);
+  };
+
+  const isNumberValid = (number) => {
+    const renumber = new RegExp("^(?=.*[0-9])(?=.{8,})");
+    return renumber.test(number);
   };
 
   const isRequired = (value) => (value === "" ? false : true);
@@ -134,15 +208,23 @@ window.addEventListener("load", function () {
 
     // validate forms
     let isUsernameValid = checkUsername(),
-	  isUserLastnameValid = checkUserLastname(),
+      isUserLastnameValid = checkUserLastname(),
       isEmailValid = checkEmail(),
-      isPasswordValid = checkPassword();
+      isNumberValid = checkNumber(),
+      isIdCountryValid = checkIdCountry(),
+      isIdCityValid = checkIdCity(),
+      isPasswordValid = checkPassword(),
+      isPictureValid = checkPictureValid();
 
     let isFormValid =
       isUsernameValid &&
-	  isUserLastnameValid &&
+      isUserLastnameValid &&
       isEmailValid &&
-      isPasswordValid;
+      isNumberValid &&
+      isIdCountryValid &&
+      isIdCityValid &&
+      isPasswordValid &&
+      isPictureValid;
 
     // submit to the server if the form is valid
     if (isFormValid) {
@@ -170,11 +252,20 @@ window.addEventListener("load", function () {
         case "nombre":
           checkUsername();
           break;
-		case "apellido":
+        case "apellido":
           checkUserLastname();
           break;
         case "correoelectronico":
           checkEmail();
+          break;
+        case "numerotelefono":
+          checkNumber();
+          break;
+        case "id_pais":
+          checkIdCountry();
+          break;
+        case "id_provincia":
+          checkIdCity();
           break;
         case "contrasena":
           checkPassword();

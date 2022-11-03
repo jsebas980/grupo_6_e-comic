@@ -67,7 +67,8 @@ h1 {
   height: 50px;
   background: #3a3c3e;
   border: none;
-  font-size: 10pt;
+  margin-left: 12px;
+  font-size: 24px;
   float: left;
   color: #262626;
   padding-left: 45px;
@@ -101,7 +102,7 @@ h1 {
 
 .container-1 .icon {
   position: absolute;
-  float: right;
+  float: left;
   top: 50%;
   margin-left: 12px;
   margin-top: 10px;
@@ -134,21 +135,17 @@ h1 {
 }
 
 .form-field {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .form-field label {
-  display: block;
   color: #777;
-  margin-bottom: 5px;
 }
 
 .form-field input {
   border: solid 2px #f0f0f0;
-  border-radius: 3px;
-  padding: 10px;
-  margin-bottom: 5px;
-  font-size: 14px;
+  border-radius: 5px;
+  font-size: 13px;
   display: block;
   width: 100%;
 }
@@ -167,6 +164,7 @@ h1 {
 
 .form-field small {
   color: var(--error-color);
+  font-size: 18px;
 }
 
 .row {

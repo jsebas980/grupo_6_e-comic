@@ -2,10 +2,11 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
+
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/bills/billInsertCRUD" method="POST">
+      <form id="formValidate" action="/bills/billInsertCRUD" method="POST">
         <div class="imgcontainer">
           <h1>Creación de una factura en e<span>C</span>omic</h1>
         </div>
@@ -18,52 +19,143 @@
                 </button>
             </div>
             <% }) %>
-              <% } %>            
+              <% } %>
                 <fieldset id="left">
-                  <label for="id_usuario"><b>Usuario</b></label>
-                  <input type="text" placeholder="Ingrese el usuario" name="id_usuario" value="<%= locals.oldData ? oldData.id_usuario : null %>">
-                  <label for="id_estadofactura"><b>Estado factura</b></label>
-                  <input type="text" placeholder="Ingrese la estado factura" name="id_estadofactura" value="<%= locals.oldData ? oldData.id_estadofactura : null %>">
-                  <label for="envio"><b>Envió</b></label>
-                  <input type="text" placeholder="Ingrese el envio" name="envio" value="<%= locals.oldData ? oldData.envio : null %>">
-                  <label for="impuesto"><b>Impuesto</b></label>
-                  <input type="text" placeholder="Ingrese el impuesto" name="impuesto" value="<%= locals.oldData ? oldData.impuesto : null %>">
-                  <label for="total"><b>Total</b></label>
-                  <input type="text" placeholder="Ingrese el total" name="total" value="<%= locals.oldData ? oldData.total : null %>">
-                  <label for="id_modopago"><b>Modo de pago</b></label>
-                  <input type="text" placeholder="Ingrese el modo de pago" name="id_modopago" value="<%= locals.oldData ? oldData.id_modopago : null %>">
-                  <label for="fecha"><b>Fecha</b></label>
-                  <input type="date" placeholder="Ingrese el fecha" name="fecha" value="<%= locals.oldData ? oldData.fecha : null %>">
+                  <div class="form-field">
+                    <label for="id_usuario"><b>Usuario</b></label>
+                    <input type="text" placeholder="Ingrese el usuario" name="id_usuario" id="id_usuario"
+                      value="<%= locals.oldData ? oldData.id_usuario : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_estadofactura"><b>Estado factura</b></label>
+                    <select name="id_estadofactura" id="id_estadofactura" placeholder="Ingrese la estado factura">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promEstado !='undefined' ) { %>
+                        <% promEstado.forEach(function(estado) { %>
+                          <option value="<%= estado.id %>">
+                            <%= estado.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="envio"><b>Envió</b></label>
+                    <input type="text" placeholder="Ingrese el envio" name="envio" id="envio"
+                      value="<%= locals.oldData ? oldData.envio : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="impuesto"><b>Impuesto</b></label>
+                    <input type="text" placeholder="Ingrese el impuesto" name="impuesto" id="impuesto"
+                      value="<%= locals.oldData ? oldData.impuesto : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="total"><b>Total</b></label>
+                    <input type="text" placeholder="Ingrese el total" name="total" id="total"
+                      value="<%= locals.oldData ? oldData.total : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_modopago"><b>Modo de pago</b></label>
+                    <select name="id_modopago" id="id_modopago" placeholder="Ingrese el modo de pago">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promModoPago !='undefined' ) { %>
+                        <% promModoPago.forEach(function(modopago) { %>
+                          <option value="<%= modopago.id %>">
+                            <%= modopago.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="fecha"><b>Fecha</b></label>
+                    <input type="date" placeholder="Ingrese el fecha" name="fecha" id="fecha"
+                      value="<%= locals.oldData ? oldData.fecha : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="right">
-                  <label for="id_pais"><b>País</b></label>
-                  <input type="text" placeholder="Ingrese el país" name="id_pais" value="<%= locals.oldData ? oldData.id_pais : null %>">
-                  <label for="id_provincia"><b>Provincia</b></label>
-                  <input type="text" placeholder="Ingrese el provincia" name="id_provincia" value="<%= locals.oldData ? oldData.id_provincia : null %>">
-                  <label for="ciudad"><b>Ciudad</b></label>
-                  <input type="text" placeholder="Ingrese la ciudad" name="ciudad" value="<%= locals.oldData ? oldData.ciudad : null %>">
+                  <div class="form-field">
+                    <label for="id_pais"><b>País</b></label>
+                    <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promPais !='undefined' ) { %>
+                        <% promPais.forEach(function(pais) { %>
+                          <option value="<%= pais.id %>">
+                            <%= pais.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_provincia"><b>Provincia</b></label>
+                    <select name="id_provincia" id="id_provincia" placeholder="Ingrese el ciudad/provincia">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promProvincia !='undefined' ) { %>
+                        <% promProvincia.forEach(function(prov) { %>
+                          <option value="<%= prov.id %>">
+                            <%= prov.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="ciudad"><b>Ciudad</b></label>
+                    <input type="text" placeholder="Ingrese la ciudad" name="ciudad" id="ciudad"
+                      value="<%= locals.oldData ? oldData.ciudad : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="center">
-                  <label for="nombrecompleto"><b>Nombre completo</b></label>
-                  <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto" value="<%= locals.oldData ? oldData.nombrecompleto : null %>">
-                  <label for="correoelectronico"><b>Correo electrónico</b></label>
-                  <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>">
-                  <label for="direccion"><b>Dirección</b></label>
-                  <input type="text" placeholder="Ingrese la dirección" name="direccion" value="<%= locals.oldData ? oldData.direccion : null %>">
-                  <label for="numerotelefono"><b>Teléfono / Celular</b></label>
-                  <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>">
-                  <label for="detalleadicionales"><b>Descripción detallada</b></label>
-                  <textarea name="detalleadicionales" id="detalleadicionales" cols="30" rows="10"><%= locals.oldData ? oldData.detalleadicionales : null %></textarea>
+                  <div class="form-field">
+                    <label for="nombrecompleto"><b>Nombre completo</b></label>
+                    <input type="text" placeholder="Ingrese el nombre" name="nombrecompleto" id="nombrecompleto"
+                      value="<%= locals.oldData ? oldData.nombrecompleto : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="correoelectronico"><b>Correo electrónico</b></label>
+                    <input type="text" placeholder="Ingrese la correo electrónico" name="correoelectronico"
+                      id="correoelectronico" value="<%= locals.oldData ? oldData.correoelectronico : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="direccion"><b>Dirección</b></label>
+                    <input type="text" placeholder="Ingrese la dirección" name="direccion" id="direccion"
+                      value="<%= locals.oldData ? oldData.direccion : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="numerotelefono"><b>Teléfono / Celular</b></label>
+                    <input type="text" placeholder="Ingrese el teléfono o celular" name="numerotelefono"
+                      id="numerotelefono" value="<%= locals.oldData ? oldData.numerotelefono : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="detalleadicionales"><b>Descripción detallada</b></label>
+                    <textarea name="detalleadicionales" id="detalleadicionales" cols="30"
+                      rows="10"><%= locals.oldData ? oldData.detalleadicionales : null %></textarea>
+                    <small></small>
+                  </div>
                 </fieldset>
-                </div>
                 <div class="container2">
                   <button type="submit" class="button">Guardar factura</button>
                 </div>
       </form>
       </main>
       <!-- Footer -->
-      <%- include('../partials/footer.ejs') %> 
-      <script defer src="/js/validator.js"></script>
-      <script defer src="/js/validateRegister.js"></script>
+      <%- include('../partials/footer.ejs') %>
+      <script defer src="/js/validateBill.js"></script>
   </body>
+
 </html>

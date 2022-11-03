@@ -2,10 +2,11 @@
 <html lang="en">
 <!-- Head -->
 <%- include('../partials/head.ejs') %>
+
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/products/productInsertCRUD" method="POST" enctype="multipart/form-data">
+      <form id="formValidate" action="/products/productInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Creación de un producto en e<span>C</span>omic</h1>
         </div>
@@ -20,58 +21,105 @@
             <% }) %>
               <% } %>
                 <fieldset id="left">
-                  <label for="titulo"><b>Titulo</b></label>
-                  <input type="text" placeholder="Ingrese el titulo" name="titulo" value="<%= locals.oldData ? oldData.titulo : null %>">
-                  <label for="temporada"><b>Temporada</b></label>
-                  <input type="text" placeholder="Ingrese la temporada" name="temporada" value="<%= locals.oldData ? oldData.temporada : null %>">
-                  <label for="volumen"><b>Volumen</b></label>
-                  <input type="text" placeholder="Ingrese el volumen" name="volumen" value="<%= locals.oldData ? oldData.volumen : null %>">
-                  <label for="stock"><b>Stock</b></label>
-                  <input type="text" placeholder="Ingrese el stock" name="stock" value="<%= locals.oldData ? oldData.stock : null %>">
-                  <label for="descontinuado"><b>Descontinuado</b></label>
-                  <input type="text" placeholder="Ingrese el descontinuado" name="descontinuado" value="<%= locals.oldData ? oldData.descontinuado : null %>">
+                  <div class="form-field">
+                    <label for="titulo"><b>Titulo</b></label>
+                    <input type="text" placeholder="Ingrese el titulo" name="titulo" id="titulo"
+                      value="<%= locals.oldData ? oldData.titulo : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="temporada"><b>Temporada</b></label>
+                    <input type="text" placeholder="Ingrese la temporada" name="temporada" id="temporada"
+                      value="<%= locals.oldData ? oldData.temporada : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="volumen"><b>Volumen</b></label>
+                    <input type="text" placeholder="Ingrese el volumen" name="volumen" id="volumen"
+                      value="<%= locals.oldData ? oldData.volumen : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="stock"><b>Stock</b></label>
+                    <input type="text" placeholder="Ingrese el stock" name="stock" id="stock"
+                      value="<%= locals.oldData ? oldData.stock : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="descontinuado"><b>Descontinuado</b></label>
+                    <input type="text" placeholder="Ingrese el descontinuado" name="descontinuado" id="descontinuado"
+                      value="<%= locals.oldData ? oldData.descontinuado : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="right">
-                  <label for="id_categoria"><b>Categoría</b></label>
-                  <!-- <input type="text" placeholder="Ingrese la categoria" name="id_categoria"> -->
-                  <select name="id_categoria" placeholder="Ingrese la categoria">
-                    <option disabled selected value> -- select an option -- </option>
-                    <% if(typeof promCategoria !='undefined' ) { %>
-                      <% promCategoria.forEach(function(categoria) { %>
-                        <option value="<%= categoria.id %>">
-                          <%= categoria.nombrecategoria %>
-                        </option>
-                        <% }) %>
-                          <% } %>
-                  </select>
-                  <label for="id_pais"><b>País</b></label>
-                  <!-- <input type="text" placeholder="Ingrese el país" name="id_pais"> -->
-                  <select name="id_pais" placeholder="Ingrese el país">
-                    <option disabled selected value> -- select an option -- </option>
-                    <% if(typeof promPais !='undefined' ) { %>
-                      <% promPais.forEach(function(pais) { %>
-                        <option value="<%= pais.id %>">
-                          <%= pais.nombre %>
-                        </option>
-                        <% }) %>
-                          <% } %>
-                  </select>
-                  <label for="publicacion"><b>Fecha de publicación</b></label>
-                  <input type="date" placeholder="Ingrese la fecha de publicacion" name="publicacion" value="<%= locals.oldData ? oldData.publicacion : null %>">
-                  <label for="precionormal"><b>Precio normal</b></label>
-                  <input type="text" placeholder="Ingrese el precio" name="precionormal" value="<%= locals.oldData ? oldData.precionormal : null %>">
-                  <label for="precio"><b>Precio</b></label>
-                  <input type="text" placeholder="Ingrese el precio" name="precio" value="<%= locals.oldData ? oldData.precio : null %>">
+                  <div class="form-field">
+                    <label for="id_categoria"><b>Categoría</b></label>
+                    <select name="id_categoria" id="id_categoria" placeholder="Ingrese la categoria">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promCategoria !='undefined' ) { %>
+                        <% promCategoria.forEach(function(categoria) { %>
+                          <option value="<%= categoria.id %>">
+                            <%= categoria.nombrecategoria %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_pais"><b>País</b></label>
+                    <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
+                      <option disabled selected value> -- select an option -- </option>
+                      <% if(typeof promPais !='undefined' ) { %>
+                        <% promPais.forEach(function(pais) { %>
+                          <option value="<%= pais.id %>">
+                            <%= pais.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="publicacion"><b>Fecha de publicación</b></label>
+                    <input type="date" placeholder="Ingrese la fecha de publicacion" name="publicacion" id="publicacion"
+                      value="<%= locals.oldData ? oldData.publicacion : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="precionormal"><b>Precio normal</b></label>
+                    <input type="text" placeholder="Ingrese el precio" name="precionormal" id="precionormal"
+                      value="<%= locals.oldData ? oldData.precionormal : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="precio"><b>Precio</b></label>
+                    <input type="text" placeholder="Ingrese el precio" name="precio" id="precio"
+                      value="<%= locals.oldData ? oldData.precio : null %>">
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="center">
-                  <label for="descripcioncorta"><b>Descripción corta</b></label>
-                  <input type="text" placeholder="Ingrese la descripcion corta" name="descripcioncorta" value="<%= locals.oldData ? oldData.descripcioncorta : null %>">
-                  <label for="descripciondetallada"><b>Descripción detallada</b></label>
-                  <textarea name="descripciondetallada" id="descripciondetallada" cols="30" rows="10"><%= locals.oldData ? oldData.descripciondetallada : null %></textarea>
+                  <div class="form-field">
+                    <label for="descripcioncorta"><b>Descripción corta</b></label>
+                    <input type="text" placeholder="Ingrese la descripcion corta" name="descripcioncorta"
+                      id="descripcioncorta" value="<%= locals.oldData ? oldData.descripcioncorta : null %>">
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="descripciondetallada"><b>Descripción detallada</b></label>
+                    <textarea name="descripciondetallada" id="descripciondetallada" cols="30"
+                      rows="10"><%= locals.oldData ? oldData.descripciondetallada : null %></textarea>
+                    <small></small>
+                  </div>
                 </fieldset>
                 <fieldset id="center">
-                  <label for="img"><b>Imagen</b></label>
-                  <input type="file" name="imagen">
+                  <div class="form-field">
+                    <label for="img"><b>Imagen</b></label>
+                    <input type="file" name="imagen" id="imagen">
+                    <small></small>
+                  </div>
                 </fieldset>
                 </div>
                 <div class="container2">
@@ -81,5 +129,7 @@
       </main>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
+      <script defer src="/js/validateProduct.js"></script>
   </body>
+
 </html>
