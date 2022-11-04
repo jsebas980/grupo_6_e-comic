@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Head -->
-  <%- include('../partials/head.ejs') %>
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
 
   <body class="login">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-    <main class="main">
-      <form action="/users/login" method="POST">
-        <div class="imgcontainer">
-          <h1>Login</h1>
-          <img
-            src="/images/avatar-user-login-avatar-man.jpg"
-            alt="Avatar"
-            class="avatar"
-          />
-        </div>
-        <div class="container">
-          <% if(typeof alert !='undefined' ) { %> <%
-          alert.forEach(function(error) { %>
-          <div
-            class="alert alert-warning alert-dismissible fade show"
-            role="alert"
-          >
-            <%= error.msg %>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
+      <main class="main">
+        <form  id="formValidate" action="/users/login" method="POST">
+          <div class="imgcontainer">
+            <h1>Login</h1>
+            <img src="/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar" />
           </div>
-          <% }) %> <% } %>
-          <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
-          <label for="email"><b>Usuario</b></label>
-          <input type="text" placeholder="Enter Username" name="email" />
-          <% if (locals.errors && errors.email) { %>
-          <p class="errors"><%= errors.email.msg %></p>
-          <% } %>
-          <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
-          <label for="password"><b>Contraseña</b></label>
-          <input type="password" placeholder="Enter Password" name="password" />
-          <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
-          <label>
-            <input type="checkbox" name="remember" /> Recordarme la sesión
-            iniciada
-          </label>
-          <button type="submit" class="button">Login</button>
-        </div>
-        <div class="container2">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <span class="psw"
-            >¿No eres un miembro? <a href="register">Registrarse!</a></span
-          >
-        </div>
-      </form>
-    </main>
-    <!-- Footer -->
-    <%- include('../partials/footer.ejs') %>
+          <div class="container">
+            <% if(typeof alert !='undefined' ) { %>
+              <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <% }) %>
+                  <% } %>
+                  <div class="form-field">
+                    <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
+                    <label for="email"><b>Usuario</b></label>
+                    <input type="text" placeholder="Ingrese el correo electrónico" name="email" id="email" />
+                    <% if (locals.errors && errors.email) { %>
+                      <p class="errors">
+                        <%= errors.email.msg %>
+                      </p>
+                      <% } %>
+                      <small></small>
+                    </div>
+                    <div class="form-field">
+                        <span class="icon"><i class="fa-solid fa-key fa-2x"></i></span>
+                        <label for="password"><b>Contraseña</b></label>
+                        <input type="password" placeholder="Ingrese la contraseña" name="password" id="password" />
+                        <small></small>
+                      </div>
+                        <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+                        <label>
+                          <input type="checkbox" name="remember" /> Recordarme la sesión
+                          iniciada
+                        </label>
+                        <button type="submit" class="button">Login</button>
+          </div>
+          <div class="container2">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <span class="psw">¿No eres un miembro? <a href="register">Registrarse!</a></span>
+          </div>
+        </form>
+      </main>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+        <script defer src="/js/validateLogin.js"></script>
   </body>
+
 </html>
