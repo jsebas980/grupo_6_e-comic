@@ -180,6 +180,7 @@ router.post(
   handleValidationErrors,
   userController.loginProcessCRUD
 );
+router.get("/forgot", guestMiddleware, userController.forgot);
 /*** Muestra la pagina registro de un usuario ***/
 router.get("/profileCRUD", authMiddleware, userController.profileCRUD);
 /*** Muestra la pagina registro de un usuario ***/

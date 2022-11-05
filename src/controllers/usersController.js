@@ -30,6 +30,11 @@ const userController = {
     return res.render("./users/login");
   },
 
+   /*** Pagina de forgot password de usuario ***/
+  forgot: (req, res) => {
+    return res.render("./users/forgot");
+  },
+
   /*** Ejecuta el login de usuario ***/
   loginProcessCRUD: (req, res) => {
     db.usuario_model

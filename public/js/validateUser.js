@@ -228,6 +228,8 @@ window.addEventListener("load", function () {
 
     // submit to the server if the form is valid
     if (isFormValid) {
+      alert("La validación fue exitosa");
+      form.submit();
     }
   });
 

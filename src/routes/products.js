@@ -149,7 +149,7 @@ router.get("/productCart", authMiddleware, productController.productCart);
 router.get("/productListCRUD", authMiddleware, productController.listCRUD);
 router.get(
   "/productDetailCRUD/:id",
-  authMiddleware,
+  guestMiddleware,
   productController.productDetailCRUD
 );
 /*** Muestra la pagina de insertar los productos con CRUD DB ***/

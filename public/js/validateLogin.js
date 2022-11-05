@@ -1,7 +1,8 @@
 console.log("validateUser Front-end JS");
+
 // https://www.javascripttutorial.net/javascript-dom/javascript-form-validation/
 window.addEventListener("load", function () {
-   const emailEl = document.querySelector("#email");
+  const emailEl = document.querySelector("#email");
   const passwordEl = document.querySelector("#password");
 
   const form = document.querySelector("#formValidate");
@@ -96,6 +97,8 @@ window.addEventListener("load", function () {
 
     // submit to the server if the form is valid
     if (isFormValid) {
+      window.alert("Te has registrado correctamente. Se proceder a iniciar sesión");
+      form.submit();
     }
   });
 

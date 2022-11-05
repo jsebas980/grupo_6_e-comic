@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
+  <body class="login">
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+      <main class="main">
+        <form  id="formValidate" action="/users/login" method="POST">
+          <div class="imgcontainer">
+            <h1>Oopps! 
+              Ha solicitado restablecer su contraseña</h1>
+            <img src="/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar" />
+          </div>
+          <div class="container">
+            <div class="card-body">
+              <p>
+                No podemos simplemente enviarle su antigua contraseña. Para restablecer su contraseña indiquenos cual su correo electrónico registrado en e<span>C</span>omic, haga clic en en "Enviar correo" y siga las instrucciones.
+              </p>
+            </div>
+                  <div class="form-field">
+                    <span class="icon"><i class="fa-solid fa-user fa-2x"></i></span>
+                    <label for="email"><b>Correo electronico</b></label>
+                    <input type="text" placeholder="Ingrese el correo electrónico" name="email" id="email" />
+                    <% if (locals.errors && errors.email) { %>
+                      <p class="errors">
+                        <%= errors.email.msg %>
+                      </p>
+                      <% } %>
+                      <small></small>
+                    </div>
+                    
+          </div>
+          <div class="container2">
+            <button type="submit" class="button">Enviar correo</button>
+          </div>
+        </form>
+      </main>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
+        <script defer src="/js/validateLogin.js"></script>
+  </body>
+
+</html>

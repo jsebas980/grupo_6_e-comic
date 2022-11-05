@@ -38,7 +38,7 @@
                 Precio con descuento:
                 <span
                   ><%=
-                  Number(productoCrud.precio.replace(/[$,]+/g,""))-Number(productoCrud.precio.replace(/[$,]+/g,""))*0.05
+                  Number(productoCrud.precio)-(Number(productoCrud.precio)*(5/100))
                   %> (5%)</span
                 >
               </p>

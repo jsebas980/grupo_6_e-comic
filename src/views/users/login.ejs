@@ -9,10 +9,15 @@
       <main class="main">
         <form  id="formValidate" action="/users/login" method="POST">
           <div class="imgcontainer">
-            <h1>Login</h1>
+            <h1>Bienvendio al formulario para iniciar sesión</h1>
             <img src="/images/avatar-user-login-avatar-man.jpg" alt="Avatar" class="avatar" />
           </div>
           <div class="container">
+            <div class="card-body">
+              <p>
+                A continuacion escriba las credenciales registradas en la tienda virtual eComic.
+              </p>
+            </div>
             <% if(typeof alert !='undefined' ) { %>
               <% alert.forEach(function(error) { %>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -40,15 +45,15 @@
                         <input type="password" placeholder="Ingrese la contraseña" name="password" id="password" />
                         <small></small>
                       </div>
-                        <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span>
+                        <span class="psw">¿Olvidaste tu <a href="forgot">contraseña?</a></span>
                         <label>
                           <input type="checkbox" name="remember" /> Recordarme la sesión
                           iniciada
                         </label>
-                        <button type="submit" class="button">Login</button>
+                        <button type="submit" class="button">Acceder sesión</button>
           </div>
           <div class="container2">
-            <button type="button" class="cancelbtn">Cancel</button>
+            <a href="/"><button type="button" class="cancelbtn" >Cancelar</button></a>
             <span class="psw">¿No eres un miembro? <a href="register">Registrarse!</a></span>
           </div>
         </form>

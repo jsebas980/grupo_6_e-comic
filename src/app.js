@@ -29,9 +29,7 @@ app.use(
 );
 
 app.use(cookies());
-app.use(
-  userLoggedMiddleware
-); /*middleware de aplicación que tienen que colocarse después de session*/
+app.use(userLoggedMiddleware); /*middleware de aplicación que tienen que colocarse después de session*/
 
 //! Visualizacion de las vista EJS */
 app.set("views", path.join(__dirname, "views"));
@@ -55,6 +53,7 @@ app.use("/products", routerProducts);
 app.use("/users", routerUsers);
 app.use("/bills", routerBills);
 
+//! Configuracion de las conexiones API */
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/bills', apiBillsRouter);
