@@ -6,7 +6,15 @@ const dbp = require("../database/models/");
 const productController = {
   /*** Muestra el carrito de compra de un producto ***/
   productCart: (req, res) => {
-    res.render("products/productCart");
+    //console.log(req.session.userLogged);      
+    dbp.usuario_model.findByPk(req.session.userLogged.id, 
+      {
+        attributes: { exclude: ["contraseña"] },
+        include: [{ association: "pais" }, { association: "provincia" }],
+      }).then((usuarioCrud) => {
+        //console.log(usuarioCrud);  
+      return res.render("products/productCart", { promUser: usuarioCrud });
+    });
   },
 
   // ! CRUD de los productos
@@ -24,9 +32,39 @@ const productController = {
   },
 
   productDetailCRUD: async (req, res) => {
-    dbp.productos_model.findByPk(req.params.id).then((productoCrud) => {
-      return res.render("products/productDetailcrud", { productoCrud });
+    let promAutor = dbp.productos_personas_model.findOne({
+      where: {
+        id_productos: req.params.id,
+        id_rol: 1,
+      },
+      include: [
+        { association: "personas" },
+      ]
     });
+    let promIllustrador = dbp.productos_personas_model.findOne({
+      where: {
+        id_productos: req.params.id,
+        id_rol: 2,
+      },
+      include: [
+        { association: "personas" },
+      ]
+    });
+    let productoCrud = dbp.productos_model.findByPk(req.params.id,{
+      include: [
+        { association: "paisproductos" },
+        { association: "categorias" },
+      ],
+    });
+    Promise.all([promAutor, promIllustrador, productoCrud])
+      .then(function ([promAutor, promIllustrador, productoCrud]) {
+        return res.render("products/productDetailcrud", {
+          promAutor: promAutor,
+          promIllustrador: promIllustrador,
+          productoCrud: productoCrud,
+        });
+      })
+      .catch((error) => res.send(error));
   },
 
   productCreateCRUD: async (req, res) => {

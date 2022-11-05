@@ -97,7 +97,7 @@ window.addEventListener("load", function () {
 
     // submit to the server if the form is valid
     if (isFormValid) {
-      window.alert("Te has registrado correctamente. Se proceder a iniciar sesión");
+      //window.alert("Te has registrado correctamente. Se proceder a iniciar sesión");
       form.submit();
     }
   });

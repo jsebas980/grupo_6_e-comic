@@ -67,11 +67,11 @@ h1 {
   height: 50px;
   background: #3a3c3e;
   border: none;
-  margin-left: 12px;
+  margin-left: 10px;
   font-size: 24px;
   float: left;
   color: #262626;
-  padding-left: 45px;
+  padding-left: 55px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -145,7 +145,7 @@ h1 {
 .form-field input {
   border: solid 2px #f0f0f0;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 24px;
   display: block;
   width: 100%;
 }

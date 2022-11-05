@@ -9,7 +9,14 @@
       <div class="box">
         <div class="container-1">
           <span class="icon"><i class="fa fa-search fa-2x"></i></span>
-          <input type="search" id="search" placeholder="Search..." />
+          <input type="search" id="search" placeholder="Buscador..." />
+        </div>
+      </div>
+      <div class="card-wrapper">
+        <div class="card-header">
+          <h1>
+            Información del producto
+          </h1>
         </div>
       </div>
       <div class="card-wrapper">
@@ -28,39 +35,40 @@
           <!-- card right -->
           <div class="product-content">
             <div class="card-header-title">
-              <h2 class="product-title"><%= productoCrud.titulo %></h2>
-            </div>
-            <div class="product-price">
-              <p class="last-price">
-                Precio normal: <span><%= productoCrud.precio %></span>
-              </p>
-              <p class="new-price">
-                Precio con descuento:
-                <span
-                  ><%=
-                  Number(productoCrud.precio)-(Number(productoCrud.precio)*(5/100))
-                  %> (5%)</span
-                >
-              </p>
+                <h2 class="product-title"><%= productoCrud.titulo %></h2>
             </div>
             <div class="product-detail">
-              <h2>Acerca del comic:</h2>
+              <h2>Breve descripción:</h2>
               <p><%= productoCrud.descripcioncorta %></p>
+              <h2>Descripción detallada:</h2>
               <p><%= productoCrud.descripciondetallada %></p>
+              <h2>Mas detalles:</h2>
               <ul>
-                <li>Autor: <span> <%= productoCrud.autor %> </span></li>
+                <li>Autor: <span> <%= promAutor.personas.nombrecompleto %> </span></li>
                 <li>
-                  Ilustrador: <span> <%= productoCrud.illustrador %> </span>
+                  Ilustrador: <span> <%= promIllustrador.personas.nombrecompleto %> </span>
                 </li>
                 <li>
-                  Categoría: <span> <%= productoCrud.id_categoria %> </span>
+                  Categoría: <span> <%= productoCrud.categorias.nombrecategoria %> </span>
                 </li>
                 <li>
-                  Publicación: <span> <%= productoCrud.publicacion %> </span>
+                  Fecha de la publicación: <span> <%= productoCrud.publicacion %> </span>
                 </li>
-                <li>País origen: <span> <%= productoCrud.id_pais %> </span></li>
-                <li>Identificador: <span> <%= productoCrud.id %> </span></li>
+                <li>País origen: <span> <%= productoCrud.paisproductos.nombre %> </span></li>
               </ul>
+            </div>
+            <div class="product-price">
+              <h2>Precio:</h2>
+              <p class="last-price">
+                Normal: <span><%= productoCrud.precio %></span>
+              </p>
+              <p class="new-price">
+                Con descuento (15%):
+                <span><%=
+                  Number(productoCrud.precio)-(Number(productoCrud.precio)*(15/100))
+                  %> </span
+                >
+              </p>
             </div>
             <div class="edit-delete" action="">
               <div class="ml-auto">
@@ -80,16 +88,14 @@
             </div>
             <div class="purchase-info">
               <input type="number" min="0" value="1" />
-              <button type="button" class="btn">
-                <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
-              </button>
+                  <a href="/products/productCart/" class="btn"><i class="fa-solid fa-cart-plus"></i> Añadir al carrito</a>
             </div>
           </div>
         </div>
       </div>
-      <script src="static/dist/script.js"></script>
     </main>
     <!-- Footer -->
     <%- include('../partials/footer.ejs') %>
+    <!-- <script src="static/dist/script.js"></script>-->
   </body>
 </html>

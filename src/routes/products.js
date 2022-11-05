@@ -147,13 +147,13 @@ router.get("/productCart", authMiddleware, productController.productCart);
 
 /*** Muestra la pagina del listado de los productos con CRUD DB ***/
 router.get("/productListCRUD", authMiddleware, productController.listCRUD);
+
 router.get(
   "/productDetailCRUD/:id",
-  guestMiddleware,
   productController.productDetailCRUD
 );
 /*** Muestra la pagina de insertar los productos con CRUD DB ***/
-router.get("/productCreateCRUD", productController.productCreateCRUD);
+router.get("/productCreateCRUD", authMiddleware, productController.productCreateCRUD);
 router.post(
   "/productInsertCRUD",
   uploadFile.single("imagen"),
@@ -161,7 +161,7 @@ router.post(
   productController.createCRUD
 );
 /*** Muestra la pagina de modificar los productos con CRUD DB ***/
-router.get("/productEditCRUD/:id", productController.editCRUD);
+router.get("/productEditCRUD/:id", authMiddleware, productController.editCRUD);
 router.patch(
   "/productEditCRUD/:id",
   uploadFile.single("imagen"),

@@ -4,7 +4,11 @@
       <% if (locals.isLogged){ %>
       <div class="has-outline">
         <img
-          src="<%= locals.userLogged.imagen %>"
+          src="<% if(locals.userLogged.imagen.indexOf('https://') ) { %>
+            /images/imgUsers/<%= locals.userLogged.imagen %>
+          <% } else { %>
+            <%= locals.userLogged.imagen %>
+          <% } %>"
           alt="eComic"
           href="/"
           class="code-img"
@@ -21,9 +25,6 @@
       </div>
       <% }%>
       <h1><a href="/">e<span>C</span>omic</a></h1>
-      <!-- <% if (locals.isLogged){ %>        
-      <h1><%= locals.userLogged.firstname %></h1>
-      <% } %> -->
       <div class="menudiv">
         <label for="toggle-1" class="toggle-menu">
           <i class="fa-solid fa-bars fa-4x"></i>
@@ -43,21 +44,23 @@
           </ul>
         </nav>
         <ul class="leftdiv">
+          <% if (locals.isLogged){ %>
           <li>
             <a href="/products/productCart" alt="Carrito"
               ><i class="fa-solid fa-cart-shopping fa-2xl"></i
             ></a>
           </li>
+          <% } %>
           <% if (!locals.isLogged){ %>
           <li>
             <a href="/users/login" alt="Login" class="login"
-              ><i class="fa-solid fa-user fa-xl"></i> Login</a
+              ><i class="fa-solid fa-user fa-xl"></i>   Ingresar</a
             >
           </li>
           <% } else { %>
           <li>
             <a href="/users/logout" alt="Logout" class="login"
-              ><i class="fa-solid fa-user fa-xl"></i> Logout</a
+              ><i class="fa-solid fa-user fa-xl"></i>   Salir</a
             >
           </li>
           <% }%>

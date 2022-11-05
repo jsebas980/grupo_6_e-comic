@@ -44,9 +44,10 @@ const userController = {
         },
       })
       .then(function (userToLogin) {
-        //if (userToLogin) {
-        // console.log('user id is ' + userToLogin.id);
-        // console.log('userObject id is ' + userToLogin.nombre + ' ' + userToLogin.apellido);
+        if (userToLogin) {
+        console.log('user id is ' + userToLogin);
+        console.log('userObject id is ' + userToLogin.nombre + ' ' + userToLogin.apellido);
+        }
         let isOKThePassword = bcrypt.compareSync(
           req.body.password,
           userToLogin.contraseña

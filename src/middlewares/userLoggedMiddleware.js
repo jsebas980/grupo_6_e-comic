@@ -12,9 +12,9 @@ function userLoggedMiddleware(req, res, next) {
               email: emailInCookie
           }
       }).catch(function () {
-          console.log("Promise Rejected");
+          console.log("email rechazado cookies");
       });
-     console.log(userFromCookie.dataValues);
+     //console.log(userFromCookie.dataValues);
   }
   if (userFromCookie) {
     req.session.userLogged = userFromCookie;
@@ -23,6 +23,8 @@ function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = true;
     res.locals.userLogged = req.session.userLogged;
   }
+  //console.log(res.locals);
+  //console.log(req.session);
   next();
 }
 

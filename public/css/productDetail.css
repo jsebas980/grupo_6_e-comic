@@ -3,7 +3,10 @@
     margin: 0 auto;
     background: #fff;
     border: 1px solid #ccc;
-    padding: 25px 5px;
+}
+
+.product_detail .card-wrapper .card-header{
+    width: 100%;
 }
 
 .product_detail img {

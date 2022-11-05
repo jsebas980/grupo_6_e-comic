@@ -46,10 +46,10 @@ db.Sequelize = Sequelize;
 sequelize
   .authenticate()
   .then(() => {
-    console.log("eComic Connection has been established successfully.");
+    console.log("La conexión hacia eComic_db se ha establecido con éxito.");
   })
   .catch((error) => {
-    console.error("Unable to connect to the database: ", error);
+    console.error("No se puede conectar a la base de dato eComic_db: ", error);
   });
 
 module.exports = db;
