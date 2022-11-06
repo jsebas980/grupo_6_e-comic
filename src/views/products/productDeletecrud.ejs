@@ -5,7 +5,15 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form action="/products/productDeleteCRUD/<%= productoCrud.id %>?_method=DELETE" method="POST">
+    <main class="main">
+      <div class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+          <input type="search" id="search" placeholder="Buscador..." />
+        </div>
+      </div>
+      <div>
+      <form id="formdelete" action="/products/productDeleteCRUD/<%= productoCrud.id %>?_method=DELETE" method="POST">
         <div class="imgcontainer">
           <h1>Delete <%= productoCrud.id %>
           </h1>
@@ -13,16 +21,25 @@
         <div class="product-content">
           <div class="card-header-title">
             <h2 class="product-title">
-              <img src="/images/img/<%= productoCrud.imagen %>" alt="<%= productoCrud.titulo %>" width="303.08px" height="454.63px">
-              <%= productoCrud.titulo %> - <%= productoCrud.temporada %> - <%= productoCrud.volumen %>
+              <p><%= productoCrud.titulo %> - <%= productoCrud.temporada %> - <%= productoCrud.volumen %></p>
             </h2>
+              <div class="img-display">
+                <div class="img-showcase">
+                  <img class="img-delete" src="<% if(productoCrud.imagen.indexOf('https://') ) { %>
+                  /images/img/<%= productoCrud.imagen %>
+                <% } else { %>
+                  <%= productoCrud.imagen %>
+                <% } %>" alt="<%= productoCrud.titulo %>">
+                </div>
+              </div>
           </div>
         </div>
         <div class="container2">
-          <button type="submit" class="button">Eliminar</button>
+          <button type="submit" class="button">Eliminar registro</button>
         </div>
       </form>
       </main>
+      <script type="text/javascript" src="/js/search2.js"></script>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>

@@ -9,14 +9,14 @@
     <div class="box">
       <div class="container-1">
         <span class="icon"><i class="fa fa-search fa-2x"></i></span>
-        <input type="search" id="search" placeholder="Search..." />
+        <input type="search" id="search" placeholder="Buscador..." />
       </div>
     </div>
   </main>
       <main class="mainbar">
         <nav>
           <div class="d-flex align-items-center">
-            <div class="ml-auto"> <a href="#" class="text-uppercase">Seguir comprando</a> </div>
+            <div class="ml-auto"> <a href="/" class="text-uppercase">Seguir comprando</a> </div>
           </div>
         </nav>
         <div class="headerbar">
@@ -92,7 +92,7 @@
               <div id="cart" class="detailscard">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="h6">Resumen de la compra</div>
-                  <div class="h5 font-weight-bold text-primary"> <a href="#" class="text-uppercase">Modificar</a> </div>
+                  <div class="h5 font-weight-bold text-primary"> <a href="/products/productDetailcrud/11" class="text-uppercase">Modificar</a> </div>
                 </div>
                 <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
                   <div class="item pr-2"> <img src="/images/img/01.jpg" alt="" width="99%" height="75%">
@@ -118,17 +118,17 @@
               </div>
               <div class="row pt-lg-2 pt-1 buttons mb-sm-0 mb-1">
                 <div class="col-md-4 pt-md-0 pt-2">
-                  <div class="btn text-white ml-auto;"> Regresar a la tienda</div>
+                  <a href="/products/productDetailcrud/1"><div class="btn text-white ml-auto;"> Regresar a la tienda </div></a>
                 </div>
                 <div class="col-md-4 pt-md-0 pt-2">
-                  <div class="btn text-white ml-auto"> Finalizar compra </div>
+                  <a href="/"><div class="btn text-white ml-auto"> Finalizar compra </div></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </main>
-
+      <script type="text/javascript" src="/js/search2.js"></script>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
   </body>

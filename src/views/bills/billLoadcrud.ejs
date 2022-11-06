@@ -6,6 +6,14 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+    <main class="main">
+      <div class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+          <input type="search" id="search" placeholder="Buscador..." />
+        </div>
+      </div>
+      <div>
       <form id="formValidate" action="/bills/billInsertCRUD" method="POST">
         <div class="imgcontainer">
           <h1>Creación de una factura en e<span>C</span>omic</h1>
@@ -30,7 +38,7 @@
                   <div class="form-field">
                     <label for="id_estadofactura"><b>Estado factura</b></label>
                     <select name="id_estadofactura" id="id_estadofactura" placeholder="Ingrese la estado factura">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promEstado !='undefined' ) { %>
                         <% promEstado.forEach(function(estado) { %>
                           <option value="<%= estado.id %>">
@@ -62,7 +70,7 @@
                   <div class="form-field">
                     <label for="id_modopago"><b>Modo de pago</b></label>
                     <select name="id_modopago" id="id_modopago" placeholder="Ingrese el modo de pago">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promModoPago !='undefined' ) { %>
                         <% promModoPago.forEach(function(modopago) { %>
                           <option value="<%= modopago.id %>">
@@ -84,7 +92,7 @@
                   <div class="form-field">
                     <label for="id_pais"><b>País</b></label>
                     <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promPais !='undefined' ) { %>
                         <% promPais.forEach(function(pais) { %>
                           <option value="<%= pais.id %>">
@@ -98,7 +106,7 @@
                   <div class="form-field">
                     <label for="id_provincia"><b>Provincia</b></label>
                     <select name="id_provincia" id="id_provincia" placeholder="Ingrese el ciudad/provincia">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promProvincia !='undefined' ) { %>
                         <% promProvincia.forEach(function(prov) { %>
                           <option value="<%= prov.id %>">

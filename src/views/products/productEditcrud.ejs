@@ -6,125 +6,177 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-      <form id="formValidate" action="/products/productEditCRUD/<%= productoCrud.id %>?_method=PATCH" method="POST"
-        enctype="multipart/form-data">
-        <div class="imgcontainer">
-          <h1>Edición del producto <%= productoCrud.id %> en e<span>C</span>omic</h1>
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Buscador..." />
+          </div>
         </div>
-        <% if(typeof alert !='undefined' ) { %>
-          <% alert.forEach(function(error) { %>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              <%= error.msg %>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
+        <div>
+          <form id="formValidate" action="/products/productEditCRUD/<%= productoCrud.id %>?_method=PATCH" method="POST"
+            enctype="multipart/form-data">
+            <div class="imgcontainer">
+              <h1>Edición del producto <%= productoCrud.id %> en e<span>C</span>omic</h1>
             </div>
-            <% }) %>
-              <% } %>
-                <fieldset id="left">
-                  <div class="form-field">
-                    <label for="titulo"><b>Titulo</b></label>
-                    <input type="text" placeholder="ingrese el titulo" name="titulo" id="titulo"
-                      value="<%= productoCrud.titulo ? oldData.titulo : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="temporada"><b>Temporada</b></label>
-                    <input type="text" placeholder="ingrese la temporada" name="temporada" id="temporada"
-                      value="<%= productoCrud.temporada ? oldData.temporada : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="volumen"><b>Volumen</b></label>
-                    <input type="text" placeholder="ingrese el volumen" name="volumen" id="volumen"
-                      value="<%= productoCrud.volumen ? oldData.volumen : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="stock"><b>Stock</b></label>
-                    <input type="text" placeholder="ingrese el stock" name="stock" id="stock"
-                      value="<%= productoCrud.stock ? oldData.stock : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="descontinuado"><b>Descontinuado</b></label>
-                    <input type="text" placeholder="ingrese el descontinuado" name="descontinuado" id="descontinuado"
-                      value="<%= productoCrud.descontinuado ? oldData.descontinuado : null %>">
-                    <small></small>
-                  </div>
-                </fieldset>
-                <fieldset id="right">
-                  <div class="form-field">
-                  <label for="id_categoria"><b>Categoria</b></label>
-                    <select name="id_categoria" id="id_categoria" placeholder="Ingrese la categoria">>
-                      <% if(typeof promCategoria !='undefined' ) { %>
-                        <% promCategoria.forEach(function(categoria) { %>
-                          <option value="<%= categoria.id %>">
-                            <%= categoria.nombrecategoria %>
-                          </option>
-                          <% }) %>
-                            <% } %>
-                    </select>
-                  <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="id_pais"><b>País</b></label>
-                    <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
-                      <% if(typeof promPais !='undefined' ) { %>
-                        <% promPais.forEach(function(pais) { %>
-                          <option value="<%= pais.id %>">
-                            <%= pais.nombre %>
-                          </option>
-                          <% }) %>
-                            <% } %>
-                    </select>
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="publicacion"><b>Fecha de publicación</b></label>
-                    <input type="date" placeholder="ingrese la fecha de publicacion" name="publicacion"  id="publicacion"
-                      value="<%= productoCrud.publicacion ? oldData.publicacion : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="precionormal"><b>Precio inventario</b></label>
-                    <input type="text" placeholder="ingrese el precio normal" name="precionormal" id="precionormal"
-                      value="<%= productoCrud.precionormal ? oldData.precionormal : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="precio"><b>Precio de venta</b></label>
-                    <input type="text" placeholder="ingrese el precio" name="precio"  id="precio" value="<%= productoCrud.precio ? oldData.precio : null %>">
-                    <small></small>
-                  </div>
-                </fieldset>
-                <fieldset id="center">
-                  <div class="form-field">
-                    <label for="descripcioncorta"><b>Breve descripción</b></label>
-                    <input type="text" placeholder="ingrese la descripcion corta" name="descripcioncorta" id="descripcioncorta" 
-                      value="<%= productoCrud.descripcioncorta ? oldData.descripcioncorta : null %>">
-                    <small></small>
-                  </div>
-                  <div class="form-field">
-                    <label for="descripciondetallada"><b>Descripción detallada</b></label>
-                    <textarea name="descripciondetallada" id="descripciondetallada" cols="30"
-                      rows="10"><%= productoCrud.descripciondetallada ? oldData.descripciondetallada : null %></textarea>
-                    <small></small>
-                  </div>
-                </fieldset>
-                <fieldset id="center">
-                  <div class="form-field">
-                    <label for="img"><b>Imagen</b></label>
-                    <input type="file" name="imagen" id="imagen">
-                    <small></small>
-                  </div>
-                </fieldset>
+            <% if(typeof alert !='undefined' ) { %>
+              <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-                <div class="container2">
-                  <button type="submit" class="button">Actualizar</button>
-                </div>
-      </form>
+                <% }) %>
+                  <% } %>
+                    <fieldset id="left">
+                      <div class="form-field">
+                        <label for="titulo"><b>Titulo</b></label>
+                        <input type="text" placeholder="ingrese el titulo" name="titulo" id="titulo"
+                          value="<%= productoCrud.titulo ? oldData.titulo : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="temporada"><b>Temporada</b></label>
+                        <input type="text" placeholder="ingrese la temporada" name="temporada" id="temporada"
+                          value="<%= productoCrud.temporada ? oldData.temporada : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="volumen"><b>Volumen</b></label>
+                        <input type="text" placeholder="ingrese el volumen" name="volumen" id="volumen"
+                          value="<%= productoCrud.volumen ? oldData.volumen : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="stock"><b>Stock</b></label>
+                        <input type="text" placeholder="ingrese el stock" name="stock" id="stock"
+                          value="<%= productoCrud.stock ? oldData.stock : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="descontinuado"><b>Descontinuado</b></label>
+                        <input type="text" placeholder="ingrese el descontinuado" name="descontinuado"
+                          id="descontinuado" value="<%= productoCrud.descontinuado ? oldData.descontinuado : null %>">
+                        <small></small>
+                      </div>
+                    </fieldset>
+                    <fieldset id="right">
+                      <div class="form-field">
+                        <label for="id_categoria"><b>Categoria</b></label>
+                        <select name="id_categoria" id="id_categoria" placeholder="Ingrese la categoria">
+                          <option value="<%= productoCrud.id_categoria %>"><%= productoCrud.categorias.nombrecategoria %></option>
+                          <% if(typeof promCategoria !='undefined' ) { %>
+                            <% promCategoria.forEach(function(categoria) { %>
+                              <option value="<%= categoria.id %>">
+                                <%= categoria.nombrecategoria %>
+                              </option>
+                              <% }) %>
+                                <% } %>
+                        </select>
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="id_pais"><b>País</b></label>
+                        <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
+                          <option value="<%= productoCrud.id_pais %>"><%= productoCrud.paisproductos.nombre %></option>
+                          <% if(typeof promPais !='undefined' ) { %>
+                            <% promPais.forEach(function(pais) { %>
+                              <option value="<%= pais.id %>">
+                                <%= pais.nombre %>
+                              </option>
+                              <% }) %>
+                                <% } %>
+                        </select>
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="id_autor"><b>Autor</b></label>
+                        <select name="id_autor" id="id_autor" placeholder="Ingrese el autor">
+                          <option value="<%= promAutor.id_personas %>"><%= promAutor.personas.nombrecompleto %></option>
+                          <% if(typeof promPersonas !='undefined' ) { %>
+                            <% promPersonas.forEach(function(autor) { %>
+                              <option value="<%= autor.id %>">
+                                <%= autor.nombrecompleto %>
+                              </option>
+                              <% }) %>
+                                <% } %>
+                        </select>
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="id_illustrador"><b>Illustrador</b></label>
+                        <select name="id_illustrador" id="id_illustrador" placeholder="Ingrese el ilustrador">
+                          <option value="<%= promIllustrador.id_personas %>" selected><%= promIllustrador.personas.nombrecompleto %></option>
+                          <% if(typeof promPersonas !='undefined' ) { %>
+                            <% promPersonas.forEach(function(illustrador) { %>
+                              <option value="<%= illustrador.id %>">
+                                <%= illustrador.nombrecompleto %>
+                              </option>
+                              <% }) %>
+                                <% } %>
+                        </select>
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="publicacion"><b>Fecha de publicación</b></label>
+                        <input type="date" placeholder="ingrese la fecha de publicacion" name="publicacion"
+                          id="publicacion" value="<%= productoCrud.publicacion ? oldData.publicacion : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="precionormal"><b>Precio inventario</b></label>
+                        <input type="text" placeholder="ingrese el precio normal" name="precionormal" id="precionormal"
+                          value="<%= productoCrud.precionormal ? oldData.precionormal : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="precio"><b>Precio de venta</b></label>
+                        <input type="text" placeholder="ingrese el precio" name="precio" id="precio"
+                          value="<%= productoCrud.precio ? oldData.precio : null %>">
+                        <small></small>
+                      </div>
+                    </fieldset>
+                    <fieldset id="center">
+                      <div class="form-field">
+                        <label for="descripcioncorta"><b>Breve descripción</b></label>
+                        <input type="text" placeholder="ingrese la descripcion corta" name="descripcioncorta"
+                          id="descripcioncorta"
+                          value="<%= productoCrud.descripcioncorta ? oldData.descripcioncorta : null %>">
+                        <small></small>
+                      </div>
+                      <div class="form-field">
+                        <label for="descripciondetallada"><b>Descripción detallada</b></label>
+                        <textarea name="descripciondetallada" id="descripciondetallada" cols="30"
+                          rows="10"><%= productoCrud.descripciondetallada ? oldData.descripciondetallada : null %></textarea>
+                        <small></small>
+                      </div>
+                    </fieldset>
+                    <fieldset id="center">
+                      <div class="form-field">
+                        <label for="img"><b>Subir o cargar imagen</b></label>
+                        <input type="file" name="imagen" id="imagen">
+                        <small></small>
+                        <small></small>
+                        <label for="img"><b>Imagen actual</b></label>
+                        <div class="img-display">
+                          <div class="img-showcase">
+                            <img class="img-view" src="<% if(productoCrud.imagen.indexOf('https://') ) { %>
+                            /images/img/<%= productoCrud.imagen %>
+                          <% } else { %>
+                            <%= productoCrud.imagen %>
+                          <% } %>" alt="<%= productoCrud.titulo ? oldData.titulo : null %>">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <div class="container2">
+                      <button type="submit" class="button">Actualizar registro</button>
+                    </div>
+        </div>
+        </form>
       </main>
+      <script type="text/javascript" src="/js/search2.js"></script>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
       <script defer src="/js/validateProduct.js"></script>

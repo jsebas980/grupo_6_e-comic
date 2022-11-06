@@ -98,6 +98,7 @@ window.addEventListener("load", function () {
     // submit to the server if the form is valid
     if (isFormValid) {
       //window.alert("Te has registrado correctamente. Se proceder a iniciar sesión");
+      console.log("La validación fue exitosa - validateLogin Front-end JS");
       form.submit();
     }
   });

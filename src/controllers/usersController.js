@@ -95,8 +95,8 @@ const userController = {
 
   /*** Muestra el detalle de un usuario ***/
   profileCRUD: (req, res) => {
-    //console.log("Cookies :  ", req.cookies);
-    //console.log("Session :  ", req.session);
+    console.log("Cookies :  ", req.cookies);
+    console.log("Session :  ", req.session);
     db.usuario_model
       .findOne({
         where: {

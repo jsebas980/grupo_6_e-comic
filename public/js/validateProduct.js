@@ -11,6 +11,8 @@ window.addEventListener("load", function () {
   const publicationEl = document.querySelector("#publicacion");
   const normalpriceEl = document.querySelector("#precionormal");
   const priceEl = document.querySelector("#precio");
+  const authorEl = document.querySelector("#id_autor");
+  const illustratorEl = document.querySelector("#id_illustrador");
   const shortdescriptionEl = document.querySelector("#descripcioncorta");
   const detailddescriptionEl = document.querySelector("#descripciondetallada");
   const imgEl = document.querySelector("#imagen");
@@ -152,6 +154,8 @@ window.addEventListener("load", function () {
       isCountryValid = checkID(countryEl, `El país `),
       isCategoryValid = checkID(categoryEl, `La categoria `),
       isPublicationValid = checkText(publicationEl, `La publicación `),
+      isAuthorValid = checkID(authorEl, `El país `),
+      isIllustratorValid = checkID(illustratorEl, `El país `),
       isNormalPriceEValid = checkNumber(normalpriceEl, `El precio normal `),
       isPriceValid = checkNumber(priceEl, `El precio `),
       isShortDescriptionValid = checkMultiText(
@@ -177,6 +181,8 @@ window.addEventListener("load", function () {
       isCountryValid &&
       isCategoryValid &&
       isPublicationValid &&
+      isAuthorValid &&
+      isIllustratorValid &&
       isNormalPriceEValid &&
       isPriceValid &&
       isShortDescriptionValid &&
@@ -185,6 +191,8 @@ window.addEventListener("load", function () {
 
     // submit to the server if the form is valid
     if (isFormValid) {
+      console.log("La validación fue exitosa - validateProduct Front-end JS");
+      form.submit();
     }
   });
 
@@ -229,6 +237,12 @@ window.addEventListener("load", function () {
           break;
         case "publicacion":
           checkText(publicationEl, `La publicación `);
+          break;
+        case "id_autor":
+          checkID(authorEl, `El autor `);
+          break;
+        case "id_illustrador":
+          checkID(illustratorEl, `El ilustrador `);
           break;
         case "precionormal":
           checkNumber(normalpriceEl, `El precio normal `);

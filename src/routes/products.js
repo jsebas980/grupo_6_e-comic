@@ -65,6 +65,18 @@ const validateProducto = [
     .bail()
     .isLength({ min: 1 })
     .withMessage("Debes ser un Pais válido"),
+  body("id_autor")
+    .notEmpty()
+    .withMessage("Debes completar el Autor")
+    .bail()
+    .isLength({ min: 1 })
+    .withMessage("Debes ser un Pais válido"),
+  body("id_illustrador")
+    .notEmpty()
+    .withMessage("Debes completar el Ilustrador")
+    .bail()
+    .isLength({ min: 1 })
+    .withMessage("Debes ser un Pais válido"),
   body("publicacion")
     .notEmpty()
     .withMessage("Debes completar la Fecha de publicación")
@@ -161,7 +173,7 @@ router.post(
   productController.createCRUD
 );
 /*** Muestra la pagina de modificar los productos con CRUD DB ***/
-router.get("/productEditCRUD/:id", authMiddleware, productController.editCRUD);
+router.get("/productEditCRUD/:id", productController.editCRUD);
 router.patch(
   "/productEditCRUD/:id",
   uploadFile.single("imagen"),

@@ -6,6 +6,14 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+    <main class="main">
+      <div class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+          <input type="search" id="search" placeholder="Buscador..." />
+        </div>
+      </div>
+      <div>
       <form id="formValidate" action="/bills/billEditCRUD/<%= facturaCrud.id %>?_method=PATCH" method="POST">
         <div class="imgcontainer">
           <h1>Edición de la factura <%= facturaCrud.id %> en e<span>C</span>omic

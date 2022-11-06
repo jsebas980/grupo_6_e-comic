@@ -70,11 +70,13 @@ const productController = {
   productCreateCRUD: async (req, res) => {
     let promPais = dbp.pais_model.findAll();
     let promCategoria = dbp.categoria_model.findAll();
-    Promise.all([promPais, promCategoria])
-      .then(function ([promPais, promCategoria]) {
+    let promPersonas = dbp.personas_model.findAll();
+    Promise.all([promPais, promCategoria, promPersonas])
+      .then(function ([promPais, promCategoria, promPersonas]) {
         return res.render("products/productLoadCRUD", {
           promPais: promPais,
           promCategoria: promCategoria,
+          promPersonas: promPersonas,
         });
       })
       .catch((error) => res.send(error));
@@ -100,7 +102,7 @@ const productController = {
         })
         .catch((error) => res.send(error));
     } else {
-      dbp.productos_model.create({
+        dbp.productos_model.create({
         titulo: req.body.titulo,
         temporada: req.body.temporada,
         volumen: req.body.volumen,
@@ -114,7 +116,21 @@ const productController = {
         descripcioncorta: req.body.descripcioncorta,
         descripciondetallada: req.body.descripciondetallada,
         imagen: req.file.originalname,
-      });
+      }).then(function(product) {
+        console.log(product.id);
+        console.log(req.body);
+        dbp.productos_personas_model.create({
+          id_productos: product.id,
+          id_personas: req.body.id_autor,
+          id_rol: 1,
+        });
+        dbp.productos_personas_model.create({
+          id_productos: product.id,
+          id_personas: req.body.id_illustrador,
+          id_rol: 2,
+        });
+      });  
+      
       return res.redirect("/");
     }
   },
@@ -122,13 +138,40 @@ const productController = {
   editCRUD: function (req, res) {
     let promPais = dbp.pais_model.findAll();
     let promCategoria = dbp.categoria_model.findAll();
-    let productoCrud = dbp.productos_model.findByPk(req.params.id);
-    Promise.all([promPais, promCategoria, productoCrud])
-      .then(function ([promPais, promCategoria, productoCrud]) {
+    let promPersonas = dbp.personas_model.findAll();
+    let promAutor = dbp.productos_personas_model.findOne({
+      where: {
+        id_productos: req.params.id,
+        id_rol: 1,
+      },
+      include: [
+        { association: "personas" },
+      ]
+    });
+    let promIllustrador = dbp.productos_personas_model.findOne({
+      where: {
+        id_productos: req.params.id,
+        id_rol: 2,
+      },
+      include: [
+        { association: "personas" },
+      ]
+    });
+    let productoCrud = dbp.productos_model.findByPk(req.params.id,{
+      include: [
+        { association: "paisproductos" },
+        { association: "categorias" },
+      ]
+    });
+    Promise.all([promPais, promCategoria, promAutor, promIllustrador, promPersonas, productoCrud])
+      .then(function ([promPais, promCategoria, promAutor, promIllustrador, promPersonas, productoCrud]) {
         return res.render("products/productEditcrud", {
           promPais: promPais,
           promCategoria: promCategoria,
           productoCrud: productoCrud,
+          promAutor: promAutor,
+          promIllustrador: promIllustrador,
+          promPersonas: promPersonas,
           oldData: productoCrud
         });
       })

@@ -6,6 +6,14 @@
   <body class="product_edit">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
+    <main class="main">
+      <div class="box">
+        <div class="container-1">
+          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+          <input type="search" id="search" placeholder="Buscador..." />
+        </div>
+      </div>
+      <div>
       <form id="formValidate" action="/products/productInsertCRUD" method="POST" enctype="multipart/form-data">
         <div class="imgcontainer">
           <h1>Creación de un producto en e<span>C</span>omic</h1>
@@ -56,7 +64,7 @@
                   <div class="form-field">
                     <label for="id_categoria"><b>Categoría</b></label>
                     <select name="id_categoria" id="id_categoria" placeholder="Ingrese la categoria">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promCategoria !='undefined' ) { %>
                         <% promCategoria.forEach(function(categoria) { %>
                           <option value="<%= categoria.id %>">
@@ -70,11 +78,39 @@
                   <div class="form-field">
                     <label for="id_pais"><b>País</b></label>
                     <select name="id_pais" id="id_pais" placeholder="Ingrese el país">
-                      <option disabled selected value> -- select an option -- </option>
+                      <option disabled selected value> -- Seleccione una opción -- </option>
                       <% if(typeof promPais !='undefined' ) { %>
                         <% promPais.forEach(function(pais) { %>
                           <option value="<%= pais.id %>">
                             <%= pais.nombre %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_autor"><b>Autor</b></label>
+                    <select name="id_autor" id="id_autor" placeholder="Ingrese el autor">
+                      <option disabled selected value> -- Seleccione una opción -- </option>
+                      <% if(typeof promPersonas !='undefined' ) { %>
+                        <% promPersonas.forEach(function(autor) { %>
+                          <option value="<%= autor.id %>">
+                            <%= autor.nombrecompleto %>
+                          </option>
+                          <% }) %>
+                            <% } %>
+                    </select>
+                    <small></small>
+                  </div>
+                  <div class="form-field">
+                    <label for="id_illustrador"><b>Illustrador</b></label>
+                    <select name="id_illustrador" id="id_illustrador" placeholder="Ingrese el ilustrador">
+                      <option disabled selected value> -- Seleccione una opción -- </option>
+                      <% if(typeof promPersonas !='undefined' ) { %>
+                        <% promPersonas.forEach(function(illustrador) { %>
+                          <option value="<%= illustrador.id %>">
+                            <%= illustrador.nombrecompleto %>
                           </option>
                           <% }) %>
                             <% } %>
@@ -88,13 +124,13 @@
                     <small></small>
                   </div>
                   <div class="form-field">
-                    <label for="precionormal"><b>Precio normal</b></label>
+                    <label for="precionormal"><b>Precio inventario</b></label>
                     <input type="text" placeholder="Ingrese el precio" name="precionormal" id="precionormal"
                       value="<%= locals.oldData ? oldData.precionormal : null %>">
                     <small></small>
                   </div>
                   <div class="form-field">
-                    <label for="precio"><b>Precio</b></label>
+                    <label for="precio"><b>Precio de venta</b></label>
                     <input type="text" placeholder="Ingrese el precio" name="precio" id="precio"
                       value="<%= locals.oldData ? oldData.precio : null %>">
                     <small></small>
@@ -127,6 +163,7 @@
                 </div>
       </form>
       </main>
+      <script type="text/javascript" src="/js/search2.js"></script>
       <!-- Footer -->
       <%- include('../partials/footer.ejs') %>
       <script defer src="/js/validateProduct.js"></script>

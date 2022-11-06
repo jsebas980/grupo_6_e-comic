@@ -188,6 +188,8 @@ window.addEventListener("load", function () {
 
     // submit to the server if the form is valid
     if (isFormValid) {
+      console.log("La validación fue exitosa - validateBill Front-end JS");
+      form.submit();
     }
   });
 

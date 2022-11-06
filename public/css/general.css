@@ -134,6 +134,16 @@ h1 {
   padding: 1em 1em;
 }
 
+.img-showcase .img-view {
+  width: 50%; 
+  margin: 50px auto;
+}
+
+.img-showcase .img-delete {
+  width: 25%; 
+  margin: auto;
+}
+
 .form-field {
   margin-bottom: 3px;
 }
@@ -286,6 +296,10 @@ h1 {
   .card {
     width: 40%;
   }
+  .img-showcase .img-delete {
+    width: 55%; 
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 620px) {
@@ -300,5 +314,10 @@ h1 {
 
   .card {
     width: 80%;
+  }
+
+  .img-showcase .img-delete {
+    width: 85%; 
+    margin: auto;
   }
 }
