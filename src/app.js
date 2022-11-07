@@ -18,6 +18,7 @@ const routerBills = require("./routes/bills");
 const apiUsersRouter = require('./routes/api/users')
 const apiProductsRouter = require('./routes/api/products')
 const apiBillsRouter = require('./routes/api/bills')
+const apiCountryDepartamentsRouter = require('./routes/api/country_departament')
 
 //! Ejecución de la session */
 app.use(
@@ -57,6 +58,7 @@ app.use("/bills", routerBills);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/bills', apiBillsRouter);
+app.use('/api/countryDepartaments', apiCountryDepartamentsRouter);
 
 //! Configuracion de la pagina 404 */
 app.use((req, res, next) => {

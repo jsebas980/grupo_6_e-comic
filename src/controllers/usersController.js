@@ -108,6 +108,11 @@ const userController = {
       });
   },
 
+    /*** Pagina de registro de un usuario ***/
+   reportADMIN: (req, res) => {
+      return res.render("./users/userReportADMIN");
+    },
+
   /*** Pagina de registro de un usuario ***/
   register: (req, res) => {
     return res.render("./users/register");

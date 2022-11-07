@@ -191,6 +191,8 @@ router.get("/logout", userController.logout);
   "/userPassRole/:id",
   userController.userPassRole
 );
+/*** Muestra la pagina registro de un usuario ***/
+router.get("/reportADMIN", authMiddleware, userController.reportADMIN);
 
 // ! CRUD de los usuarios
 

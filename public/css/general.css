@@ -135,12 +135,12 @@ h1 {
 }
 
 .img-showcase .img-view {
-  width: 50%; 
+  width: 50%;
   margin: 50px auto;
 }
 
 .img-showcase .img-delete {
-  width: 25%; 
+  width: 25%;
   margin: auto;
 }
 
@@ -212,17 +212,13 @@ h1 {
 }
 
 .card-header h6 {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(100, 200, 200, 1),
-      rgba(100, 200, 200, 1)
-    ),
-    linear-gradient(
-      to right,
+      rgba(100, 200, 200, 1)),
+    linear-gradient(to right,
       rgba(255, 0, 0, 1),
       rgba(255, 0, 180, 1),
-      rgba(0, 100, 200, 1)
-    );
+      rgba(0, 100, 200, 1));
   background-size: 100% 3px, 0 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -235,11 +231,9 @@ h1 {
 
 .card-header:hover {
   color: #1f2932;
-  background: linear-gradient(
-    to right,
-    rgba(0, 100, 200, 1),
-    rgba(100, 200, 200, 1)
-  );
+  background: linear-gradient(to right,
+      rgba(0, 100, 200, 1),
+      rgba(100, 200, 200, 1));
 }
 
 .card-body {
@@ -280,11 +274,9 @@ h1 {
   color: #1f2932;
   box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
   border: 3px solid #00d7c3;
-  background: linear-gradient(
-    to right,
-    rgba(0, 100, 200, 1),
-    rgba(100, 200, 200, 1)
-  );
+  background: linear-gradient(to right,
+      rgba(0, 100, 200, 1),
+      rgba(100, 200, 200, 1));
 }
 
 .card:hover {
@@ -292,12 +284,28 @@ h1 {
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
 }
 
+.report-bi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+iframe {
+  display: block;
+  margin: auto;
+  text-align:center; 
+  justify-self: center; 
+  align-self: center; 
+  
+}
+
 @media screen and (max-width: 1000px) {
   .card {
     width: 40%;
   }
+
   .img-showcase .img-delete {
-    width: 55%; 
+    width: 55%;
     margin: auto;
   }
 }
@@ -317,7 +325,7 @@ h1 {
   }
 
   .img-showcase .img-delete {
-    width: 85%; 
+    width: 85%;
     margin: auto;
   }
 }
