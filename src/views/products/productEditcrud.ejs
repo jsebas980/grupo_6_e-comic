@@ -65,7 +65,7 @@
                       <div class="form-field">
                         <label for="id_categoria"><b>Categoria</b></label>
                         <select name="id_categoria" id="id_categoria" placeholder="Ingrese la categoria">
-                          <option value="<%= productoCrud.id_categoria %>"><%= productoCrud.categorias.nombrecategoria %></option>
+                          <!-- <option value="<%= productoCrud.id_categoria %>"><%= productoCrud.categorias.nombrecategoria %></option> -->
                           <% if(typeof promCategoria !='undefined' ) { %>
                             <% promCategoria.forEach(function(categoria) { %>
                               <option value="<%= categoria.id %>">

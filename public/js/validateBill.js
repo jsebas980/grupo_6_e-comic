@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
   const checkText = (campo, etiqueta) => {
     let valid = false;
 
-    const min = 2,
+    const min = 1,
       max = 200;
 
     const productText = campo.value.trim();

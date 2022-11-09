@@ -232,14 +232,17 @@ const productController = {
       return res.render("products/productDeletecrud", { productoCrud });
     });
   },
+
   destroyCRUD: function (req, res) {
+
     dbp.productos_model
       .destroy({
         where: { id: req.params.id },
-        force: true,
+        cascade: false,
+        force: true
       })
       .then(() => {
-        return res.redirect("/");
+        return res.redirect("/404");
       })
       .catch((error) => res.send(error));
   },

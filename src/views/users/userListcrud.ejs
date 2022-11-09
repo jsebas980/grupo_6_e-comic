@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Head -->
-  <%- include('../partials/head.ejs') %>
+<!-- Head -->
+<%- include('../partials/head.ejs') %>
+
   <body class="product_detail">
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
-    <main class="main">
-      <div class="box">
-        <div class="container-1">
-          <span class="icon"><i class="fa fa-search fa-2x"></i></span>
-          <input type="search" id="search" placeholder="Buscador..." />
+      <main class="main">
+        <div class="box">
+          <div class="container-1">
+            <span class="icon"><i class="fa fa-search fa-2x"></i></span>
+            <input type="search" id="search" placeholder="Buscador..." />
+          </div>
         </div>
-      </div>
-      <h2 class="Listardoh2">Listado de usuarios</h2>
-      <table id="myTable" width="100%" class="fl-table table-wrapper">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Correo electrónico</th>
-            <th>Teléfono / Celular</th>
-            <th>País</th>
-            <th>Departamento / Provincia</th>
-            <th>URL imagen</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% usuarioCrud.forEach(function(user){ %>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= user.nombre %></td>
-            <td><%= user.apellido %></td>
-            <td><%= user.correoelectronico %></td>
-            <td><%= user.numerotelefono %></td>
-            <td><%= user.pais.nombre %></td>
-            <td><%= user.provincia.nombre %></td>
-            <td><%= user.imagen %></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </main>
-    <script src="/js/tablet.js"></script>
-    <!-- Footer -->
-    <%- include('../partials/footer.ejs') %>
+        <h2 class="Listardoh2">Listado de usuarios</h2>
+        <table id="myTable" width="100%" class="fl-table table-wrapper">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Correo electrónico</th>
+              <th>Teléfono / Celular</th>
+              <th>País</th>
+              <th>Departamento / Provincia</th>
+              <th>URL imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% usuarioCrud.forEach(function(user){ %>
+              <tr>
+                <td>
+                  <%= user.id %>
+                </td>
+                <td><a class="text-uppercase" href="/users/userEditcrud/<%= user.id %>"><i class="fa fa-file-pen"></i></a></td>
+                <td><a class="text-uppercase" href="/users/userDeletecrud/<%= user.id %>"><i class="fa fa-trash"></i></a></td>
+                <td>
+                  <%= user.nombre %>
+                </td>
+                <td>
+                  <%= user.apellido %>
+                </td>
+                <td>
+                  <%= user.correoelectronico %>
+                </td>
+                <td>
+                  <%= user.numerotelefono %>
+                </td>
+                <td>
+                  <%= user.pais.nombre %>
+                </td>
+                <td>
+                  <%= user.provincia.nombre %>
+                </td>
+                <td>
+                  <%= user.imagen %>
+                </td>
+
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </main>
+      <script src="/js/tablet.js"></script>
+      <!-- Footer -->
+      <%- include('../partials/footer.ejs') %>
   </body>
+
 </html>

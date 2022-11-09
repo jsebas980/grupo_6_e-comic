@@ -18,7 +18,11 @@
             <div class="product-imgs">
               <div class="img-display">
                 <div class="img-showcase">
-                  <img src="<%= usuarioCrud.imagen %>" alt="<%= usuarioCrud.nombre %>">
+                  <img src="<% if(usuarioCrud.imagen.indexOf('https://') ) { %>
+                    /images/imgUsers/<%= usuarioCrud.imagen %>
+                  <% } else { %>
+                    <%= usuarioCrud.imagen %>
+                  <% } %>" alt="<%= usuarioCrud.nombre %>">
                 </div>
               </div>
             </div>
@@ -35,9 +39,6 @@
                 <ul>
                   <li>Identificador: <span>
                       <%= usuarioCrud.id %>
-                    </span></li>
-                  <li>Contraseña: <span>
-                      <%= usuarioCrud.contraseña %>
                     </span></li>
                   <li>Correo electronico: <span>
                       <%= usuarioCrud.correoelectronico %>
